@@ -86,6 +86,27 @@ typedef enum
 //场景3(可下发可上报)
 //备注:
 #define DPID_SCENE_3 3
+//场景4(可下发可上报)
+//备注:
+#define DPID_SCENE_4 4
+//场景5(可下发可上报)
+//备注:
+#define DPID_SCENE_5 5
+//场景6(可下发可上报)
+//备注:
+#define DPID_SCENE_6 6
+//场景7(可下发可上报)
+//备注:
+#define DPID_SCENE_7 7
+//场景8(可下发可上报)
+//备注:
+#define DPID_SCENE_8 8
+//场景9(可下发可上报)
+//备注:
+#define DPID_SCENE_9 9
+//场景10(可下发可上报)
+//备注:
+#define DPID_SCENE_10 10
 //test(可下发可上报)
 //备注:
 #define DPID_TEST 101

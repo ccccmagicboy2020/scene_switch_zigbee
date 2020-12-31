@@ -38,6 +38,13 @@ const DOWNLOAD_CMD_S download_cmd[] =
   {DPID_SCENE_1, DP_TYPE_ENUM},
   {DPID_SCENE_2, DP_TYPE_ENUM},
   {DPID_SCENE_3, DP_TYPE_ENUM},
+  {DPID_SCENE_4, DP_TYPE_ENUM},
+  {DPID_SCENE_5, DP_TYPE_ENUM},
+  {DPID_SCENE_6, DP_TYPE_ENUM},
+  {DPID_SCENE_7, DP_TYPE_ENUM},
+  {DPID_SCENE_8, DP_TYPE_ENUM},
+  {DPID_SCENE_9, DP_TYPE_ENUM},
+  {DPID_SCENE_10, DP_TYPE_ENUM},
   {DPID_TEST, DP_TYPE_BOOL},
 };
 
@@ -97,6 +104,13 @@ void all_data_update(void)
      mcu_dp_enum_update(DPID_SCENE_1,当前场景1); //枚举型数据上报;
     mcu_dp_enum_update(DPID_SCENE_2,当前场景2); //枚举型数据上报;
     mcu_dp_enum_update(DPID_SCENE_3,当前场景3); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_SCENE_4,当前场景4); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_SCENE_5,当前场景5); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_SCENE_6,当前场景6); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_SCENE_7,当前场景7); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_SCENE_8,当前场景8); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_SCENE_9,当前场景9); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_SCENE_10,当前场景10); //枚举型数据上报;
     mcu_dp_bool_update(DPID_TEST,当前test); //BOOL型数据上报;
 
 }
@@ -197,6 +211,223 @@ static unsigned char dp_download_scene_3_handle(const unsigned char value[], uns
     
     //处理完DP数据后应有反馈
     ret = mcu_dp_enum_update(DPID_SCENE_3, scene_3);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_scene_4_handle
+功能描述 : 针对DPID_SCENE_4的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_scene_4_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char scene_4;
+    
+    scene_4 = mcu_get_dp_download_enum(value,length);
+    switch(scene_4) {
+        case 0:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_SCENE_4, scene_4);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_scene_5_handle
+功能描述 : 针对DPID_SCENE_5的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_scene_5_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char scene_5;
+    
+    scene_5 = mcu_get_dp_download_enum(value,length);
+    switch(scene_5) {
+        case 0:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_SCENE_5, scene_5);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_scene_6_handle
+功能描述 : 针对DPID_SCENE_6的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_scene_6_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char scene_6;
+    
+    scene_6 = mcu_get_dp_download_enum(value,length);
+    switch(scene_6) {
+        case 0:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_SCENE_6, scene_6);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_scene_7_handle
+功能描述 : 针对DPID_SCENE_7的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_scene_7_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char scene_7;
+    
+    scene_7 = mcu_get_dp_download_enum(value,length);
+    switch(scene_7) {
+        case 0:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_SCENE_7, scene_7);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_scene_8_handle
+功能描述 : 针对DPID_SCENE_8的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_scene_8_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char scene_8;
+    
+    scene_8 = mcu_get_dp_download_enum(value,length);
+    switch(scene_8) {
+        case 0:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_SCENE_8, scene_8);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_scene_9_handle
+功能描述 : 针对DPID_SCENE_9的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_scene_9_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char scene_9;
+    
+    scene_9 = mcu_get_dp_download_enum(value,length);
+    switch(scene_9) {
+        case 0:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_SCENE_9, scene_9);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_scene_10_handle
+功能描述 : 针对DPID_SCENE_10的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_scene_10_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char scene_10;
+    
+    scene_10 = mcu_get_dp_download_enum(value,length);
+    switch(scene_10) {
+        case 0:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_SCENE_10, scene_10);
     if(ret == SUCCESS)
         return SUCCESS;
     else
@@ -310,6 +541,34 @@ unsigned char dp_download_handle(unsigned char dpid,const unsigned char value[],
         case DPID_SCENE_3:
             //场景3处理函数
             ret = dp_download_scene_3_handle(value,length);
+        break;
+        case DPID_SCENE_4:
+            //场景4处理函数
+            ret = dp_download_scene_4_handle(value,length);
+        break;
+        case DPID_SCENE_5:
+            //场景5处理函数
+            ret = dp_download_scene_5_handle(value,length);
+        break;
+        case DPID_SCENE_6:
+            //场景6处理函数
+            ret = dp_download_scene_6_handle(value,length);
+        break;
+        case DPID_SCENE_7:
+            //场景7处理函数
+            ret = dp_download_scene_7_handle(value,length);
+        break;
+        case DPID_SCENE_8:
+            //场景8处理函数
+            ret = dp_download_scene_8_handle(value,length);
+        break;
+        case DPID_SCENE_9:
+            //场景9处理函数
+            ret = dp_download_scene_9_handle(value,length);
+        break;
+        case DPID_SCENE_10:
+            //场景10处理函数
+            ret = dp_download_scene_10_handle(value,length);
         break;
         case DPID_TEST:
             //test处理函数
