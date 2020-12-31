@@ -1,31 +1,31 @@
 /**
 *   ************************************************************************************
-*								ÉÏº£Ğ¾Ê¥µç×Ó¹É·İÓĞÏŞ¹«Ë¾
+*								ä¸Šæµ·èŠ¯åœ£ç”µå­è‚¡ä»½æœ‰é™å…¬å¸
 *								    www.holychip.cn
 *	************************************************************************************
 *	@Examle Version		V1.0.1.0
 *	@Demo 	Version		V1.0.3.0
 *	@Date				2018.5.7
 *	************************************************************************************
-*  								       ¿Í»§·şÎñ
-*	¸ĞĞ»ÄúÊ¹ÓÃÎÒÃÇµÄµ¥Æ¬»ú£¬Èô·¢ÏÖ´íÎó»ò¶Ôº¯ÊıµÄÊ¹ÓÃ´æÔÚÒÉÎÊ¡£ÇëÌí¼ÓÉÏº£Ğ¾Ê¥µç×Ó¹Ù·½QQÈº
-*	****************************¼¼ÊõÖ§³ÖÈº£º201030494***********************************
+*  								       å®¢æˆ·æœåŠ¡
+*	æ„Ÿè°¢æ‚¨ä½¿ç”¨æˆ‘ä»¬çš„å•ç‰‡æœºï¼Œè‹¥å‘ç°é”™è¯¯æˆ–å¯¹å‡½æ•°çš„ä½¿ç”¨å­˜åœ¨ç–‘é—®ã€‚è¯·æ·»åŠ ä¸Šæµ·èŠ¯åœ£ç”µå­å®˜æ–¹QQç¾¤
+*	****************************æŠ€æœ¯æ”¯æŒç¾¤ï¼š201030494***********************************
 *   ************************************************************************************
 **/
 
 #define	ALLOCATE_EXTERN
 #include "Include.h"
 
-unsigned char xdata guc_UartReceiveBuf_a[135] = {0x00};//Êı¾İ½ÓÊÕBUF
-unsigned char guc_Uartcnt = 0;			//½ÓÊÕÊı¾İ¼ÆÊı
-unsigned char guc_UartMode = 0;			//µ±Ç°Ä£Ê½
-unsigned char guc_UartFlag = 0;			//´®¿Ú½ÓÊÕÍê³É±êÖ¾Î»
-unsigned int gui_CRCValue = 0x00;		//CRCĞ£ÑéÖµ
+unsigned char xdata guc_UartReceiveBuf_a[135] = {0x00};//æ•°æ®æ¥æ”¶BUF
+unsigned char guc_Uartcnt = 0;			//æ¥æ”¶æ•°æ®è®¡æ•°
+unsigned char guc_UartMode = 0;			//å½“å‰æ¨¡å¼
+unsigned char guc_UartFlag = 0;			//ä¸²å£æ¥æ”¶å®Œæˆæ ‡å¿—ä½
+unsigned int gui_CRCValue = 0x00;		//CRCæ ¡éªŒå€¼
 
-unsigned char code guc_Error_One_a[] = "Sorry,FH Error\0";		//Êı¾İÖ¡Í·´íÎó
-unsigned char code guc_Error_Two_a[] = "Sorry,CRC Error\0";		//CRCĞ£Ñé´íÎó
-unsigned char code guc_Error_Three_a[] = "Sorry,Directive Error\0";	//Ö¸Áî´íÎó
-unsigned char code guc_OK_One_a[] = "Entering ISP Mode...\0";	//ÕıÔÚ½øÈëISPÄ£Ê½
+unsigned char code guc_Error_One_a[] = "Sorry,FH Error\0";		//æ•°æ®å¸§å¤´é”™è¯¯
+unsigned char code guc_Error_Two_a[] = "Sorry,CRC Error\0";		//CRCæ ¡éªŒé”™è¯¯
+unsigned char code guc_Error_Three_a[] = "Sorry,Directive Error\0";	//æŒ‡ä»¤é”™è¯¯
+unsigned char code guc_OK_One_a[] = "Entering ISP Mode...\0";	//æ­£åœ¨è¿›å…¥ISPæ¨¡å¼
 
 void main()
 {
@@ -41,50 +41,50 @@ void main()
 			P1_0 = 1;
 			switch(guc_UartMode)
 			{
-				case 1 : 							//Êı¾İ´íÎóÄ£Ê½
-					UART_Send_Str(guc_Error_One_a);	//·¢ËÍ´íÎóÌáÊ¾
-					guc_UartMode = 0;				//·µ»ØµÈ´ıÄ£Ê½			
-					guc_Uartcnt = 0;				//¼ÆÊıÖµÇå0
-					memset(guc_UartReceiveBuf_a,0,135);//Çå³ıÊı¾İ
-					guc_UartFlag = 0;				//±êÖ¾Î»ÇåÁã
+				case 1 : 							//æ•°æ®é”™è¯¯æ¨¡å¼
+					UART_Send_Str(guc_Error_One_a);	//å‘é€é”™è¯¯æç¤º
+					guc_UartMode = 0;				//è¿”å›ç­‰å¾…æ¨¡å¼			
+					guc_Uartcnt = 0;				//è®¡æ•°å€¼æ¸…0
+					memset(guc_UartReceiveBuf_a,0,135);//æ¸…é™¤æ•°æ®
+					guc_UartFlag = 0;				//æ ‡å¿—ä½æ¸…é›¶
 					break;
-				case 2 :							//CRCĞ£Ñé
-					CRCC = 0x07;					//CRC¸´Î»£¬LSB first£¬¸´Î»³õÖµÎª0xFFFF
+				case 2 :							//CRCæ ¡éªŒ
+					CRCC = 0x07;					//CRCå¤ä½ï¼ŒLSB firstï¼Œå¤ä½åˆå€¼ä¸º0xFFFF
 					gui_CRCValue = CRC_CalcCRC(guc_UartReceiveBuf_a,guc_UartReceiveBuf_a[1]-2);			
 					if(((gui_CRCValue/256)==guc_UartReceiveBuf_a[guc_UartReceiveBuf_a[1]-2])&&
 						((gui_CRCValue%256)==guc_UartReceiveBuf_a[guc_UartReceiveBuf_a[1]-1]))
 					{
-						guc_UartMode = 3;			//CRCĞ£Ñé³É¹¦
+						guc_UartMode = 3;			//CRCæ ¡éªŒæˆåŠŸ
 					}
-					else{guc_UartMode = 4;}			//CRCĞ£Ñé´íÎó
+					else{guc_UartMode = 4;}			//CRCæ ¡éªŒé”™è¯¯
 					break;
-				case 3 :							//ÎÕÊÖÄ£Ê½
+				case 3 :							//æ¡æ‰‹æ¨¡å¼
 					if(guc_UartReceiveBuf_a[2] == 0x01)
 					{
 						UART_Send_Str(guc_OK_One_a);
 						ResetReadOption();
 					}
-					else{guc_UartMode = 5;}			//Ö¸Áî´íÎó
+					else{guc_UartMode = 5;}			//æŒ‡ä»¤é”™è¯¯
 					break;
-				case 4 :							//CRCĞ£Ñé´íÎóÄ£Ê½
-					UART_Send_Str(guc_Error_Two_a);	//·¢ËÍ´íÎóÌáÊ¾	
-					guc_UartMode = 0;				//·µ»ØµÈ´ıÄ£Ê½
-					guc_Uartcnt = 0;				//¼ÆÊıÖµÇå0
-					memset(guc_UartReceiveBuf_a,0,135);//Çå³ıÊı¾İ
-					guc_UartFlag = 0;				//±êÖ¾Î»ÇåÁã				
+				case 4 :							//CRCæ ¡éªŒé”™è¯¯æ¨¡å¼
+					UART_Send_Str(guc_Error_Two_a);	//å‘é€é”™è¯¯æç¤º	
+					guc_UartMode = 0;				//è¿”å›ç­‰å¾…æ¨¡å¼
+					guc_Uartcnt = 0;				//è®¡æ•°å€¼æ¸…0
+					memset(guc_UartReceiveBuf_a,0,135);//æ¸…é™¤æ•°æ®
+					guc_UartFlag = 0;				//æ ‡å¿—ä½æ¸…é›¶				
 					break;
-				case 5 :							//Ö¸Áî´íÎóÄ£Ê½
-					UART_Send_Str(guc_Error_Three_a);//·¢ËÍ´íÎóÌáÊ¾	
-					guc_UartMode = 0;				//·µ»ØµÈ´ıÄ£Ê½
-					guc_Uartcnt = 0;				//¼ÆÊıÖµÇå0
-					memset(guc_UartReceiveBuf_a,0,135);//Çå³ıÊı¾İ
-					guc_UartFlag = 0;				//±êÖ¾Î»ÇåÁã				
+				case 5 :							//æŒ‡ä»¤é”™è¯¯æ¨¡å¼
+					UART_Send_Str(guc_Error_Three_a);//å‘é€é”™è¯¯æç¤º	
+					guc_UartMode = 0;				//è¿”å›ç­‰å¾…æ¨¡å¼
+					guc_Uartcnt = 0;				//è®¡æ•°å€¼æ¸…0
+					memset(guc_UartReceiveBuf_a,0,135);//æ¸…é™¤æ•°æ®
+					guc_UartFlag = 0;				//æ ‡å¿—ä½æ¸…é›¶				
 					break;				
 				default : 
-					guc_UartMode = 0;				//·µ»ØµÈµ½Ä£Ê½
-					guc_Uartcnt = 0;				//¼ÆÊıÖµÇå0
-					memset(guc_UartReceiveBuf_a,0,135);//Çå³ıÊı¾İ
-					guc_UartFlag = 0;				//±êÖ¾Î»ÇåÁã						
+					guc_UartMode = 0;				//è¿”å›ç­‰åˆ°æ¨¡å¼
+					guc_Uartcnt = 0;				//è®¡æ•°å€¼æ¸…0
+					memset(guc_UartReceiveBuf_a,0,135);//æ¸…é™¤æ•°æ®
+					guc_UartFlag = 0;				//æ ‡å¿—ä½æ¸…é›¶						
 					break;
 			}				
 		}
@@ -92,16 +92,16 @@ void main()
 }
 
 /***************************************************************************************
-  * @ËµÃ÷  	UART1ÖĞ¶Ï·şÎñº¯Êı
-  *	@²ÎÊı	ÎŞ
-  * @·µ»ØÖµ ÎŞ
-  * @×¢		ÎŞ
+  * @è¯´æ˜  	UART1ä¸­æ–­æœåŠ¡å‡½æ•°
+  *	@å‚æ•°	æ— 
+  * @è¿”å›å€¼ æ— 
+  * @æ³¨		æ— 
 ***************************************************************************************/
 void UART1_Rpt(void) interrupt UART1_VECTOR
 {
-	if(SCON & 0x01)						//ÅĞ¶Ï½ÓÊÕÖĞ¶Ï±êÖ¾Î»
+	if(SCON & 0x01)						//åˆ¤æ–­æ¥æ”¶ä¸­æ–­æ ‡å¿—ä½
 	{
-		guc_UartReceiveBuf_a[guc_Uartcnt++] = SBUF;//×ª´æ8Î»´®¿Ú½ÓÊÕÊı¾İ
+		guc_UartReceiveBuf_a[guc_Uartcnt++] = SBUF;//è½¬å­˜8ä½ä¸²å£æ¥æ”¶æ•°æ®
 		if((guc_UartReceiveBuf_a[0] == 0xAA)&&(guc_Uartcnt >= 2))
 		{
 			if(guc_Uartcnt >= guc_UartReceiveBuf_a[1])
@@ -117,7 +117,7 @@ void UART1_Rpt(void) interrupt UART1_VECTOR
 			guc_UartFlag = 1;
 			guc_UartMode = 1;
 		}
-		SCON &=~ 0x01;					//Çå³ı½ÓÊÕÖĞ¶Ï±êÖ¾Î»
+		SCON &=~ 0x01;					//æ¸…é™¤æ¥æ”¶ä¸­æ–­æ ‡å¿—ä½
 	}									
 }
 
