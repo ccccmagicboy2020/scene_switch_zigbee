@@ -19,11 +19,11 @@ extern "C"
 
 ///< product INFORMATION
 
-#define PRODUCT_KEY "rl7fwq32"    //开发平台创建产品后生成的16位字符产品唯一标识
+#define PRODUCT_KEY "bttqbchl"    //开发平台创建产品后生成的16位字符产品唯一标识
 
 
 ///< mcu version 
-#define MCU_VER "1.0.3"                          
+#define MCU_VER "1.0.1"                          
  
 #define ZIGBEE_UART_QUEUE_LMT             24             // using to save data received from uart
 #define ZIGBEE_UART_RECV_BUF_LMT          24             //
