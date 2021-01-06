@@ -11,7 +11,7 @@ int main(void)
   HandShake();//握手
 	while(1)
 	{
-		 WDTC |= 0x10;                   //清狗
+		WDTC |= 0x10;                   //清狗
 		switch(Receive_Packet(Uart_Buf))//接收判断
 		{
 			case SUCCESS://成功发ACK
@@ -23,7 +23,7 @@ int main(void)
 														break;
 			
 			case NACK_TIME://超时跳转APP
-				          IAR_Soft_Rst_No_Option();
+				        IAR_Soft_Rst_No_Option();
 														break;			
 			
 		  default://其他不操作
