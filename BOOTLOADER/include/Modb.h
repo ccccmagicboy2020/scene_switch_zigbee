@@ -22,6 +22,11 @@
 
 void          HandShake(void);//握手
 unsigned char Receive_Packet (unsigned char *Data);//接收处理命令
+/////////////////////////////////////////////////////////////////////////////////////
+unsigned char Receive_Packet_tuya (unsigned char *Data);//接收处理命令
+unsigned char read_magic_flag(void);
+void uart1_init(void);
+/////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRC校验
 bit           LVD_Check(unsigned long TimeOut);
 #endif

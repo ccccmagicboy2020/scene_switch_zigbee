@@ -269,3 +269,25 @@ void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
      HandShake_Count++;
 }
 
+unsigned char Receive_Packet_tuya (unsigned char *Data)
+{
+	unsigned char *data0;
+	
+	data0 = Data;
+	//
+	//
+	return SUCCESS;
+}
+
+unsigned char read_magic_flag(void)
+{
+	//read from flash
+	return 0;
+}
+
+void uart1_init(void)
+{
+	//init the uart1 again
+	//
+	//
+}
