@@ -1,0 +1,6 @@
+[Settings]
+WndTxt = HC-ISP
+Version = 2.0.4.0
+CheckVersion = 1
+CK_URL = http://www.holychip.cn/kfgj/info_14.aspx?itemid=328
+DL_URL = http://www.holychip.cn/kfgj/info_14.aspx?itemid=328
