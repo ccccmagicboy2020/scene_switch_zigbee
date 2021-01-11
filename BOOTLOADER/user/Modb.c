@@ -50,7 +50,7 @@ unsigned char  code ISP_Version_OutSide_Order[]={
 																   };
 
 
-unsigned char code MCU_ID[]={MCU_ID_Length,0x48,0x43,0x38,0x39,0x53,0x30,0x30,0x33,0x46,0x34};										 											 
+unsigned char code MCU_ID[]={MCU_ID_Length,0x48,0x43,0x38,0x39,0x53,0x30,0x30,0x33,0x46,0x34};	//HC89S003F4
 
 void HandShake(void)
 {
@@ -64,11 +64,11 @@ void HandShake(void)
 			 IAR_Soft_Rst_No_Option();//引脚没有检测到数据，进入APP			  
 		}
 	}
-//////////////////////////////////////////////////////////////////////////////	
+//////////////////////////////////////////////////////////////////////////////
 	while(P0_4);
 	TR1=0;//关定时器T1
-  EA=0;	
-	P2M0 = P2M0 & 0xF0 | 0x08;				      //P20设置为推挽输出		
+  EA=0;
+	P2M0 = P2M0 & 0xF0 | 0x08;				      //P20设置为推挽输出
 	TXD_MAP = 0x20;													//TXD映射P20
 	RXD_MAP = 0x04;													//RXD映射P04
 //////////////////////////////////////////////////////////////////////////////
@@ -78,6 +78,7 @@ void HandShake(void)
 	TL4 = 0xF8;							//波特率250000
 	SCON2 = 0x02;						//8位UART，波特率可变
 	SCON = 0x10;						//允许串行接收
+	//ES1 = 1;
   
 	Uart_SendByte(ACK);                 //发送OX79
 	if(Uart_RecvByte(&Data,HandShark_TIMEOUT)!=SUCCESS) IAR_Soft_Rst_No_Option();//长时间没有接收到数据，进入APP	
@@ -112,29 +113,30 @@ unsigned char Receive_Packet (unsigned char *Data)
 	
 	switch(Data[0])
 	{
-//		case Get_Version_Internal_Order://获取当前版本以及允许使用的命令
-//				     Uart_SendByte(ACK);//接收头码，反码成功
-//             Uart_SendByte(Version_Order_Internal_Length);//发送有效数据长度		
-//			       Uart_SendPacket(ISP_Version_Internal_Order+1, Version_Order_Internal_Length);//发送有效数据	
-//             TempCRC=CRC_CalcCRC_Process(ISP_Version_Internal_Order,Version_Order_Internal_Length+1,Data,0);//获取CRC校验数据	
-//             Uart_SendByte(TempCRC >> 8);//发送高八位
-//             Uart_SendByte(TempCRC & 0xFF);//发送低八位
-//             Read_Flag=0;		
-//             return SUCCESS;				
-//			                                        break;			
+		case Get_Version_Internal_Order://获取当前版本以及允许使用的命令  0x00 0xff
+				     Uart_SendByte(ACK);//接收头码，反码成功
+             Uart_SendByte(Version_Order_Internal_Length);//发送有效数据长度		
+			       Uart_SendPacket(ISP_Version_Internal_Order+1, Version_Order_Internal_Length);//发送有效数据	
+             TempCRC=CRC_CalcCRC_Process(ISP_Version_Internal_Order,Version_Order_Internal_Length+1,Data,0);//获取CRC校验数据	
+             Uart_SendByte(TempCRC >> 8);//发送高八位
+             Uart_SendByte(TempCRC & 0xFF);//发送低八位
+             Read_Flag=0;		
+             return SUCCESS;				
+			                                        break;			
 		
-		case Get_Version_OutSide_Order://获取当前版本以及允许使用的命令
+		case Get_Version_OutSide_Order://获取当前版本以及允许使用的命令			0x01 0xfe
 						 Uart_SendByte(ACK);//接收头码，反码成功
              Uart_SendByte(Version_Order_OutSide_Length);//发送有效数据长度		
 			       Uart_SendPacket(ISP_Version_OutSide_Order+1, Version_Order_OutSide_Length);//发送有效数据	
              TempCRC=CRC_CalcCRC_Process(ISP_Version_OutSide_Order,Version_Order_OutSide_Length+1,Data,0);//获取CRC校验数据	
              Uart_SendByte(TempCRC >> 8);//发送高八位
              Uart_SendByte(TempCRC & 0xFF);//发送低八位	
+		
              Read_Flag=1;		     
              return SUCCESS;				
 			                                        break;
 		
-		case Get_ID:          //读取芯片型号
+		case Get_ID:          //读取芯片型号												0x02 0xfd
 						 Uart_SendByte(ACK);//接收头码，反码成功
 			       if(Read_ID()!=SUCCESS)  return ERROR;	//芯片型号错误		
              Uart_SendByte(MCU_ID_Length);//发送有效数据长度			 
@@ -145,13 +147,13 @@ unsigned char Receive_Packet (unsigned char *Data)
              return SUCCESS;
 			                                        break;
 
-		case Erase_Flash_ALL:    //擦除 Flash 数据
+		case Erase_Flash_ALL:    //擦除 Flash 数据					0x13 0xEC
 			Uart_SendByte(ACK);//接收头码，反码成功
 			for (i = 0; i < 2; i ++)//保存要擦除的扇区
 			{
 				if (Uart_RecvByte(Data + 2 + i, NAK_TIMEOUT) != SUCCESS) return NACK_TIME;//长时间没有接收到数据，进入APP
 			}
-      if(Data[2]==0XFF&&Data[3]==0X00)//判断是否全扇区擦除	
+      if(Data[2]==0XFF&&Data[3]==0X00)//判断是否全扇区擦除	0xff 0x00
 			{
 						if (XOR_FLASH_BLANK(0x0000,0x2FFF)==0x00) return SUCCESS;//全扇区插空，擦除成功	
             if (LVD_Check(LVD_TIMEOUT)!=SUCCESS)      return ERROR;//电压不正常						
@@ -162,7 +164,7 @@ unsigned char Receive_Packet (unsigned char *Data)
 					   return ERROR;			
 			                                        break;
 
-		case Write_Memory:  //写 Flash 数据	
+		case Write_Memory:  //写 Flash 数据				0x21 0xDE
 				Uart_SendByte(ACK);//接收头码，反码成功			
 				for (i=0; i<6; i++)//接受起始地址和CRC校验，存入Data[i+2]
 				{
@@ -194,7 +196,7 @@ unsigned char Receive_Packet (unsigned char *Data)
     				return SUCCESS;	
 			                                        break;	
 
-		case Go_APP:       //退出 Bootloader 返回 APP 程序
+		case Go_APP:       //退出 Bootloader 返回 APP 程序		0x91 0x6E
 			Uart_SendByte(ACK);//接收头码，反码成功
 			 IAR_Soft_Rst_No_Option();//引脚没有检测到数据，进入APP
 					    return SUCCESS;			

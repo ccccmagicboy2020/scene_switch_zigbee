@@ -24,7 +24,7 @@ void SystemInit(void)
 	TMOD = 0x00;						//16位重装载定时器/计数器
 	TH1 = 0xF5;
 	TL1 = 0x96;							//T1定时时间1ms
-	ET1=1;
-	TR1=0;
+	ET1=1;									//T1 enable
+	TR1=0;									//T1 start fail
 	LVDC &=~ 0x08;					//清除LVD中断标志位 	
 }

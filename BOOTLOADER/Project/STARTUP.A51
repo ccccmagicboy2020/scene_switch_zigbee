@@ -35,7 +35,7 @@ XDATASTART      EQU     0
 ;
 ; <o> XDATALEN: XDATA memory size <0x0-0xFFFF> 
 ;     <i> The length of XDATA memory in bytes.
-XDATALEN        EQU     0      
+XDATALEN        EQU     0xff      
 ;
 ; <o> PDATASTART: PDATA memory start address <0x0-0xFFFF> 
 ;     <i> The absolute start address of PDATA memory
@@ -122,7 +122,7 @@ DPH     DATA    83H
                 EXTRN CODE (?C_START)
                 PUBLIC  ?C_STARTUP
 
-                CSEG    AT      3000H
+                CSEG    AT      0x3000
 ?C_STARTUP:     LJMP    STARTUP1
 
                 RSEG    ?C_C51STARTUP
