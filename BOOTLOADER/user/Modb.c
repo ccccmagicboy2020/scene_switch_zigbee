@@ -1,8 +1,8 @@
 #include "include.h"
 
 
-#define  Version_Order_Internal_Length   12
-#define  Version_Order_OutSide_Length    10
+#define  Version_Order_Internal_Length   9
+#define  Version_Order_OutSide_Length    7
 #define  MCU_ID_Length                   10
 
 
@@ -13,38 +13,22 @@ bit            Read_Flag=0;
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
 														Version,
-
 														Get_Version_OutSide_Order, 
 														Get_Version_Internal_Order,	
 														Get_ID,
-
 														Erase_Flash_ALL, 
-														Erase_Option,	
-
 														Write_Memory,        
-														Write_Option,
-
 														Read_Memory,
-														Read_Option,
-
 														Go_APP,
 														Rst_Read_Option
 																		   };
 unsigned char  code ISP_Version_OutSide_Order[]={       
 	                          Version_Order_OutSide_Length,
 														Version,
-		
 														Get_Version_OutSide_Order,  
 														Get_ID,
-		
 														Erase_Flash_ALL, 
-														Erase_Option,
-		
-														Write_Memory,        
-														Write_Option,
-		
-														Read_Option,
-	
+														Write_Memory,
 														Go_APP,
 														Rst_Read_Option
 																   };
@@ -59,7 +43,7 @@ void HandShake(void)
 	TR1=1;//开定时器1
   EA=1;	
 	do{	
-		if(HandShake_Count>=20)//上电20ms没有检测到数据
+		if(HandShake_Count>=30)//上电30ms没有检测到数据
 		{
 			 IAR_Soft_Rst_No_Option();//引脚没有检测到数据，进入APP			  
 		}

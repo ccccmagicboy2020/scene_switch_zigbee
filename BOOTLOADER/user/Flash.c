@@ -43,7 +43,7 @@ void IAR_Clear_arrang(unsigned int clradd,unsigned int len)
 	WDTC |= 0x10;                   //วๅนท	
 	for(i=0;i<=len;i++)
 	{
-		if(clradd>=0x3800) 			return;	
+		if(clradd>=0x3000) 			return;	
 		if(XOR_FLASH_BLANK(clradd,128))		IAR_Clear(clradd);
 		clradd=clradd+0x80;
 	}
@@ -57,7 +57,6 @@ unsigned char Earse_Flash(void)
 	IAR_Clear_arrang(0x0000,32);	
 	IAR_Clear_arrang(0x1000,32);
 	IAR_Clear_arrang(0x2000,32);
-	IAR_Clear_arrang(0x3000,16);	
 	if(XOR_FLASH_BLANK(0x0000,0x2FFF)!=0x00)  return 0;
 	else  return 1;									
 }	
