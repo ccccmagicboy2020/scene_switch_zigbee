@@ -5,7 +5,6 @@
 #define  MCU_ID_Length                   10
 
 unsigned char  HandShake_Count=0;
-bit            Read_Flag=0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -100,8 +99,7 @@ unsigned char Receive_Packet (unsigned char *Data)
 			       Uart_SendPacket(ISP_Version_Internal_Order+1, Version_Order_Internal_Length);//发送有效数据	
              TempCRC=CRC_CalcCRC_Process(ISP_Version_Internal_Order,Version_Order_Internal_Length+1,Data,0);//获取CRC校验数据	
              Uart_SendByte(TempCRC >> 8);//发送高八位
-             Uart_SendByte(TempCRC & 0xFF);//发送低八位
-             Read_Flag=0;		
+             Uart_SendByte(TempCRC & 0xFF);//发送低八位	
              return SUCCESS;				
 			                                        break;			
 		
@@ -111,9 +109,7 @@ unsigned char Receive_Packet (unsigned char *Data)
 			       Uart_SendPacket(ISP_Version_OutSide_Order+1, Version_Order_OutSide_Length);//发送有效数据	
              TempCRC=CRC_CalcCRC_Process(ISP_Version_OutSide_Order,Version_Order_OutSide_Length+1,Data,0);//获取CRC校验数据	
              Uart_SendByte(TempCRC >> 8);//发送高八位
-             Uart_SendByte(TempCRC & 0xFF);//发送低八位	
-		
-             Read_Flag=1;		     
+             Uart_SendByte(TempCRC & 0xFF);//发送低八位	     
              return SUCCESS;				
 			                                        break;
 		

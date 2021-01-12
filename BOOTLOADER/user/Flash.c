@@ -1,6 +1,5 @@
 #include "include.h"
 
-unsigned char  Read_F_dat  =   0;
 unsigned char  xdata  ID_DAT[2]={0};
 /*************************************************************
   Function   : CRC_FLASH_BLANK 
@@ -23,7 +22,7 @@ unsigned char  XOR_FLASH_BLANK(unsigned int Add,unsigned int Size_Flash)
 *********************************/
 void IAR_Clear(unsigned int clradd)
 {
-	if(clradd>=0x3800) 
+	if(clradd>=0x3000) 
 	return;	
 	IAP_CMDH = 0xF0;
 	IAP_CMDL = 0x0F;
@@ -86,7 +85,7 @@ void IAR_Write_arrang(unsigned int add,unsigned char *datt,unsigned int len)
 	unsigned int i;
 	for(i=0;i<len;i++)
 	{	
-		if(add>=0x3800) return; 	
+		if(add>=0x3000) return; 	
 		IAR_Write_Byte(add,datt[i]);
 		add++;
 	}
