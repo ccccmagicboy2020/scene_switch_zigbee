@@ -127,7 +127,7 @@ DPH     DATA    83H
 ; <i> 选择bootloader的大小
 ;	  <0x3800=> 2K
 ;	  <0x3000=> 4K
-                CSEG    AT      0x3000
+                CSEG    AT      0x3800
 ;</h>				
 ?C_STARTUP:     LJMP    STARTUP1
 

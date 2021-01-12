@@ -304,38 +304,9 @@ sbit P2_7      = P2^7;
 #define P2M2               (*(unsigned char volatile xdata *) 0xFF12)  //P2[5:4] input or output set 
 #define P2M3               (*(unsigned char volatile xdata *) 0xFF13)  //P2[7:6] input or output set 
 
-#define P00DBC             (*(unsigned char volatile xdata *) 0xFF40)  //
-#define P01DBC             (*(unsigned char volatile xdata *) 0xFF41)  //
-#define P02DBC             (*(unsigned char volatile xdata *) 0xFF42)  //
-
-/* XSFR_MAP */ 
-#define T0_MAP             (*(unsigned char volatile xdata *) 0xFF80)  //  
-#define T1_MAP             (*(unsigned char volatile xdata *) 0xFF81)  // 
-#define T3_MAP             (*(unsigned char volatile xdata *) 0xFF83)  //
-#define T4_MAP             (*(unsigned char volatile xdata *) 0xFF84)  // 
-#define T5_MAP             (*(unsigned char volatile xdata *) 0xFF85)  // 
-
-
-#define PWM0_MAP           (*(unsigned char volatile xdata *) 0xFF90)  // 
-#define PWM01_MAP          (*(unsigned char volatile xdata *) 0xFF91)  // 
- 
-#define PWM1_MAP           (*(unsigned char volatile xdata *) 0xFF94)  // 
-#define PWM11_MAP          (*(unsigned char volatile xdata *) 0xFF95)  // 
-
-#define PWM2_MAP           (*(unsigned char volatile xdata *) 0xFF98)  //
-#define PWM21_MAP          (*(unsigned char volatile xdata *) 0xFF99)  //
-
-#define PWM3_MAP           (*(unsigned char volatile xdata *) 0xFF9C)  //
-
 #define TXD_MAP            (*(unsigned char volatile xdata *) 0xFFA0)  //
 #define RXD_MAP            (*(unsigned char volatile xdata *) 0xFFA1)  //
 
-#define SS_MAP             (*(unsigned char volatile xdata *) 0xFFA4)  //
-#define SCK_MAP            (*(unsigned char volatile xdata *) 0xFFA5)  //
-#define MOSI_MAP           (*(unsigned char volatile xdata *) 0xFFA6)  //
-#define MISO_MAP           (*(unsigned char volatile xdata *) 0xFFA7)  //
-#define TXD2_MAP           (*(unsigned char volatile xdata *) 0xFFA8)  // 
-#define RXD2_MAP           (*(unsigned char volatile xdata *) 0xFFA9)  //
 
 
 /*------------------------------------------------

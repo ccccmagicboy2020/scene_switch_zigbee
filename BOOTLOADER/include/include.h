@@ -7,6 +7,4 @@
 #include "Modb.h"
 #include "Flash.h"
 #include <HC_DEFINE.H>
-//#include "stdio.h"
-//#include "string.h"
 #endif

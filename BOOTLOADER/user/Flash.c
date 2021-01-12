@@ -1,6 +1,5 @@
 #include "include.h"
 
-unsigned char  Read_F_dat  =   0;
 unsigned char  xdata  ID_DAT[2]={0};
 /*************************************************************
   Function   : CRC_FLASH_BLANK 
@@ -43,7 +42,7 @@ void IAR_Clear_arrang(unsigned int clradd,unsigned int len)
 	WDTC |= 0x10;                   //清狗	
 	for(i=0;i<=len;i++)
 	{
-		if(clradd>=0x3000) 			return;	
+		if(clradd>=0x3800) 			return;	
 		if(XOR_FLASH_BLANK(clradd,128))		IAR_Clear(clradd);
 		clradd=clradd+0x80;
 	}
@@ -53,11 +52,12 @@ void IAR_Clear_arrang(unsigned int clradd,unsigned int len)
 	函数功能： 擦除Flash 前12K						   
 *********************************/
 unsigned char Earse_Flash(void)
-{//003 16K 0000~3fff (擦除前12K)
+{
 	IAR_Clear_arrang(0x0000,32);	
 	IAR_Clear_arrang(0x1000,32);
 	IAR_Clear_arrang(0x2000,32);
-	if(XOR_FLASH_BLANK(0x0000,0x2FFF)!=0x00)  return 0;
+	IAR_Clear_arrang(0x3000,16);
+	if(XOR_FLASH_BLANK(0x0000,0x37FF)!=0x00)  return 0;
 	else  return 1;									
 }	
 /*********************************

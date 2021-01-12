@@ -5,7 +5,6 @@
 #define  MCU_ID_Length                   10
 
 unsigned char  HandShake_Count=0;
-bit            Read_Flag=0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -49,7 +48,7 @@ void HandShake(void)
 	while(P0_4);
 	TR1=0;//关定时器T1
 	EA=0;
-	P2M0 = P2M0 & 0xF0 | 0x08;				      //P20设置为推挽输出
+	P2M0 = 0x08;				      //P20设置为推挽输出
 	TXD_MAP = 0x20;													//TXD映射P20
 	RXD_MAP = 0x04;													//RXD映射P04
 //////////////////////////////////////////////////////////////////////////////
@@ -59,7 +58,6 @@ void HandShake(void)
 	TL4 = 0xF8;							//波特率250000
 	SCON2 = 0x02;						//8位UART，波特率可变
 	SCON = 0x10;						//允许串行接收
-	//ES1 = 1;
   
 	Uart_SendByte(ACK);                 //发送OX79
 	if(Uart_RecvByte(&Data,HandShark_TIMEOUT)!=SUCCESS) IAR_Soft_Rst_No_Option();//长时间没有接收到数据，进入APP	
@@ -100,8 +98,7 @@ unsigned char Receive_Packet (unsigned char *Data)
 			       Uart_SendPacket(ISP_Version_Internal_Order+1, Version_Order_Internal_Length);//发送有效数据	
              TempCRC=CRC_CalcCRC_Process(ISP_Version_Internal_Order,Version_Order_Internal_Length+1,Data,0);//获取CRC校验数据	
              Uart_SendByte(TempCRC >> 8);//发送高八位
-             Uart_SendByte(TempCRC & 0xFF);//发送低八位
-             Read_Flag=0;		
+             Uart_SendByte(TempCRC & 0xFF);//发送低八位	
              return SUCCESS;				
 			                                        break;			
 		
@@ -111,9 +108,7 @@ unsigned char Receive_Packet (unsigned char *Data)
 			       Uart_SendPacket(ISP_Version_OutSide_Order+1, Version_Order_OutSide_Length);//发送有效数据	
              TempCRC=CRC_CalcCRC_Process(ISP_Version_OutSide_Order,Version_Order_OutSide_Length+1,Data,0);//获取CRC校验数据	
              Uart_SendByte(TempCRC >> 8);//发送高八位
-             Uart_SendByte(TempCRC & 0xFF);//发送低八位	
-		
-             Read_Flag=1;		     
+             Uart_SendByte(TempCRC & 0xFF);//发送低八位	    
              return SUCCESS;				
 			                                        break;
 		
@@ -136,7 +131,7 @@ unsigned char Receive_Packet (unsigned char *Data)
 			}
       if(Data[2]==0XFF&&Data[3]==0X00)//判断是否全扇区擦除	0xff 0x00
 			{
-						if (XOR_FLASH_BLANK(0x0000,0x2FFF)==0x00) return SUCCESS;//全扇区插空，擦除成功	
+						if (XOR_FLASH_BLANK(0x0000,0x37FF)==0x00) return SUCCESS;//全扇区插空，擦除成功	
             if (LVD_Check(LVD_TIMEOUT)!=SUCCESS)      return ERROR;//电压不正常						
 						if (Earse_Flash())                        return SUCCESS;//全扇区擦除成功
 						else                                      return ERROR;//全扇区擦除失败
@@ -250,27 +245,4 @@ bit LVD_Check(unsigned long TimeOut)
 void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 {
      HandShake_Count++;
-}
-
-unsigned char Receive_Packet_tuya (unsigned char *Data)
-{
-	unsigned char *data0;
-	
-	data0 = Data;
-	//
-	//
-	return SUCCESS;
-}
-
-unsigned char read_magic_flag(void)
-{
-	//read from flash
-	return 0;
-}
-
-void uart1_init(void)
-{
-	//init the uart1 again
-	//
-	//
 }
