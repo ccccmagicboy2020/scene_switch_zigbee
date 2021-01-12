@@ -1,0 +1,1231 @@
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.5.0
+OBJECT MODULE PLACED IN .\Objects\main.OBJ
+ASSEMBLER INVOKED BY: D:\MDK5\C51\BIN\A51.EXE .\Objects\main.src PR(.\Listings\main.ls1) EP DEBUG
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; .\Objects\main.SRC generated from: ..\user\main.c
+
+                       2     ; COMPILER INVOKED BY:
+
+                       3     ;        D:\MDK5\C51\BIN\C51.EXE ..\user\main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+                              PRINT(.\Listings\main.lst) SRC(.\Objects\main.SRC)
+
+                       4     
+
+                       5     $nomod51 
+
+                       6     
+
+                       7     NAME    MAIN
+
+                       8     
+
+  0080                 9     P0      DATA    080H
+
+  0090                10     P1      DATA    090H
+
+  00A0                11     P2      DATA    0A0H
+
+  00D6                12     AC      BIT     0D0H.6
+
+  00AF                13     EA      BIT     0A8H.7
+
+  00E7                14     PWM0DTH DATA    0E7H
+
+  00CA                15     T3      DATA    0CAH
+
+  00EF                16     PWM1DTH DATA    0EFH
+
+  00AC                17     SPCTL   DATA    0ACH
+
+  00CD                18     T4      DATA    0CDH
+
+  00FC                19     WDTRF   BIT     0F8H.4
+
+  00F7                20     PWM2DTH DATA    0F7H
+
+  00C2                21     T5      DATA    0C2H
+
+  009F                22     FE      BIT     098H.7
+
+  00E6                23     PWM0DTL DATA    0E6H
+
+  009D                24     TXCOL   BIT     098H.5
+
+  00EE                25     PWM1DTL DATA    0EEH
+
+  00F6                26     PWM2DTL DATA    0F6H
+
+  00BD                27     EADC    BIT     0B8H.5
+
+  00A8                28     IE      DATA    0A8H
+
+  0080                29     P0_0    BIT     080H.0
+
+  00F9                30     SPOVF   BIT     0F8H.1
+
+  00FC                31     IAP_CMD DATA    0FCH
+
+  0090                32     P1_0    BIT     090H.0
+
+  0081                33     P0_1    BIT     080H.1
+
+  00A0                34     P2_0    BIT     0A0H.0
+
+  0091                35     P1_1    BIT     090H.1
+
+  0082                36     P0_2    BIT     080H.2
+
+  00A1                37     P2_1    BIT     0A0H.1
+
+  0083                38     P0_3    BIT     080H.3
+
+  00F8                39     RSTFR   DATA    0F8H
+
+  00A2                40     P2_2    BIT     0A0H.2
+
+  0084                41     P0_4    BIT     080H.4
+
+  00A3                42     P2_3    BIT     0A0H.3
+
+  0085                43     P0_5    BIT     080H.5
+
+  00A4                44     P2_4    BIT     0A0H.4
+
+  0086                45     P0_6    BIT     080H.6
+
+  00A5                46     P2_5    BIT     0A0H.5
+
+  0087                47     P0_7    BIT     080H.7
+
+  00A6                48     P2_6    BIT     0A0H.6
+
+  00A7                49     P2_7    BIT     0A0H.7
+
+  0098                50     RI      BIT     098H.0
+
+  00B6                51     ADCR    DATA    0B6H
+
+  00BF                52     EX8_15  BIT     0B8H.7
+
+  00D7                53     CY      BIT     0D0H.7
+
+  0099                54     TI      BIT     098H.1
+
+  00FA                55     IAP_ADDRH       DATA    0FAH
+
+  00BF                56     CRCH    DATA    0BFH
+
+  009E                57     RXROV   BIT     098H.6
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     2
+
+  0081                58     SP      DATA    081H
+
+  00F9                59     IAP_ADDRL       DATA    0F9H
+
+  00D2                60     OV      BIT     0D0H.2
+
+  00BE                61     CRCL    DATA    0BEH
+
+  00C5                62     RCAP5H  DATA    0C5H
+
+  00C4                63     RCAP5L  DATA    0C4H
+
+  00FD                64     BORF    BIT     0F8H.5
+
+  00BB                65     LVDC    DATA    0BBH
+
+  00BE                66     CRCR    DATA    0BEH
+
+  0099                67     SBUF    DATA    099H
+
+  0087                68     PCON    DATA    087H
+
+  00B8                69     ESPI    BIT     0B8H.0
+
+  00E5                70     PWM0DH  DATA    0E5H
+
+  00ED                71     PWM1DH  DATA    0EDH
+
+  0096                72     PINTF0  DATA    096H
+
+  00BD                73     WDTC    DATA    0BDH
+
+  00F8                74     PLVRSTF BIT     0F8H.0
+
+  00F5                75     PWM2DH  DATA    0F5H
+
+  0098                76     SCON    DATA    098H
+
+  0097                77     PINTF1  DATA    097H
+
+  00AD                78     EWDT    BIT     0A8H.5
+
+  0089                79     TMOD    DATA    089H
+
+  0088                80     TCON    DATA    088H
+
+  00E4                81     PWM0DL  DATA    0E4H
+
+  00EC                82     PWM1DL  DATA    0ECH
+
+  00FF                83     PORF    BIT     0F8H.7
+
+  00F4                84     PWM2DL  DATA    0F4H
+
+  00E1                85     PWM0EN  DATA    0E1H
+
+  00E9                86     PWM1EN  DATA    0E9H
+
+  00F1                87     PWM2EN  DATA    0F1H
+
+  00B4                88     ADCC0   DATA    0B4H
+
+  008F                89     CLKCON  DATA    08FH
+
+  00B5                90     ADCC1   DATA    0B5H
+
+  00E6                91     PWM0DT  DATA    0E6H
+
+  00E3                92     PWM0PH  DATA    0E3H
+
+  00EE                93     PWM1DT  DATA    0EEH
+
+  00EB                94     PWM1PH  DATA    0EBH
+
+  00B8                95     IE1     DATA    0B8H
+
+  00F6                96     PWM2DT  DATA    0F6H
+
+  00F3                97     PWM2PH  DATA    0F3H
+
+  00F0                98     B       DATA    0F0H
+
+  00E2                99     PWM0PL  DATA    0E2H
+
+  00FB               100     SWRF    BIT     0F8H.3
+
+  00EA               101     PWM1PL  DATA    0EAH
+
+  00F2               102     PWM2PL  DATA    0F2H
+
+  00E0               103     ACC     DATA    0E0H
+
+  00A9               104     ET0     BIT     0A8H.1
+
+  00AC               105     ES1     BIT     0A8H.4
+
+  00A9               106     IP0     DATA    0A9H
+
+  008D               107     TF0     BIT     088H.5
+
+  00AB               108     ET1     BIT     0A8H.3
+
+  00AE               109     ES2     BIT     0A8H.6
+
+  00AA               110     IP1     DATA    0AAH
+
+  008F               111     TF1     BIT     088H.7
+
+  00B9               112     IP2     DATA    0B9H
+
+  009A               113     RB8     BIT     098H.2
+
+  00B9               114     ET3     BIT     0B8H.1
+
+  008C               115     TH0     DATA    08CH
+
+  00BA               116     IP3     DATA    0BAH
+
+  00A2               117     INSCON  DATA    0A2H
+
+  00BA               118     ET4     BIT     0B8H.2
+
+  00A8               119     EX0     BIT     0A8H.0
+
+  008D               120     TH1     DATA    08DH
+
+  009B               121     TB8     BIT     098H.3
+
+  00BC               122     ET5     BIT     0B8H.4
+
+  00AA               123     EX1     BIT     0A8H.2
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     3
+
+  00D0               124     P       BIT     0D0H.0
+
+  00CB               125     TH3     DATA    0CBH
+
+  00CE               126     TH4     DATA    0CEH
+
+  008A               127     TL0     DATA    08AH
+
+  00C3               128     TH5     DATA    0C3H
+
+  008B               129     TL1     DATA    08BH
+
+  00CA               130     TL3     DATA    0CAH
+
+  00CD               131     TL4     DATA    0CDH
+
+  00D3               132     RS0     BIT     0D0H.3
+
+  00C2               133     TL5     DATA    0C2H
+
+  008C               134     TR0     BIT     088H.4
+
+  00D4               135     RS1     BIT     0D0H.4
+
+  00FB               136     IAP_DATA        DATA    0FBH
+
+  008E               137     TR1     BIT     088H.6
+
+  00F9               138     IAP_ADDR        DATA    0F9H
+
+  00FD               139     IAP_CMDH        DATA    0FDH
+
+  008E               140     CLKSWR  DATA    08EH
+
+  00C4               141     RCAP5   DATA    0C4H
+
+  00FC               142     IAP_CMDL        DATA    0FCH
+
+  0083               143     DPH     DATA    083H
+
+  00FE               144     EXRSTF  BIT     0F8H.6
+
+  0082               145     DPL     DATA    082H
+
+  00AD               146     SPSTAT  DATA    0ADH
+
+  00B7               147     ADCRH   DATA    0B7H
+
+  009C               148     REN     BIT     098H.4
+
+  00BE               149     EX2_7   BIT     0B8H.6
+
+  009E               150     SCON2   DATA    09EH
+
+  00B6               151     ADCRL   DATA    0B6H
+
+  00DA               152     PWM0C   DATA    0DAH
+
+  00C9               153     T3CON   DATA    0C9H
+
+  00E4               154     PWM0D   DATA    0E4H
+
+  00DB               155     PWM1C   DATA    0DBH
+
+  00CC               156     T4CON   DATA    0CCH
+
+  00EC               157     PWM1D   DATA    0ECH
+
+  00DC               158     PWM2C   DATA    0DCH
+
+  00C1               159     T5CON   DATA    0C1H
+
+  00F4               160     PWM2D   DATA    0F4H
+
+  00DD               161     PWM3C   DATA    0DDH
+
+  00DF               162     PWM3D   DATA    0DFH
+
+  009B               163     SADEN   DATA    09BH
+
+  009A               164     SADDR   DATA    09AH
+
+  00D5               165     F0      BIT     0D0H.5
+
+  00E2               166     PWM0P   DATA    0E2H
+
+  00D1               167     F1      BIT     0D0H.1
+
+  00EA               168     PWM1P   DATA    0EAH
+
+  00F2               169     PWM2P   DATA    0F2H
+
+  00DE               170     PWM3P   DATA    0DEH
+
+  00D0               171     PSW     DATA    0D0H
+
+  00AB               172     SPDAT   DATA    0ABH
+
+                     173     ?PR?main?MAIN        SEGMENT CODE 
+
+                     174     ?C_INITSEG           SEGMENT CODE 
+
+                     175     ?DT?MAIN             SEGMENT DATA 
+
+                     176             EXTRN   CODE (?C_STARTUP)
+
+                     177             PUBLIC  P0M0
+
+                     178             PUBLIC  P02DBC
+
+                     179             PUBLIC  P01DBC
+
+                     180             PUBLIC  P00DBC
+
+                     181             PUBLIC  MOSI_MAP
+
+                     182             PUBLIC  MISO_MAP
+
+                     183             PUBLIC  PITS3
+
+                     184             PUBLIC  PITS2
+
+                     185             PUBLIC  PITS1
+
+                     186             PUBLIC  P0LPU
+
+                     187             PUBLIC  PITS0
+
+                     188             PUBLIC  FREQ_CLK
+
+                     189             PUBLIC  INT01_PINS
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     4
+
+                     190             PUBLIC  CLKO_MAP
+
+                     191             PUBLIC  PWM3_MAP
+
+                     192             PUBLIC  TCON1
+
+                     193             PUBLIC  S2CON
+
+                     194             PUBLIC  PWM2_MAP
+
+                     195             PUBLIC  PWM1_MAP
+
+                     196             PUBLIC  SS_MAP
+
+                     197             PUBLIC  PWM0_MAP
+
+                     198             PUBLIC  S2BUF
+
+                     199             PUBLIC  ADCWC
+
+                     200             PUBLIC  TXD2_MAP
+
+                     201             PUBLIC  RXD2_MAP
+
+                     202             PUBLIC  CLKOUT
+
+                     203             PUBLIC  WDTCCR
+
+                     204             PUBLIC  T5_MAP
+
+                     205             PUBLIC  T4_MAP
+
+                     206             PUBLIC  T3_MAP
+
+                     207             PUBLIC  ABC
+
+                     208             PUBLIC  RSTDBC
+
+                     209             PUBLIC  T1_MAP
+
+                     210             PUBLIC  T0_MAP
+
+                     211             PUBLIC  CLKDIV
+
+                     212             PUBLIC  ADCC2
+
+                     213             PUBLIC  SPOV_RSTEN
+
+                     214             PUBLIC  PINTE1
+
+                     215             PUBLIC  PINTE0
+
+                     216             PUBLIC  LVDDBC
+
+                     217             PUBLIC  TXD_MAP
+
+                     218             PUBLIC  BORDBC
+
+                     219             PUBLIC  RXD_MAP
+
+                     220             PUBLIC  BORC
+
+                     221             PUBLIC  SCK_MAP
+
+                     222             PUBLIC  T5CON1
+
+                     223             PUBLIC  CRCC
+
+                     224             PUBLIC  S2CON2
+
+                     225             PUBLIC  PWM21_MAP
+
+                     226             PUBLIC  PWM11_MAP
+
+                     227             PUBLIC  PWM01_MAP
+
+                     228             PUBLIC  XTALCFG
+
+                     229             PUBLIC  P2M3
+
+                     230             PUBLIC  P2M2
+
+                     231             PUBLIC  P0M3
+
+                     232             PUBLIC  P2M1
+
+                     233             PUBLIC  P0M2
+
+                     234             PUBLIC  P2M0
+
+                     235             PUBLIC  P0M1
+
+                     236             PUBLIC  P1M0
+
+                     237             PUBLIC  main
+
+                     238     
+
+----                 239             XSEG  AT  0FF08H
+
+FF08                 240                P1M0:   DS   1
+
+                     241     
+
+----                 242             XSEG  AT  0FF01H
+
+FF01                 243                P0M1:   DS   1
+
+                     244     
+
+----                 245             XSEG  AT  0FF10H
+
+FF10                 246                P2M0:   DS   1
+
+                     247     
+
+----                 248             XSEG  AT  0FF02H
+
+FF02                 249                P0M2:   DS   1
+
+                     250     
+
+----                 251             XSEG  AT  0FF11H
+
+FF11                 252                P2M1:   DS   1
+
+                     253     
+
+----                 254             XSEG  AT  0FF03H
+
+FF03                 255                P0M3:   DS   1
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     5
+
+                     256     
+
+----                 257             XSEG  AT  0FF12H
+
+FF12                 258                P2M2:   DS   1
+
+                     259     
+
+----                 260             XSEG  AT  0FF13H
+
+FF13                 261                P2M3:   DS   1
+
+                     262     
+
+----                 263             XSEG  AT  0FE94H
+
+FE94                 264             XTALCFG:   DS   1
+
+                     265     
+
+----                 266             XSEG  AT  0FF91H
+
+FF91                 267           PWM01_MAP:   DS   1
+
+                     268     
+
+----                 269             XSEG  AT  0FF95H
+
+FF95                 270           PWM11_MAP:   DS   1
+
+                     271     
+
+----                 272             XSEG  AT  0FF99H
+
+FF99                 273           PWM21_MAP:   DS   1
+
+                     274     
+
+----                 275             XSEG  AT  0FE89H
+
+FE89                 276              S2CON2:   DS   1
+
+                     277     
+
+----                 278             XSEG  AT  0FEA2H
+
+FEA2                 279                CRCC:   DS   1
+
+                     280     
+
+----                 281             XSEG  AT  0FE85H
+
+FE85                 282              T5CON1:   DS   1
+
+                     283     
+
+----                 284             XSEG  AT  0FFA5H
+
+FFA5                 285             SCK_MAP:   DS   1
+
+                     286     
+
+----                 287             XSEG  AT  0FEA4H
+
+FEA4                 288                BORC:   DS   1
+
+                     289     
+
+----                 290             XSEG  AT  0FFA1H
+
+FFA1                 291             RXD_MAP:   DS   1
+
+                     292     
+
+----                 293             XSEG  AT  0FEA5H
+
+FEA5                 294              BORDBC:   DS   1
+
+                     295     
+
+----                 296             XSEG  AT  0FFA0H
+
+FFA0                 297             TXD_MAP:   DS   1
+
+                     298     
+
+----                 299             XSEG  AT  0FEA7H
+
+FEA7                 300              LVDDBC:   DS   1
+
+                     301     
+
+----                 302             XSEG  AT  0FEB8H
+
+FEB8                 303              PINTE0:   DS   1
+
+                     304     
+
+----                 305             XSEG  AT  0FEB9H
+
+FEB9                 306              PINTE1:   DS   1
+
+                     307     
+
+----                 308             XSEG  AT  0FE95H
+
+FE95                 309          SPOV_RSTEN:   DS   1
+
+                     310     
+
+----                 311             XSEG  AT  0FE9BH
+
+FE9B                 312               ADCC2:   DS   1
+
+                     313     
+
+----                 314             XSEG  AT  0FE91H
+
+FE91                 315              CLKDIV:   DS   1
+
+                     316     
+
+----                 317             XSEG  AT  0FF80H
+
+FF80                 318              T0_MAP:   DS   1
+
+                     319     
+
+----                 320             XSEG  AT  0FF81H
+
+FF81                 321              T1_MAP:   DS   1
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     6
+
+                     322     
+
+----                 323             XSEG  AT  0FEAAH
+
+FEAA                 324              RSTDBC:   DS   1
+
+                     325     
+
+----                 326             XSEG  AT  0FF83H
+
+FF83                 327              T3_MAP:   DS   1
+
+                     328     
+
+----                 329             XSEG  AT  0FF84H
+
+FF84                 330              T4_MAP:   DS   1
+
+                     331     
+
+----                 332             XSEG  AT  0FF85H
+
+FF85                 333              T5_MAP:   DS   1
+
+                     334     
+
+----                 335             XSEG  AT  0FEA0H
+
+FEA0                 336              WDTCCR:   DS   1
+
+                     337     
+
+----                 338             XSEG  AT  0FE93H
+
+FE93                 339              CLKOUT:   DS   1
+
+                     340     
+
+----                 341             XSEG  AT  0FFA9H
+
+FFA9                 342            RXD2_MAP:   DS   1
+
+                     343     
+
+----                 344             XSEG  AT  0FFA8H
+
+FFA8                 345            TXD2_MAP:   DS   1
+
+                     346     
+
+----                 347             XSEG  AT  0FE98H
+
+FE98                 348               ADCWC:   DS   1
+
+                     349     
+
+----                 350             XSEG  AT  0FE8AH
+
+FE8A                 351               S2BUF:   DS   1
+
+                     352     
+
+----                 353             XSEG  AT  0FF90H
+
+FF90                 354            PWM0_MAP:   DS   1
+
+                     355     
+
+----                 356             XSEG  AT  0FFA4H
+
+FFA4                 357              SS_MAP:   DS   1
+
+                     358     
+
+----                 359             XSEG  AT  0FF94H
+
+FF94                 360            PWM1_MAP:   DS   1
+
+                     361     
+
+----                 362             XSEG  AT  0FF98H
+
+FF98                 363            PWM2_MAP:   DS   1
+
+                     364     
+
+----                 365             XSEG  AT  0FE88H
+
+FE88                 366               S2CON:   DS   1
+
+                     367     
+
+----                 368             XSEG  AT  0FE80H
+
+FE80                 369               TCON1:   DS   1
+
+                     370     
+
+----                 371             XSEG  AT  0FF9CH
+
+FF9C                 372            PWM3_MAP:   DS   1
+
+                     373     
+
+----                 374             XSEG  AT  0FF8FH
+
+FF8F                 375            CLKO_MAP:   DS   1
+
+                     376     
+
+----                 377             XSEG  AT  0FEBCH
+
+FEBC                 378          INT01_PINS:   DS   1
+
+                     379     
+
+----                 380             XSEG  AT  0FE92H
+
+FE92                 381            FREQ_CLK:   DS   1
+
+                     382     
+
+----                 383             XSEG  AT  0FEB0H
+
+FEB0                 384               PITS0:   DS   1
+
+                     385     
+
+----                 386             XSEG  AT  0FF05H
+
+FF05                 387               P0LPU:   DS   1
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     7
+
+                     388     
+
+----                 389             XSEG  AT  0FEB1H
+
+FEB1                 390               PITS1:   DS   1
+
+                     391     
+
+----                 392             XSEG  AT  0FEB2H
+
+FEB2                 393               PITS2:   DS   1
+
+                     394     
+
+----                 395             XSEG  AT  0FEB3H
+
+FEB3                 396               PITS3:   DS   1
+
+                     397     
+
+----                 398             XSEG  AT  0FFA7H
+
+FFA7                 399            MISO_MAP:   DS   1
+
+                     400     
+
+----                 401             XSEG  AT  0FFA6H
+
+FFA6                 402            MOSI_MAP:   DS   1
+
+                     403     
+
+----                 404             XSEG  AT  0FF40H
+
+FF40                 405              P00DBC:   DS   1
+
+                     406     
+
+----                 407             XSEG  AT  0FF41H
+
+FF41                 408              P01DBC:   DS   1
+
+                     409     
+
+----                 410             XSEG  AT  0FF42H
+
+FF42                 411              P02DBC:   DS   1
+
+                     412     
+
+----                 413             XSEG  AT  0FF00H
+
+FF00                 414                P0M0:   DS   1
+
+                     415     
+
+----                 416             RSEG  ?DT?MAIN
+
+0000                 417                 ABC:   DS   2
+
+                     418     
+
+----                 419             RSEG  ?C_INITSEG
+
+0000 02              420             DB      002H
+
+0001 00       F      421             DB      ABC
+
+0002 0001            422             DW      00001H
+
+                     423     
+
+                     424     ; /**
+
+                     425     ; *   ************************************************************************************
+
+                     426     ; *                                                             上海芯圣电子股份有限公司
+
+                     427     ; *                                                                 www.holychip.cn
+
+                     428     ; *     ***********************************************************************************
+                             *
+
+                     429     ; *     @Examle Version         V1.0.3.0
+
+                     430     ; *     @Demo   Version         V1.0.3.0
+
+                     431     ; *     @Date                           2018.6.1
+
+                     432     ; *     ***********************************************************************************
+                             *
+
+                     433     ; *                                                                    客户服务
+
+                     434     ; *     感谢您使用我们的单片机，若发现错误或对函实氖褂么嬖谝晌省Ｇ胩砑由虾Ｐ臼サ缱庸俜絈Q群
+
+                     435     ; *     ****************************技术支持群：201030494**********************************
+                             *
+
+                     436     ; *   ************************************************************************************
+
+                     437     ; **/
+
+                     438     ; 
+
+                     439     ; 
+
+                     440     ; #define       ALLOCATE_EXTERN
+
+                     441     ; #include "HC89S003F4.h"
+
+                     442     ; 
+
+                     443     ; unsigned int ABC = 0x01;
+
+                     444     ; 
+
+                     445     ; void main()
+
+                     446     
+
+----                 447             RSEG  ?PR?main?MAIN
+
+0000                 448     main:
+
+                     449             USING   0
+
+                     450                             ; SOURCE LINE # 22
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     8
+
+                     451     ; {
+
+                     452                             ; SOURCE LINE # 23
+
+0000                 453     ?C0001:
+
+                     454     ;       while(1)
+
+                     455                             ; SOURCE LINE # 24
+
+                     456     ;       {
+
+                     457                             ; SOURCE LINE # 25
+
+                     458     ;               
+
+                     459     ;               #pragma asm
+
+                     460     ;               
+
+                     461               
+
+                     462     ;               MOV  A,ABC      
+
+0000 E500     F      463               MOV  A,ABC    
+
+                     464     ;               ADD  A,#1       
+
+0002 2401            465               ADD  A,#1     
+
+                     466     ;               MOV  ABC,A
+
+0004 F500     F      467               MOV  ABC,A
+
+                     468     ;               
+
+                     469               
+
+                     470     ;               #pragma endasm
+
+                     471     ; 
+
+                     472     ;       }
+
+                     473                             ; SOURCE LINE # 35
+
+0006 80F8            474             SJMP    ?C0001
+
+                     475     ; END OF main
+
+                     476     
+
+                     477             END
+
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE     9
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+?C0001 . . . . . .  C ADDR   0000H   R   SEG=?PR?MAIN?MAIN
+?C_INITSEG . . . .  C SEG    0004H       REL=UNIT
+?C_STARTUP . . . .  C ADDR   -----       EXT
+?DT?MAIN . . . . .  D SEG    0002H       REL=UNIT
+?PR?MAIN?MAIN. . .  C SEG    0008H       REL=UNIT
+ABC. . . . . . . .  D ADDR   0000H   R   SEG=?DT?MAIN
+AC . . . . . . . .  B ADDR   00D0H.6 A   
+ACC. . . . . . . .  D ADDR   00E0H   A   
+ADCC0. . . . . . .  D ADDR   00B4H   A   
+ADCC1. . . . . . .  D ADDR   00B5H   A   
+ADCC2. . . . . . .  X ADDR   FE9BH   A   
+ADCR . . . . . . .  D ADDR   00B6H   A   
+ADCRH. . . . . . .  D ADDR   00B7H   A   
+ADCRL. . . . . . .  D ADDR   00B6H   A   
+ADCWC. . . . . . .  X ADDR   FE98H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BORC . . . . . . .  X ADDR   FEA4H   A   
+BORDBC . . . . . .  X ADDR   FEA5H   A   
+BORF . . . . . . .  B ADDR   00F8H.5 A   
+CLKCON . . . . . .  D ADDR   008FH   A   
+CLKDIV . . . . . .  X ADDR   FE91H   A   
+CLKOUT . . . . . .  X ADDR   FE93H   A   
+CLKO_MAP . . . . .  X ADDR   FF8FH   A   
+CLKSWR . . . . . .  D ADDR   008EH   A   
+CRCC . . . . . . .  X ADDR   FEA2H   A   
+CRCH . . . . . . .  D ADDR   00BFH   A   
+CRCL . . . . . . .  D ADDR   00BEH   A   
+CRCR . . . . . . .  D ADDR   00BEH   A   
+CY . . . . . . . .  B ADDR   00D0H.7 A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+EADC . . . . . . .  B ADDR   00B8H.5 A   
+ES1. . . . . . . .  B ADDR   00A8H.4 A   
+ES2. . . . . . . .  B ADDR   00A8H.6 A   
+ESPI . . . . . . .  B ADDR   00B8H.0 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . .  B ADDR   00A8H.3 A   
+ET3. . . . . . . .  B ADDR   00B8H.1 A   
+ET4. . . . . . . .  B ADDR   00B8H.2 A   
+ET5. . . . . . . .  B ADDR   00B8H.4 A   
+EWDT . . . . . . .  B ADDR   00A8H.5 A   
+EX0. . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . .  B ADDR   00A8H.2 A   
+EX2_7. . . . . . .  B ADDR   00B8H.6 A   
+EX8_15 . . . . . .  B ADDR   00B8H.7 A   
+EXRSTF . . . . . .  B ADDR   00F8H.6 A   
+F0 . . . . . . . .  B ADDR   00D0H.5 A   
+F1 . . . . . . . .  B ADDR   00D0H.1 A   
+FE . . . . . . . .  B ADDR   0098H.7 A   
+FREQ_CLK . . . . .  X ADDR   FE92H   A   
+IAP_ADDR . . . . .  D ADDR   00F9H   A   
+IAP_ADDRH. . . . .  D ADDR   00FAH   A   
+IAP_ADDRL. . . . .  D ADDR   00F9H   A   
+IAP_CMD. . . . . .  D ADDR   00FCH   A   
+IAP_CMDH . . . . .  D ADDR   00FDH   A   
+IAP_CMDL . . . . .  D ADDR   00FCH   A   
+IAP_DATA . . . . .  D ADDR   00FBH   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+IE1. . . . . . . .  D ADDR   00B8H   A   
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE    10
+
+INSCON . . . . . .  D ADDR   00A2H   A   
+INT01_PINS . . . .  X ADDR   FEBCH   A   
+IP0. . . . . . . .  D ADDR   00A9H   A   
+IP1. . . . . . . .  D ADDR   00AAH   A   
+IP2. . . . . . . .  D ADDR   00B9H   A   
+IP3. . . . . . . .  D ADDR   00BAH   A   
+LVDC . . . . . . .  D ADDR   00BBH   A   
+LVDDBC . . . . . .  X ADDR   FEA7H   A   
+MAIN . . . . . . .  C ADDR   0000H   R   SEG=?PR?MAIN?MAIN
+MISO_MAP . . . . .  X ADDR   FFA7H   A   
+MOSI_MAP . . . . .  X ADDR   FFA6H   A   
+OV . . . . . . . .  B ADDR   00D0H.2 A   
+P. . . . . . . . .  B ADDR   00D0H.0 A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P00DBC . . . . . .  X ADDR   FF40H   A   
+P01DBC . . . . . .  X ADDR   FF41H   A   
+P02DBC . . . . . .  X ADDR   FF42H   A   
+P0LPU. . . . . . .  X ADDR   FF05H   A   
+P0M0 . . . . . . .  X ADDR   FF00H   A   
+P0M1 . . . . . . .  X ADDR   FF01H   A   
+P0M2 . . . . . . .  X ADDR   FF02H   A   
+P0M3 . . . . . . .  X ADDR   FF03H   A   
+P0_0 . . . . . . .  B ADDR   0080H.0 A   
+P0_1 . . . . . . .  B ADDR   0080H.1 A   
+P0_2 . . . . . . .  B ADDR   0080H.2 A   
+P0_3 . . . . . . .  B ADDR   0080H.3 A   
+P0_4 . . . . . . .  B ADDR   0080H.4 A   
+P0_5 . . . . . . .  B ADDR   0080H.5 A   
+P0_6 . . . . . . .  B ADDR   0080H.6 A   
+P0_7 . . . . . . .  B ADDR   0080H.7 A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P1M0 . . . . . . .  X ADDR   FF08H   A   
+P1_0 . . . . . . .  B ADDR   0090H.0 A   
+P1_1 . . . . . . .  B ADDR   0090H.1 A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P2M0 . . . . . . .  X ADDR   FF10H   A   
+P2M1 . . . . . . .  X ADDR   FF11H   A   
+P2M2 . . . . . . .  X ADDR   FF12H   A   
+P2M3 . . . . . . .  X ADDR   FF13H   A   
+P2_0 . . . . . . .  B ADDR   00A0H.0 A   
+P2_1 . . . . . . .  B ADDR   00A0H.1 A   
+P2_2 . . . . . . .  B ADDR   00A0H.2 A   
+P2_3 . . . . . . .  B ADDR   00A0H.3 A   
+P2_4 . . . . . . .  B ADDR   00A0H.4 A   
+P2_5 . . . . . . .  B ADDR   00A0H.5 A   
+P2_6 . . . . . . .  B ADDR   00A0H.6 A   
+P2_7 . . . . . . .  B ADDR   00A0H.7 A   
+PCON . . . . . . .  D ADDR   0087H   A   
+PINTE0 . . . . . .  X ADDR   FEB8H   A   
+PINTE1 . . . . . .  X ADDR   FEB9H   A   
+PINTF0 . . . . . .  D ADDR   0096H   A   
+PINTF1 . . . . . .  D ADDR   0097H   A   
+PITS0. . . . . . .  X ADDR   FEB0H   A   
+PITS1. . . . . . .  X ADDR   FEB1H   A   
+PITS2. . . . . . .  X ADDR   FEB2H   A   
+PITS3. . . . . . .  X ADDR   FEB3H   A   
+PLVRSTF. . . . . .  B ADDR   00F8H.0 A   
+PORF . . . . . . .  B ADDR   00F8H.7 A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+PWM01_MAP. . . . .  X ADDR   FF91H   A   
+PWM0C. . . . . . .  D ADDR   00DAH   A   
+PWM0D. . . . . . .  D ADDR   00E4H   A   
+PWM0DH . . . . . .  D ADDR   00E5H   A   
+PWM0DL . . . . . .  D ADDR   00E4H   A   
+PWM0DT . . . . . .  D ADDR   00E6H   A   
+PWM0DTH. . . . . .  D ADDR   00E7H   A   
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE    11
+
+PWM0DTL. . . . . .  D ADDR   00E6H   A   
+PWM0EN . . . . . .  D ADDR   00E1H   A   
+PWM0P. . . . . . .  D ADDR   00E2H   A   
+PWM0PH . . . . . .  D ADDR   00E3H   A   
+PWM0PL . . . . . .  D ADDR   00E2H   A   
+PWM0_MAP . . . . .  X ADDR   FF90H   A   
+PWM11_MAP. . . . .  X ADDR   FF95H   A   
+PWM1C. . . . . . .  D ADDR   00DBH   A   
+PWM1D. . . . . . .  D ADDR   00ECH   A   
+PWM1DH . . . . . .  D ADDR   00EDH   A   
+PWM1DL . . . . . .  D ADDR   00ECH   A   
+PWM1DT . . . . . .  D ADDR   00EEH   A   
+PWM1DTH. . . . . .  D ADDR   00EFH   A   
+PWM1DTL. . . . . .  D ADDR   00EEH   A   
+PWM1EN . . . . . .  D ADDR   00E9H   A   
+PWM1P. . . . . . .  D ADDR   00EAH   A   
+PWM1PH . . . . . .  D ADDR   00EBH   A   
+PWM1PL . . . . . .  D ADDR   00EAH   A   
+PWM1_MAP . . . . .  X ADDR   FF94H   A   
+PWM21_MAP. . . . .  X ADDR   FF99H   A   
+PWM2C. . . . . . .  D ADDR   00DCH   A   
+PWM2D. . . . . . .  D ADDR   00F4H   A   
+PWM2DH . . . . . .  D ADDR   00F5H   A   
+PWM2DL . . . . . .  D ADDR   00F4H   A   
+PWM2DT . . . . . .  D ADDR   00F6H   A   
+PWM2DTH. . . . . .  D ADDR   00F7H   A   
+PWM2DTL. . . . . .  D ADDR   00F6H   A   
+PWM2EN . . . . . .  D ADDR   00F1H   A   
+PWM2P. . . . . . .  D ADDR   00F2H   A   
+PWM2PH . . . . . .  D ADDR   00F3H   A   
+PWM2PL . . . . . .  D ADDR   00F2H   A   
+PWM2_MAP . . . . .  X ADDR   FF98H   A   
+PWM3C. . . . . . .  D ADDR   00DDH   A   
+PWM3D. . . . . . .  D ADDR   00DFH   A   
+PWM3P. . . . . . .  D ADDR   00DEH   A   
+PWM3_MAP . . . . .  X ADDR   FF9CH   A   
+RB8. . . . . . . .  B ADDR   0098H.2 A   
+RCAP5. . . . . . .  D ADDR   00C4H   A   
+RCAP5H . . . . . .  D ADDR   00C5H   A   
+RCAP5L . . . . . .  D ADDR   00C4H   A   
+REN. . . . . . . .  B ADDR   0098H.4 A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+RS0. . . . . . . .  B ADDR   00D0H.3 A   
+RS1. . . . . . . .  B ADDR   00D0H.4 A   
+RSTDBC . . . . . .  X ADDR   FEAAH   A   
+RSTFR. . . . . . .  D ADDR   00F8H   A   
+RXD2_MAP . . . . .  X ADDR   FFA9H   A   
+RXD_MAP. . . . . .  X ADDR   FFA1H   A   
+RXROV. . . . . . .  B ADDR   0098H.6 A   
+S2BUF. . . . . . .  X ADDR   FE8AH   A   
+S2CON. . . . . . .  X ADDR   FE88H   A   
+S2CON2 . . . . . .  X ADDR   FE89H   A   
+SADDR. . . . . . .  D ADDR   009AH   A   
+SADEN. . . . . . .  D ADDR   009BH   A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCK_MAP. . . . . .  X ADDR   FFA5H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SCON2. . . . . . .  D ADDR   009EH   A   
+SP . . . . . . . .  D ADDR   0081H   A   
+SPCTL. . . . . . .  D ADDR   00ACH   A   
+SPDAT. . . . . . .  D ADDR   00ABH   A   
+SPOVF. . . . . . .  B ADDR   00F8H.1 A   
+SPOV_RSTEN . . . .  X ADDR   FE95H   A   
+SPSTAT . . . . . .  D ADDR   00ADH   A   
+SS_MAP . . . . . .  X ADDR   FFA4H   A   
+SWRF . . . . . . .  B ADDR   00F8H.3 A   
+A51 MACRO ASSEMBLER  MAIN                                                                 08/15/2018 10:43:58 PAGE    12
+
+T0_MAP . . . . . .  X ADDR   FF80H   A   
+T1_MAP . . . . . .  X ADDR   FF81H   A   
+T3 . . . . . . . .  D ADDR   00CAH   A   
+T3CON. . . . . . .  D ADDR   00C9H   A   
+T3_MAP . . . . . .  X ADDR   FF83H   A   
+T4 . . . . . . . .  D ADDR   00CDH   A   
+T4CON. . . . . . .  D ADDR   00CCH   A   
+T4_MAP . . . . . .  X ADDR   FF84H   A   
+T5 . . . . . . . .  D ADDR   00C2H   A   
+T5CON. . . . . . .  D ADDR   00C1H   A   
+T5CON1 . . . . . .  X ADDR   FE85H   A   
+T5_MAP . . . . . .  X ADDR   FF85H   A   
+TB8. . . . . . . .  B ADDR   0098H.3 A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TCON1. . . . . . .  X ADDR   FE80H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TH3. . . . . . . .  D ADDR   00CBH   A   
+TH4. . . . . . . .  D ADDR   00CEH   A   
+TH5. . . . . . . .  D ADDR   00C3H   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TL3. . . . . . . .  D ADDR   00CAH   A   
+TL4. . . . . . . .  D ADDR   00CDH   A   
+TL5. . . . . . . .  D ADDR   00C2H   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+TXCOL. . . . . . .  B ADDR   0098H.5 A   
+TXD2_MAP . . . . .  X ADDR   FFA8H   A   
+TXD_MAP. . . . . .  X ADDR   FFA0H   A   
+WDTC . . . . . . .  D ADDR   00BDH   A   
+WDTCCR . . . . . .  X ADDR   FEA0H   A   
+WDTRF. . . . . . .  B ADDR   00F8H.4 A   
+XTALCFG. . . . . .  X ADDR   FE94H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
