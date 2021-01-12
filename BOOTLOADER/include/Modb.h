@@ -1,7 +1,7 @@
 #ifndef __MODB_H__
 #define __MODB_H__
 
-#define    Version             0x04//°æ±¾ºÅ
+#define    Version             0x05//°æ±¾ºÅ
 
 #define    Get_Version_Internal_Order 0x00
 #define    Get_Version_OutSide_Order  0x01
