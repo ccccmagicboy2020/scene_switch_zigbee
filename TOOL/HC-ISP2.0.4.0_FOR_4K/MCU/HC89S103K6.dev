@@ -1,0 +1,29 @@
+[ROM]
+Size = 0x7000
+EraseAll = 1
+
+[MCU]
+Series = 0x1800
+
+[ISP]
+Version = 0x02
+V01_EN = 0
+V02_EN = 1
+
+[OPTION0]
+0X30 = 1
+0X31 = 0
+0X32 = 0
+0X38 = 0
+0X39 = 2
+0X3A = 0
+0X30_EN = 0
+0X31_EN = 1
+0X32_EN = 0
+0X3A_EN = 1
+
+[OPTION1]
+IAP_RD = 0x0000
+IAP_EW = 0x0000
+IAP_RD_EN = 0x007F
+IAP_EW_EN = 0x007F
