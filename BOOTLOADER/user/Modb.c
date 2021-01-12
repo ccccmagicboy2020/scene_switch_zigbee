@@ -1,14 +1,11 @@
 #include "include.h"
 
-
 #define  Version_Order_Internal_Length   9
 #define  Version_Order_OutSide_Length    7
 #define  MCU_ID_Length                   10
 
-
 unsigned char  HandShake_Count=0;
 bit            Read_Flag=0;
-
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -23,7 +20,7 @@ unsigned char code ISP_Version_Internal_Order[]={
 														Rst_Read_Option
 																		   };
 unsigned char  code ISP_Version_OutSide_Order[]={       
-	                          Version_Order_OutSide_Length,
+	                        							Version_Order_OutSide_Length,
 														Version,
 														Get_Version_OutSide_Order,  
 														Get_ID,
@@ -41,7 +38,7 @@ void HandShake(void)
 	unsigned char Data;
 /**********************************自适应波特率串口初始化**************************************/	
 	TR1=1;//开定时器1
-  EA=1;	
+	EA=1;	
 	do{	
 		if(HandShake_Count>=30)//上电30ms没有检测到数据
 		{
@@ -51,14 +48,14 @@ void HandShake(void)
 //////////////////////////////////////////////////////////////////////////////
 	while(P0_4);
 	TR1=0;//关定时器T1
-  EA=0;
+	EA=0;
 	P2M0 = P2M0 & 0xF0 | 0x08;				      //P20设置为推挽输出
 	TXD_MAP = 0x20;													//TXD映射P20
 	RXD_MAP = 0x04;													//RXD映射P04
 //////////////////////////////////////////////////////////////////////////////
 	
 	T4CON = 0x06;						//T4工作模式：UART1波特率发生器
-  TH4 = 0xFF;
+	TH4 = 0xFF;
 	TL4 = 0xF8;							//波特率250000
 	SCON2 = 0x02;						//8位UART，波特率可变
 	SCON = 0x10;						//允许串行接收

@@ -122,7 +122,13 @@ DPH     DATA    83H
                 EXTRN CODE (?C_START)
                 PUBLIC  ?C_STARTUP
 
+;<h> 复位地址
+; <o> Select a bootloader size
+; <i> 选择bootloader的大小
+;	  <0x3800=> 2K
+;	  <0x3000=> 4K
                 CSEG    AT      0x3000
+;</h>				
 ?C_STARTUP:     LJMP    STARTUP1
 
                 RSEG    ?C_C51STARTUP
