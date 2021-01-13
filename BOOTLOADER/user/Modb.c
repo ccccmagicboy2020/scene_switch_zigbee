@@ -5,6 +5,12 @@
 #define  MCU_ID_Length                   10
 
 unsigned char  HandShake_Count=0;
+extern unsigned char xdata guc_Read_a[2];
+extern unsigned char xdata tick_lo;
+extern unsigned char xdata tick_hi;
+extern unsigned char xdata Uart_Buf[150];
+_ota_mcu_fw xdata ota_fw_info;
+unsigned char current_mcu_pid[8];
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -28,7 +34,6 @@ unsigned char  code ISP_Version_OutSide_Order[]={
 														Go_APP,
 														Rst_Read_Option
 																   };
-
 
 unsigned char code MCU_ID[]={MCU_ID_Length,0x48,0x43,0x38,0x39,0x53,0x30,0x30,0x33,0x46,0x34};	//HC89S003F4
 
@@ -250,23 +255,271 @@ void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 
 unsigned char Receive_Packet_tuya (unsigned char *Data)
 {
-	unsigned char *data0;
-	
-	data0 = Data;
-	//
-	//
-	return SUCCESS;
+	unsigned char command_byte;
+	unsigned char num_lo;
+	unsigned char num_hi;
+	unsigned char i;
+	unsigned char sum = 0;
+
+	if (Uart_RecvByte(Data,  Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+	if (FIRST_FRAME_HEAD == Data[0])
+	{
+		if (Uart_RecvByte(Data+1,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+		if (SECOND_FRAME_HEAD == Data[1])
+		{
+			if (Uart_RecvByte(Data+2,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+			if (SERIAL_PROTOCOL_VER == Data[2])
+			{
+				if (Uart_RecvByte(Data+3,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				tick_hi = Data[3];
+				if (Uart_RecvByte(Data+4,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				tick_lo = Data[4];
+				if (Uart_RecvByte(Data+5,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				command_byte = Data[5];
+				if (Uart_RecvByte(Data+6,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				num_hi = Data[6];
+				if (Uart_RecvByte(Data+7,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				num_lo = Data[7];
+				for (i = 0; i < num_lo; i++)
+				{
+					if (Uart_RecvByte(Data+8+i,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				}
+				if (Uart_RecvByte(Data+PROTOCOL_HEAD+num_lo-1,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+
+				sum = get_check_sum(Data, PROTOCOL_HEAD+num_lo-1);
+
+				if (Data[PROTOCOL_HEAD+num_lo-1] == sum)
+				{
+					switch (command_byte)
+					{
+					case MCU_OTA_VERSION_CMD:
+						response_mcu_ota_version_event();
+						return	SUCCESS;
+						break;
+					case MCU_OTA_NOTIFY_CMD:
+						response_mcu_ota_notify_event();
+						return	SUCCESS;
+						break;
+					case MCU_OTA_DATA_REQUEST_CMD:
+						mcu_ota_fw_request_event();
+						return	SUCCESS;
+						break;
+					case MCU_OTA_RESULT_CMD:
+						mcu_ota_result_event();
+						return	SUCCESS;
+						break;
+					default:
+						return ERROR;
+						break;
+					}
+				}
+				else
+				{
+					return	ERROR;
+				}
+			}
+			else
+			{
+				return	ERROR;
+			}
+		}
+		else
+		{
+			return	ERROR;
+		}
+	}
+	else
+	{
+		return	ERROR;
+	}
 }
 
 unsigned char read_magic_flag(void)
 {
 	//read from flash
-	return 0;
+	IAR_Read(MAGIC_SECTOR_ADDRESS0, guc_Read_a, 2);
+	return guc_Read_a[0];
 }
 
 void uart1_init(void)
 {
 	//init the uart1 again
-	//
+	T4CON = 0x06;						//T4工作模式：UART1波特率发生器
+	TH4 = 0xFF;
+	TL4 = 0x30;							//波特率9600
+	SCON2 = 0x02;						//8位UART，波特率可变
+	SCON = 0x10;						//允许串行接收
+}
+
+unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len)
+{
+  unsigned short i;
+  unsigned char check_sum = 0;
+  
+  for(i = 0; i < pack_len; i ++){
+    check_sum += *pack ++;
+  }
+  
+  return check_sum;
+}
+
+void response_mcu_ota_version_event(void)
+{
+	unsigned short length = 0;
+	unsigned char sum = 0;
+	unsigned char ver = 0;
+
+	ver = get_current_mcu_fw_ver();
+	sum += FIRST_FRAME_HEAD;
+	sum += SECOND_FRAME_HEAD;
+	sum += SERIAL_PROTOCOL_VER;
+	sum += tick_hi;
+	sum += tick_lo;
+	sum += MCU_OTA_VERSION_CMD;
+	sum += 0x01;
+	sum += ver;
+	
+	Uart_SendByte(FIRST_FRAME_HEAD);
+	Uart_SendByte(SECOND_FRAME_HEAD);
+	Uart_SendByte(SERIAL_PROTOCOL_VER);
+	Uart_SendByte(tick_hi);
+	Uart_SendByte(tick_lo);
+	Uart_SendByte(MCU_OTA_VERSION_CMD);
+	Uart_SendByte(0x00);
+	Uart_SendByte(0x01);
+	Uart_SendByte(ver);
+	Uart_SendByte(sum);
+}
+
+unsigned char get_current_mcu_fw_ver(void)
+{
+	unsigned char *fw_ver = (unsigned char*) MCU_VER;	//Current version
+	unsigned char current_mcu_fw_ver = 0;
+	current_mcu_fw_ver = assic_to_hex(fw_ver[0]) << 6;	//high ver
+	current_mcu_fw_ver |= assic_to_hex(fw_ver[2]) << 4;	//mid ver
+	current_mcu_fw_ver |= assic_to_hex(fw_ver[4]);	//low ver
+	return current_mcu_fw_ver;
+}
+
+char assic_to_hex(unsigned char assic_num)
+{
+	if(assic_num<0x30 && assic_num > 0x39)	//0~9
+		return -1;
+	else
+		return assic_num % 0x30;
+}
+
+void response_mcu_ota_notify_event(void)
+{
+	unsigned char i = 0;
+	unsigned short result = 0;
+	unsigned char sum = 0;	
+	
+	current_mcu_fw_pid();	//current PID
+	
+	while(i<8){
+		ota_fw_info.mcu_ota_pid[i] = Uart_Buf[DATA_START + i];								//ota fw PID
+		i++;
+	}
+	ota_fw_info.mcu_ota_ver = Uart_Buf[DATA_START + 8];											//ota fw version
+	ota_fw_info.mcu_ota_fw_size = Uart_Buf[DATA_START + 9] << 24 | \
+																Uart_Buf[DATA_START + 10] << 16 | \
+																Uart_Buf[DATA_START + 11] << 8 | \
+																Uart_Buf[DATA_START + 12];								//ota fw size
+	ota_fw_info.mcu_ota_checksum = Uart_Buf[DATA_START + 13] << 24 | \
+																 Uart_Buf[DATA_START + 14] << 16 | \
+																 Uart_Buf[DATA_START + 15] << 8 | \
+																 Uart_Buf[DATA_START + 16];							//ota fw checksum
+	
+	if((!strcmp_barry(&ota_fw_info.mcu_ota_pid[0],&current_mcu_pid[0])) && \
+		 (ota_fw_info.mcu_ota_ver > get_current_mcu_fw_ver() &&\
+		  ota_fw_info.mcu_ota_fw_size > 0)	
+		){		//check fw pid and fw version and fw size
+		result = 0x00;	//OK
+	}
+	else{
+		result = 0x01;	//error
+	}
+  
+	ota_fw_info.mcu_current_offset = 0;
+	
+	sum += FIRST_FRAME_HEAD;
+	sum += SECOND_FRAME_HEAD;
+	sum += SERIAL_PROTOCOL_VER;
+	sum += tick_hi;
+	sum += tick_lo;
+	sum += MCU_OTA_NOTIFY_CMD;
+	sum += 0x01;
+	sum += result;
+	
+	Uart_SendByte(FIRST_FRAME_HEAD);
+	Uart_SendByte(SECOND_FRAME_HEAD);
+	Uart_SendByte(SERIAL_PROTOCOL_VER);
+	Uart_SendByte(tick_hi);
+	Uart_SendByte(tick_lo);
+	Uart_SendByte(MCU_OTA_NOTIFY_CMD);
+	Uart_SendByte(0x00);
+	Uart_SendByte(0x01);
+	Uart_SendByte(result);
+	Uart_SendByte(sum);
+}
+
+void current_mcu_fw_pid(void)
+{
+	unsigned char i = 0;
+	unsigned char *fw_pid = (unsigned char*) PRODUCT_KEY;
+	
+	while(i < 8){
+		current_mcu_pid[i] = fw_pid[i];
+		i++;
+	}
+}
+
+int strcmp_barry(unsigned char *str1,unsigned char *str2)
+{
+   int ret=0;
+   while( !(ret = *(unsigned char*)str1 - *(unsigned char*)str2 ) && *str1 ){
+		 str1++;
+		 str2++;
+	 }
+	 if(ret < 0)	//str1 < str2
+			return -1;
+	 else if(ret > 0)	//str1 > str2
+			return 1;
+	 return 0;	//str1 == str2
+}
+
+void mcu_ota_result_event(void)
+{
+	unsigned char status = Uart_Buf[DATA_START];
+	
+	if(status == 0x00)
+	{
+		//ok
+	}
+	else if(status == 0x01)
+	{
+		//fail
+	}
+}
+
+void mcu_ota_fw_request_event(void)
+{	
 	//
 }
+
+//主动发
+void mcu_ota_fw_request(void)
+{
+	//
+}
+
+//主动发
+void mcu_ota_result_report(unsigned char status)
+{
+	//
+	unsigned char status0;
+	
+	status0 = status;
+}
+

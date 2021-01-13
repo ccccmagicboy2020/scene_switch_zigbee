@@ -1,7 +1,12 @@
 #define ALLOCATE_EXTERN
 #include "include.h"
+
 unsigned char xdata Uart_Buf[200];//数据缓存数组
 unsigned char xdata magic_flag = 0;
+unsigned char xdata guc_Read_a[2] = {0x00}; //用于存放读取的数据
+unsigned char xdata tick_lo;
+unsigned char xdata tick_hi;
+
 //与上位机的时序调整
 //Earse_Flash()函数修改，增加LVD检测，每擦除前判断LVD电压
 //Receive_Packet()增加LVD检测，程序结构修改，烧写错误则全擦，查空修改为查空前128个字节
@@ -49,7 +54,7 @@ int main(void)
 									//
 									break;
 				case NACK_TIME://超时跳转APP	0x02
-									//
+									//超时
 									break;
 				default://其他不操作
 									break;			
