@@ -1,7 +1,7 @@
 #include "include.h"
 
-#define  Version_Order_Internal_Length   9
-#define  Version_Order_OutSide_Length    7
+#define  Version_Order_Internal_Length   7
+#define  Version_Order_OutSide_Length    6
 #define  MCU_ID_Length                   10
 
 unsigned char  HandShake_Count=0;
@@ -19,20 +19,17 @@ unsigned char code ISP_Version_Internal_Order[]={
 														Get_Version_Internal_Order,	
 														Get_ID,
 														Erase_Flash_ALL, 
-														Write_Memory,        
-														Read_Memory,
-														Go_APP,
-														Rst_Read_Option
+														Write_Memory,
+														Go_APP
 																		   };
 unsigned char  code ISP_Version_OutSide_Order[]={       
-	                        							Version_Order_OutSide_Length,
+	                        	Version_Order_OutSide_Length,
 														Version,
 														Get_Version_OutSide_Order,  
 														Get_ID,
 														Erase_Flash_ALL, 
 														Write_Memory,
-														Go_APP,
-														Rst_Read_Option
+														Go_APP
 																   };
 
 unsigned char code MCU_ID[]={MCU_ID_Length,0x48,0x43,0x38,0x39,0x53,0x30,0x30,0x33,0x46,0x34};	//HC89S003F4
@@ -183,15 +180,8 @@ unsigned char Receive_Packet (unsigned char *Data)
 			 IAR_Soft_Rst_No_Option();//引脚没有检测到数据，进入APP
 					    return SUCCESS;			
 			                                        break;
-		case Rst_Read_Option:       //复位重读Option	
-			 Uart_SendByte(ACK);//接收头码，反码成功			
-			 IAR_Soft_Rst_Option();			
-
-					    return SUCCESS;			
-
 		default:		 
-						    return ERROR;//发送NACK	
-		
+						    return ERROR;//发送NACK
 			break;
 	
 	}
@@ -301,7 +291,10 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 						return	SUCCESS;
 						break;
 					case MCU_OTA_DATA_REQUEST_CMD:
-						mcu_ota_fw_request_event();
+						if (ERROR == mcu_ota_fw_request_event())
+						{
+							mcu_ota_result_report(0x01);
+						}
 						return	SUCCESS;
 						break;
 					case MCU_OTA_RESULT_CMD:
@@ -436,6 +429,13 @@ void response_mcu_ota_notify_event(void)
 		  ota_fw_info.mcu_ota_fw_size > 0)	
 		){		//check fw pid and fw version and fw size
 		result = 0x00;	//OK
+		//flag
+		//flag
+		//flag
+		Earse_Flash();
+		//flag
+		//flag
+		//flag
 	}
 	else{
 		result = 0x01;	//error
@@ -496,6 +496,11 @@ void mcu_ota_result_event(void)
 	if(status == 0x00)
 	{
 		//ok
+		//wirte/clear flash flag
+		//
+		//
+		//go app
+		IAR_Soft_Rst_No_Option();
 	}
 	else if(status == 0x01)
 	{
@@ -503,23 +508,196 @@ void mcu_ota_result_event(void)
 	}
 }
 
-void mcu_ota_fw_request_event(void)
+unsigned char mcu_ota_fw_request_event(void)
 {	
-	//
+	char fw_data[FW_SINGLE_PACKET_SIZE] = {-1};	//
+	unsigned char i = 0;
+	unsigned int fw_offset;
+
+	if(Uart_Buf[DATA_START] == 0x01)				//status check 0x01 == fail
+		return ERROR;
+	while(i < 8){
+		if(current_mcu_pid[i] != Uart_Buf[DATA_START + 1 + i])	//pid check
+			return ERROR;
+		i++;
+	}
+	if(ota_fw_info.mcu_ota_ver != Uart_Buf[DATA_START + 9]) //version check
+		return ERROR;
+	
+	i = 0;
+	while(i < 4){
+		fw_offset |= (Uart_Buf[DATA_START + 10 + i] << (24 - i * 8));		//offset
+		i++;
+	}
+	i = 0;
+	if(ota_fw_info.mcu_current_offset ==  fw_offset)
+	{
+		if((ota_fw_info.mcu_ota_fw_size - fw_offset) / FW_SINGLE_PACKET_SIZE != 0){
+			while(i < FW_SINGLE_PACKET_SIZE){
+				fw_data[i] = Uart_Buf[DATA_START + 14 + i];   //fw data
+				i++;
+			}
+			ota_fw_info.mcu_current_offset += FW_SINGLE_PACKET_SIZE;
+		}
+		else {		//the last packet!!!
+			i = 0;
+			while(i < (ota_fw_info.mcu_ota_fw_size - fw_offset)){
+				fw_data[i] = Uart_Buf[DATA_START + 14 + i];
+				i++;
+			}
+			if(ota_fw_info.mcu_ota_checksum !=\
+				(fw_data[i -1 - 3] << 24 |\
+					fw_data[i -1 - 2] << 16 |\
+					fw_data[i -1 - 1] << 8 |\
+					fw_data[i -1 - 0] ))	
+					{
+						return ERROR;
+					}	
+					else
+					{
+						ota_fw_data_handle(fw_offset,&fw_data[0], ota_fw_info.mcu_ota_fw_size - fw_offset);
+						mcu_ota_result_report(0x00);
+						return SUCCESS;
+					}																	
+		}
+	  ota_fw_data_handle(fw_offset,&fw_data[0], FW_SINGLE_PACKET_SIZE);	//OTA paket data handle
+	}
+	else
+	{
+		return ERROR;
+	}
 }
 
 //主动发
 void mcu_ota_fw_request(void)
 {
-	//
+	unsigned char sum = 0;	
+	unsigned char i = 0;
+	unsigned char pack_size = 0;
+
+	if(ota_fw_info.mcu_current_offset >= ota_fw_info.mcu_ota_fw_size)   //outside the boarder
+	{
+		return;
+	}
+	else
+	{
+		//
+		if((ota_fw_info.mcu_ota_fw_size - ota_fw_info.mcu_current_offset) / FW_SINGLE_PACKET_SIZE != 0)
+		{
+			pack_size = FW_SINGLE_PACKET_SIZE;
+		}
+		else
+		{
+			pack_size = (ota_fw_info.mcu_ota_fw_size - ota_fw_info.mcu_current_offset) % FW_SINGLE_PACKET_SIZE;
+		}
+	}
+	
+	sum += FIRST_FRAME_HEAD;
+	sum += SECOND_FRAME_HEAD;
+	sum += SERIAL_PROTOCOL_VER;
+	sum += MCU_OTA_DATA_REQUEST_CMD;
+	sum += pack_size + 9;
+	i = 0;
+	while(i < 8){
+		sum += ota_fw_info.mcu_ota_pid[i];	//PID
+		i++;
+	}
+	sum += ota_fw_info.mcu_ota_ver;
+	i = 0;
+	while(i < 4){
+		sum += ota_fw_info.mcu_current_offset >> (24 - i * 8);	//pakage offset request
+		i++;
+	}
+	sum += pack_size;
+	
+	Uart_SendByte(FIRST_FRAME_HEAD);
+	Uart_SendByte(SECOND_FRAME_HEAD);
+	Uart_SendByte(SERIAL_PROTOCOL_VER);
+	Uart_SendByte(0x00);
+	Uart_SendByte(0x00);
+	Uart_SendByte(MCU_OTA_DATA_REQUEST_CMD);
+	Uart_SendByte(0x00);
+	Uart_SendByte(pack_size + 9);	//size
+	i = 0;
+	while(i < 8){
+		Uart_SendByte(ota_fw_info.mcu_ota_pid[i]);	//PID
+		i++;
+	}
+	Uart_SendByte(ota_fw_info.mcu_ota_ver);
+	i = 0;
+	while(i < 4){
+		Uart_SendByte(ota_fw_info.mcu_current_offset >> (24 - i * 8));	//pakage offset request
+		i++;
+	}
+	Uart_SendByte(pack_size);
+	Uart_SendByte(sum);
 }
 
 //主动发
 void mcu_ota_result_report(unsigned char status)
 {
-	//
-	unsigned char status0;
+	unsigned char sum = 0;
+	unsigned char i = 0;
 	
-	status0 = status;
+	//upgrade result status(0x00:ota success;0x01:ota failed)
+	if (0x01 == status)	//fail
+	{
+		//ota failure report ota failure and clear ota struct 
+		my_memset(&ota_fw_info, sizeof(ota_fw_info));
+	}
+	else if (0x00 == status)
+	{
+		//ota sucess
+		//should report ota sucess notify
+		//
+		//
+	}
+	
+	sum += FIRST_FRAME_HEAD;
+	sum += SECOND_FRAME_HEAD;
+	sum += SERIAL_PROTOCOL_VER;
+	sum += MCU_OTA_RESULT_CMD;
+	sum += 0x01;
+	sum += status;
+	i = 0;
+	while(i < 8){
+		sum += ota_fw_info.mcu_ota_pid[i];	//PID
+		i++;
+	}
+	sum += ota_fw_info.mcu_ota_ver;
+	
+	Uart_SendByte(FIRST_FRAME_HEAD);
+	Uart_SendByte(SECOND_FRAME_HEAD);
+	Uart_SendByte(SERIAL_PROTOCOL_VER);
+	Uart_SendByte(0x00);
+	Uart_SendByte(0x00);
+	Uart_SendByte(MCU_OTA_RESULT_CMD);
+	Uart_SendByte(0x00);
+	Uart_SendByte(0x0A);	//size
+	Uart_SendByte(status);
+	i = 0;
+	while(i < 8){
+		Uart_SendByte(ota_fw_info.mcu_ota_pid[i]);	//PID
+		i++;
+	}
+	Uart_SendByte(ota_fw_info.mcu_ota_ver);
+	Uart_SendByte(sum);
 }
+
+void ota_fw_data_handle(unsigned int fw_offset,char *data0, unsigned char size0)
+{	
+	//
+	//
+	//
+}
+
+void my_memset(void *src, unsigned short count)
+{
+  unsigned char *tmp = (unsigned char *)src;
+  
+  while(count --){
+    *tmp ++ = 0;
+  }
+}
+
 

@@ -20,18 +20,19 @@
 #define    Go_APP                     0x91
 #define    Rst_Read_Option            0x92
 
-#define			MAGIC_SECTOR_ADDRESS0					0x3F80
+#define		 MAGIC_SECTOR_ADDRESS0			0x3F80
 
-#define         DATA_START                      8
+#define DATA_START		                      8
+#define FW_SINGLE_PACKET_SIZE								0x10	     ///< firmware single packet size, define by mcu
 
 #define SERIAL_PROTOCOL_VER                 0x02                                            // the version of frame 
 #define PROTOCOL_HEAD                       0x09                                           //the lcation of frame length except for tail
 #define FIRST_FRAME_HEAD                    0x55                                            // first byte of frame 
 #define SECOND_FRAME_HEAD                   0xaa                                            // second byte of frame 
 
-#define			MCU_OTA_VERSION_CMD				        0x0B							//zigbee request mcu version 
+#define			MCU_OTA_VERSION_CMD				      0x0B							//zigbee request mcu version 
 #define			MCU_OTA_NOTIFY_CMD				    	0x0C							//mcu ota notify 
-#define			MCU_OTA_DATA_REQUEST_CMD			    0x0D							//MCU OTA data request 
+#define			MCU_OTA_DATA_REQUEST_CMD			  0x0D							//MCU OTA data request 
 #define			MCU_OTA_RESULT_CMD					    0x0E							//MCU OTA result
 
 void          HandShake(void);//ÎÕÊÖ
@@ -48,9 +49,12 @@ void response_mcu_ota_notify_event(void);
 void current_mcu_fw_pid(void);
 int strcmp_barry(unsigned char *str1,unsigned char *str2);
 void mcu_ota_result_event(void);
-void mcu_ota_fw_request_event(void);
+unsigned char mcu_ota_fw_request_event(void);
 void mcu_ota_fw_request(void);
+static void report_mcu_ota_result(unsigned char  res);
+void ota_fw_data_handle(unsigned int fw_offset,char *data0, unsigned char size0);
 void mcu_ota_result_report(unsigned char status);
+void my_memset(void *src, unsigned short count);
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRCÐ£Ñé
 bit           LVD_Check(unsigned long TimeOut);

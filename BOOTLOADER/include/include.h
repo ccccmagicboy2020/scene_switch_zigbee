@@ -11,6 +11,10 @@
 #define PRODUCT_KEY "bttqbchl"    //开发平台创建产品后生成的16位字符产品唯一标识
 #define MCU_VER "1.0.1"
 
+#ifndef         NULL
+#define         NULL                ((void *) 0)
+#endif
+
 typedef struct
 {
 	unsigned char mcu_ota_pid[8];	  //OTA fw PID
