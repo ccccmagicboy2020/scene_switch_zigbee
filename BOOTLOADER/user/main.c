@@ -1,8 +1,8 @@
 #define ALLOCATE_EXTERN
 #include "include.h"
 
-unsigned char xdata Uart_Buf[200];//数据缓存数组
-unsigned char xdata Uart_send_Buf[30];
+unsigned char xdata Uart_Buf[200];//数据缓存数组 rev buffer
+unsigned char xdata Uart_send_Buf[30];//send buffer
 unsigned char xdata magic_flag = 0;
 unsigned char xdata guc_Read_a[2] = {0x00}; //用于存放读取的数据
 unsigned char xdata tick_lo;
@@ -41,7 +41,8 @@ int main(void)
 		while(1)
 		{
 			WDTC |= 0x10;		                  //清狗
-			Receive_Packet_tuya(Uart_Buf);		//接收判断	
+			Receive_Packet_tuya(Uart_Buf);		//接收判断
+			//mcu_ota_fw_request();
 		}		
 	}
 	return	0;

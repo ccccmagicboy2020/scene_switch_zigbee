@@ -22,7 +22,16 @@
 
 #define		 MAGIC_SECTOR_ADDRESS0			0x3F80
 
-#define DATA_START		                      8
+#define         HEAD_FIRST                      0
+#define         HEAD_SECOND                     1
+#define         PROTOCOL_VERSION                2
+#define         SEQ_HIGH                        3
+#define         SEQ_LOW                         4
+#define         FRAME_TYPE                      5
+#define         LENGTH_HIGH                     6
+#define         LENGTH_LOW                      7
+#define         DATA_START                      8
+
 #define FW_SINGLE_PACKET_SIZE								0x10	     ///< firmware single packet size, define by mcu
 
 #define SERIAL_PROTOCOL_VER                 0x02                                            // the version of frame 
@@ -44,10 +53,7 @@ void uart1_init(void);
 unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len);
 void response_mcu_ota_version_event(void);
 unsigned char get_current_mcu_fw_ver(void);
-char assic_to_hex(unsigned char assic_num);
 void response_mcu_ota_notify_event(void);
-void current_mcu_fw_pid(void);
-int strcmp_barry(unsigned char *str1,unsigned char *str2);
 void mcu_ota_result_event(void);
 unsigned char mcu_ota_fw_request_event(void);
 void mcu_ota_fw_request(void);
@@ -55,6 +61,8 @@ static void report_mcu_ota_result(unsigned char  res);
 void ota_fw_data_handle(unsigned int fw_offset,char *data0, unsigned char size0);
 void mcu_ota_result_report(unsigned char status);
 void my_memset(void *src, unsigned short count);
+void zigbee_uart_write_frame(unsigned char fr_cmd, unsigned short len, unsigned char seq_hi, unsigned char seq_lo);
+unsigned short set_zigbee_uart_byte(unsigned short dest, unsigned char byte);
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRCÐ£Ñé
 bit           LVD_Check(unsigned long TimeOut);
