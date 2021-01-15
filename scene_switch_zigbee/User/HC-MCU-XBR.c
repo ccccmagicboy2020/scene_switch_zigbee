@@ -1303,6 +1303,10 @@ void main()
 	
 	while (1)
 	{
+		Delay_ms(500);
+		send_data(0xaa);
+		send_data(0xae);
+		
 		if (resetbtcnt >= 3)	//行为是每三次上电会复位一次蓝牙模块
 		{
 			resetbtcnt = 0;
