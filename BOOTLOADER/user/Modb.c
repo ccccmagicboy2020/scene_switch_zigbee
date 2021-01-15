@@ -11,6 +11,7 @@ extern unsigned char xdata tick_hi;
 extern unsigned char xdata Uart_Buf[150];
 extern unsigned char xdata Uart_send_Buf[30];
 _ota_mcu_fw xdata ota_fw_info;
+unsigned int fw_file_sum = 0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -458,6 +459,7 @@ unsigned char mcu_ota_fw_request_event(void)
 		if((ota_fw_info.mcu_ota_fw_size - fw_offset) / FW_SINGLE_PACKET_SIZE != 0){
 			while(i < FW_SINGLE_PACKET_SIZE){
 				fw_data[i] = Uart_Buf[DATA_START + 14 + i];   //fw data
+				fw_file_sum += fw_data[i];
 				i++;
 			}
 			ota_fw_info.mcu_current_offset += FW_SINGLE_PACKET_SIZE;
@@ -466,20 +468,17 @@ unsigned char mcu_ota_fw_request_event(void)
 			i = 0;
 			while(i < (ota_fw_info.mcu_ota_fw_size - fw_offset)){
 				fw_data[i] = Uart_Buf[DATA_START + 14 + i];
+				fw_file_sum += fw_data[i];
 				i++;
 			}
-			if(ota_fw_info.mcu_ota_checksum !=\
-				(fw_data[i -1 - 3] << 24 |\
-					fw_data[i -1 - 2] << 16 |\
-					fw_data[i -1 - 1] << 8 |\
-					fw_data[i -1 - 0] ))	
+			if(ota_fw_info.mcu_ota_checksum != fw_file_sum)	
 					{
 						return ERROR;
 					}	
 					else
 					{
 						ota_fw_data_handle(fw_offset,&fw_data[0], ota_fw_info.mcu_ota_fw_size - fw_offset);
-						mcu_ota_result_report(0x00);
+						mcu_ota_result_report(0x00);// report to app
 						return SUCCESS;
 					}																	
 		}
