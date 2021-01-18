@@ -287,8 +287,7 @@ int data_handle(unsigned short offset)
 				ret = zigbee_data_point_handle((unsigned char *)zigbee_uart_rx_buf + offset + DATA_START + i);
 					
 				if(SUCCESS == ret){
-						
-savevar();
+						//
 				}
 				else{
 						
@@ -328,11 +327,6 @@ savevar();
 		case MCU_OTA_NOTIFY_CMD:{
 			response_mcu_ota_notify_event(offset);
 		}
-		break;
-		
-		case MCU_OTA_DATA_REQUEST_CMD:{
-			mcu_ota_fw_request_event(offset);
-        }
 		break;
 		
 		case MCU_OTA_RESULT_CMD:{
@@ -604,33 +598,7 @@ unsigned char get_current_mcu_fw_ver(void)
 }
 
 #ifdef SUPPORT_MCU_OTA
-/**
-* @brief mcu ota offset requset 
-* @param[in] {packet_offset}  packet offset 
-* @return  viod
-*/
-//when call this function, should set timeout event, if not received zigbee send response should res
-void mcu_ota_fw_request(void)
-{
-	unsigned char i = 0;
-	unsigned short length = 0;
 
-	if(ota_fw_info.mcu_current_offset >= ota_fw_info.mcu_ota_fw_size)   //outside
-		return;
-	while(i < 8){
-		length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_pid[i]); //ota fw pid
-		i++;
-	}
-	length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_ver);		//ota fw version
-	i = 0;
-	while(i < 4){
-		length = set_zigbee_uart_byte(length , ota_fw_info.mcu_current_offset >> (24 - i * 8));	//pakage offset request
-		i++;
-	}
-	length = set_zigbee_uart_byte(length ,FW_SINGLE_PACKET_SIZE);	// packet size request
-	
-	zigbee_uart_write_frame(MCU_OTA_DATA_REQUEST_CMD,length);
-}
 
 /**
 * @brief mcu ota result report 

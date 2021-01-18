@@ -139,45 +139,7 @@ void uart_transmit_output(unsigned char value)
 */
 void all_data_update(void)
 {
-    u8 light;
-    u8 radius;
-  //#error "请在此处理可下发可上报数据及只上报数据示例,处理完成后删除该行"
-  //此代码为平台自动生成，请按照实际数据修改每个可下发可上报函数和只上报函数
-	
-    mcu_dp_bool_update(DPID_SWITCH_LED, reset_bt_bn); //复位模块
-    mcu_dp_bool_update(DPID_SWITCH_LED2, SWITCHflag2); //灯的开关
-    mcu_dp_value_update(DPID_BRIGHT_VALUE, lightvalue); //VALUE型数据上报;
-
-	if(LIGHT_TH==255)
-		light=0;
-	else if(LIGHT_TH==200)
-		light=2;
-	else if(LIGHT_TH==40)
-		light=3;		
-	else if(LIGHT_TH==20)
-		light=4;
-	else //其它值
-		light=5;
-
-    mcu_dp_enum_update(DPID_CDS, light); //枚举型数据上报;
-    mcu_dp_value_update(DPID_PIR_DELAY, DELAY_NUM); //VALUE型数据上报;
-    mcu_dp_bool_update(DPID_SWITCH_XBR, SWITCHfXBR); //BOOL型数据上报;
-    mcu_dp_value_update(DPID_STANDBY_TIME, lowlightDELAY_NUM); //VALUE型数据上报;
-
-	radius=TH/10000;
-	radius=50-radius;
-
-    mcu_dp_value_update(DPID_SENSE_STRESS, radius); //VALUE型数据上报;
-
-
-	
-	mcu_dp_bool_update(DPID_SWITCH_LINKAGE,Linkage_flag); //BOOL型数据上报;
-	
-	mcu_dp_bool_update(DPID_ALL_DAY_MICRO_LIGHT,all_day_micro_light_enable); //BOOL型数据上报;
-    mcu_dp_value_update(DPID_RADAR_TRIGGER_TIMES,radar_trig_times); //VALUE型数据上报;
-    mcu_dp_enum_update(DPID_LIGHT_STATUS,light_status_xxx); //枚举型数据上报;
-	mcu_dp_enum_update(DPID_PERSON_IN_RANGE,person_in_range_flag); //枚举型数据上报;
-
+	//do nothing
 }
 
 /******************************************************************************
@@ -955,8 +917,7 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 
 	switch(zigbee_work_state){
 		case ZIGBEE_NOT_JION:	
-			//mcu_network_start();
-			//mcu_reset_zigbee();
+
 			break;
 		
 		case ZIGBEE_JOIN_GATEWAY:	
@@ -1022,6 +983,7 @@ void response_mcu_ota_notify_event(unsigned char offset)
 {
 	unsigned char i = 0;
 	unsigned short length = 0;
+	unsigned char result = 0;
 	
 	current_mcu_fw_pid();	//current PID
 	
@@ -1044,115 +1006,24 @@ void response_mcu_ota_notify_event(unsigned char offset)
 		  ota_fw_info.mcu_ota_fw_size > 0)	
 		){		//check fw pid and fw version and fw size
 		length = set_zigbee_uart_byte(length,0x00);	//OK
+		result = 1;
 	}
 	else{
 		length = set_zigbee_uart_byte(length,0x01);	//error
+		result = 0;
 	}
-    ota_fw_info.mcu_current_offset = 0;
+  ota_fw_info.mcu_current_offset = 0;
 	zigbee_uart_write_frame(MCU_OTA_NOTIFY_CMD,length);
-}
-
-
-/**
-* @brief received mcu ota data request response
-* @param[in] {fw_offset}  offset of file 
-* @param[in] {data}  received data  
-* @return  void 
-*/
-
-void reveived_mcu_ota_data_handle(unsigned int fw_offset, char *data0)
-{
-	//#error "received frame data, should save in flash, mcu should realize this fuction, and delete this line "
 	
-	//FW_SINGLE_PACKET_SIZE
-	if (fw_offset % 0x80 == 0)
+	if (1 == result)
 	{
-		Flash_EraseBlock(fw_offset);
-	}
-	
-	Flash_WriteArr(fw_offset, FW_SINGLE_PACKET_SIZE, data0);
-	
-	return;
-}
-
-/**
-* @brief mcu send ota data request 
-* @param[in] {void}  
-* @return  void 
-*/
-void mcu_ota_fw_request_event(unsigned char offset)
-{	
-	unsigned int fw_offset;
-	char fw_data[FW_SINGLE_PACKET_SIZE] = {-1};	//
-	unsigned char i = 0;
-
-	if(zigbee_uart_rx_buf[offset + DATA_START] == 0x01)				//status check
-		return;
-	while(i < 8){
-		if(current_mcu_pid[i] != zigbee_uart_rx_buf[offset + DATA_START + 1 + i])	//pid check
-			return;
-		i++;
-	}
-	if(ota_fw_info.mcu_ota_ver != zigbee_uart_rx_buf[offset + DATA_START + 9]) //version check
-		return;
-	
-	i = 0;
-	while(i < 4){
-		fw_offset |= (zigbee_uart_rx_buf[offset + DATA_START + 10 + i] << (24 - i * 8));		//offset
-		i++;
-	}
-	i = 0;
-	if(ota_fw_info.mcu_current_offset ==  fw_offset)
-	{
-		if((ota_fw_info.mcu_ota_fw_size - fw_offset) / FW_SINGLE_PACKET_SIZE != 0){
-			while(i < FW_SINGLE_PACKET_SIZE){
-				fw_data[i] = zigbee_uart_rx_buf[offset + DATA_START + 14 + i];   //fw data
-				i++;
-			}
-			ota_fw_info.mcu_current_offset += FW_SINGLE_PACKET_SIZE;
-		}
-		else {
-			i = 0;
-			while(i < (ota_fw_info.mcu_ota_fw_size - fw_offset)){
-				fw_data[i] = zigbee_uart_rx_buf[offset + DATA_START + 14 + i];
-				i++;
-			}
-			if(ota_fw_info.mcu_ota_checksum !=\
-				(fw_data[i -1 - 3] << 24 |\
-					fw_data[i -1 - 2] << 16 |\
-					fw_data[i -1 - 1] << 8 |\
-					fw_data[i -1 - 0] ))	
-					{
-						//ota failure report ota failure and clear ota struct 
-					    my_memset(&ota_fw_info,0,sizeof(ota_fw_info));
-						report_mcu_ota_result(0);
-						return;	
-					}	
-					else
-					{
-						//ota sucess 
-						//should report ota sucess notify 
-						report_mcu_ota_result(1);
-					}																	
-		}
-	   ota_fw_data_handle(fw_offset,&fw_data[0]);	//OTA paket data handle
+		mcu_ota_result_report(0x01); //0x01 is fail
 	}
 	else
 	{
-		// ota request timeout, then restart ota request from  ota_fw_info.mcu_ota_fw_size
+		//
 	}
 }
-
-static void report_mcu_ota_result(unsigned char  res)
-{
-	unsigned short length;
-	if((res==0)||(res == 1))
-	{
-		length = set_zigbee_uart_byte(length,res);	
-		zigbee_uart_write_frame(MCU_OTA_NOTIFY_CMD,length);
-	}
-}
-
 
 /**
 * @brief mcu ota data result notify
@@ -1164,23 +1035,12 @@ void mcu_ota_result_event(unsigned char offset)
 	unsigned char status = zigbee_uart_rx_buf[offset + DATA_START];
 	
 	if(status == 0x00){
+		//ok
 	}
 	else if(status == 0x01)	{
-
+		//error
+		//go bootloader
 	}
 }
 
-/**
-* @brief mcu ota data handle 
-* @param[in] {fw_offset} frame offset 
-* @param[in] {data} received data
-* @return  void 
-*/
-void ota_fw_data_handle(unsigned int fw_offset,char *data0)
-{
-	//#error "请在该函数处理固件包数据,并删除该行"
-	reveived_mcu_ota_data_handle(fw_offset, data0);
-	
-	return;
-}
 #endif

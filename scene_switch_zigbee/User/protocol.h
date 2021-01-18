@@ -23,7 +23,7 @@ extern "C"
 
 
 ///< mcu version 
-#define MCU_VER "1.0.1"                          
+#define MCU_VER "1.0.0"                          
  
 #define ZIGBEE_UART_QUEUE_LMT             24             // using to save data received from uart
 #define ZIGBEE_UART_RECV_BUF_LMT          24             //
@@ -201,13 +201,6 @@ void response_mcu_ota_notify_event(unsigned char offset);
 * @return  void 
 */
 void reveived_mcu_ota_data_handle(unsigned int fw_offset, char *data0);
-
-/**
-* @brief mcu send ota data request 
-* @param[in] {offset} offset of file 
-* @return  void 
-*/
-void mcu_ota_fw_request_event(unsigned char offset);
 
 /**
 * @brief mcu ota data result notify

@@ -45,7 +45,6 @@ const DOWNLOAD_CMD_S download_cmd[] =
   {DPID_SCENE_8, DP_TYPE_ENUM},
   {DPID_SCENE_9, DP_TYPE_ENUM},
   {DPID_SCENE_10, DP_TYPE_ENUM},
-  {DPID_TEST, DP_TYPE_BOOL},
 };
 
 
@@ -111,7 +110,6 @@ void all_data_update(void)
     mcu_dp_enum_update(DPID_SCENE_8,当前场景8); //枚举型数据上报;
     mcu_dp_enum_update(DPID_SCENE_9,当前场景9); //枚举型数据上报;
     mcu_dp_enum_update(DPID_SCENE_10,当前场景10); //枚举型数据上报;
-    mcu_dp_bool_update(DPID_TEST,当前test); //BOOL型数据上报;
 
 }
 
@@ -433,35 +431,6 @@ static unsigned char dp_download_scene_10_handle(const unsigned char value[], un
     else
         return ERROR;
 }
-/*****************************************************************************
-函数名称 : dp_download_test_handle
-功能描述 : 针对DPID_TEST的处理函数
-输入参数 : value:数据源数据
-        : length:数据长度
-返回参数 : 成功返回:SUCCESS/失败返回:ERROR
-使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
-*****************************************************************************/
-static unsigned char dp_download_test_handle(const unsigned char value[], unsigned short length)
-{
-    //示例:当前DP类型为BOOL
-    unsigned char ret;
-    //0:关/1:开
-    unsigned char test;
-    
-    test = mcu_get_dp_download_bool(value,length);
-    if(test == 0) {
-        //开关关
-    }else {
-        //开关开
-    }
-  
-    //处理完DP数据后应有反馈
-    ret = mcu_dp_bool_update(DPID_TEST,test);
-    if(ret == SUCCESS)
-        return SUCCESS;
-    else
-        return ERROR;
-}
 
 
 
@@ -569,10 +538,6 @@ unsigned char dp_download_handle(unsigned char dpid,const unsigned char value[],
         case DPID_SCENE_10:
             //场景10处理函数
             ret = dp_download_scene_10_handle(value,length);
-        break;
-        case DPID_TEST:
-            //test处理函数
-            ret = dp_download_test_handle(value,length);
         break;
 
   

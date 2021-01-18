@@ -262,12 +262,7 @@ void mcu_send_broadcast_data(unsigned char buf[], unsigned char buf_len);
 unsigned char get_current_mcu_fw_ver(void);
 
 #ifdef SUPPORT_MCU_OTA 
-/**
-* @brief mcu ota offset requset 
-* @param[in] {packet_offset}  packet offset 
-* @return  viod
-*/
-void mcu_ota_fw_request(void);
+
 
 /**
 * @brief mcu ota result report 

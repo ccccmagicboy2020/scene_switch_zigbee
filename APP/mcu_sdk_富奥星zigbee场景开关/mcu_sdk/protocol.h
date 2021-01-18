@@ -107,9 +107,6 @@ typedef enum
 //场景10(可下发可上报)
 //备注:
 #define DPID_SCENE_10 10
-//test(可下发可上报)
-//备注:
-#define DPID_TEST 101
 
 
 
