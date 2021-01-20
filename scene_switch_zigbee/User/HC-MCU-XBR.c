@@ -134,14 +134,13 @@ void main()
 	UART1_Init();
 
 	LVDC = 0xAA; //LVD设置2.4V,禁止中断
-	//	消抖时间 = 	(0xFF + 2) * 1/Fcpu
-	//			 =	(0xFF + 2) / 16000000	（当前的CPU时钟）
-	//			 =	16.0625us
 	LVDDBC = 0xFF; //设置消抖时间
 	LVDC &= ~0x08; //清除LVD中断标志位
 				   //
 	EA = 1;
-	Delay_ms(200);
+	Delay_ms(500);
+	
+	mcu_network_start();
 	
 	while (1)
 	{
@@ -189,11 +188,9 @@ void Flash_EraseBlock(unsigned int fui_Address)
 	while (1)
 	{
 		LVDC &= ~0x08; //清除LVD中断标志位
-		P0_0 = 0;
 		if ((LVDC & 0x08) == 0)
 			break;
 	}
-	P0_0 = 1;
 	EA = 0;
 	IAP_CMD = 0xF00F;		//Flash解锁
 	IAP_ADDR = fui_Address; //写入擦除地址
@@ -216,11 +213,9 @@ void FLASH_WriteData(unsigned char fuc_SaveData, unsigned int fui_Address)
 	while (1)
 	{
 		LVDC &= ~0x08; //清除LVD中断标志位
-		P0_0 = 0;
 		if ((LVDC & 0x08) == 0)
 			break;
 	}
-	P0_0 = 1;
 	EA = 0;
 	IAP_DATA = fuc_SaveData;
 	IAP_CMD = 0xF00F; //Flash解锁

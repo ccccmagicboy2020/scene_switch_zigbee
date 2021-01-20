@@ -26,7 +26,10 @@ void SystemInit(void)
 	TL1 = 0x96;							//T1定时时间1ms
 	ET1=1;									//T1 enable
 	TR1=0;									//T1 start fail
-	LVDC &=~ 0x08;					//清除LVD中断标志位 	
+	
+	LVDC = 0xAA; //
+	LVDDBC = 0xFF; //
+	LVDC &= ~0x08; //
 }
 
 void GPIO_Init(void)

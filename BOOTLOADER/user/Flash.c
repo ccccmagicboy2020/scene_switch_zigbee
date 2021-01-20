@@ -20,18 +20,14 @@ unsigned char  XOR_FLASH_BLANK(unsigned int Add,unsigned int Size_Flash)
 	函数功能：清除一个扇区的数据
 			  输入扇区地址为当前扇区内任意地址										   
 *********************************/
+#pragma disable
 void IAR_Clear(unsigned int clradd)
-{
-	enable_timer(0);	
-	if(clradd>=0x3000) 
-	return;	
-	IAP_CMDH = 0xF0;
-	IAP_CMDL = 0x0F;
+{	
+	enable_timer(0);
+	IAP_CMD = 0xF00F;
 	IAP_ADDR = clradd;
-	IAP_CMDH = 0xD2; //选择操作方式， 扇区擦除
-	IAP_CMDL = 0x2D;
-	IAP_CMDH = 0xE1; //触发
-	IAP_CMDL = 0x1E; //触发后 IAP_ADDRL&IAP_ADDRH 指向 0xFF，同时自动锁定
+	IAP_CMD = 0xD22D;
+	IAP_CMD = 0xE11E;
 	enable_timer(1);
 }
 /*********************************
@@ -65,6 +61,7 @@ unsigned char Earse_Flash(void)
 	函数名称：FLASH写一个字节
 	函数功能：在FLASH任意位置写入一个字节的数据										   
 *********************************/
+#pragma disable
 void IAR_Write_Byte(unsigned int add,unsigned char datt)
 {
 	enable_timer(0);	
