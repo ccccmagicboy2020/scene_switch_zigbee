@@ -40,8 +40,7 @@ int main(void)
 	}
 	else
 	{
-		TR1=1;		//start the timer
-		EA = 1;		//start the interrupt
+		enable_timer(1);
 		uart1_init(0);//
 		//mcu_reset_zigbee(0);
 		//mcu_reset_zigbee(1);
