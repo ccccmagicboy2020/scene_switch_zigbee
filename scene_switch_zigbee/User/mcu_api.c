@@ -126,15 +126,15 @@ void *my_memcpy(void *dest, const void *src, unsigned short count)
 * @param[in] {dest}   destination address
 * @return the tail of destination 
 */
-char *my_strcpy(char *dest, const char *src)  
-{
-  char *p = dest;
-  while(*src!='\0'){
-    *dest++ = *src++;
-  }
-  *dest = '\0';
-  return p;
-}
+// char *my_strcpy(char *dest, const char *src)  
+// {
+  // char *p = dest;
+  // while(*src!='\0'){
+    // *dest++ = *src++;
+  // }
+  // *dest = '\0';
+  // return p;
+// }
 
 /**
 * @brief compare string s1 with string s2
@@ -142,14 +142,14 @@ char *my_strcpy(char *dest, const char *src)
 * @param[in] {s2}  destination address
 * @return compare result
 */
-int my_strcmp(char *s1 , char *s2)
-{
-  while( *s1 && *s2 && *s1 == *s2 ){
-    s1++;
-    s2++;
-  }
-  return *s1 - *s2;
-}
+// int my_strcmp(char *s1 , char *s2)
+// {
+  // while( *s1 && *s2 && *s1 == *s2 ){
+    // s1++;
+    // s2++;
+  // }
+  // return *s1 - *s2;
+// }
 
 /**
 * @brief int translate to byte
@@ -157,33 +157,33 @@ int my_strcmp(char *s1 , char *s2)
 * @param[out] {value} the result array     
 * @return void
 */
-void int_to_byte(unsigned long number,unsigned char value[4])
-{
-  value[0] = number >> 24;
-  value[1] = number >> 16;
-  value[2] = number >> 8;
-  value[3] = number & 0xff;
-}
+// void int_to_byte(unsigned long number,unsigned char value[4])
+// {
+  // value[0] = number >> 24;
+  // value[1] = number >> 16;
+  // value[2] = number >> 8;
+  // value[3] = number & 0xff;
+// }
 
 /**
 * @brief byte data translate to int 
 * @param[in] {value}  the byte array 
 * @return result of int data 
 */
-unsigned long byte_to_int(const unsigned char value[4])
-{
-  unsigned long nubmer = 0;
+// unsigned long byte_to_int(const unsigned char value[4])
+// {
+  // unsigned long nubmer = 0;
 
-  nubmer = (unsigned long)value[0];
-  nubmer <<= 8;
-  nubmer |= (unsigned long)value[1];
-  nubmer <<= 8;
-  nubmer |= (unsigned long)value[2];
-  nubmer <<= 8;
-  nubmer |= (unsigned long)value[3];
+  // nubmer = (unsigned long)value[0];
+  // nubmer <<= 8;
+  // nubmer |= (unsigned long)value[1];
+  // nubmer <<= 8;
+  // nubmer |= (unsigned long)value[2];
+  // nubmer <<= 8;
+  // nubmer |= (unsigned long)value[3];
   
-  return nubmer;
-}
+  // return nubmer;
+// }
 
 
 /**
@@ -192,27 +192,27 @@ unsigned long byte_to_int(const unsigned char value[4])
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_bool_update(unsigned char dpid,unsigned char value)
-{
-  unsigned short length = 0;
+// unsigned char mcu_dp_bool_update(unsigned char dpid,unsigned char value)
+// {
+  // unsigned short length = 0;
   
-  length = set_zigbee_uart_byte(length,dpid);
-  length = set_zigbee_uart_byte(length,DP_TYPE_BOOL);
+  // length = set_zigbee_uart_byte(length,dpid);
+  // length = set_zigbee_uart_byte(length,DP_TYPE_BOOL);
  
-  length = set_zigbee_uart_byte(length,0);
-  length = set_zigbee_uart_byte(length,1);
+  // length = set_zigbee_uart_byte(length,0);
+  // length = set_zigbee_uart_byte(length,1);
 
-  if(value == FALSE){
-    length = set_zigbee_uart_byte(length,FALSE);
-  }
-  else{
-    length = set_zigbee_uart_byte(length,1);
-  }
+  // if(value == FALSE){
+    // length = set_zigbee_uart_byte(length,FALSE);
+  // }
+  // else{
+    // length = set_zigbee_uart_byte(length,1);
+  // }
   
-  zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
   
-  return SUCCESS;
-}
+  // return SUCCESS;
+// }
 
 
 /**
@@ -245,36 +245,36 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value)
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_bitmap_update(unsigned char dpid,unsigned long value)
-{
-  unsigned short length = 0;
+// unsigned char mcu_dp_bitmap_update(unsigned char dpid,unsigned long value)
+// {
+  // unsigned short length = 0;
 
-  length = set_zigbee_uart_byte(length,dpid);
-  length = set_zigbee_uart_byte(length,DP_TYPE_BITMAP);
-  //
-  length = set_zigbee_uart_byte(length,0);
+  // length = set_zigbee_uart_byte(length,dpid);
+  // length = set_zigbee_uart_byte(length,DP_TYPE_BITMAP);
   
-  if((value | 0xff) == 0xff){
-    length = set_zigbee_uart_byte(length,1);
-    length = set_zigbee_uart_byte(length,value);
-  }
-  else if((value | 0xffff) == 0xffff){
-    length = set_zigbee_uart_byte(length,2);
-    length = set_zigbee_uart_byte(length,value >> 8);
-    length = set_zigbee_uart_byte(length,value & 0xff);
-  }
-  else{
-    length = set_zigbee_uart_byte(length,4);
-    length = set_zigbee_uart_byte(length,value >> 24);
-    length = set_zigbee_uart_byte(length,value >> 16);
-    length = set_zigbee_uart_byte(length,value >> 8);
-    length = set_zigbee_uart_byte(length,value & 0xff);
-  }    
+  // length = set_zigbee_uart_byte(length,0);
   
-  zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  // if((value | 0xff) == 0xff){
+    // length = set_zigbee_uart_byte(length,1);
+    // length = set_zigbee_uart_byte(length,value);
+  // }
+  // else if((value | 0xffff) == 0xffff){
+    // length = set_zigbee_uart_byte(length,2);
+    // length = set_zigbee_uart_byte(length,value >> 8);
+    // length = set_zigbee_uart_byte(length,value & 0xff);
+  // }
+  // else{
+    // length = set_zigbee_uart_byte(length,4);
+    // length = set_zigbee_uart_byte(length,value >> 24);
+    // length = set_zigbee_uart_byte(length,value >> 16);
+    // length = set_zigbee_uart_byte(length,value >> 8);
+    // length = set_zigbee_uart_byte(length,value & 0xff);
+  // }    
+  
+  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
 
-  return SUCCESS;
-}
+  // return SUCCESS;
+// }
 
 
 /**
@@ -283,36 +283,36 @@ unsigned char mcu_dp_bitmap_update(unsigned char dpid,unsigned long value)
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value)
-{
-  unsigned short length = 0;
+// unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value)
+// {
+  // unsigned short length = 0;
 
-  length = set_zigbee_uart_byte(length,dpid);
-  length = set_zigbee_uart_byte(length,DP_TYPE_BITMAP);
-  //
-  length = set_zigbee_uart_byte(length,0);
+  // length = set_zigbee_uart_byte(length,dpid);
+  // length = set_zigbee_uart_byte(length,DP_TYPE_BITMAP);
   
-  if((value | 0xff) == 0xff){
-    length = set_zigbee_uart_byte(length,1);
-    length = set_zigbee_uart_byte(length,value);
-  }
-  else if((value | 0xffff) == 0xffff){
-    length = set_zigbee_uart_byte(length,2);
-    length = set_zigbee_uart_byte(length,value >> 8);
-    length = set_zigbee_uart_byte(length,value & 0xff);
-  }
-  else{
-    length = set_zigbee_uart_byte(length,4);
-    length = set_zigbee_uart_byte(length,value >> 24);
-    length = set_zigbee_uart_byte(length,value >> 16);
-    length = set_zigbee_uart_byte(length,value >> 8);
-    length = set_zigbee_uart_byte(length,value & 0xff);
-  }    
+  // length = set_zigbee_uart_byte(length,0);
   
-  zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  // if((value | 0xff) == 0xff){
+    // length = set_zigbee_uart_byte(length,1);
+    // length = set_zigbee_uart_byte(length,value);
+  // }
+  // else if((value | 0xffff) == 0xffff){
+    // length = set_zigbee_uart_byte(length,2);
+    // length = set_zigbee_uart_byte(length,value >> 8);
+    // length = set_zigbee_uart_byte(length,value & 0xff);
+  // }
+  // else{
+    // length = set_zigbee_uart_byte(length,4);
+    // length = set_zigbee_uart_byte(length,value >> 24);
+    // length = set_zigbee_uart_byte(length,value >> 16);
+    // length = set_zigbee_uart_byte(length,value >> 8);
+    // length = set_zigbee_uart_byte(length,value & 0xff);
+  // }    
+  
+  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
 
-  return SUCCESS;
-}
+  // return SUCCESS;
+// }
 
 /**
 * @brief report raw type DP data to zigbee module 
@@ -321,22 +321,22 @@ unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value)
 * @param[in]  {len} length of Data contents  
 * @return send result 
 */
-unsigned char mcu_dp_raw_update(unsigned char dpid,const unsigned char value[],unsigned short len)
-{
-  unsigned short length = 0;
+// unsigned char mcu_dp_raw_update(unsigned char dpid,const unsigned char value[],unsigned short len)
+// {
+  // unsigned short length = 0;
   
-  length = set_zigbee_uart_byte(length,dpid);
-  length = set_zigbee_uart_byte(length,DP_TYPE_RAW);
-  //
-  length = set_zigbee_uart_byte(length,len / 0x100);
-  length = set_zigbee_uart_byte(length,len % 0x100);
-  //
-  length = set_zigbee_uart_buffer(length,(unsigned char *)value,len);
+  // length = set_zigbee_uart_byte(length,dpid);
+  // length = set_zigbee_uart_byte(length,DP_TYPE_RAW);
   
-  zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  // length = set_zigbee_uart_byte(length,len / 0x100);
+  // length = set_zigbee_uart_byte(length,len % 0x100);
   
-  return SUCCESS;
-}
+  // length = set_zigbee_uart_buffer(length,(unsigned char *)value,len);
+  
+  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  
+  // return SUCCESS;
+// }
 
 /**
 * @brief report string type DP data to zigbee module 
@@ -345,22 +345,22 @@ unsigned char mcu_dp_raw_update(unsigned char dpid,const unsigned char value[],u
 * @param[in]  {len} length of Data contents  
 * @return send result 
 */
-unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len)
-{
-  unsigned short length = 0;
+// unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len)
+// {
+  // unsigned short length = 0;
   
-  length = set_zigbee_uart_byte(length,dpid);
-  length = set_zigbee_uart_byte(length,DP_TYPE_STRING);
-  //
-  length = set_zigbee_uart_byte(length,len / 0x100);
-  length = set_zigbee_uart_byte(length,len % 0x100);
-  //
-  length = set_zigbee_uart_buffer(length,(unsigned char *)value,len);
+  // length = set_zigbee_uart_byte(length,dpid);
+  // length = set_zigbee_uart_byte(length,DP_TYPE_STRING);
   
-  zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  // length = set_zigbee_uart_byte(length,len / 0x100);
+  // length = set_zigbee_uart_byte(length,len % 0x100);
   
-  return SUCCESS;
-}
+  // length = set_zigbee_uart_buffer(length,(unsigned char *)value,len);
+  
+  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  
+  // return SUCCESS;
+// }
 
 /**
 * @brief report raw type DP data to zigbee module 
@@ -368,25 +368,25 @@ unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value)
-{
-  unsigned short length = 0;
+// unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value)
+// {
+  // unsigned short length = 0;
   
-  length = set_zigbee_uart_byte(length,dpid);
-  length = set_zigbee_uart_byte(length,DP_TYPE_VALUE);
-  //
-  length = set_zigbee_uart_byte(length,0);
-  length = set_zigbee_uart_byte(length,4);
-  //
-  length = set_zigbee_uart_byte(length,value >> 24);
-  length = set_zigbee_uart_byte(length,value >> 16);
-  length = set_zigbee_uart_byte(length,value >> 8);
-  length = set_zigbee_uart_byte(length,value & 0xff);
+  // length = set_zigbee_uart_byte(length,dpid);
+  // length = set_zigbee_uart_byte(length,DP_TYPE_VALUE);
   
-  zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  // length = set_zigbee_uart_byte(length,0);
+  // length = set_zigbee_uart_byte(length,4);
   
-  return SUCCESS;
-}
+  // length = set_zigbee_uart_byte(length,value >> 24);
+  // length = set_zigbee_uart_byte(length,value >> 16);
+  // length = set_zigbee_uart_byte(length,value >> 8);
+  // length = set_zigbee_uart_byte(length,value & 0xff);
+  
+  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+  
+  // return SUCCESS;
+// }
 
 /**
 * @brief mcu get bool type value from zigbee translate 
@@ -394,12 +394,12 @@ unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value)
 * @param[in]  {len} Data length
 * @return  true or false
 */
-unsigned char mcu_get_dp_download_bool(const unsigned char value[],unsigned short len)
-{
-	int i;
-	i = len;	
-  return(value[0]);
-}
+// unsigned char mcu_get_dp_download_bool(const unsigned char value[],unsigned short len)
+// {
+	// int i;
+	// i = len;	
+  // return(value[0]);
+// }
 
 /**
 * @brief mcu get enum type value from zigbee translate 
@@ -420,12 +420,12 @@ unsigned char mcu_get_dp_download_enum(const unsigned char value[],unsigned shor
 * @param[in]  {len} Data length
 * @return  value data
 */
-unsigned long mcu_get_dp_download_value(const unsigned char value[],unsigned short len)
-{
-	int i;
-	i = len;	
-  return(byte_to_int(value));
-}
+// unsigned long mcu_get_dp_download_value(const unsigned char value[],unsigned short len)
+// {
+	// int i;
+	// i = len;	
+  // return(byte_to_int(value));
+// }
 
 
 /**

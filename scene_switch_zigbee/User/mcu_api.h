@@ -63,7 +63,7 @@ void *my_memcpy(void *dest, const void *src, unsigned short count);
 * @param[in] {dest}   destination address
 * @return the tail of destination 
 */
-char *my_strcpy(char *dest, const char *src);
+//char *my_strcpy(char *dest, const char *src);
 
 /**
 * @brief compare string s1 with string s2
@@ -71,7 +71,7 @@ char *my_strcpy(char *dest, const char *src);
 * @param[in] {s2}  destination address
 * @return compare result
 */
-int my_strcmp(char *s1 , char *s2);
+//int my_strcmp(char *s1 , char *s2);
 
 /**
 * @brief int translate to byte
@@ -79,14 +79,14 @@ int my_strcmp(char *s1 , char *s2);
 * @param[out] {value} the result array     
 * @return void
 */
-void int_to_byte(unsigned long number,unsigned char value[4]);
+//void int_to_byte(unsigned long number,unsigned char value[4]);
 
 /**
 * @brief byte data translate to int 
 * @param[in] {value}  the byte array 
 * @return result of int data 
 */
-unsigned long byte_to_int(const unsigned char value[4]);
+//unsigned long byte_to_int(const unsigned char value[4]);
 
 /**
 * @brief report bool type DP data to zigbee module 
@@ -94,7 +94,7 @@ unsigned long byte_to_int(const unsigned char value[4]);
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_bool_update(unsigned char dpid,unsigned char value);
+//unsigned char mcu_dp_bool_update(unsigned char dpid,unsigned char value);
 
 
 /**
@@ -112,7 +112,7 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value);
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_bitmap_update(unsigned char dpid,unsigned long value);
+//unsigned char mcu_dp_bitmap_update(unsigned char dpid,unsigned long value);
 
 /**
 * @brief report fault type DP data to zigbee module 
@@ -120,7 +120,7 @@ unsigned char mcu_dp_bitmap_update(unsigned char dpid,unsigned long value);
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value);
+//unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value);
 
 /**
 * @brief report raw type DP data to zigbee module 
@@ -129,7 +129,7 @@ unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value);
 * @param[in]  {len} length of Data contents  
 * @return send result 
 */
-unsigned char mcu_dp_raw_update(unsigned char dpid,const unsigned char value[],unsigned short len);
+//unsigned char mcu_dp_raw_update(unsigned char dpid,const unsigned char value[],unsigned short len);
 
 /**
 * @brief report string type DP data to zigbee module 
@@ -138,7 +138,7 @@ unsigned char mcu_dp_raw_update(unsigned char dpid,const unsigned char value[],u
 * @param[in]  {len} length of Data contents  
 * @return send result 
 */
-unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len);
+//unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len);
 
 /**
 * @brief report raw type DP data to zigbee module 
@@ -146,7 +146,7 @@ unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value);
+//unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value);
 
 /**
 * @brief mcu get bool type value from zigbee translate 
@@ -154,7 +154,7 @@ unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value);
 * @param[in]  {len} Data length
 * @return  true or false
 */
-unsigned char mcu_get_dp_download_bool(const unsigned char value[],unsigned short len);
+//unsigned char mcu_get_dp_download_bool(const unsigned char value[],unsigned short len);
 
 /**
 * @brief mcu get enum type value from zigbee translate 
@@ -170,7 +170,7 @@ unsigned char mcu_get_dp_download_enum(const unsigned char value[],unsigned shor
 * @param[in]  {len} Data length
 * @return  value data
 */
-unsigned long mcu_get_dp_download_value(const unsigned char value[],unsigned short len);
+//unsigned long mcu_get_dp_download_value(const unsigned char value[],unsigned short len);
 
 /**
 * @brief mcu reset zigbee module 

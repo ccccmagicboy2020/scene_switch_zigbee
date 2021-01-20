@@ -48,7 +48,7 @@ typedef enum
 /**
  * if mcu need to support OTA, this macro definition should be opened
  */
-#define    SUPPORT_MCU_OTA                  //support mcu ota
+//#define    SUPPORT_MCU_OTA                  //support mcu ota
 
 
 /**
@@ -77,48 +77,15 @@ typedef enum
  * DP data list,this code will be generate by cloud platforms
  */
 
-//开关(可下发可上报)
+//场景1(可下发可上报)
 //备注:
-#define DPID_SWITCH_LED 1
-//亮度值(可下发可上报)
+#define DPID_SCENE_1 1
+//场景2(可下发可上报)
 //备注:
-#define DPID_BRIGHT_VALUE 3
-//光敏参数(可下发可上报)
+#define DPID_SCENE_2 2
+//工厂操作(只下发)
 //备注:
-#define DPID_CDS 101
-//感应延时(可下发可上报)
-//备注:
-#define DPID_PIR_DELAY 102
-//雷达开关(可下发可上报)
-//备注:
-#define DPID_SWITCH_XBR 103
-//伴亮延时(可下发可上报)
-//备注:
-#define DPID_STANDBY_TIME 104
-//感应强度(可下发可上报)
-//备注:
-#define DPID_SENSE_STRESS 105
-//开关灯(可下发可上报)
-//备注:
-#define DPID_SWITCH_LED2 113
-//联动(可下发可上报)
-//备注:
-#define DPID_SWITCH_LINKAGE 114
-//全天伴亮(可下发可上报)
-//备注:
-#define DPID_ALL_DAY_MICRO_LIGHT 115
-//雷达触发计数(只上报)
-//备注:
-#define DPID_RADAR_TRIGGER_TIMES 116
-//计数清零(只下发)
-//备注:
-#define DPID_CLEAR_TRIGGER_NUMBER 117
-//灯状态(只上报)
-//备注:
-#define DPID_LIGHT_STATUS 118
-//人状态(只上报)
-//备注:
-#define DPID_PERSON_IN_RANGE 119
+#define DPID_FACTORY_OP 150
 
 
 
@@ -148,7 +115,7 @@ void mcu_write_rtctime(unsigned char time[]);
 * @param[in] {void} 
 * @return  void
 */
-void zigbee_test_result(void);
+//void zigbee_test_result(void);
 
 /**
 * @brief this function will handle uart received frame data  
@@ -200,7 +167,14 @@ void response_mcu_ota_notify_event(unsigned char offset);
 * @param[in] {data}  received data  
 * @return  void 
 */
-void reveived_mcu_ota_data_handle(unsigned int fw_offset, char *data0);
+void reveived_mcu_ota_data_handle(unsigned int fw_offset,char *data);
+
+/**
+* @brief mcu send ota data request 
+* @param[in] {offset} offset of file 
+* @return  void 
+*/
+void mcu_ota_fw_request_event(unsigned char offset);
 
 /**
 * @brief mcu ota data result notify
@@ -216,8 +190,18 @@ void mcu_ota_result_event(unsigned char offset);
 * @param[in] {data} received data
 * @return  void 
 */
-void ota_fw_data_handle(unsigned int fw_offset, char *data0);
+void ota_fw_data_handle(unsigned int fw_offset,char *data);
 #endif
+
+void soft_reset_mcu(void);
+void go_bootloader_ota(void);
+void tuya_re_config_network(void);
+void tuya_reset_module(void);
+void tuya_retry_ota(void);
+void reset_default_parameter(void);
+
+void IAR_Soft_Rst_No_Option(void);
+void IAR_Soft_Rst_Option(void);
 
 #ifdef __cplusplus
 }

@@ -80,11 +80,13 @@ extern "C"
 #define         ZG_REPORT_OK            0x10                                    
 #define         ZG_REPORT_ERR           0X20                                    	
 
+#define		 MAGIC_SECTOR_ADDRESS0			0x2E80	//at app zone
+
 ///< dp struct 
 typedef struct {
-  unsigned char dp_id;                        //dpÐòºÅ
-  unsigned char dp_type;                          //dpÀàÐÍ
-} xdata DOWNLOAD_CMD_S;
+  unsigned char dp_id;                     
+  unsigned char dp_type;           
+} DOWNLOAD_CMD_S;
 
 #ifdef __cplusplus
 }

@@ -37,8 +37,8 @@ typedef struct
 
 
 #ifdef SUPPORT_MCU_OTA
-#define FW_SINGLE_PACKET_SIZE 		0x10	     ///< firmware single packet size, define by mcu 
-SYSTEM_EXTERN unsigned char xdata current_mcu_pid[8];	///< current mcu pid
+#define FW_SINGLE_PACKET_SIZE 		0x30	     ///< firmware single packet size, define by mcu 
+SYSTEM_EXTERN unsigned char current_mcu_pid[8];	///< current mcu pid
 
 /** ota mcu firmware struct*/
 typedef struct
@@ -48,9 +48,9 @@ typedef struct
 	unsigned int mcu_ota_fw_size;	 //OTA fw size
 	unsigned int mcu_current_offset; //current offset 
 	unsigned int mcu_ota_checksum;  //OTA fw checksum	
-}xdata _ota_mcu_fw;
+}_ota_mcu_fw;
 
-SYSTEM_EXTERN _ota_mcu_fw xdata ota_fw_info;	///< ota firmware infomation
+SYSTEM_EXTERN _ota_mcu_fw ota_fw_info;	///< ota firmware infomation
 #endif
 
 #ifdef SET_ZIGBEE_NWK_PARAMETER
@@ -65,7 +65,7 @@ typedef struct
 	unsigned char    rejoin_try_times;  
 	unsigned char    app_trigger_rejoin; 
 	unsigned char    rf_send_power;  
-}idata nwk_parameter_t
+}nwk_parameter_t
 #endif
 
 ///< Byte order of frames
@@ -125,18 +125,18 @@ SYSTEM_EXTERN volatile unsigned char xdata zigbee_queue_buf[PROTOCOL_HEAD + ZIGB
 SYSTEM_EXTERN volatile unsigned char xdata zigbee_uart_rx_buf[PROTOCOL_HEAD + ZIGBEE_UART_RECV_BUF_LMT];   ///< serial received buf
 SYSTEM_EXTERN volatile unsigned char xdata zigbee_uart_tx_buf[PROTOCOL_HEAD + ZIGBEE_UART_SEND_BUF_LMT];   ///< serial translate buf
 
-SYSTEM_EXTERN volatile unsigned char *queue_in;
-SYSTEM_EXTERN volatile unsigned char *queue_out;
+SYSTEM_EXTERN volatile unsigned char xdata *queue_in;
+SYSTEM_EXTERN volatile unsigned char xdata *queue_out;
 
 
-SYSTEM_EXTERN volatile unsigned char zigbee_work_state;                                              ///< the state of zigbee module working 
+SYSTEM_EXTERN volatile unsigned char xdata zigbee_work_state;                                              ///< the state of zigbee module working 
 
-SYSTEM_EXTERN volatile unsigned char rx_in;         	 ///< recieved a complete frame of data flag 
-SYSTEM_EXTERN volatile unsigned char wakeup_flag;	    ///<  initiative wakeup flag 
+SYSTEM_EXTERN volatile unsigned char xdata rx_in;         	 ///< recieved a complete frame of data flag 
+SYSTEM_EXTERN volatile unsigned char xdata wakeup_flag;	    ///<  initiative wakeup flag 
 
-SYSTEM_EXTERN unsigned char record_report_time_flag;	///<  0x00：using gateway time；0x01：using mcu local time
+SYSTEM_EXTERN unsigned char xdata record_report_time_flag;	///<  0x00：using gateway time；0x01：using mcu local time
 
-SYSTEM_EXTERN unsigned char timestamp[4];	
+SYSTEM_EXTERN unsigned char xdata timestamp[4];	
 //SYSTEM_EXTERN _calendar_obj _time;	
 
 /**
@@ -262,7 +262,12 @@ void mcu_send_broadcast_data(unsigned char buf[], unsigned char buf_len);
 unsigned char get_current_mcu_fw_ver(void);
 
 #ifdef SUPPORT_MCU_OTA 
-
+/**
+* @brief mcu ota offset requset 
+* @param[in] {packet_offset}  packet offset 
+* @return  viod
+*/
+void mcu_ota_fw_request(void);
 
 /**
 * @brief mcu ota result report 
@@ -279,7 +284,7 @@ void mcu_ota_result_report(unsigned char status);
 * @param[in] {str2} str2
 * @return  equal return 0 else return -1
 */
-int strcmp_barry(unsigned char *str1,unsigned char *str2);
+//int strcmp_barry(unsigned char *str1,unsigned char *str2);
 
 /**
 * @brief translate assic to hex

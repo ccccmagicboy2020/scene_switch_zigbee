@@ -13,24 +13,23 @@
 
 
 #define SYSTEM_GLOBAL
-#include "HC89S003F4.h"
+
 #include "zigbee.h"
 
 
-void savevar(void);
-extern const DOWNLOAD_CMD_S xdata download_cmd[];
+extern const DOWNLOAD_CMD_S download_cmd[];
 
 
 #ifdef SUPPORT_MCU_RTC_CHECK
-const unsigned char xdata mon_table[12]={31,28,31,30,31,30,31,31,30,31,30,31};	
+const unsigned char mon_table[12]={31,28,31,30,31,30,31,31,30,31,30,31};	
 #endif
 
 #ifdef CHECK_MCU_TYPE
-MCU_TYPE_E xdata mcu_type = MCU_TYPE_DC_POWER;   
+MCU_TYPE_E mcu_type = MCU_TYPE_DC_POWER;   
 #endif
 
 
-static volatile unsigned short xdata global_seq_num;
+static volatile unsigned short global_seq_num;
 
 #ifdef CHECK_MCU_TYPE
 static void response_mcu_type(void);
@@ -38,7 +37,7 @@ static void response_mcu_type(void);
 
 
 #ifdef SET_ZIGBEE_NWK_PARAMETER
-nwk_parameter_t idata nwk_paremeter;
+nwk_parameter_t  nwk_paremeter;
 #endif
 
 
@@ -46,7 +45,7 @@ nwk_parameter_t idata nwk_paremeter;
 #ifdef SET_ZIGBEE_NWK_PARAMETER
 void init_nwk_paremeter(void)
 {
-	//#error "please call this fuction in main init"
+	#error "please call this fuction in main init"
 	nwk_paremeter.fast_poll_period = 0xfffe;
 	nwk_paremeter.heart_period = 0xfffe;
 	nwk_paremeter.join_nwk_time = 0xfffe;
@@ -287,7 +286,7 @@ int data_handle(unsigned short offset)
 				ret = zigbee_data_point_handle((unsigned char *)zigbee_uart_rx_buf + offset + DATA_START + i);
 					
 				if(SUCCESS == ret){
-						//
+						
 				}
 				else{
 						
@@ -327,6 +326,11 @@ int data_handle(unsigned short offset)
 		case MCU_OTA_NOTIFY_CMD:{
 			response_mcu_ota_notify_event(offset);
 		}
+		break;
+		
+		case MCU_OTA_DATA_REQUEST_CMD:{
+			mcu_ota_fw_request_event(offset);
+        }
 		break;
 		
 		case MCU_OTA_RESULT_CMD:{
@@ -536,7 +540,7 @@ void zigbee_timestamp_to_time(void)
  void mcu_set_zigbee_nwk_parameter(nwk_parameter_t *Pparameter)
 {
 	unsigned short length = 0;
-	//#error "please set network parameter in here, when zigbee received this message, it will start reboot"
+	#error "please set network parameter in here, when zigbee received this message, it will start reboot"
 	 //Pparameter->app_trigger_rejoin  = 0x00;
      //Pparameter->fast_poll_period = 0x00;
 
@@ -571,6 +575,7 @@ void zigbee_timestamp_to_time(void)
 * @param[in] {void}
 * @return  result of handle
 */
+#ifdef SUPPORT_MCU_OTA
 void current_mcu_fw_pid(void)
 {
 	unsigned char i = 0;
@@ -581,7 +586,7 @@ void current_mcu_fw_pid(void)
 		i++;
 	}
 }
-
+#endif
 /**
 * @brief mcu version string to char
 * @param[in] {void}
@@ -598,7 +603,33 @@ unsigned char get_current_mcu_fw_ver(void)
 }
 
 #ifdef SUPPORT_MCU_OTA
+/**
+* @brief mcu ota offset requset 
+* @param[in] {packet_offset}  packet offset 
+* @return  viod
+*/
+//when call this function, should set timeout event, if not received zigbee send response should res
+void mcu_ota_fw_request(void)
+{
+	unsigned char i = 0;
+	unsigned short length = 0;
 
+	if(ota_fw_info.mcu_current_offset >= ota_fw_info.mcu_ota_fw_size)   //outside
+		return;
+	while(i < 8){
+		length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_pid[i]); //ota fw pid
+		i++;
+	}
+	length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_ver);		//ota fw version
+	i = 0;
+	while(i < 4){
+		length = set_zigbee_uart_byte(length , ota_fw_info.mcu_current_offset >> (24 - i * 8));	//pakage offset request
+		i++;
+	}
+	length = set_zigbee_uart_byte(length ,FW_SINGLE_PACKET_SIZE);	// packet size request
+	
+	zigbee_uart_write_frame(MCU_OTA_DATA_REQUEST_CMD,length);
+}
 
 /**
 * @brief mcu ota result report 
@@ -628,19 +659,19 @@ void mcu_ota_result_report(unsigned char status)
 * @param[in] {str2} str2
 * @return  equal return 0 else return -1
 */
-int strcmp_barry(unsigned char *str1,unsigned char *str2)
-{
-   int ret=0;
-   while( !(ret = *(unsigned char*)str1 - *(unsigned char*)str2 ) && *str1 ){
-		 str1++;
-		 str2++;
-	 }
-	 if(ret < 0)	//str1 < str2
-			return -1;
-	 else if(ret > 0)	//str1 > str2
-			return 1;
-	 return 0;	//str1 == str2
-}
+// int strcmp_barry(unsigned char *str1,unsigned char *str2)
+// {
+   // int ret=0;
+   // while( !(ret = *(unsigned char*)str1 - *(unsigned char*)str2 ) && *str1 ){
+		 // str1++;
+		 // str2++;
+	 // }
+	 // if(ret < 0)	//str1 < str2
+			// return -1;
+	 // else if(ret > 0)	//str1 > str2
+			// return 1;
+	 // return 0;	//str1 == str2
+// }
 
 /**
 * @brief translate assic to hex
@@ -654,6 +685,3 @@ char assic_to_hex(unsigned char assic_num)
 	else
 		return assic_num % 0x30;
 }
-
-
-
