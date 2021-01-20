@@ -41,10 +41,10 @@ int main(void)
 	else
 	{
 		enable_timer(1);
-		uart1_init(0);//
+		uart1_init(0xff, 0x30);//
 		//mcu_reset_zigbee(0);
 		//mcu_reset_zigbee(1);
-		mcu_ota_result_report(0x01);
+		//mcu_ota_result_report(0x01);
 		while(1)
 		{
 			WDTC |= 0x10;		                  //วๅนท

@@ -51,16 +51,8 @@ void HandShake(void)
 //////////////////////////////////////////////////////////////////////////////
 	while(P0_4);
 	//enable_timer(0);
-	uart1_init(1);
-	
-//////////////////////////////////////////////////////////////////////////////
-	
-	T4CON = 0x06;						//T4工作模式：UART1波特率发生器
-	TH4 = 0xFF;
-	TL4 = 0xF8;							//波特率250000
-	SCON2 = 0x02;						//8位UART，波特率可变
-	SCON = 0x10;						//允许串行接收
-  
+	uart1_init(0xff, 0xf8);	//250000
+//////////////////////////////////////////////////////////////////////////////  
 	Uart_SendByte(ACK);                 //发送OX79
 	if(Uart_RecvByte(&Data,HandShark_TIMEOUT)!=SUCCESS) IAR_Soft_Rst_No_Option();//长时间没有接收到数据，进入APP	
 	if(Data!=0x7f)                                      IAR_Soft_Rst_No_Option();//数据不是OX7F，进入APP
@@ -256,30 +248,30 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 	unsigned char i;
 	unsigned char sum = 0;
 
-	if (Uart_RecvByte(Data,  Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+	if (Uart_RecvByte(Data,  Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 	if (FIRST_FRAME_HEAD == Data[0])
 	{
-		if (Uart_RecvByte(Data+1,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+		if (Uart_RecvByte(Data+1,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 		if (SECOND_FRAME_HEAD == Data[1])
 		{
-			if (Uart_RecvByte(Data+2,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+			if (Uart_RecvByte(Data+2,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 			if (SERIAL_PROTOCOL_VER == Data[2])
 			{
-				if (Uart_RecvByte(Data+3,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				if (Uart_RecvByte(Data+3,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 				tick_hi = Data[3];
-				if (Uart_RecvByte(Data+4,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				if (Uart_RecvByte(Data+4,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 				tick_lo = Data[4];
-				if (Uart_RecvByte(Data+5,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				if (Uart_RecvByte(Data+5,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 				command_byte = Data[5];
-				if (Uart_RecvByte(Data+6,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				if (Uart_RecvByte(Data+6,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 				num_hi = Data[6];
-				if (Uart_RecvByte(Data+7,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				if (Uart_RecvByte(Data+7,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 				num_lo = Data[7];
 				for (i = 0; i < num_lo; i++)
 				{
-					if (Uart_RecvByte(Data+8+i,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+					if (Uart_RecvByte(Data+8+i,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 				}
-				if (Uart_RecvByte(Data+PROTOCOL_HEAD+num_lo-1,Command_TIMEOUT)!= SUCCESS)   return NACK_TIME;
+				if (Uart_RecvByte(Data+PROTOCOL_HEAD+num_lo-1,Command_TIMEOUT_tuya)!= SUCCESS)   return NACK_TIME;
 
 				sum = get_check_sum(Data, PROTOCOL_HEAD+num_lo-1);
 
@@ -287,10 +279,10 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 				{
 					switch (command_byte)
 					{
-					case MCU_OTA_VERSION_CMD:
-						response_mcu_ota_version_event();
-						return	SUCCESS;
-						break;
+//					case MCU_OTA_VERSION_CMD:
+//						response_mcu_ota_version_event();
+//						return	SUCCESS;
+//						break;
 					case MCU_OTA_NOTIFY_CMD:
 						//EA = 0;		//for debug
 						response_mcu_ota_notify_event();
@@ -336,31 +328,28 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 unsigned char read_magic_flag(void)
 {
 	//read from flash
-	//IAR_Read(MAGIC_SECTOR_ADDRESS0, guc_Read_a, 2);
-	//return guc_Read_a[0];
-	return 0;			//test isp
-	//return 1;			//test tuya ota
+	unsigned char magic_byte = 0;
+	
+	IAR_Read(MAGIC_SECTOR_ADDRESS0, guc_Read_a, 2);
+	magic_byte = guc_Read_a[0];
+	IAR_Clear(MAGIC_SECTOR_ADDRESS0);
+	IAR_Write_Byte(MAGIC_SECTOR_ADDRESS0, 0x00);
+	
+	return magic_byte;
+	//return 0;			//force isp
+	//return 1;			//force tuya ota
 }
 
-void uart1_init(unsigned char mode)
+void uart1_init(unsigned char th, unsigned char tl)
 {
 	P2M0 = P2M0 & 0xF0 | 0x08;				      //P20设置为推挽输出
 	TXD_MAP = 0x20;													//TXD映射P20
 	RXD_MAP = 0x04;													//RXD映射P04
 	
-	if (1 == mode)
-	{
-		return;
-	}
-	else
-	{
-		//
-	}
-	
 	//init the uart1 again
 	T4CON = 0x06;						//T4工作模式：UART1波特率发生器
-	TH4 = 0xFF;
-	TL4 = 0x30;							//波特率9600
+	TH4 = th;
+	TL4 = tl;							//波特率9600
 	SCON2 = 0x02;						//8位UART，波特率可变
 	SCON = 0x10;						//允许串行接收
 }
@@ -377,12 +366,12 @@ unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len)
   return check_sum;
 }
 
-void response_mcu_ota_version_event(void)
-{
-	unsigned short length = 0;
-	length = set_zigbee_uart_byte(length,get_current_mcu_fw_ver());	//current fw version
-	zigbee_uart_write_frame(MCU_OTA_VERSION_CMD,length, tick_hi, tick_lo);
-}
+//void response_mcu_ota_version_event(void)
+//{
+//	unsigned short length = 0;
+//	length = set_zigbee_uart_byte(length,get_current_mcu_fw_ver());	//current fw version
+//	zigbee_uart_write_frame(MCU_OTA_VERSION_CMD,length, tick_hi, tick_lo);
+//}
 
 unsigned char get_current_mcu_fw_ver(void)
 {

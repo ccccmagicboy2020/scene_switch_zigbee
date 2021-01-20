@@ -3,7 +3,7 @@
 
 #define NAK_TIMEOUT             400000 //接收数据超时2S
 #define Command_TIMEOUT         400000 //接收命令数据超时2S
-#define Command_TIMEOUT_tuya    2000 //接收命令数据超时2S
+#define Command_TIMEOUT_tuya    4000 //接收命令数据超时20ms
 #define HandShark_TIMEOUT       4000   //接收握手数据超时20MS
 #define LVD_TIMEOUT             400000 //判断LVD超时200MS
 
