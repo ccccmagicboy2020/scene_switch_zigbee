@@ -4,7 +4,7 @@
 #define   Chip_ID   0X08
 
 void IAR_Soft_Rst_No_Option(void);
-void IAR_Soft_Rst_Option(void);
+//void IAR_Soft_Rst_Option(void);
 void IAR_Clear(unsigned int clradd);
 void IAR_Clear_arrang(unsigned int clradd,unsigned int len);
 void IAR_Write_Byte(unsigned int add,unsigned char datt);

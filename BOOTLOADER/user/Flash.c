@@ -118,11 +118,11 @@ void IAR_Soft_Rst_No_Option(void)
 	函数名称：FLASH软件复位
 	函数功能：重读Option									   
 *******************************************************/
-void IAR_Soft_Rst_Option(void)
-{
-	IAP_CMD = 0xF00F;
-	IAP_CMD = 0x7887;
-}
+//void IAR_Soft_Rst_Option(void)
+//{
+//	IAP_CMD = 0xF00F;
+//	IAP_CMD = 0x7887;
+//}
 
 /*********************************
 	函数名称： Read_ID(void)函数	
