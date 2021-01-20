@@ -39,6 +39,8 @@
 #define FIRST_FRAME_HEAD                    0x55                                            // first byte of frame 
 #define SECOND_FRAME_HEAD                   0xaa                                            // second byte of frame 
 
+#define     PRODUCT_INFO_CMD                1
+//#define     ZIGBEE_CFG_CMD                  3
 #define			MCU_OTA_VERSION_CMD				      0x0B							//zigbee request mcu version 
 #define			MCU_OTA_NOTIFY_CMD				    	0x0C							//mcu ota notify 
 #define			MCU_OTA_DATA_REQUEST_CMD			  0x0D							//MCU OTA data request 
@@ -49,7 +51,7 @@ unsigned char Receive_Packet (unsigned char *Data);//接收处理命令
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned char Receive_Packet_tuya (unsigned char *Data);//接收处理命令
 unsigned char read_magic_flag(void);
-void uart1_init(void);
+void uart1_init(unsigned char mode);
 unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len);
 void response_mcu_ota_version_event(void);
 unsigned char get_current_mcu_fw_ver(void);
@@ -63,6 +65,8 @@ void mcu_ota_result_report(unsigned char status);
 void my_memset(void *src, unsigned short count);
 void zigbee_uart_write_frame(unsigned char fr_cmd, unsigned short len, unsigned char seq_hi, unsigned char seq_lo);
 unsigned short set_zigbee_uart_byte(unsigned short dest, unsigned char byte);
+//void mcu_reset_zigbee(unsigned char network);
+void enable_timer(unsigned char en);
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRC校验
 bit           LVD_Check(unsigned long TimeOut);

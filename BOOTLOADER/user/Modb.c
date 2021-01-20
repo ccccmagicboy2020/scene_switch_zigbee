@@ -4,7 +4,8 @@
 #define  Version_Order_OutSide_Length    6
 #define  MCU_ID_Length                   10
 
-unsigned char  HandShake_Count=0;
+volatile ulong	HandShake_Count=0;
+
 extern unsigned char xdata guc_Read_a[2];
 extern unsigned char xdata tick_lo;
 extern unsigned char xdata tick_hi;
@@ -12,6 +13,7 @@ extern unsigned char xdata Uart_Buf[150];
 extern unsigned char xdata Uart_send_Buf[30];
 _ota_mcu_fw xdata ota_fw_info;
 unsigned int fw_file_sum = 0;
+//unsigned char flag0 = 0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -39,8 +41,7 @@ void HandShake(void)
 {
 	unsigned char Data;
 /**********************************自适应波特率串口初始化**************************************/	
-	TR1=1;//开定时器1
-	EA=1;	
+	enable_timer(1);
 	do{	
 		if(HandShake_Count>=30)//上电30ms没有检测到数据
 		{
@@ -49,11 +50,9 @@ void HandShake(void)
 	}
 //////////////////////////////////////////////////////////////////////////////
 	while(P0_4);
-	TR1=0;//关定时器T1
-	EA=0;
-	P2M0 = P2M0 & 0xF0 | 0x08;				      //P20设置为推挽输出
-	TXD_MAP = 0x20;													//TXD映射P20
-	RXD_MAP = 0x04;													//RXD映射P04
+	enable_timer(0);
+	uart1_init(1);
+	
 //////////////////////////////////////////////////////////////////////////////
 	
 	T4CON = 0x06;						//T4工作模式：UART1波特率发生器
@@ -61,7 +60,6 @@ void HandShake(void)
 	TL4 = 0xF8;							//波特率250000
 	SCON2 = 0x02;						//8位UART，波特率可变
 	SCON = 0x10;						//允许串行接收
-	//ES1 = 1;
   
 	Uart_SendByte(ACK);                 //发送OX79
 	if(Uart_RecvByte(&Data,HandShark_TIMEOUT)!=SUCCESS) IAR_Soft_Rst_No_Option();//长时间没有接收到数据，进入APP	
@@ -241,7 +239,13 @@ bit LVD_Check(unsigned long TimeOut)
 ***************************************************************************************/
 void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 {
-     HandShake_Count++;
+	HandShake_Count++;
+	
+	if (HandShake_Count >= 100)	//T = 200ms
+	{
+		HandShake_Count = 0;
+		P1_0 = ~P1_0;
+	}
 }
 
 unsigned char Receive_Packet_tuya (unsigned char *Data)
@@ -288,6 +292,7 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 						return	SUCCESS;
 						break;
 					case MCU_OTA_NOTIFY_CMD:
+						//EA = 0;		//for debug
 						response_mcu_ota_notify_event();
 						return	SUCCESS;
 						break;
@@ -337,8 +342,21 @@ unsigned char read_magic_flag(void)
 	//return 1;			//test tuya ota
 }
 
-void uart1_init(void)
+void uart1_init(unsigned char mode)
 {
+	P2M0 = P2M0 & 0xF0 | 0x08;				      //P20设置为推挽输出
+	TXD_MAP = 0x20;													//TXD映射P20
+	RXD_MAP = 0x04;													//RXD映射P04
+	
+	if (1 == mode)
+	{
+		return;
+	}
+	else
+	{
+		//
+	}
+	
 	//init the uart1 again
 	T4CON = 0x06;						//T4工作模式：UART1波特率发生器
 	TH4 = 0xFF;
@@ -400,6 +418,8 @@ void response_mcu_ota_notify_event(void)
 		//flag
 		//flag
 		Earse_Flash();
+		//EA = 0;		//for debug
+		//flag0 = 1;
 		//flag
 		//flag
 		//flag
@@ -528,6 +548,8 @@ void mcu_ota_fw_request(void)
 	length = set_zigbee_uart_byte(length, pack_size);	// packet size request
 	
 	zigbee_uart_write_frame(MCU_OTA_DATA_REQUEST_CMD,length, 0x00, 0x00);	
+	
+	//EA = 0;		//for debug
 }
 
 //主动发
@@ -608,4 +630,18 @@ unsigned short set_zigbee_uart_byte(unsigned short dest, unsigned char byte)
   dest += 1;
   
   return dest;
+}
+
+//void mcu_reset_zigbee(unsigned char network)
+//{
+//  unsigned short length = 0;
+
+//  length = set_zigbee_uart_byte(length,network);
+//  zigbee_uart_write_frame(ZIGBEE_CFG_CMD, length, 0x00, 0x00);
+//}
+
+void enable_timer(unsigned char en)
+{
+	TR1= en;		//start the timer
+	EA = en;		//start the interrupt
 }

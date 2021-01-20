@@ -7,10 +7,13 @@ unsigned char xdata magic_flag = 0;
 unsigned char xdata guc_Read_a[2] = {0x00}; //用于存放读取的数据
 unsigned char xdata tick_lo;
 unsigned char xdata tick_hi;
+//extern unsigned char flag0;
 
 int main(void)
 {
 	SystemInit();//初始化
+	GPIO_Init();
+	
 	magic_flag = read_magic_flag();
 	
 	if (0 == magic_flag)
@@ -37,12 +40,21 @@ int main(void)
 	}
 	else
 	{
-		uart1_init();//
+		TR1=1;		//start the timer
+		EA = 1;		//start the interrupt
+		uart1_init(0);//
+		//mcu_reset_zigbee(0);
+		//mcu_reset_zigbee(1);
+		mcu_ota_result_report(0x01);
 		while(1)
 		{
 			WDTC |= 0x10;		                  //清狗
 			Receive_Packet_tuya(Uart_Buf);		//接收判断
-			//mcu_ota_fw_request();
+
+			//if (1 == flag0)
+			{
+				//mcu_ota_fw_request();
+			}
 		}		
 	}
 	return	0;

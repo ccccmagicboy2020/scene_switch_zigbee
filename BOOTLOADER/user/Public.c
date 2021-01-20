@@ -28,3 +28,60 @@ void SystemInit(void)
 	TR1=0;									//T1 start fail
 	LVDC &=~ 0x08;					//清除LVD中断标志位 	
 }
+
+void GPIO_Init(void)
+{
+#ifdef V10
+	P0M0 = P0M0 & 0xF0 | 0x08; //P00
+	P0M0 = P0M0 & 0x0F | 0x30; //P01
+	P0M3 = P0M3 & 0x0F | 0x30; //P07
+	P0M3 = P0M3 & 0xF0 | 0x08; //P06
+#endif
+
+#ifdef V11
+	P0M0 = P0M0 & 0xF0 | 0x08; //P00设置为推挽输出
+	P0M0 = P0M0 & 0x0F | 0x30; //P01设置为模拟输入
+	P0M2 = P0M2 & 0x0F | 0x80; //P05设置为推挽输出
+	P0M3 = P0M3 & 0xF0 | 0x03; //P06设置为模拟输入
+	P0M3 = P0M3 & 0x0F | 0x20; //P07设置为上拉输入
+#endif
+
+#ifdef V12
+	P1M0 = P1M0 & 0xFF | 0x88; //P10设置为推挽输出
+							   //P11设置为推挽输出
+	P0M0 = P0M0 & 0x0F | 0x30; //P01设置为模拟输入
+	P2M1 = P2M1 & 0xF0 | 0x03; //P22设置为模拟输入
+#endif
+
+#ifdef XBR403_01
+	P1M0 = P1M0 & 0xFF | 0x88; //P10设置为推挽输出
+							   //P11设置为推挽输出
+
+	
+	P1_0 = 1;
+	P1_1 = 1;
+#endif
+
+#ifdef XBR403
+	//PWM & ADC
+	P1M0 = P1M0 & 0xF0 | 0x08; //P10设置为推挽输出
+	P0M0 = P0M0 & 0xFF | 0x88; //P00设置为推挽输出
+							   //P01设置为推挽输出
+	P0M1 = P0M1 & 0xFF | 0x83; //P03设置为推挽输出
+							   //P02设置为模拟输入
+	P0M3 = P0M3 & 0xF0 | 0x08; //P06设置为推挽输出
+	P2M1 = P2M1 & 0xF0 | 0x03; //P22设置为模拟输入
+#endif
+
+#ifdef XBR403_03_2
+	 //PWM & ADC
+	 P1M0 = P1M0 & 0x0F | 0x80; //P11  r
+	 P0M0 = P0M0 & 0xF0 | 0x03; //P00  if adc an0
+	 P0M0 = P0M0 & 0x0F | 0x80; //P01  ww
+	 P0M1 = P0M1 & 0xF0 | 0x08; //P02  g
+	 P0M1 = P0M1 & 0x0F | 0x80; //P03  b
+	 P0M3 = P0M3 & 0x0F | 0x30; //P07  light adc an7
+	 P2M3 = P2M3 & 0x0F | 0x80; //P27  cw
+#endif
+
+}

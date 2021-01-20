@@ -8,6 +8,9 @@
 #include "Flash.h"
 #include <HC_DEFINE.H>
 
+#define XBR403_01
+//#define PRODUCT_KEY "bttqbchl"
+
 #ifndef         NULL
 #define         NULL                ((void *) 0)
 #endif
