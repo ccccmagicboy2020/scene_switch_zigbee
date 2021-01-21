@@ -17,21 +17,6 @@ unsigned char  XOR_FLASH_BLANK(unsigned int Add,unsigned int Size_Flash)
 }
 /*********************************
 	函数名称：IAP清除扇区函数
-	函数功能：清除一个扇区的数据
-			  输入扇区地址为当前扇区内任意地址										   
-*********************************/
-#pragma disable
-void IAR_Clear(unsigned int clradd)
-{	
-	enable_timer(0);
-	IAP_CMD = 0xF00F;
-	IAP_ADDR = clradd;
-	IAP_CMD = 0xD22D;
-	IAP_CMD = 0xE11E;
-	enable_timer(1);
-}
-/*********************************
-	函数名称：IAP清除扇区函数
 	函数功能：全扇区擦除										   
 *********************************/
 void IAR_Clear_arrang(unsigned int clradd,unsigned int len)
@@ -56,23 +41,32 @@ unsigned char Earse_Flash(void)
 	IAR_Clear_arrang(0x2000,32);
 	if(XOR_FLASH_BLANK(0x0000,0x2FFF)!=0x00)  return 0;
 	else  return 1;						
-}	
+}
+/*********************************
+	函数名称：IAP清除扇区函数
+	函数功能：清除一个扇区的数据
+			  输入扇区地址为当前扇区内任意地址										   
+*********************************/
+void IAR_Clear(unsigned int clradd)
+{	
+	enable_timer(0);
+	IAP_CMD = 0xF00F;
+	IAP_ADDR = clradd;
+	IAP_CMD = 0xD22D;
+	IAP_CMD = 0xE11E;
+	enable_timer(1);
+}
 /*********************************
 	函数名称：FLASH写一个字节
 	函数功能：在FLASH任意位置写入一个字节的数据										   
 *********************************/
-#pragma disable
 void IAR_Write_Byte(unsigned int add,unsigned char datt)
 {
 	enable_timer(0);	
-	IAP_DATA = datt; //待编程数据，写入数据寄存器必须放在解锁之前
-	/*命令寄存器---解锁*/
+	IAP_DATA = datt;
 	IAP_CMD=0xF00F;
-	/*地址寄存器---写地址*/
 	IAP_ADDR=add;
-	/*命令寄存器---字节编程*/
 	IAP_CMD=0xB44B;
-	/*命令寄存器---触发一次*/
 	IAP_CMD=0xE11E;
 	enable_timer(1);
 }

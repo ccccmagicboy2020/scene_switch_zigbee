@@ -13,7 +13,7 @@ extern unsigned char xdata Uart_Buf[150];
 extern unsigned char xdata Uart_send_Buf[30];
 _ota_mcu_fw xdata ota_fw_info;
 unsigned int fw_file_sum = 0;
-//unsigned char flag0 = 0;
+unsigned char flag0 = 0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -332,12 +332,16 @@ unsigned char read_magic_flag(void)
 	
 	IAR_Read(MAGIC_SECTOR_ADDRESS0, guc_Read_a, 2);
 	magic_byte = guc_Read_a[0];
-	IAR_Clear(MAGIC_SECTOR_ADDRESS0);
-	IAR_Write_Byte(MAGIC_SECTOR_ADDRESS0, 0x00);
 	
 	return magic_byte;
 	//return 0;			//force isp
 	//return 1;			//force tuya ota
+}
+
+void clear_magic_flag(void)
+{
+	IAR_Clear(MAGIC_SECTOR_ADDRESS0);
+	IAR_Write_Byte(MAGIC_SECTOR_ADDRESS0, 0x00);
 }
 
 void uart1_init(unsigned char th, unsigned char tl)
@@ -407,8 +411,7 @@ void response_mcu_ota_notify_event(void)
 		//flag
 		//flag
 		Earse_Flash();
-		//EA = 0;		//for debug
-		//flag0 = 1;
+		flag0 = 1;
 		//flag
 		//flag
 		//flag
@@ -430,7 +433,7 @@ void mcu_ota_result_event(void)
 	{
 		//ok
 		//wirte/clear flash flag
-		//
+		clear_magic_flag();
 		//
 		//go app
 		IAR_Soft_Rst_No_Option();
