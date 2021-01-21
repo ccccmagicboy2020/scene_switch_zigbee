@@ -83,7 +83,7 @@ typedef enum
 //场景2(可下发可上报)
 //备注:
 #define DPID_SCENE_2 2
-//工厂操作(只下发)
+//工厂操作(可下发可上报)
 //备注:
 #define DPID_FACTORY_OP 150
 

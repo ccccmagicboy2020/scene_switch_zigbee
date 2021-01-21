@@ -95,6 +95,7 @@ void all_data_update(void)
  */
      mcu_dp_enum_update(DPID_SCENE_1,当前场景1); //枚举型数据上报;
     mcu_dp_enum_update(DPID_SCENE_2,当前场景2); //枚举型数据上报;
+    mcu_dp_enum_update(DPID_FACTORY_OP,当前工厂操作); //枚举型数据上报;
 
 }
 
@@ -174,7 +175,7 @@ static unsigned char dp_download_scene_2_handle(const unsigned char value[], uns
 输入参数 : value:数据源数据
         : length:数据长度
 返回参数 : 成功返回:SUCCESS/失败返回:ERROR
-使用说明 : 只下发类型,需要在处理完数据后上报处理结果至app
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
 *****************************************************************************/
 static unsigned char dp_download_factory_op_handle(const unsigned char value[], unsigned short length)
 {
