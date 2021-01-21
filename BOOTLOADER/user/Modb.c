@@ -13,7 +13,6 @@ extern unsigned char xdata Uart_Buf[150];
 extern unsigned char xdata Uart_send_Buf[30];
 _ota_mcu_fw xdata ota_fw_info;
 unsigned int fw_file_sum = 0;
-unsigned char flag0 = 0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -284,7 +283,6 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 //						return	SUCCESS;
 //						break;
 					case MCU_OTA_NOTIFY_CMD:
-						//EA = 0;		//for debug
 						response_mcu_ota_notify_event();
 						return	SUCCESS;
 						break;
@@ -379,7 +377,7 @@ unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len)
 
 unsigned char get_current_mcu_fw_ver(void)
 {
-	return 0x41;
+	return 0x00;
 }
 
 void response_mcu_ota_notify_event(void)
@@ -407,14 +405,9 @@ void response_mcu_ota_notify_event(void)
 		  ota_fw_info.mcu_ota_fw_size > 0)	
 		){		//check fw pid and fw version and fw size
 		result = 0x00;	//OK
-		//flag
-		//flag
-		//flag
+		ota_fw_info.mcu_current_offset = 0x00;
 		Earse_Flash();
-		flag0 = 1;
-		//flag
-		//flag
-		//flag
+		mcu_ota_fw_request();
 	}
 	else{
 		result = 0x01;	//error
@@ -452,6 +445,8 @@ unsigned char mcu_ota_fw_request_event(void)
 
 	if(Uart_Buf[DATA_START] == 0x01)				//status check 0x01 == fail
 		return ERROR;
+	
+	i = 0;	
 	while(i < 8){
 		if(ota_fw_info.mcu_ota_pid[i] != Uart_Buf[DATA_START + 1 + i])	//pid check
 			return ERROR;
@@ -465,10 +460,15 @@ unsigned char mcu_ota_fw_request_event(void)
 		fw_offset |= (Uart_Buf[DATA_START + 10 + i] << (24 - i * 8));		//offset
 		i++;
 	}
-	i = 0;
+
 	if(ota_fw_info.mcu_current_offset ==  fw_offset)
 	{
+		// 0x2D30 - 0x40
+		//error here
+		//error here
+		//error here
 		if((ota_fw_info.mcu_ota_fw_size - fw_offset) / FW_SINGLE_PACKET_SIZE != 0){
+			i = 0;
 			while(i < FW_SINGLE_PACKET_SIZE){
 				fw_data[i] = Uart_Buf[DATA_START + 14 + i];   //fw data
 				fw_file_sum += fw_data[i];
@@ -539,9 +539,7 @@ void mcu_ota_fw_request(void)
 	}
 	length = set_zigbee_uart_byte(length, pack_size);	// packet size request
 	
-	zigbee_uart_write_frame(MCU_OTA_DATA_REQUEST_CMD,length, 0x00, 0x00);	
-	
-	//EA = 0;		//for debug
+	zigbee_uart_write_frame(MCU_OTA_DATA_REQUEST_CMD,length, 0x00, 0x00);
 }
 
 //Ö÷¶¯·¢
@@ -549,6 +547,15 @@ void mcu_ota_result_report(unsigned char status)
 {
 	unsigned short length = 0;
 	unsigned char i = 0;
+	
+	length = set_zigbee_uart_byte(length,status); //upgrade result status(0x00:ota success;0x01:ota failed)
+	while(i < 8){
+		length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_pid[i]);	//PID
+		i++;
+	}
+	length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_ver);	//ota fw version
+	
+	zigbee_uart_write_frame(MCU_OTA_RESULT_CMD,length, 0x00, 0x00);	//response
 	
 	//upgrade result status(0x00:ota success;0x01:ota failed)
 	if (0x01 == status)	//fail
@@ -560,26 +567,16 @@ void mcu_ota_result_report(unsigned char status)
 	{
 		//ota sucess
 		//should report ota sucess notify
-		//
-		//
+		//do nothing here, do thing at rev handle
 	}
-	
-	length = set_zigbee_uart_byte(length,status); //upgrade result status(0x00:ota success;0x01:ota failed)
-	while(i < 8){
-		length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_pid[i]);	//PID
-		i++;
-	}
-	length = set_zigbee_uart_byte(length,ota_fw_info.mcu_ota_ver);	//ota fw version
-	
-	zigbee_uart_write_frame(MCU_OTA_RESULT_CMD,length, 0x00, 0x00);	//response 
 }
 
 void ota_fw_data_handle(unsigned int fw_offset,char *data0, unsigned char size0)
 {	
-	//
-	//
-	//
-	IAR_Write_arrang(fw_offset, data0, size0);
+	//here is not good!
+	//IAR_Write_arrang(fw_offset, data0, size0);
+	//for the next packet
+	mcu_ota_fw_request();
 }
 
 void my_memset(void *src, unsigned short count)
