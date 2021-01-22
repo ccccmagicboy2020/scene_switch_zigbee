@@ -4,6 +4,10 @@
 
 volatile ulong Timer_Counter = 0;
 
+volatile ulong free_timer = 0;
+ulong free_s_timer = 0;
+unsigned char second_flag = 0;
+
 void Flash_EraseBlock(unsigned int fui_Address); //扇区擦除
 void FLASH_WriteData(unsigned char fuc_SaveData, unsigned int fui_Address);
 
@@ -147,6 +151,13 @@ void main()
 		WDTC |= 0x10; //清看门狗
 		Delay_ms(2);
 		zigbee_uart_service();
+		
+		if (second_flag)
+		{
+			second_flag = 0;
+			free_s_timer++;
+			mcu_dp_value_update(DPID_FREE_TIMER, free_s_timer);
+		}
 	}
 }
 
@@ -158,7 +169,17 @@ void main()
 ***************************************************************************************/
 void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 {
-	Timer_Counter++;	
+	Timer_Counter++;
+	
+	if (free_timer > 1000)
+	{
+		free_timer = 0;
+		second_flag = 1;
+	}
+	else
+	{
+		free_timer++;
+	}
 }
 
 /***************************************************************************************

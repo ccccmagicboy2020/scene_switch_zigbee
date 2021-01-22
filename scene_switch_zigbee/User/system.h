@@ -187,28 +187,6 @@ void zigbee_uart_write_frame(unsigned char fr_cmd, unsigned short len);
 */
 int data_handle(unsigned short offset);
 
-/**
-* @brief mcu send a cmd which used to making zigbee module leave network
-* @param[in] {void}
-* @return  void
-*/
-void mcu_exit_zigbee(void);
-
-/**
-* @brief mcu send a cmd which used to making zigbee module restart jion network
-* @param[in] {void}
-* @return  void
-*/
-void mcu_join_zigbee(void);
-
-/**
-* @brief mcu send a cmd which used to getting zigbee network state 
-* @param[in] {void}
-* @return  void
-*/
-void mcu_get_zigbee_state(void);
-
-
 #ifdef SUPPORT_MCU_RTC_CHECK
 /**
 * @brief mcu send a cmd which used to getting timestamp

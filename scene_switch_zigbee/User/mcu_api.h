@@ -24,13 +24,7 @@ extern "C"
   #define MCU_API_EXTERN   extern
 #endif
 
-/**
-* @brief hex translate to bcd 
-* @param[in] {Value_H} higher bits data 
-* @param[in] {Value_L} lower bits data
-* @return  bcd type data
-*/
-unsigned char hex_to_bcd(unsigned char Value_H,unsigned char Value_L);
+
 
 /**
 * @brief get string len 
@@ -146,7 +140,7 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value);
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-//unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value);
+unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value);
 
 /**
 * @brief mcu get bool type value from zigbee translate 
@@ -185,14 +179,6 @@ void mcu_reset_zigbee(void);
 * @return void
 */
 void mcu_network_start(void);
-
-
-/**
-* @brief mcu start zigbee module test 
-* @param[in]  {channel} test channel usually 11
-* @return void
-*/
-void mcu_start_zigbee_test(unsigned char channel);
 
 /**
 * @brief copy receive data from uart receive interrupt

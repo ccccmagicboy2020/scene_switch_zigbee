@@ -13,44 +13,6 @@
 #include "zigbee.h"
 
 /**
-* @brief hex translate to bcd 
-* @param[in] {Value_H} higher bits data 
-* @param[in] {Value_L} lower bits data
-* @return  bcd type data
-*/
-unsigned char hex_to_bcd(unsigned char Value_H,unsigned char Value_L)
-{
-  unsigned char bcd_value;
-  
-  if((Value_H >= '0') && (Value_H <= '9')){
-    Value_H -= '0';
-  }
-  else if((Value_H >= 'A') && (Value_H <= 'F')){
-    Value_H = Value_H - 'A' + 10;
-  }
-  else if((Value_H >= 'a') && (Value_H <= 'f')){
-    Value_H = Value_H - 'a' + 10;
-  }
-
-  bcd_value = Value_H & 0x0f;
-  bcd_value <<= 4;
-
-  if((Value_L >= '0') && (Value_L <= '9')){
-    Value_L -= '0';
-  }
-  else if((Value_L >= 'A') && (Value_L <= 'F')){
-    Value_L = Value_L - 'a' + 10;
-  }
-  else if((Value_L >= 'a') && (Value_L <= 'f')){
-    Value_L = Value_L - 'a' + 10;
-  }
-  
-  bcd_value |= Value_L & 0x0f;
-
-  return bcd_value;
-}
-
-/**
 * @brief get string len 
 * @param[in] {str} higher bits data 
 * @return string len 
@@ -368,25 +330,25 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value)
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-// unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value)
-// {
-  // unsigned short length = 0;
+unsigned char mcu_dp_value_update(unsigned char dpid,unsigned long value)
+{
+  unsigned short length = 0;
   
-  // length = set_zigbee_uart_byte(length,dpid);
-  // length = set_zigbee_uart_byte(length,DP_TYPE_VALUE);
+  length = set_zigbee_uart_byte(length,dpid);
+  length = set_zigbee_uart_byte(length,DP_TYPE_VALUE);
+  //
+  length = set_zigbee_uart_byte(length,0);
+  length = set_zigbee_uart_byte(length,4);
+  //
+  length = set_zigbee_uart_byte(length,value >> 24);
+  length = set_zigbee_uart_byte(length,value >> 16);
+  length = set_zigbee_uart_byte(length,value >> 8);
+  length = set_zigbee_uart_byte(length,value & 0xff);
   
-  // length = set_zigbee_uart_byte(length,0);
-  // length = set_zigbee_uart_byte(length,4);
+  zigbee_uart_write_frame(DATA_REPORT_CMD,length);
   
-  // length = set_zigbee_uart_byte(length,value >> 24);
-  // length = set_zigbee_uart_byte(length,value >> 16);
-  // length = set_zigbee_uart_byte(length,value >> 8);
-  // length = set_zigbee_uart_byte(length,value & 0xff);
-  
-  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
-  
-  // return SUCCESS;
-// }
+  return SUCCESS;
+}
 
 /**
 * @brief mcu get bool type value from zigbee translate 
@@ -426,18 +388,6 @@ unsigned char mcu_get_dp_download_enum(const unsigned char value[],unsigned shor
 	// i = len;	
   // return(byte_to_int(value));
 // }
-
-
-/**
-* @brief mcu start zigbee module test 
-* @param[in]  {channel} test channel usually 11
-* @return void
-*/
-void mcu_start_zigbee_test(unsigned char channel)
-{
-	zigbee_uart_tx_buf[DATA_START+7] = channel;	
-  zigbee_uart_write_frame(ZIGBEE_RF_TEST_CMD,1);
-}
 
 
 /**

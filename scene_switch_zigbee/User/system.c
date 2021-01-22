@@ -360,41 +360,6 @@ int data_handle(unsigned short offset)
 	return 1;
 }
 
-/**
-* @brief mcu send a cmd which used to making zigbee module leave network
-* @param[in] {void}
-* @return  void
-*/
-void mcu_exit_zigbee(void)
-{
-	unsigned short length = 0;
-	length = set_zigbee_uart_byte(length,0x00);
-	zigbee_uart_write_frame(ZIGBEE_CFG_CMD, length);
-}
-
-/**
-* @brief mcu send a cmd which used to making zigbee module restart jion network
-* @param[in] {void}
-* @return  void
-*/
-void mcu_join_zigbee(void)
-{
-	unsigned short length = 0;
-	length = set_zigbee_uart_byte(length,0x01);
-    zigbee_uart_write_frame(ZIGBEE_CFG_CMD, length);
-}
-
-/**
-* @brief mcu send a cmd which used to getting zigbee network state 
-* @param[in] {void}
-* @return  void
-*/
-void mcu_get_zigbee_state(void)
-{
-  zigbee_uart_write_frame(ZIGBEE_STATE_CMD, 0);
-}
-
-
 #ifdef CHECK_MCU_TYPE
 /**
 * @brief response zigbee check mcu type cmd 
@@ -685,3 +650,6 @@ char assic_to_hex(unsigned char assic_num)
 	else
 		return assic_num % 0x30;
 }
+
+
+
