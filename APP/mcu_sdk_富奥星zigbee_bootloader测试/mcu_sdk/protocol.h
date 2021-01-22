@@ -77,15 +77,12 @@ typedef enum
  * DP data list,this code will be generate by cloud platforms
  */
 
-//场景1(可下发可上报)
-//备注:
-#define DPID_SCENE_1 1
-//场景2(可下发可上报)
-//备注:
-#define DPID_SCENE_2 2
 //工厂操作(可下发可上报)
 //备注:
 #define DPID_FACTORY_OP 150
+//计数器 (只上报)
+//备注:
+#define DPID_FREE_TIMER 151
 
 
 
