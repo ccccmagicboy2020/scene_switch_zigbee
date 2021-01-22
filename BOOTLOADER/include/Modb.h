@@ -42,8 +42,7 @@ unsigned char Receive_Packet_tuya (unsigned char *Data);//接收处理命令
 unsigned char read_magic_flag(void);
 void uart1_init(unsigned char th, unsigned char tl);
 unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len);
-//void response_mcu_ota_version_event(void);
-unsigned char get_current_mcu_fw_ver(void);
+void response_mcu_ota_version_event(void);
 void response_mcu_ota_notify_event(void);
 void mcu_ota_result_event(void);
 unsigned char mcu_ota_fw_request_event(void);
@@ -55,7 +54,7 @@ void my_memset(void *src, unsigned short count);
 void zigbee_uart_write_frame(unsigned char fr_cmd, unsigned short len, unsigned char seq_hi, unsigned char seq_lo);
 unsigned short set_zigbee_uart_byte(unsigned short dest, unsigned char byte);
 void enable_timer(unsigned char en);
-void clear_magic_flag(void);
+void set_magic_flag(unsigned char temp);
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRC校验
 bit           LVD_Check(unsigned long TimeOut);

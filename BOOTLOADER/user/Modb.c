@@ -281,10 +281,10 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 				{
 					switch (command_byte)
 					{
-//					case MCU_OTA_VERSION_CMD:
-//						response_mcu_ota_version_event();
-//						return	SUCCESS;
-//						break;
+					case MCU_OTA_VERSION_CMD:
+						response_mcu_ota_version_event();
+						return	SUCCESS;
+						break;
 					case MCU_OTA_NOTIFY_CMD:
 						response_mcu_ota_notify_event();
 						return	SUCCESS;
@@ -343,10 +343,10 @@ unsigned char read_magic_flag(void)
 	//return 1;			//force tuya ota
 }
 
-void clear_magic_flag(void)
+void set_magic_flag(unsigned char temp)
 {
 	IAR_Clear(MAGIC_SECTOR_ADDRESS0);
-	IAR_Write_Byte(MAGIC_SECTOR_ADDRESS0, 0x00);
+	IAR_Write_Byte(MAGIC_SECTOR_ADDRESS0, temp);
 }
 
 void uart1_init(unsigned char th, unsigned char tl)
@@ -375,16 +375,11 @@ unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len)
   return check_sum;
 }
 
-//void response_mcu_ota_version_event(void)
-//{
-//	unsigned short length = 0;
-//	length = set_zigbee_uart_byte(length,get_current_mcu_fw_ver());	//current fw version
-//	zigbee_uart_write_frame(MCU_OTA_VERSION_CMD,length, tick_hi, tick_lo);
-//}
-
-unsigned char get_current_mcu_fw_ver(void)
+void response_mcu_ota_version_event(void)
 {
-	return 0x00;
+	unsigned short length = 0;
+	length = set_zigbee_uart_byte(length, 0x00);	//current fw version
+	zigbee_uart_write_frame(MCU_OTA_VERSION_CMD,length, tick_hi, tick_lo);
 }
 
 void response_mcu_ota_notify_event(void)
@@ -408,7 +403,7 @@ void response_mcu_ota_notify_event(void)
 																 Uart_Buf[DATA_START + 15] << 8 | \
 																 Uart_Buf[DATA_START + 16];							//ota fw checksum
 	
-	if((ota_fw_info.mcu_ota_ver > get_current_mcu_fw_ver() &&\
+	if((ota_fw_info.mcu_ota_ver > 0x00 &&\
 		  ota_fw_info.mcu_ota_fw_size > 0)	
 		){		//check fw pid and fw version and fw size
 		result = 0x00;	//OK
@@ -418,6 +413,7 @@ void response_mcu_ota_notify_event(void)
 		ota_packet_current_num = 0;
 		fw_file_sum = 0;
 		Earse_Flash();
+		set_magic_flag(1);
 	}
 	else{
 		result = 0x01;	//error
@@ -440,7 +436,7 @@ void mcu_ota_result_event(void)
 	{
 		//ok
 		//wirte/clear flash flag
-		clear_magic_flag();
+		set_magic_flag(0);
 		//
 		//go app
 		IAR_Soft_Rst_No_Option();
