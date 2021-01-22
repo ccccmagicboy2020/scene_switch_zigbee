@@ -40,7 +40,7 @@ int main(void)
 	else
 	{
 		//clear here?
-		clear_magic_flag();
+		//clear_magic_flag();
 		enable_timer(1);
 		uart1_init(0xff, 0x30);
 		while(1)

@@ -13,6 +13,9 @@ extern unsigned char xdata Uart_Buf[150];
 extern unsigned char xdata Uart_send_Buf[30];
 _ota_mcu_fw xdata ota_fw_info;
 unsigned int fw_file_sum = 0;
+unsigned short ota_packet_total_num = 0;
+unsigned short ota_packet_current_num = 0;
+unsigned char ota_last_packet_size = 0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -291,6 +294,10 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 						{
 							mcu_ota_result_report(0x01);
 						}
+						else
+						{
+							mcu_ota_fw_request();
+						}
 						return	SUCCESS;
 						break;
 					case MCU_OTA_RESULT_CMD:
@@ -406,16 +413,23 @@ void response_mcu_ota_notify_event(void)
 		){		//check fw pid and fw version and fw size
 		result = 0x00;	//OK
 		ota_fw_info.mcu_current_offset = 0x00;
+		ota_packet_total_num = ota_fw_info.mcu_ota_fw_size / FW_SINGLE_PACKET_SIZE;
+		ota_last_packet_size = ota_fw_info.mcu_ota_fw_size % FW_SINGLE_PACKET_SIZE;
+		ota_packet_current_num = 0;
+		fw_file_sum = 0;
 		Earse_Flash();
-		mcu_ota_fw_request();
 	}
 	else{
 		result = 0x01;	//error
 	}
   
 	length = set_zigbee_uart_byte(length,result);
-  ota_fw_info.mcu_current_offset = 0;
 	zigbee_uart_write_frame(MCU_OTA_NOTIFY_CMD,length, tick_hi, tick_lo);
+	
+	if (0x00 == result)
+	{
+		mcu_ota_fw_request();
+	}
 }
 
 void mcu_ota_result_event(void)
@@ -436,63 +450,75 @@ void mcu_ota_result_event(void)
 		//fail
 	}
 }
-
+//rev
+////////////////////////////////////////////////////////////////////////////////////////////////
 unsigned char mcu_ota_fw_request_event(void)
 {	
-	char fw_data[FW_SINGLE_PACKET_SIZE] = {-1};	//
+	unsigned char fw_data[FW_SINGLE_PACKET_SIZE] = {0};	//
 	unsigned char i = 0;
 	unsigned int fw_offset;
 
 	if(Uart_Buf[DATA_START] == 0x01)				//status check 0x01 == fail
-		return ERROR;
-	
-	i = 0;	
-	while(i < 8){
-		if(ota_fw_info.mcu_ota_pid[i] != Uart_Buf[DATA_START + 1 + i])	//pid check
-			return ERROR;
-		i++;
+	{
+		return ERROR;	
 	}
-	if(ota_fw_info.mcu_ota_ver != Uart_Buf[DATA_START + 9]) //version check
-		return ERROR;
 	
 	i = 0;
+	while(i < 8){
+		if(ota_fw_info.mcu_ota_pid[i] != Uart_Buf[DATA_START + 1 + i])	//pid check
+		{
+			return ERROR;		
+		}
+		i++;
+	}
+	
+	if(ota_fw_info.mcu_ota_ver != Uart_Buf[DATA_START + 9]) //version check
+	{	
+		return ERROR;
+	}
+
+	i = 0;
+	fw_offset = 0;
 	while(i < 4){
 		fw_offset |= (Uart_Buf[DATA_START + 10 + i] << (24 - i * 8));		//offset
 		i++;
 	}
-
+	
 	if(ota_fw_info.mcu_current_offset ==  fw_offset)
 	{
-		// 0x2D30 - 0x40
-		//error here
-		//error here
-		//error here
-		if((ota_fw_info.mcu_ota_fw_size - fw_offset) / FW_SINGLE_PACKET_SIZE != 0){
+		if (ota_packet_current_num < ota_packet_total_num)
+		{
 			i = 0;
-			while(i < FW_SINGLE_PACKET_SIZE){
+			while(i < FW_SINGLE_PACKET_SIZE)
+			{
 				fw_data[i] = Uart_Buf[DATA_START + 14 + i];   //fw data
 				fw_file_sum += fw_data[i];
 				i++;
 			}
 			ota_fw_info.mcu_current_offset += FW_SINGLE_PACKET_SIZE;
+			ota_packet_current_num++;
 		}
-		else {		//the last packet!!!
+		else
+		{
 			i = 0;
-			while(i < (ota_fw_info.mcu_ota_fw_size - fw_offset)){
+			while(i < ota_last_packet_size)
+			{
 				fw_data[i] = Uart_Buf[DATA_START + 14 + i];
 				fw_file_sum += fw_data[i];
 				i++;
 			}
-			if(ota_fw_info.mcu_ota_checksum != fw_file_sum)	
-					{
-						return ERROR;
-					}	
-					else
-					{
-						ota_fw_data_handle(fw_offset,&fw_data[0], ota_fw_info.mcu_ota_fw_size - fw_offset);
-						mcu_ota_result_report(0x00);// report to app
-						return SUCCESS;
-					}																	
+			
+			if(ota_fw_info.mcu_ota_checksum != fw_file_sum)
+			{
+				return ERROR;
+			}	
+			else
+			{
+				ota_fw_data_handle(fw_offset,&fw_data[0], ota_last_packet_size);
+				ota_packet_current_num = 0;
+				mcu_ota_result_report(0x00);// report to app
+				return SUCCESS;
+			}
 		}
 	  ota_fw_data_handle(fw_offset,&fw_data[0], FW_SINGLE_PACKET_SIZE);	//OTA paket data handle
 		return SUCCESS;
@@ -516,14 +542,14 @@ void mcu_ota_fw_request(void)
 	}
 	else
 	{
-		//
-		if((ota_fw_info.mcu_ota_fw_size - ota_fw_info.mcu_current_offset) / FW_SINGLE_PACKET_SIZE != 0)
+		//here
+		if (ota_packet_current_num < ota_packet_total_num)
 		{
 			pack_size = FW_SINGLE_PACKET_SIZE;
 		}
 		else
 		{
-			pack_size = (ota_fw_info.mcu_ota_fw_size - ota_fw_info.mcu_current_offset) % FW_SINGLE_PACKET_SIZE;
+			pack_size = ota_last_packet_size;
 		}
 	}
 
@@ -573,10 +599,8 @@ void mcu_ota_result_report(unsigned char status)
 
 void ota_fw_data_handle(unsigned int fw_offset,char *data0, unsigned char size0)
 {	
-	//here is not good!
-	//IAR_Write_arrang(fw_offset, data0, size0);
-	//for the next packet
-	mcu_ota_fw_request();
+	//write the flash here!
+	IAR_Write_arrang(fw_offset, data0, size0);
 }
 
 void my_memset(void *src, unsigned short count)
