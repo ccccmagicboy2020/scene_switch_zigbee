@@ -14,6 +14,7 @@
 #include "HC89S003F4.h"
 
 extern ulong free_s_timer;
+extern unsigned char upload_disable;
 
 void send_data(u8 d);
 void Flash_EraseBlock(unsigned int fui_Address);//
@@ -284,7 +285,8 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 			break;
 		
 		case ZIGBEE_JOIN_GATEWAY:	
-				all_data_update();
+			upload_disable = 0;
+			all_data_update();
 			break;
 		
 		case ZIGBEE_JOIN_ERROR:	
@@ -292,7 +294,7 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 			break;
 		
 		case ZIGBEE_JOINING:	
-
+			upload_disable = 1;
 			break;
 		
 		default:
