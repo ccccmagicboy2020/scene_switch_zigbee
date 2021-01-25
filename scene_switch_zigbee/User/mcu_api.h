@@ -114,7 +114,7 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value);
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-//unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value);
+unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value);
 
 /**
 * @brief report raw type DP data to zigbee module 
@@ -132,7 +132,7 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value);
 * @param[in]  {len} length of Data contents  
 * @return send result 
 */
-//unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len);
+unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len);
 
 /**
 * @brief report raw type DP data to zigbee module 

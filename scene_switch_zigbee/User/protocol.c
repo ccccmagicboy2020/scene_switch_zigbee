@@ -43,6 +43,8 @@ const DOWNLOAD_CMD_S download_cmd[] =
 {
   {DPID_FACTORY_OP, DP_TYPE_ENUM},
   {DPID_FREE_TIMER, DP_TYPE_VALUE},
+  {DPID_FAIL_REPORT, DP_TYPE_FAULT},
+  {DPID_STRING_REPORT, DP_TYPE_STRING},
 };
 
 
@@ -101,6 +103,8 @@ void all_data_update(void)
  */
     mcu_dp_enum_update(DPID_FACTORY_OP, 6); //枚举型数据上报;
     mcu_dp_value_update(DPID_FREE_TIMER, 0 ); //VALUE型数据上报;
+    mcu_dp_fault_update(DPID_FAIL_REPORT, 0); //故障型数据上报;
+    mcu_dp_string_update(DPID_STRING_REPORT, "hello!", sizeof("hello!")); //STRING型数据上报;
 
 }
 
@@ -154,6 +158,9 @@ static unsigned char dp_download_factory_op_handle(const unsigned char value[], 
         break;
         case 6:// clear the free timer
 					clear_timer();
+        break;
+        case 7:// tuya 产测
+			//
         break;
         
         default:
@@ -338,7 +345,8 @@ void go_bootloader_ota(void)
 	//write flash flag
 	Flash_EraseBlock(MAGIC_SECTOR_ADDRESS0);
 	FLASH_WriteData(0x01, MAGIC_SECTOR_ADDRESS0);
-	
+	//string tips
+	mcu_dp_string_update(DPID_STRING_REPORT, "already in bootloader", sizeof("already in bootloader"));
 	//bootloader
 	IAR_Soft_Rst_Option();
 }

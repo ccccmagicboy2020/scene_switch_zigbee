@@ -245,36 +245,36 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value)
 * @param[in]  {value} Data contents of dp 
 * @return send result 
 */
-// unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value)
-// {
-  // unsigned short length = 0;
+unsigned char mcu_dp_fault_update(unsigned char dpid,unsigned long value)
+{
+	unsigned short length = 0;
 
-  // length = set_zigbee_uart_byte(length,dpid);
-  // length = set_zigbee_uart_byte(length,DP_TYPE_BITMAP);
-  
-  // length = set_zigbee_uart_byte(length,0);
-  
-  // if((value | 0xff) == 0xff){
-    // length = set_zigbee_uart_byte(length,1);
-    // length = set_zigbee_uart_byte(length,value);
-  // }
-  // else if((value | 0xffff) == 0xffff){
-    // length = set_zigbee_uart_byte(length,2);
-    // length = set_zigbee_uart_byte(length,value >> 8);
-    // length = set_zigbee_uart_byte(length,value & 0xff);
-  // }
-  // else{
-    // length = set_zigbee_uart_byte(length,4);
-    // length = set_zigbee_uart_byte(length,value >> 24);
-    // length = set_zigbee_uart_byte(length,value >> 16);
-    // length = set_zigbee_uart_byte(length,value >> 8);
-    // length = set_zigbee_uart_byte(length,value & 0xff);
-  // }    
-  
-  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+	length = set_zigbee_uart_byte(length,dpid);
+	length = set_zigbee_uart_byte(length,DP_TYPE_BITMAP);
 
-  // return SUCCESS;
-// }
+	length = set_zigbee_uart_byte(length,0);
+
+	if((value | 0xff) == 0xff){
+		length = set_zigbee_uart_byte(length,1);
+		length = set_zigbee_uart_byte(length,value);
+	}
+	else if((value | 0xffff) == 0xffff){
+		length = set_zigbee_uart_byte(length,2);
+		length = set_zigbee_uart_byte(length,value >> 8);
+		length = set_zigbee_uart_byte(length,value & 0xff);
+	}
+	else{
+		length = set_zigbee_uart_byte(length,4);
+		length = set_zigbee_uart_byte(length,value >> 24);
+		length = set_zigbee_uart_byte(length,value >> 16);
+		length = set_zigbee_uart_byte(length,value >> 8);
+		length = set_zigbee_uart_byte(length,value & 0xff);
+	}    
+
+	zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+
+	return SUCCESS;
+}
 
 /**
 * @brief report raw type DP data to zigbee module 
@@ -307,22 +307,22 @@ unsigned char mcu_dp_enum_update(unsigned char dpid,unsigned char value)
 * @param[in]  {len} length of Data contents  
 * @return send result 
 */
-// unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len)
-// {
-  // unsigned short length = 0;
-  
-  // length = set_zigbee_uart_byte(length,dpid);
-  // length = set_zigbee_uart_byte(length,DP_TYPE_STRING);
-  
-  // length = set_zigbee_uart_byte(length,len / 0x100);
-  // length = set_zigbee_uart_byte(length,len % 0x100);
-  
-  // length = set_zigbee_uart_buffer(length,(unsigned char *)value,len);
-  
-  // zigbee_uart_write_frame(DATA_REPORT_CMD,length);
-  
-  // return SUCCESS;
-// }
+unsigned char mcu_dp_string_update(unsigned char dpid,const unsigned char value[],unsigned short len)
+{
+	unsigned short length = 0;
+
+	length = set_zigbee_uart_byte(length,dpid);
+	length = set_zigbee_uart_byte(length,DP_TYPE_STRING);
+
+	length = set_zigbee_uart_byte(length,len / 0x100);
+	length = set_zigbee_uart_byte(length,len % 0x100);
+
+	length = set_zigbee_uart_buffer(length,(unsigned char *)value,len);
+
+	zigbee_uart_write_frame(DATA_REPORT_CMD,length);
+
+	return SUCCESS;
+}
 
 /**
 * @brief report raw type DP data to zigbee module 
