@@ -78,11 +78,18 @@ typedef enum
  */
 
 //工厂操作(可下发可上报)
-//备注:
+//备注:工厂操作菜单
 #define DPID_FACTORY_OP 150
 //计数器 (只上报)
-//备注:
+//备注:自由计数器
+//
 #define DPID_FREE_TIMER 151
+//故障上报(只上报)
+//备注:
+#define DPID_FAIL_REPORT 152
+//字串上报(只上报)
+//备注:
+#define DPID_STRING_REPORT 153
 
 
 

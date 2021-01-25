@@ -37,6 +37,8 @@ const DOWNLOAD_CMD_S download_cmd[] =
 {
   {DPID_FACTORY_OP, DP_TYPE_ENUM},
   {DPID_FREE_TIMER, DP_TYPE_VALUE},
+  {DPID_FAIL_REPORT, DP_TYPE_FAULT},
+  {DPID_STRING_REPORT, DP_TYPE_STRING},
 };
 
 
@@ -94,6 +96,8 @@ void all_data_update(void)
  */
      mcu_dp_enum_update(DPID_FACTORY_OP,当前工厂操作); //枚举型数据上报;
     mcu_dp_value_update(DPID_FREE_TIMER,当前计数器 ); //VALUE型数据上报;
+    mcu_dp_fault_update(DPID_FAIL_REPORT,当前故障上报); //故障型数据上报;
+    mcu_dp_string_update(DPID_STRING_REPORT,当前字串上报指针,当前字串上报数据长度); //STRING型数据上报;
 
 }
 
@@ -140,6 +144,9 @@ static unsigned char dp_download_factory_op_handle(const unsigned char value[], 
         break;
         
         case 6:
+        break;
+        
+        case 7:
         break;
         
         default:
