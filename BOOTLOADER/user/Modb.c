@@ -16,6 +16,7 @@ unsigned int fw_file_sum = 0;
 unsigned short ota_packet_total_num = 0;
 unsigned short ota_packet_current_num = 0;
 unsigned char ota_last_packet_size = 0;
+unsigned short led_speed = 0;
 
 unsigned char code ISP_Version_Internal_Order[]={       
 														Version_Order_Internal_Length,
@@ -52,7 +53,6 @@ void HandShake(void)
 	}
 //////////////////////////////////////////////////////////////////////////////
 	while(P0_4);
-	//enable_timer(0);
 	uart1_init(0xff, 0xf8);	//250000
 //////////////////////////////////////////////////////////////////////////////  
 	Uart_SendByte(ACK);                 //发送OX79
@@ -77,6 +77,7 @@ void HandShake(void)
   
 }
 
+#ifdef HOLYCHIP
 unsigned char Receive_Packet (unsigned char *Data)
 {
 	unsigned char i;
@@ -224,7 +225,7 @@ bit LVD_Check(unsigned long TimeOut)
 	}
 		return ERROR;
 }
-
+#endif
 /***************************************************************************************
   * @说明  	T1中断服务函数
   *	@参数	无
@@ -235,7 +236,7 @@ void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 {
 	HandShake_Count++;
 	
-	if (HandShake_Count >= 100)	//T = 200ms
+	if (HandShake_Count >= led_speed)	//T = 200ms
 	{
 		HandShake_Count = 0;
 		P1_0 = ~P1_0;
@@ -414,6 +415,7 @@ void response_mcu_ota_notify_event(void)
 		fw_file_sum = 0;
 		Earse_Flash();
 		set_magic_flag(1);
+		led_speed = 500;
 	}
 	else{
 		result = 0x01;	//error

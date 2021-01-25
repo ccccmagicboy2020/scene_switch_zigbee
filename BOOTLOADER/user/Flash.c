@@ -119,6 +119,7 @@ void IAR_Soft_Rst_No_Option(void)
 	函数名称： Read_ID(void)函数	
 	函数功能： 读取芯片型号								   
 *********************************/
+#ifdef HOLYCHIP
 bit Read_ID(void)
 {
  	INSCON=0x10;
@@ -134,3 +135,6 @@ bit Read_ID(void)
         return ERROR;
 	}
 }
+#endif
+
+
