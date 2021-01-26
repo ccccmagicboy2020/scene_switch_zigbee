@@ -243,7 +243,7 @@ void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 	}
 }
 
-unsigned char Receive_Packet_tuya (unsigned char *Data)
+unsigned char Receive_Packet_tuya(unsigned char *Data)
 {
 	unsigned char command_byte;
 	unsigned char num_lo;
@@ -283,7 +283,7 @@ unsigned char Receive_Packet_tuya (unsigned char *Data)
 					switch (command_byte)
 					{
 					case MCU_OTA_VERSION_CMD:
-						response_mcu_ota_version_event();
+						response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
 						return	SUCCESS;
 						break;
 					case MCU_OTA_NOTIFY_CMD:
@@ -376,10 +376,10 @@ unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len)
   return check_sum;
 }
 
-void response_mcu_ota_version_event(void)
+void response_mcu_ota_version_event(unsigned char ver)
 {
 	unsigned short length = 0;
-	length = set_zigbee_uart_byte(length, 0x00);	//current fw version
+	length = set_zigbee_uart_byte(length, ver);
 	zigbee_uart_write_frame(MCU_OTA_VERSION_CMD,length, tick_hi, tick_lo);
 }
 
@@ -436,7 +436,14 @@ void mcu_ota_result_event(void)
 	
 	if(status == 0x00)
 	{
-		//ok
+		//active report the new version
+		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
+		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
+		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
+		//notify_only dp report here
+		//
+		//
+		//
 		//wirte/clear flash flag
 		set_magic_flag(0);
 		//

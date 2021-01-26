@@ -42,7 +42,7 @@ unsigned char Receive_Packet_tuya (unsigned char *Data);//接收处理命令
 unsigned char read_magic_flag(void);
 void uart1_init(unsigned char th, unsigned char tl);
 unsigned char get_check_sum(unsigned char *pack, unsigned short pack_len);
-void response_mcu_ota_version_event(void);
+void response_mcu_ota_version_event(unsigned char ver);
 void response_mcu_ota_notify_event(void);
 void mcu_ota_result_event(void);
 unsigned char mcu_ota_fw_request_event(void);
