@@ -53,9 +53,9 @@ int main(void)
 		enable_timer(1);
 		uart1_init(0xff, 0x30);
 		
-		response_mcu_ota_version_event(0x00);
-		response_mcu_ota_version_event(0x00);
-		response_mcu_ota_version_event(0x00);
+		response_mcu_ota_version_event(0x40);
+		response_mcu_ota_version_event(0x40);
+		response_mcu_ota_version_event(0x40);
 		while(1)
 		{
 			WDTC |= 0x10;		                  //วๅนท
