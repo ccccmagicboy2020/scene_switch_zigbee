@@ -587,6 +587,8 @@ void mcu_ota_result_report(unsigned char status)
 		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
 		//ota failure report ota failure and clear ota struct 
 		my_memset(&ota_fw_info, sizeof(ota_fw_info));
+		//led fast
+		led_speed = 100;
 	}
 	else if (0x00 == status)
 	{
