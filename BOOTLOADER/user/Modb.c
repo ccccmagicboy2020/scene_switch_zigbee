@@ -297,7 +297,10 @@ unsigned char Receive_Packet_tuya(unsigned char *Data)
 						}
 						else
 						{
-							mcu_ota_fw_request();
+							if (ota_packet_current_num <= ota_packet_total_num)
+							{
+								mcu_ota_fw_request();
+							}
 						}
 						return	SUCCESS;
 						break;
@@ -306,7 +309,7 @@ unsigned char Receive_Packet_tuya(unsigned char *Data)
 						return	SUCCESS;
 						break;
 					default:
-						return ERROR;
+						return NACK_TIME;
 						break;
 					}
 				}
@@ -436,19 +439,7 @@ void mcu_ota_result_event(void)
 	
 	if(status == 0x00)
 	{
-		//active report the new version
-		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
-		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
-		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
-		//notify_only dp report here
-		//
-		//
-		//
-		//wirte/clear flash flag
-		set_magic_flag(0);
-		//
-		//go app
-		IAR_Soft_Rst_No_Option();
+		//ok
 	}
 	else if(status == 0x01)
 	{
@@ -520,8 +511,7 @@ unsigned char mcu_ota_fw_request_event(void)
 			else
 			{
 				ota_fw_data_handle(fw_offset,&fw_data[0], ota_last_packet_size);
-				ota_packet_current_num = 0;
-				mcu_ota_result_report(0x00);// report to app
+				mcu_ota_result_report(0x00);// report to tuya module
 				return SUCCESS;
 			}
 		}
@@ -591,14 +581,22 @@ void mcu_ota_result_report(unsigned char status)
 	//upgrade result status(0x00:ota success;0x01:ota failed)
 	if (0x01 == status)	//fail
 	{
+		//active report the new version
+		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
+		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
+		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
 		//ota failure report ota failure and clear ota struct 
 		my_memset(&ota_fw_info, sizeof(ota_fw_info));
 	}
 	else if (0x00 == status)
 	{
 		//ota sucess
-		//should report ota sucess notify
-		//do nothing here, do thing at rev handle
+		//notify_only dp report here
+		//
+		//wirte/clear flash flag
+		set_magic_flag(0);
+		//go app
+		IAR_Soft_Rst_No_Option();
 	}
 }
 

@@ -56,9 +56,9 @@ bit Uart_GetByte(unsigned char *guc_Uartbuf)
 *************************************************************/
 bit Uart_RecvByte(unsigned char *guc_Uartbuf, unsigned long TimeOut)
 {
-	WDTC |= 0x10;                   //วๅนท		
 	while(TimeOut-- > 0)
 	{
+		WDTC |= 0x10;
 		if(Uart_GetByte(guc_Uartbuf) == SUCCESS)
 		{
 			return SUCCESS;
