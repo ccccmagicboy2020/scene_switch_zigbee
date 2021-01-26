@@ -281,7 +281,7 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 
 	switch(zigbee_work_state){
 		case ZIGBEE_NOT_JION:	
-
+			upload_disable = 1;
 			break;
 		
 		case ZIGBEE_JOIN_GATEWAY:	
@@ -290,7 +290,7 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 			break;
 		
 		case ZIGBEE_JOIN_ERROR:	
-
+			upload_disable = 1;
 			break;
 		
 		case ZIGBEE_JOINING:	
