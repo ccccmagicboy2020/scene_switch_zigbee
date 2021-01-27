@@ -96,9 +96,9 @@ typedef struct
 #define         SET_ZIGBEE_NEK_PARAMETER_CMD        0x26  
 #define         SEND_BROADCAST_DATA_CMD             0x27         
 
-#define			MCU_OTA_VERSION_CMD				        0x0B							//zigbee request mcu version 
+#define			MCU_OTA_VERSION_CMD				      0x0B							//zigbee request mcu version 
 #define			MCU_OTA_NOTIFY_CMD				    	0x0C							//mcu ota notify 
-#define			MCU_OTA_DATA_REQUEST_CMD			    0x0D							//MCU OTA data request 
+#define			MCU_OTA_DATA_REQUEST_CMD			  0x0D							//MCU OTA data request 
 #define			MCU_OTA_RESULT_CMD					    0x0E							//MCU OTA result report 
 
 ///< frme data define 
@@ -210,7 +210,6 @@ void zigbee_timestamp_to_time(void);
 * @param[in] {void}
 * @return  result of handle
 */
-void current_mcu_fw_pid(void);
 
 #ifdef SET_ZIGBEE_NWK_PARAMETER
 /**
@@ -245,14 +244,13 @@ unsigned char get_current_mcu_fw_ver(void);
 * @param[in] {packet_offset}  packet offset 
 * @return  viod
 */
-void mcu_ota_fw_request(void);
 
 /**
 * @brief mcu ota result report 
 * @param[in] {status} result of mcu ota
 * @return  void
 */
-void mcu_ota_result_report(unsigned char status);
+
 #endif
 
 
@@ -270,6 +268,10 @@ void mcu_ota_result_report(unsigned char status);
 * @return hex data
 */
 char assic_to_hex(unsigned char assic_num);
+
+void response_mcu_ota_notify_event(unsigned char offset);
+void current_mcu_fw_pid(void);
+int strcmp_barry(unsigned char *str1,unsigned char *str2);
 
 #ifdef __cplusplus
 }

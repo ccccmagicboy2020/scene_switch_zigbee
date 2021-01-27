@@ -12,6 +12,9 @@
 
 #include "zigbee.h"
 
+
+extern unsigned char upload_disable;
+
 /**
 * @brief get string len 
 * @param[in] {str} higher bits data 
@@ -412,6 +415,8 @@ void mcu_network_start(void)
 {
   unsigned short length = 0;
 
+	//disable the upload
+	upload_disable = 1;
   length = set_zigbee_uart_byte(length,1);
   zigbee_uart_write_frame(ZIGBEE_CFG_CMD, length);
 }

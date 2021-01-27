@@ -106,7 +106,9 @@ void all_data_update(void)
     mcu_dp_value_update(DPID_FREE_TIMER, 0 ); //VALUE型数据上报;
     mcu_dp_fault_update(DPID_FAIL_REPORT, 0); //故障型数据上报;
     mcu_dp_string_update(DPID_STRING_REPORT, "hello!", sizeof("hello!")); //STRING型数据上报;
-
+	
+	
+	
 }
 
 /******************************************************************************
@@ -161,7 +163,7 @@ static unsigned char dp_download_factory_op_handle(const unsigned char value[], 
 					clear_timer();
         break;
         case 7:// tuya 产测
-			//
+					//
         break;
         
         default:
@@ -281,7 +283,7 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 
 	switch(zigbee_work_state){
 		case ZIGBEE_NOT_JION:	
-			upload_disable = 1;
+			upload_disable = 0;
 			break;
 		
 		case ZIGBEE_JOIN_GATEWAY:	
@@ -290,7 +292,7 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 			break;
 		
 		case ZIGBEE_JOIN_ERROR:	
-			upload_disable = 1;
+			upload_disable = 0;
 			break;
 		
 		case ZIGBEE_JOINING:	
@@ -298,6 +300,7 @@ void zigbee_work_state_event(unsigned char zigbee_work_state)
 			break;
 		
 		default:
+			upload_disable = 0;
 			break;
 	}
 }
@@ -395,160 +398,22 @@ void clear_timer(void)
 }
 
 #ifdef SUPPORT_MCU_OTA
-/**
-* @brief mcu ota update notify response
-* @param[in] {offset} data offset 
-* @return  void 
-*/
-void response_mcu_ota_notify_event(unsigned char offset)
+
+void report_mcu_ota_result(unsigned char  res)
 {
-	unsigned char i = 0;
-	unsigned short length = 0;
+  unsigned short length = 0, pid_len = 8;
+	unsigned char* pid;
 	
-	current_mcu_fw_pid();	//current PID
-	
-	while(i<8){
-		ota_fw_info.mcu_ota_pid[i] = zigbee_uart_rx_buf[offset + DATA_START + i];								//ota fw PID
-		i++;
-	}
-	ota_fw_info.mcu_ota_ver = zigbee_uart_rx_buf[offset + DATA_START + 8];											//ota fw version
-	ota_fw_info.mcu_ota_fw_size = zigbee_uart_rx_buf[offset + DATA_START + 9] << 24 | \
-																zigbee_uart_rx_buf[offset +DATA_START + 10] << 16 | \
-																zigbee_uart_rx_buf[offset + DATA_START + 11] << 8 | \
-																zigbee_uart_rx_buf[offset + DATA_START + 12];								//ota fw size
-	ota_fw_info.mcu_ota_checksum = zigbee_uart_rx_buf[offset + DATA_START + 13] << 24 | \
-																 zigbee_uart_rx_buf[offset + DATA_START + 14] << 16 | \
-																 zigbee_uart_rx_buf[offset + DATA_START + 15] << 8 | \
-																 zigbee_uart_rx_buf[offset + DATA_START + 16];								//ota fw checksum
-	
-	if((!strcmp_barry(&ota_fw_info.mcu_ota_pid[0],&current_mcu_pid[0])) && \
-		 (ota_fw_info.mcu_ota_ver > get_current_mcu_fw_ver() &&\
-		  ota_fw_info.mcu_ota_fw_size > 0)	
-		){		//check fw pid and fw version and fw size
-		length = set_zigbee_uart_byte(length,0x00);	//OK
-	}
-	else{
-		length = set_zigbee_uart_byte(length,0x01);	//error
-	}
-    ota_fw_info.mcu_current_offset = 0;
-	zigbee_uart_write_frame(MCU_OTA_NOTIFY_CMD,length);
+	pid = (unsigned char *)PRODUCT_KEY;
+    
+  length = set_zigbee_uart_byte(length,res);
+  while(pid_len--)
+  {
+    length = set_zigbee_uart_byte(length,*pid++);
+  }
+  
+  length = set_zigbee_uart_byte(length, ota_fw_info.mcu_ota_ver);
+  zigbee_uart_write_frame(MCU_OTA_RESULT_CMD, length);
 }
 
-
-/**
-* @brief received mcu ota data request response
-* @param[in] {fw_offset}  offset of file 
-* @param[in] {data}  received data  
-* @return  void 
-*/
-void reveived_mcu_ota_data_handle(unsigned int fw_offset,char *data)
-{
-	#error "received frame data, should save in flash, mcu should realize this fuction, and delete this line "
-}
-
-/**
-* @brief mcu send ota data request 
-* @param[in] {void}  
-* @return  void 
-*/
-void mcu_ota_fw_request_event(unsigned char offset)
-{	
-	unsigned int fw_offset;
-	char fw_data[FW_SINGLE_PACKET_SIZE] = {-1};	//
-	unsigned char i = 0;
-
-	if(zigbee_uart_rx_buf[offset + DATA_START] == 0x01)				//status check
-		return;
-	while(i < 8){
-		if(current_mcu_pid[i] != zigbee_uart_rx_buf[offset + DATA_START + 1 + i])	//pid check
-			return;
-		i++;
-	}
-	if(ota_fw_info.mcu_ota_ver != zigbee_uart_rx_buf[offset + DATA_START + 9]) //version check
-		return;
-	
-	i = 0;
-	while(i < 4){
-		fw_offset |= (zigbee_uart_rx_buf[offset + DATA_START + 10 + i] << (24 - i * 8));		//offset
-		i++;
-	}
-	i = 0;
-	if(ota_fw_info.mcu_current_offset ==  fw_offset)
-	{
-		if((ota_fw_info.mcu_ota_fw_size - fw_offset) / FW_SINGLE_PACKET_SIZE != 0){
-			while(i < FW_SINGLE_PACKET_SIZE){
-				fw_data[i] = zigbee_uart_rx_buf[offset + DATA_START + 14 + i];   //fw data
-				i++;
-			}
-			ota_fw_info.mcu_current_offset += FW_SINGLE_PACKET_SIZE;
-		}
-		else {
-			i = 0;
-			while(i < (ota_fw_info.mcu_ota_fw_size - fw_offset)){
-				fw_data[i] = zigbee_uart_rx_buf[offset + DATA_START + 14 + i];
-				i++;
-			}
-			if(ota_fw_info.mcu_ota_checksum !=\
-				(fw_data[i -1 - 3] << 24 |\
-					fw_data[i -1 - 2] << 16 |\
-					fw_data[i -1 - 1] << 8 |\
-					fw_data[i -1 - 0] ))	
-					{
-						//ota failure report ota failure and clear ota struct 
-					    my_memset(&ota_fw_info,0,sizeof(ota_fw_info));
-						report_mcu_ota_result(0);
-						return;	
-					}	
-					else
-					{
-						//ota sucess 
-						//should report ota sucess notify 
-						report_mcu_ota_result(1);
-					}																	
-		}
-	   ota_fw_data_handle(fw_offset,&fw_data[0]);	//OTA paket data handle
-	}
-	else
-	{
-		// ota request timeout, then restart ota request from  ota_fw_info.mcu_ota_fw_size
-	}
-}
-
-static void report_mcu_ota_result(unsigned char  res)
-{
-	unsigned short length;
-	if((res==0)||(res == 1))
-	{
-		length = set_zigbee_uart_byte(length,res);	
-		zigbee_uart_write_frame(MCU_OTA_NOTIFY_CMD,length);
-	}
-}
-
-
-/**
-* @brief mcu ota data result notify
-* @param[in] {void} 
-* @return  void 
-*/
-void mcu_ota_result_event(unsigned char offset)
-{
-	unsigned char status = zigbee_uart_rx_buf[offset + DATA_START];
-	
-	if(status == 0x00){
-	}
-	else if(status == 0x01)	{
-
-	}
-}
-
-/**
-* @brief mcu ota data handle 
-* @param[in] {fw_offset} frame offset 
-* @param[in] {data} received data
-* @return  void 
-*/
-void ota_fw_data_handle(unsigned int fw_offset,char *data)
-{
-	#error "请在该函数处理固件包数据,并删除该行"
-}
 #endif

@@ -7,7 +7,7 @@ volatile ulong Timer_Counter = 0;
 volatile ulong free_timer = 0;
 ulong free_s_timer = 0;
 unsigned char second_flag = 0;
-unsigned char upload_disable = 1;
+unsigned char upload_disable = 0;
 
 void Flash_EraseBlock(unsigned int fui_Address); //ÉÈÇø²Á³ý
 void FLASH_WriteData(unsigned char fuc_SaveData, unsigned int fui_Address);
@@ -145,6 +145,7 @@ void main()
 	EA = 1;
 	Delay_ms(500);
 	
+	upload_disable = 0;
 	mcu_network_start();
 	
 	while (1)

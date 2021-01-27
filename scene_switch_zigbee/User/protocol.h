@@ -25,9 +25,9 @@ extern "C"
 ///< mcu version 
 #define MCU_VER "1.0.0"                          
  
-#define ZIGBEE_UART_QUEUE_LMT             24             // using to save data received from uart
-#define ZIGBEE_UART_RECV_BUF_LMT          24             //
-#define ZIGBEE_UART_SEND_BUF_LMT          24             //
+#define ZIGBEE_UART_QUEUE_LMT             64             // using to save data received from uart
+#define ZIGBEE_UART_RECV_BUF_LMT          64             //
+#define ZIGBEE_UART_SEND_BUF_LMT          32             //
 
 
 typedef enum
@@ -48,7 +48,7 @@ typedef enum
 /**
  * if mcu need to support OTA, this macro definition should be opened
  */
-//#define    SUPPORT_MCU_OTA                  //support mcu ota
+#define    SUPPORT_MCU_OTA                  //support mcu ota
 
 
 /**
@@ -78,10 +78,11 @@ typedef enum
  */
 
 //工厂操作(可下发可上报)
-//备注:
+//备注:工厂操作菜单
 #define DPID_FACTORY_OP 150
 //计数器 (只上报)
-//备注:
+//备注:自由计数器
+//
 #define DPID_FREE_TIMER 151
 //故障上报(只上报)
 //备注:
@@ -156,46 +157,6 @@ void mcu_reset_zigbee_event(unsigned char state);
 */
 void response_mcu_ota_version_event(void);
 
-
-#ifdef SUPPORT_MCU_OTA 
-/**
-* @brief mcu ota update notify response
-* @param[in] {offset} offset of file 
-* @return  void 
-*/
-void response_mcu_ota_notify_event(unsigned char offset);
-/**
-* @brief received mcu ota data request response
-* @param[in] {fw_offset}  offset of file 
-* @param[in] {data}  received data  
-* @return  void 
-*/
-void reveived_mcu_ota_data_handle(unsigned int fw_offset,char *data);
-
-/**
-* @brief mcu send ota data request 
-* @param[in] {offset} offset of file 
-* @return  void 
-*/
-void mcu_ota_fw_request_event(unsigned char offset);
-
-/**
-* @brief mcu ota data result notify
-* @param[in] {offset} offset of file 
-* @return  void 
-*/
-void mcu_ota_result_event(unsigned char offset);
-
-
-/**
-* @brief mcu ota data handle 
-* @param[in] {fw_offset} frame offset 
-* @param[in] {data} received data
-* @return  void 
-*/
-void ota_fw_data_handle(unsigned int fw_offset,char *data);
-#endif
-
 void soft_reset_mcu(void);
 void go_bootloader_ota(void);
 void tuya_re_config_network(void);
@@ -207,6 +168,8 @@ void IAR_Soft_Rst_No_Option(void);
 void IAR_Soft_Rst_Option(void);
 
 void clear_timer(void);
+
+void report_mcu_ota_result(unsigned char  res);
 
 #ifdef __cplusplus
 }
