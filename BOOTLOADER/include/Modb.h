@@ -21,7 +21,7 @@
 #define         LENGTH_LOW                      7
 #define         DATA_START                      8
 
-#define FW_SINGLE_PACKET_SIZE								0x20	     ///< firmware single packet size, define by mcu
+#define FW_SINGLE_PACKET_SIZE								0x32	     ///< firmware single packet size, define by mcu
 
 #define SERIAL_PROTOCOL_VER                 0x02                                            // the version of frame 
 #define PROTOCOL_HEAD                       0x09                                            //the lcation of frame length except for tail
