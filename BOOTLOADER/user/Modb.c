@@ -563,6 +563,18 @@ void mcu_ota_fw_request(void)
 	zigbee_uart_write_frame(MCU_OTA_DATA_REQUEST_CMD,length, 0x00, 0x00);
 }
 
+void send_ota_result_dp(unsigned char status)
+{
+	unsigned short length = 0;	
+	//9A 04 00 01 00
+	length = set_zigbee_uart_byte(length, DPID_OTA_RESULT);
+	length = set_zigbee_uart_byte(length, DP_TYPE_ENUM);
+	length = set_zigbee_uart_byte(length, 0x00);
+	length = set_zigbee_uart_byte(length, 0x01);
+	length = set_zigbee_uart_byte(length, status);
+	zigbee_uart_write_frame(DATA_REPORT_CMD, length, 0x00, 0x00);
+}
+
 //Ö÷¶¯·¢
 void mcu_ota_result_report(unsigned char status)
 {
@@ -579,6 +591,9 @@ void mcu_ota_result_report(unsigned char status)
 	zigbee_uart_write_frame(MCU_OTA_RESULT_CMD,length, 0x00, 0x00);	//response
 	
 	//upgrade result status(0x00:ota success;0x01:ota failed)
+	//ota result dp report
+	send_ota_result_dp(status);
+	
 	if (0x01 == status)	//fail
 	{
 		//active report the new version
