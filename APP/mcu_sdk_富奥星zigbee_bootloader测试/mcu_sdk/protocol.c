@@ -39,6 +39,7 @@ const DOWNLOAD_CMD_S download_cmd[] =
   {DPID_FREE_TIMER, DP_TYPE_VALUE},
   {DPID_FAIL_REPORT, DP_TYPE_FAULT},
   {DPID_STRING_REPORT, DP_TYPE_STRING},
+  {DPID_OTA_RESULT, DP_TYPE_ENUM},
 };
 
 
@@ -98,6 +99,7 @@ void all_data_update(void)
     mcu_dp_value_update(DPID_FREE_TIMER,当前计数器 ); //VALUE型数据上报;
     mcu_dp_fault_update(DPID_FAIL_REPORT,当前故障上报); //故障型数据上报;
     mcu_dp_string_update(DPID_STRING_REPORT,当前字串上报指针,当前字串上报数据长度); //STRING型数据上报;
+    mcu_dp_enum_update(DPID_OTA_RESULT,当前OTA结果); //枚举型数据上报;
 
 }
 
@@ -156,6 +158,40 @@ static unsigned char dp_download_factory_op_handle(const unsigned char value[], 
     
     //处理完DP数据后应有反馈
     ret = mcu_dp_enum_update(DPID_FACTORY_OP, factory_op);
+    if(ret == SUCCESS)
+        return SUCCESS;
+    else
+        return ERROR;
+}
+/*****************************************************************************
+函数名称 : dp_download_ota_result_handle
+功能描述 : 针对DPID_OTA_RESULT的处理函数
+输入参数 : value:数据源数据
+        : length:数据长度
+返回参数 : 成功返回:SUCCESS/失败返回:ERROR
+使用说明 : 可下发可上报类型,需要在处理完数据后上报处理结果至app
+*****************************************************************************/
+static unsigned char dp_download_ota_result_handle(const unsigned char value[], unsigned short length)
+{
+    //示例:当前DP类型为ENUM
+    unsigned char ret;
+    unsigned char ota_result;
+    
+    ota_result = mcu_get_dp_download_enum(value,length);
+    switch(ota_result) {
+        case 0:
+        break;
+        
+        case 1:
+        break;
+        
+        default:
+    
+        break;
+    }
+    
+    //处理完DP数据后应有反馈
+    ret = mcu_dp_enum_update(DPID_OTA_RESULT, ota_result);
     if(ret == SUCCESS)
         return SUCCESS;
     else
@@ -232,6 +268,10 @@ unsigned char dp_download_handle(unsigned char dpid,const unsigned char value[],
           case DPID_FACTORY_OP:
             //工厂操作处理函数
             ret = dp_download_factory_op_handle(value,length);
+        break;
+        case DPID_OTA_RESULT:
+            //OTA结果处理函数
+            ret = dp_download_ota_result_handle(value,length);
         break;
 
   

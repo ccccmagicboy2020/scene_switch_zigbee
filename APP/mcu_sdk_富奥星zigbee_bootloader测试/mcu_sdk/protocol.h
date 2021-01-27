@@ -90,6 +90,9 @@ typedef enum
 //字串上报(只上报)
 //备注:
 #define DPID_STRING_REPORT 153
+//OTA结果(可下发可上报)
+//备注:ota结果
+#define DPID_OTA_RESULT 154
 
 
 
