@@ -338,6 +338,9 @@ unsigned char Receive_Packet_tuya(unsigned char *Data)
 						mcu_ota_result_event();
 						return	SUCCESS;
 						break;
+					case DATA_REPORT_CMD:
+						return SUCCESS;
+						break;					
 					default:
 						return NACK_TIME;		//no support command bypass
 						break;
@@ -508,6 +511,12 @@ unsigned char mcu_ota_fw_request_event(void)
 	while(i < 4){
 		fw_offset |= (Uart_Buf[DATA_START + 10 + i] << (24 - i * 8));		//offset
 		i++;
+	}
+	
+	//the very first pack
+	if (0x00 == fw_offset)
+	{
+		send_ota_result_dp(0x07);
 	}
 	
 	if(ota_fw_info.mcu_current_offset ==  fw_offset)

@@ -28,7 +28,7 @@
 #define FIRST_FRAME_HEAD                    0x55                                            // first byte of frame 
 #define SECOND_FRAME_HEAD                   0xaa                                            // second byte of frame 
 
-#define     PRODUCT_INFO_CMD                1
+#define     DATA_REPORT_CMD                 6                               //mcu report DP data to zigbee
 #define			MCU_OTA_VERSION_CMD				      0x0B							//zigbee request mcu version 
 #define			MCU_OTA_NOTIFY_CMD				    	0x0C							//mcu ota notify 
 #define			MCU_OTA_DATA_REQUEST_CMD			  0x0D							//MCU OTA data request 
