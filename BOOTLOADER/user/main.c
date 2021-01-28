@@ -9,8 +9,8 @@ unsigned char xdata magic_flag = 0;
 unsigned char xdata guc_Read_a[2] = {0x00}; //用于存放读取的数据
 unsigned char xdata tick_lo;
 unsigned char xdata tick_hi;
-extern unsigned short ota_packet_total_num;
-extern unsigned short ota_packet_current_num;
+extern short ota_packet_total_num;
+extern short ota_packet_current_num;
 extern unsigned short led_speed;
 
 int main(void)
@@ -54,8 +54,10 @@ int main(void)
 		uart1_init(0xff, 0x30);
 		
 		response_mcu_ota_version_event(0x40);
-		response_mcu_ota_version_event(0x40);
-		response_mcu_ota_version_event(0x40);
+		
+		ota_packet_current_num = 0;
+		ota_packet_total_num = -1;
+		
 		while(1)
 		{
 			WDTC |= 0x10;		                  //清狗
@@ -66,7 +68,7 @@ int main(void)
 				case ERROR://失败发NACK		 0x00
 									break;
 				case NACK_TIME://超时跳转APP	0x02
-									if (ota_packet_current_num < ota_packet_total_num)
+									if (ota_packet_current_num <= ota_packet_total_num)
 									{
 										mcu_ota_fw_request();
 									}

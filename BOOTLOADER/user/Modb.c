@@ -13,8 +13,8 @@ extern unsigned char xdata Uart_Buf[150];
 extern unsigned char xdata Uart_send_Buf[30];
 _ota_mcu_fw xdata ota_fw_info;
 unsigned int fw_file_sum = 0;
-unsigned short ota_packet_total_num = 0;
-unsigned short ota_packet_current_num = 0;
+short ota_packet_total_num = 0;
+short ota_packet_current_num = 0;
 unsigned char ota_last_packet_size = 0;
 unsigned short led_speed = 0;
 
@@ -243,6 +243,46 @@ void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 	}
 }
 
+void mcu_ota_fw_req_cv(void)
+{
+	unsigned char result = 0;
+	
+	result = mcu_ota_fw_request_event();
+	
+	switch (result)
+	{
+		case ERROR_STATUS:
+			send_ota_result_dp(0x02);
+			mcu_ota_result_report(0x01);
+			break;
+		case ERROR_PID:
+			send_ota_result_dp(0x03);
+			mcu_ota_result_report(0x01);
+			break;
+		case ERROR_VER:
+			send_ota_result_dp(0x04);
+			mcu_ota_result_report(0x01);
+			break;
+		case ERROR_SUM:
+			send_ota_result_dp(0x05);
+			mcu_ota_result_report(0x01);
+			break;
+		case ERROR_OFFSET:
+			send_ota_result_dp(0x06);
+			mcu_ota_result_report(0x01);
+			break;
+		case SUCCESS_ALL:
+			send_ota_result_dp(0x00);
+			mcu_ota_result_report(0x00);
+			break;
+		case SUCCESS:
+			mcu_ota_fw_request();
+			break;
+		default:
+			break;
+	}
+}
+
 unsigned char Receive_Packet_tuya(unsigned char *Data)
 {
 	unsigned char command_byte;
@@ -291,17 +331,7 @@ unsigned char Receive_Packet_tuya(unsigned char *Data)
 						return	SUCCESS;
 						break;
 					case MCU_OTA_DATA_REQUEST_CMD:
-						if (ERROR == mcu_ota_fw_request_event())
-						{
-							mcu_ota_result_report(0x01);
-						}
-						else
-						{
-							if (ota_packet_current_num <= ota_packet_total_num)
-							{
-								mcu_ota_fw_request();
-							}
-						}
+						mcu_ota_fw_req_cv();
 						return	SUCCESS;
 						break;
 					case MCU_OTA_RESULT_CMD:
@@ -309,7 +339,7 @@ unsigned char Receive_Packet_tuya(unsigned char *Data)
 						return	SUCCESS;
 						break;
 					default:
-						return NACK_TIME;
+						return NACK_TIME;		//no support command bypass
 						break;
 					}
 				}
@@ -456,21 +486,21 @@ unsigned char mcu_ota_fw_request_event(void)
 
 	if(Uart_Buf[DATA_START] == 0x01)				//status check 0x01 == fail
 	{
-		return ERROR;	
+		return ERROR_STATUS;
 	}
 	
 	i = 0;
 	while(i < 8){
 		if(ota_fw_info.mcu_ota_pid[i] != Uart_Buf[DATA_START + 1 + i])	//pid check
 		{
-			return ERROR;		
+			return ERROR_PID;		
 		}
 		i++;
 	}
 	
 	if(ota_fw_info.mcu_ota_ver != Uart_Buf[DATA_START + 9]) //version check
 	{	
-		return ERROR;
+		return ERROR_VER;
 	}
 
 	i = 0;
@@ -492,7 +522,6 @@ unsigned char mcu_ota_fw_request_event(void)
 				i++;
 			}
 			ota_fw_info.mcu_current_offset += FW_SINGLE_PACKET_SIZE;
-			ota_packet_current_num++;
 		}
 		else
 		{
@@ -506,21 +535,22 @@ unsigned char mcu_ota_fw_request_event(void)
 			
 			if(ota_fw_info.mcu_ota_checksum != fw_file_sum)
 			{
-				return ERROR;
+				return ERROR_SUM;
 			}	
 			else
 			{
 				ota_fw_data_handle(fw_offset,&fw_data[0], ota_last_packet_size);
-				mcu_ota_result_report(0x00);// report to tuya module
-				return SUCCESS;
+				ota_packet_current_num++;
+				return SUCCESS_ALL;
 			}
 		}
-	  ota_fw_data_handle(fw_offset,&fw_data[0], FW_SINGLE_PACKET_SIZE);	//OTA paket data handle
+		ota_packet_current_num++;
+		ota_fw_data_handle(fw_offset,&fw_data[0], FW_SINGLE_PACKET_SIZE);	//OTA paket data handle
 		return SUCCESS;
 	}
 	else
 	{
-		return ERROR;
+		return ERROR_OFFSET;
 	}
 }
 
@@ -590,15 +620,9 @@ void mcu_ota_result_report(unsigned char status)
 	
 	zigbee_uart_write_frame(MCU_OTA_RESULT_CMD,length, 0x00, 0x00);	//response
 	
-	//upgrade result status(0x00:ota success;0x01:ota failed)
-	//ota result dp report
-	send_ota_result_dp(status);
-	
 	if (0x01 == status)	//fail
 	{
 		//active report the new version
-		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
-		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
 		response_mcu_ota_version_event(ota_fw_info.mcu_ota_ver);
 		//ota failure report ota failure and clear ota struct 
 		my_memset(&ota_fw_info, sizeof(ota_fw_info));
@@ -607,9 +631,6 @@ void mcu_ota_result_report(unsigned char status)
 	}
 	else if (0x00 == status)
 	{
-		//ota sucess
-		//notify_only dp report here
-		//
 		//wirte/clear flash flag
 		set_magic_flag(0);
 		//go app
