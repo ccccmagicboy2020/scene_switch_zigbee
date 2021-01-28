@@ -253,23 +253,23 @@ void mcu_ota_fw_req_cv(void)
 	{
 		case ERROR_STATUS:
 			send_ota_result_dp(0x02);
-			mcu_ota_result_report(0x01);
+			mcu_ota_fw_request();
 			break;
-		case ERROR_PID:
+		case ERROR_PID:	//
 			send_ota_result_dp(0x03);
-			mcu_ota_result_report(0x01);
+			mcu_ota_fw_request();
 			break;
 		case ERROR_VER:
 			send_ota_result_dp(0x04);
-			mcu_ota_result_report(0x01);
+			mcu_ota_fw_request();
 			break;
 		case ERROR_SUM:
 			send_ota_result_dp(0x05);
 			mcu_ota_result_report(0x01);
 			break;
-		case ERROR_OFFSET:
+		case ERROR_OFFSET:	//
 			send_ota_result_dp(0x06);
-			mcu_ota_result_report(0x01);
+			mcu_ota_fw_request();
 			break;
 		case SUCCESS_ALL:
 			send_ota_result_dp(0x00);

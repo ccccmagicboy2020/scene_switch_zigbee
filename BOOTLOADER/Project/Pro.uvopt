@@ -243,9 +243,9 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>26</ColumnNumber>
+      <ColumnNumber>28</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>40</TopLine>
+      <TopLine>44</TopLine>
       <CurrentLine>64</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\user\main.c</PathWithFileName>
@@ -261,8 +261,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\user\Public.c</PathWithFileName>
       <FilenameWithoutPath>Public.c</FilenameWithoutPath>
@@ -291,10 +291,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>59</ColumnNumber>
+      <ColumnNumber>27</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>306</TopLine>
-      <CurrentLine>342</CurrentLine>
+      <TopLine>249</TopLine>
+      <CurrentLine>272</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\user\Modb.c</PathWithFileName>
       <FilenameWithoutPath>Modb.c</FilenameWithoutPath>
