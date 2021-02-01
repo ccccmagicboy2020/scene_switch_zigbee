@@ -7,6 +7,7 @@ unsigned char xdata Uart_Buf[200];//数据缓存数组 rev buffer
 unsigned char xdata Uart_send_Buf[30];//send buffer
 unsigned char xdata magic_flag = 0;
 unsigned char xdata guc_Read_a[2] = {0x00}; //用于存放读取的数据
+unsigned char guc_Read_a1[20] = {0x00}; //用于存放读取的数据
 unsigned char xdata tick_lo;
 unsigned char xdata tick_hi;
 extern short ota_packet_total_num;
@@ -48,15 +49,13 @@ int main(void)
 	}
 	else
 	{
-		//clear here?
-		//clear_magic_flag();
 		enable_timer(1);
 		uart1_init(0xff, 0x30);
 		
-		response_mcu_ota_version_event(0x40);
-		
 		ota_packet_current_num = 0;
 		ota_packet_total_num = -1;
+		
+		read_ota_struct();
 		
 		while(1)
 		{

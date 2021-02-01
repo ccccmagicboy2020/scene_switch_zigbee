@@ -7,6 +7,7 @@
 volatile ulong	HandShake_Count=0;
 
 extern unsigned char xdata guc_Read_a[2];
+extern unsigned char guc_Read_a1[20];
 extern unsigned char xdata tick_lo;
 extern unsigned char xdata tick_hi;
 extern unsigned char xdata Uart_Buf[150];
@@ -253,7 +254,7 @@ void mcu_ota_fw_req_cv(void)
 	{
 		case ERROR_STATUS:
 			send_ota_result_dp(0x02);
-			mcu_ota_fw_request();
+			mcu_ota_result_report(0x01);
 			break;
 		case ERROR_PID:	//
 			send_ota_result_dp(0x03);
@@ -367,6 +368,27 @@ unsigned char Receive_Packet_tuya(unsigned char *Data)
 	}
 }
 
+void read_ota_struct(void)
+{
+	unsigned char i = 0;
+	
+	IAR_Read(MAGIC_SECTOR_ADDRESS0 + 1, guc_Read_a1, 20);
+	
+	if (0x00 != guc_Read_a1[0])
+	{
+		i = 0;
+		while(i<17){
+			Uart_Buf[DATA_START + i] = guc_Read_a1[i];								//ota struct
+			i++;
+		}
+		response_mcu_ota_notify_event();		
+	}
+	else
+	{
+		response_mcu_ota_version_event(0x40);
+	}
+}
+
 unsigned char read_magic_flag(void)
 {
 	//read from flash
@@ -383,7 +405,18 @@ unsigned char read_magic_flag(void)
 void set_magic_flag(unsigned char temp)
 {
 	IAR_Clear(MAGIC_SECTOR_ADDRESS0);
+	Delay_us(10000);
 	IAR_Write_Byte(MAGIC_SECTOR_ADDRESS0, temp);
+	Delay_us(100);
+}
+
+void Delay_us(unsigned int q1)
+{
+	uint j;
+	for (j = 0; j < q1; j++)
+	{
+		;
+	}
 }
 
 void uart1_init(unsigned char th, unsigned char tl)

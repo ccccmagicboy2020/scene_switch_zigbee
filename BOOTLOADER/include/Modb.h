@@ -59,6 +59,8 @@ unsigned short set_zigbee_uart_byte(unsigned short dest, unsigned char byte);
 void enable_timer(unsigned char en);
 void set_magic_flag(unsigned char temp);
 void send_ota_result_dp(unsigned char status);
+void read_ota_struct(void);
+void Delay_us(unsigned int q1);
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRCÐ£Ñé
 bit           LVD_Check(unsigned long TimeOut);
