@@ -11,13 +11,24 @@ unsigned char upload_disable = 0;
 
 void Flash_EraseBlock(unsigned int fui_Address); //扇区擦除
 void FLASH_WriteData(unsigned char fuc_SaveData, unsigned int fui_Address);
+void Delay_ms(unsigned int t);
+void Delay_us(unsigned int q1);
 
-void Delay_ms(uint t)
+void Delay_ms(unsigned int t)
 {
 	Timer_Counter = 0;
 	while (Timer_Counter < t)
 	{
 		WDTC |= 0x10; //清看门狗
+	}
+}
+
+void Delay_us(unsigned int q1)
+{
+	unsigned int j;
+	for (j = 0; j < q1; j++)
+	{
+		;
 	}
 }
 
@@ -148,6 +159,7 @@ void main()
 	upload_disable = 0;
 	mcu_network_start();
 	
+	my_memset(&ota_fw_info, 0, sizeof(ota_fw_info));
 	while (1)
 	{
 		WDTC |= 0x10; //清看门狗

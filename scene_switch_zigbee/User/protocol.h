@@ -172,8 +172,6 @@ void IAR_Soft_Rst_Option(void);
 
 void clear_timer(void);
 
-void report_mcu_ota_result(unsigned char  res);
-
 #ifdef __cplusplus
 }
 #endif

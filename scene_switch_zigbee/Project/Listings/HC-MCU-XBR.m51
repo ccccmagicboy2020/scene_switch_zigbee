@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        01/27/2021  20:11:54  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/01/2021  14:10:28  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
             XDATA   FE94H     0001H     ABSOLUTE     
             XDATA   FE95H     0001H     ABSOLUTE     
                     FE96H     0002H                  *** GAP ***
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 2
 
 
             XDATA   FE98H     0001H     ABSOLUTE     
@@ -119,7 +119,7 @@ LINK MAP OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
             XDATA   FF94H     0001H     ABSOLUTE     
             XDATA   FF95H     0001H     ABSOLUTE     
                     FF96H     0002H                  *** GAP ***
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 3
 
 
             XDATA   FF98H     0001H     ABSOLUTE     
@@ -147,71 +147,69 @@ LINK MAP OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
             CODE    0022H     0001H     UNIT         ?PR?RESET_DEFAULT_PARAMETER?PROTOCOL
             CODE    0023H     0003H     ABSOLUTE     
             CODE    0026H     0191H     UNIT         ?PR?ZIGBEE_UART_SERVICE?MCU_API
-            CODE    01B7H     015CH     UNIT         ?PR?_RESPONSE_MCU_OTA_NOTIFY_EVENT?SYSTEM
-            CODE    0313H     0143H     UNIT         ?PR?_DATA_HANDLE?SYSTEM
-            CODE    0456H     00D4H     UNIT         ?C?LIB_CODE
-            CODE    052AH     00C6H     UNIT         ?PR?_MCU_DP_FAULT_UPDATE?MCU_API
-            CODE    05F0H     00C5H     UNIT         ?PR?_MY_MEMCPY?MCU_API
-            CODE    06B5H     009DH     UNIT         ?PR?PRODUCT_INFO_UPDATE?SYSTEM
-            CODE    0752H     008CH     UNIT         ?C_C51STARTUP
-            CODE    07DEH     0084H     UNIT         ?PR?TIMER1_RPT?HC_MCU_XBR
-            CODE    0862H     0071H     UNIT         ?PR?_MCU_DP_VALUE_UPDATE?MCU_API
-            CODE    08D3H     0066H     UNIT         ?PR?MAIN?HC_MCU_XBR
-            CODE    0939H     0062H     UNIT         ?PR?_STRCMP_BARRY?SYSTEM
-            CODE    099BH     0061H     UNIT         ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
-            CODE    09FCH     005AH     UNIT         ?PR?_UART_RECEIVE_INPUT?MCU_API
-            CODE    0A56H     0059H     UNIT         ?PR?MCU_API
-            CODE    0AAFH     0054H     UNIT         ?PR?_DP_DOWNLOAD_FACTORY_OP_HANDLE?PROTOCOL
-            CODE    0B03H     0051H     UNIT         ?PR?_REPORT_MCU_OTA_RESULT?PROTOCOL
-            CODE    0B54H     004CH     UNIT         ?PR?_ZIGBEE_DATA_POINT_HANDLE?SYSTEM
-            CODE    0BA0H     0047H     UNIT         ?PR?_MY_STRLEN?MCU_API
-            CODE    0BE7H     0043H     UNIT         ?PR?_MCU_DP_STRING_UPDATE?MCU_API
-            CODE    0C2AH     0043H     UNIT         ?PR?GET_CURRENT_MCU_FW_VER?SYSTEM
-            CODE    0C6DH     0038H     UNIT         ?PR?_MY_MEMSET?MCU_API
-            CODE    0CA5H     0034H     UNIT         ?PR?ALL_DATA_UPDATE?PROTOCOL
-            CODE    0CD9H     0034H     UNIT         ?PR?_ZIGBEE_UART_WRITE_DATA?SYSTEM
-            CODE    0D0DH     0033H     UNIT         ?PR?UART1_RPT?HC_MCU_XBR
-            CODE    0D40H     0033H     UNIT         ?PR?_ZIGBEE_WORK_STATE_EVENT?PROTOCOL
-            CODE    0D73H     0032H     UNIT         ?PR?_MCU_DP_ENUM_UPDATE?MCU_API
-            CODE    0DA5H     0032H     UNIT         ?PR?QUEUE_READ_BYTE?MCU_API
-            CODE    0DD7H     0031H     UNIT         ?PR?UART1_INIT?HC_MCU_XBR
-            CODE    0E08H     0031H     UNIT         ?PR?_SET_ZIGBEE_UART_BUFFER?SYSTEM
-            CODE    0E39H     002EH     UNIT         ?PR?_FLASH_WRITEDATA?HC_MCU_XBR
-            CODE    0E67H     002DH     UNIT         ?PR?_GET_CHECK_SUM?SYSTEM
-            CODE    0E94H     002CH     UNIT         ?PR?_FLASH_ERASEBLOCK?HC_MCU_XBR
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 4
+            CODE    01B7H     0143H     UNIT         ?PR?_DATA_HANDLE?SYSTEM
+            CODE    02FAH     00FBH     UNIT         ?PR?_RESPONSE_MCU_OTA_NOTIFY_EVENT?SYSTEM
+            CODE    03F5H     00F2H     UNIT         ?PR?GO_BOOTLOADER_OTA?PROTOCOL
+            CODE    04E7H     00D4H     UNIT         ?C?LIB_CODE
+            CODE    05BBH     00C6H     UNIT         ?PR?_MCU_DP_FAULT_UPDATE?MCU_API
+            CODE    0681H     00C5H     UNIT         ?PR?_MY_MEMCPY?MCU_API
+            CODE    0746H     009DH     UNIT         ?PR?PRODUCT_INFO_UPDATE?SYSTEM
+            CODE    07E3H     008CH     UNIT         ?C_C51STARTUP
+            CODE    086FH     0084H     UNIT         ?PR?TIMER1_RPT?HC_MCU_XBR
+            CODE    08F3H     0077H     UNIT         ?PR?MAIN?HC_MCU_XBR
+            CODE    096AH     0071H     UNIT         ?PR?_MCU_DP_VALUE_UPDATE?MCU_API
+            CODE    09DBH     0061H     UNIT         ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
+            CODE    0A3CH     005AH     UNIT         ?PR?_UART_RECEIVE_INPUT?MCU_API
+            CODE    0A96H     0059H     UNIT         ?PR?MCU_API
+            CODE    0AEFH     0054H     UNIT         ?PR?_DP_DOWNLOAD_FACTORY_OP_HANDLE?PROTOCOL
+            CODE    0B43H     004CH     UNIT         ?PR?_ZIGBEE_DATA_POINT_HANDLE?SYSTEM
+            CODE    0B8FH     0047H     UNIT         ?PR?_MY_STRLEN?MCU_API
+            CODE    0BD6H     0043H     UNIT         ?PR?_MCU_DP_STRING_UPDATE?MCU_API
+            CODE    0C19H     0043H     UNIT         ?PR?GET_CURRENT_MCU_FW_VER?SYSTEM
+            CODE    0C5CH     0038H     UNIT         ?PR?_MY_MEMSET?MCU_API
+            CODE    0C94H     0034H     UNIT         ?PR?ALL_DATA_UPDATE?PROTOCOL
+            CODE    0CC8H     0034H     UNIT         ?PR?_ZIGBEE_UART_WRITE_DATA?SYSTEM
+            CODE    0CFCH     0033H     UNIT         ?PR?UART1_RPT?HC_MCU_XBR
+            CODE    0D2FH     0033H     UNIT         ?PR?_ZIGBEE_WORK_STATE_EVENT?PROTOCOL
+            CODE    0D62H     0032H     UNIT         ?PR?_MCU_DP_ENUM_UPDATE?MCU_API
+            CODE    0D94H     0032H     UNIT         ?PR?QUEUE_READ_BYTE?MCU_API
+            CODE    0DC6H     0031H     UNIT         ?PR?UART1_INIT?HC_MCU_XBR
+            CODE    0DF7H     0031H     UNIT         ?PR?_SET_ZIGBEE_UART_BUFFER?SYSTEM
+            CODE    0E28H     002EH     UNIT         ?PR?_FLASH_WRITEDATA?HC_MCU_XBR
+            CODE    0E56H     002DH     UNIT         ?PR?_GET_CHECK_SUM?SYSTEM
+            CODE    0E83H     002CH     UNIT         ?PR?_FLASH_ERASEBLOCK?HC_MCU_XBR
+            CODE    0EAFH     0029H     UNIT         ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 4
 
 
-            CODE    0EC0H     0029H     UNIT         ?C_INITSEG
-            CODE    0EE9H     0028H     UNIT         ?PR?_DELAY_MS?HC_MCU_XBR
-            CODE    0F11H     0026H     UNIT         ?CO?PROTOCOL
-            CODE    0F37H     0025H     UNIT         ?PR?CURRENT_MCU_FW_PID?SYSTEM
-            CODE    0F5CH     0024H     UNIT         ?PR?_DP_DOWNLOAD_HANDLE?PROTOCOL
-            CODE    0F80H     0024H     UNIT         ?PR?GO_BOOTLOADER_OTA?PROTOCOL
-            CODE    0FA4H     0021H     UNIT         ?CO?SYSTEM
-            CODE    0FC5H     001EH     UNIT         ?PR?TIMER_INIT?HC_MCU_XBR
-            CODE    0FE3H     001EH     UNIT         ?PR?RESPONSE_MCU_OTA_VERSION_EVENT?PROTOCOL
-            CODE    1001H     001EH     UNIT         ?PR?SEQ_NUM_GET?SYSTEM
-            CODE    101FH     001CH     UNIT         ?PR?_GET_DOWMLOAD_DPID_INDEX?SYSTEM
-            CODE    103BH     001AH     UNIT         ?PR?SYSTEM
-            CODE    1055H     0016H     UNIT         ?PR?_ASSIC_TO_HEX?SYSTEM
-            CODE    106BH     0015H     UNIT         ?PR?MCU_NETWORK_START?MCU_API
-            CODE    1080H     0014H     UNIT         ?PR?_SET_ZIGBEE_UART_BYTE?SYSTEM
-            CODE    1094H     0013H     UNIT         ?PR?_DP_DOWNLOAD_OTA_RESULT_HANDLE?PROTOCOL
-            CODE    10A7H     0012H     UNIT         ?PR?WITH_DATA_RXBUFF?MCU_API
-            CODE    10B9H     0011H     UNIT         ?PR?MCU_RESET_ZIGBEE?MCU_API
-            CODE    10CAH     0011H     UNIT         ?PR?IAR_SOFT_RST_NO_OPTION?PROTOCOL
-            CODE    10DBH     0011H     UNIT         ?PR?IAR_SOFT_RST_OPTION?PROTOCOL
-            CODE    10ECH     000DH     UNIT         ?PR?HC_MCU_XBR
-            CODE    10F9H     000DH     UNIT         ?PR?ZIGBEE_PROTOCOL_INIT?MCU_API
-            CODE    1106H     000BH     UNIT         ?PR?_SEND_DATA?HC_MCU_XBR
-            CODE    1111H     000BH     UNIT         ?PR?PROTOCOL
-            CODE    111CH     000AH     UNIT         ?PR?CLEAR_TIMER?PROTOCOL
-            CODE    1126H     0009H     UNIT         ?PR?_MCU_GET_DP_DOWNLOAD_ENUM?MCU_API
-            CODE    112FH     0003H     UNIT         ?PR?GET_DOWNLOAD_CMD_TOTAL?PROTOCOL
-            CODE    1132H     0003H     UNIT         ?PR?SOFT_RESET_MCU?PROTOCOL
-            CODE    1135H     0003H     UNIT         ?PR?TUYA_RE_CONFIG_NETWORK?PROTOCOL
-            CODE    1138H     0003H     UNIT         ?PR?TUYA_RESET_MODULE?PROTOCOL
+            CODE    0ED8H     0028H     UNIT         ?PR?_DELAY_MS?HC_MCU_XBR
+            CODE    0F00H     0024H     UNIT         ?PR?_DP_DOWNLOAD_HANDLE?PROTOCOL
+            CODE    0F24H     0021H     UNIT         ?CO?SYSTEM
+            CODE    0F45H     001EH     UNIT         ?PR?TIMER_INIT?HC_MCU_XBR
+            CODE    0F63H     001EH     UNIT         ?PR?RESPONSE_MCU_OTA_VERSION_EVENT?PROTOCOL
+            CODE    0F81H     001EH     UNIT         ?PR?SEQ_NUM_GET?SYSTEM
+            CODE    0F9FH     001DH     UNIT         ?CO?PROTOCOL
+            CODE    0FBCH     001CH     UNIT         ?PR?_GET_DOWMLOAD_DPID_INDEX?SYSTEM
+            CODE    0FD8H     0016H     UNIT         ?PR?_ASSIC_TO_HEX?SYSTEM
+            CODE    0FEEH     0015H     UNIT         ?PR?MCU_NETWORK_START?MCU_API
+            CODE    1003H     0014H     UNIT         ?PR?_SET_ZIGBEE_UART_BYTE?SYSTEM
+            CODE    1017H     0013H     UNIT         ?PR?_DP_DOWNLOAD_OTA_RESULT_HANDLE?PROTOCOL
+            CODE    102AH     0012H     UNIT         ?PR?_DELAY_US?HC_MCU_XBR
+            CODE    103CH     0012H     UNIT         ?PR?WITH_DATA_RXBUFF?MCU_API
+            CODE    104EH     0011H     UNIT         ?PR?MCU_RESET_ZIGBEE?MCU_API
+            CODE    105FH     0011H     UNIT         ?PR?IAR_SOFT_RST_NO_OPTION?PROTOCOL
+            CODE    1070H     0011H     UNIT         ?PR?IAR_SOFT_RST_OPTION?PROTOCOL
+            CODE    1081H     000EH     UNIT         ?PR?SYSTEM
+            CODE    108FH     000DH     UNIT         ?PR?HC_MCU_XBR
+            CODE    109CH     000DH     UNIT         ?PR?ZIGBEE_PROTOCOL_INIT?MCU_API
+            CODE    10A9H     000BH     UNIT         ?PR?_SEND_DATA?HC_MCU_XBR
+            CODE    10B4H     000BH     UNIT         ?PR?PROTOCOL
+            CODE    10BFH     000AH     UNIT         ?PR?CLEAR_TIMER?PROTOCOL
+            CODE    10C9H     0009H     UNIT         ?PR?_MCU_GET_DP_DOWNLOAD_ENUM?MCU_API
+            CODE    10D2H     0003H     UNIT         ?PR?GET_DOWNLOAD_CMD_TOTAL?PROTOCOL
+            CODE    10D5H     0003H     UNIT         ?PR?SOFT_RESET_MCU?PROTOCOL
+            CODE    10D8H     0003H     UNIT         ?PR?TUYA_RE_CONFIG_NETWORK?PROTOCOL
+            CODE    10DBH     0003H     UNIT         ?PR?TUYA_RESET_MODULE?PROTOCOL
 
 
 
@@ -232,6 +230,7 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?UART1_INIT?HC_MCU_XBR
   +--> ?PR?_DELAY_MS?HC_MCU_XBR
   +--> ?PR?MCU_NETWORK_START?MCU_API
+  +--> ?PR?_MY_MEMSET?MCU_API
   +--> ?PR?ZIGBEE_UART_SERVICE?MCU_API
   +--> ?PR?_MCU_DP_VALUE_UPDATE?MCU_API
 
@@ -239,10 +238,10 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?_SET_ZIGBEE_UART_BYTE?SYSTEM
   +--> ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 5
-
-
 ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM              002BH    0002H
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 5
+
+
   +--> ?PR?SEQ_NUM_GET?SYSTEM
   +--> ?PR?_GET_CHECK_SUM?SYSTEM
   +--> ?PR?_ZIGBEE_UART_WRITE_DATA?SYSTEM
@@ -254,6 +253,8 @@ SEGMENT                                            DATA_GROUP
 
 ?PR?_UART_TRANSMIT_OUTPUT?PROTOCOL               -----    -----
   +--> ?PR?_SEND_DATA?HC_MCU_XBR
+
+?PR?_MY_MEMSET?MCU_API                           001FH    0009H
 
 ?PR?ZIGBEE_UART_SERVICE?MCU_API                  0008H    0008H
   +--> ?PR?WITH_DATA_RXBUFF?MCU_API
@@ -289,9 +290,6 @@ SEGMENT                                            DATA_GROUP
 ?PR?_MY_MEMCPY?MCU_API                           0032H    0010H
   +--> ?PR?MCU_API
 
-?PR?SYSTEM                                       -----    -----
-  +--> ?PR?_SET_ZIGBEE_UART_BYTE?SYSTEM
-
 ?PR?_ZIGBEE_WORK_STATE_EVENT?PROTOCOL            001AH    0001H
   +--> ?PR?_SET_ZIGBEE_UART_BYTE?SYSTEM
   +--> ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
@@ -299,11 +297,11 @@ SEGMENT                                            DATA_GROUP
 
 ?PR?ALL_DATA_UPDATE?PROTOCOL                     -----    -----
   +--> ?PR?_MCU_DP_ENUM_UPDATE?MCU_API
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 6
-
-
   +--> ?PR?_MCU_DP_VALUE_UPDATE?MCU_API
   +--> ?PR?_MCU_DP_FAULT_UPDATE?MCU_API
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 6
+
+
   +--> ?CO?PROTOCOL
   +--> ?PR?_MCU_DP_STRING_UPDATE?MCU_API
 
@@ -358,11 +356,12 @@ SEGMENT                                            DATA_GROUP
 
 ?PR?GO_BOOTLOADER_OTA?PROTOCOL                   -----    -----
   +--> ?PR?_FLASH_ERASEBLOCK?HC_MCU_XBR
+  +--> ?PR?_DELAY_US?HC_MCU_XBR
   +--> ?PR?_FLASH_WRITEDATA?HC_MCU_XBR
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 7
-
-
   +--> ?CO?PROTOCOL
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 7
+
+
   +--> ?PR?_MCU_DP_STRING_UPDATE?MCU_API
   +--> ?PR?IAR_SOFT_RST_OPTION?PROTOCOL
 
@@ -385,31 +384,13 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?_SET_ZIGBEE_UART_BYTE?SYSTEM
   +--> ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
 
-?PR?GET_CURRENT_MCU_FW_VER?SYSTEM                0020H    0004H
+?PR?GET_CURRENT_MCU_FW_VER?SYSTEM                001CH    0004H
   +--> ?CO?SYSTEM
   +--> ?PR?_ASSIC_TO_HEX?SYSTEM
 
-?PR?_RESPONSE_MCU_OTA_NOTIFY_EVENT?SY...         001AH    0006H
-  +--> ?PR?CURRENT_MCU_FW_PID?SYSTEM
-  +--> ?PR?_STRCMP_BARRY?SYSTEM
-  +--> ?PR?GET_CURRENT_MCU_FW_VER?SYSTEM
-  +--> ?PR?SYSTEM
-  +--> ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
-  +--> ?PR?_DELAY_MS?HC_MCU_XBR
-  +--> ?PR?_REPORT_MCU_OTA_RESULT?PROTOCOL
+?PR?_RESPONSE_MCU_OTA_NOTIFY_EVENT?SY...         001AH    0005H
+  +--> ?PR?_MY_MEMSET?MCU_API
   +--> ?PR?GO_BOOTLOADER_OTA?PROTOCOL
-
-?PR?CURRENT_MCU_FW_PID?SYSTEM                    0020H    0003H
-  +--> ?CO?SYSTEM
-
-?PR?_STRCMP_BARRY?SYSTEM                         0020H    0006H
-
-?PR?_REPORT_MCU_OTA_RESULT?PROTOCOL              0020H    0006H
-  +--> ?CO?PROTOCOL
-  +--> ?PR?_SET_ZIGBEE_UART_BYTE?SYSTEM
-  +--> ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
-
-?PR?_MY_MEMSET?MCU_API                           001AH    0009H
 
 *** NEW ROOT ***************************************************
 
@@ -419,9 +400,6 @@ SEGMENT                                            DATA_GROUP
 *** NEW ROOT ***************************************************
 
 ?PR?UART1_RPT?HC_MCU_XBR                         -----    -----
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 8
-
-
   +--> ?PR?_UART_RECEIVE_INPUT?MCU_API
 
 ?PR?_UART_RECEIVE_INPUT?MCU_API                  0042H    0001H
@@ -434,17 +412,20 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:0752H         SEGMENT       ?C_C51STARTUP
+  C:07E3H         SEGMENT       ?C_C51STARTUP
   I:007AH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 8
+
+
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:0755H         SYMBOL        IDATALOOP
+  C:07E6H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -453,18 +434,18 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:0752H         SYMBOL        STARTUP1
+  C:07E3H         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:0752H         LINE#         133
-  C:0754H         LINE#         134
-  C:0755H         LINE#         135
-  C:0756H         LINE#         136
-  C:0758H         LINE#         185
-  C:075BH         LINE#         196
+  C:07E3H         LINE#         133
+  C:07E5H         LINE#         134
+  C:07E6H         LINE#         135
+  C:07E7H         LINE#         136
+  C:07E9H         LINE#         185
+  C:07ECH         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        HC_MCU_XBR
@@ -479,12 +460,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0090H         PUBLIC        P1
   X:FF12H         PUBLIC        P2M2
   D:00A0H         PUBLIC        P2
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 9
-
-
   X:FF13H         PUBLIC        P2M3
   B:00A8H.7       PUBLIC        EA
-  C:0D0DH         PUBLIC        UART1_Rpt
+  C:0CFCH         PUBLIC        UART1_Rpt
   X:FE94H         PUBLIC        XTALCFG
   D:00A8H         PUBLIC        IE
   D:00FCH         PUBLIC        IAP_CMD
@@ -498,9 +476,12 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   X:FEA2H         PUBLIC        CRCC
   X:FE85H         PUBLIC        T5CON1
   X:FFA5H         PUBLIC        SCK_MAP
-  C:08D3H         PUBLIC        main
+  C:08F3H         PUBLIC        main
   X:FEA4H         PUBLIC        BORC
-  C:1106H         PUBLIC        _send_data
+  C:10A9H         PUBLIC        _send_data
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 9
+
+
   D:0060H         PUBLIC        free_timer
   D:00BBH         PUBLIC        LVDC
   X:FFA1H         PUBLIC        RXD_MAP
@@ -509,14 +490,15 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   X:FEA7H         PUBLIC        LVDDBC
   D:0099H         PUBLIC        SBUF
   X:FEB8H         PUBLIC        PINTE0
-  C:0EE9H         PUBLIC        _Delay_ms
-  C:0E94H         PUBLIC        _Flash_EraseBlock
+  C:0ED8H         PUBLIC        _Delay_ms
+  C:0E83H         PUBLIC        _Flash_EraseBlock
   X:FEB9H         PUBLIC        PINTE1
   D:00BDH         PUBLIC        WDTC
   D:0098H         PUBLIC        SCON
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
   X:FE95H         PUBLIC        SPOV_RSTEN
+  C:102AH         PUBLIC        _Delay_us
   X:FE9BH         PUBLIC        ADCC2
   X:FE91H         PUBLIC        CLKDIV
   D:00B8H         PUBLIC        IE1
@@ -529,7 +511,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   X:FF85H         PUBLIC        T5_MAP
   D:0065H         PUBLIC        Timer_Counter
   X:FEA0H         PUBLIC        WDTCCR
-  C:07DEH         PUBLIC        TIMER1_Rpt
+  C:086FH         PUBLIC        TIMER1_Rpt
   D:008CH         PUBLIC        TH0
   D:008DH         PUBLIC        TH1
   D:00CEH         PUBLIC        TH4
@@ -539,17 +521,14 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:00CDH         PUBLIC        TL4
   D:00FBH         PUBLIC        IAP_DATA
   D:00F9H         PUBLIC        IAP_ADDR
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 10
-
-
   D:008EH         PUBLIC        CLKSWR
-  C:0E39H         PUBLIC        _FLASH_WriteData
+  C:0E28H         PUBLIC        _FLASH_WriteData
   X:FFA9H         PUBLIC        RXD2_MAP
   X:FFA8H         PUBLIC        TXD2_MAP
   X:FE98H         PUBLIC        ADCWC
   X:FE8AH         PUBLIC        S2BUF
   X:FF90H         PUBLIC        PWM0_MAP
-  C:0DD7H         PUBLIC        UART1_Init
+  C:0DC6H         PUBLIC        UART1_Init
   X:FFA4H         PUBLIC        SS_MAP
   X:FF94H         PUBLIC        PWM1_MAP
   X:FF98H         PUBLIC        PWM2_MAP
@@ -560,6 +539,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   X:FF8FH         PUBLIC        CLKO_MAP
   X:FEBCH         PUBLIC        INT01_PINS
   D:00CCH         PUBLIC        T4CON
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 10
+
+
   X:FE92H         PUBLIC        FREQ_CLK
   X:FEB0H         PUBLIC        PITS0
   X:FF05H         PUBLIC        P0LPU
@@ -568,7 +550,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   X:FEB3H         PUBLIC        PITS3
   X:FFA7H         PUBLIC        MISO_MAP
   X:FFA6H         PUBLIC        MOSI_MAP
-  C:0FC5H         PUBLIC        Timer_Init
+  C:0F45H         PUBLIC        Timer_Init
   X:FF40H         PUBLIC        P00DBC
   D:00D0H         PUBLIC        PSW
   X:FF41H         PUBLIC        P01DBC
@@ -576,199 +558,212 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:006AH         PUBLIC        free_s_timer
   X:FF42H         PUBLIC        P02DBC
   X:FF00H         PUBLIC        P0M0
-  C:10ECH         SYMBOL        Com001E
-  C:10ECH         SYMBOL        L?0031
-  -------         PROC          COM001E
-  -------         ENDPROC       COM001E
+  C:108FH         SYMBOL        Com0023
+  C:108FH         SYMBOL        L?0036
+  -------         PROC          COM0023
+  -------         ENDPROC       COM0023
   -------         PROC          _DELAY_MS
   D:0082H         SYMBOL        t
-  C:0EE9H         LINE#         15
-  C:0EEDH         LINE#         16
-  C:0EEDH         LINE#         17
-  C:0EF6H         LINE#         18
-  C:0F0BH         LINE#         19
-  C:0F0BH         LINE#         20
-  C:0F0EH         LINE#         21
-  C:0F10H         LINE#         22
+  C:0ED8H         LINE#         17
+  C:0EDCH         LINE#         18
+  C:0EDCH         LINE#         19
+  C:0EE5H         LINE#         20
+  C:0EFAH         LINE#         21
+  C:0EFAH         LINE#         22
+  C:0EFDH         LINE#         23
+  C:0EFFH         LINE#         24
   -------         ENDPROC       _DELAY_MS
+  -------         PROC          _DELAY_US
+  D:0006H         SYMBOL        q1
+  -------         DO            
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:102AH         LINE#         26
+  C:102AH         LINE#         27
+  C:102AH         LINE#         29
+  C:1034H         LINE#         30
+  C:1034H         LINE#         32
+  C:103BH         LINE#         33
+  -------         ENDPROC       _DELAY_US
   -------         PROC          INITSYS
-  C:0003H         LINE#         30
-  C:0003H         LINE#         31
-  C:0003H         LINE#         34
-  C:0006H         LINE#         35
-  C:000CH         LINE#         36
-  C:0010H         LINE#         44
-  C:0013H         LINE#         45
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 11
-
-
-  C:0019H         LINE#         47
+  C:0003H         LINE#         41
+  C:0003H         LINE#         42
+  C:0003H         LINE#         45
+  C:0006H         LINE#         46
+  C:000CH         LINE#         47
+  C:0010H         LINE#         55
+  C:0013H         LINE#         56
+  C:0019H         LINE#         58
   -------         ENDPROC       INITSYS
   -------         PROC          TIMER_INIT
-  C:0FC5H         LINE#         55
-  C:0FC5H         LINE#         56
-  C:0FC5H         LINE#         58
-  C:0FCAH         LINE#         59
-  C:0FCDH         LINE#         71
-  C:0FD0H         LINE#         72
-  C:0FD3H         LINE#         73
-  C:0FD6H         LINE#         74
-  C:0FD9H         LINE#         76
-  C:0FDCH         LINE#         77
-  C:0FDFH         LINE#         79
-  C:0FE2H         LINE#         80
+  C:0F45H         LINE#         66
+  C:0F45H         LINE#         67
+  C:0F45H         LINE#         69
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 11
+
+
+  C:0F4AH         LINE#         70
+  C:0F4DH         LINE#         82
+  C:0F50H         LINE#         83
+  C:0F53H         LINE#         84
+  C:0F56H         LINE#         85
+  C:0F59H         LINE#         87
+  C:0F5CH         LINE#         88
+  C:0F5FH         LINE#         90
+  C:0F62H         LINE#         91
   -------         ENDPROC       TIMER_INIT
   -------         PROC          UART1_INIT
-  C:0DD7H         LINE#         88
-  C:0DD7H         LINE#         89
-  C:0DD7H         LINE#         91
-  C:0DE0H         LINE#         92
-  C:0DE9H         LINE#         93
-  C:0DEBH         LINE#         94
-  C:0DF1H         LINE#         95
-  C:0DF5H         LINE#         96
-  C:0DF8H         LINE#         112
-  C:0DFBH         LINE#         113
-  C:0DFEH         LINE#         114
-  C:0E01H         LINE#         115
-  C:0E04H         LINE#         116
-  C:0E07H         LINE#         118
+  C:0DC6H         LINE#         99
+  C:0DC6H         LINE#         100
+  C:0DC6H         LINE#         102
+  C:0DCFH         LINE#         103
+  C:0DD8H         LINE#         104
+  C:0DDAH         LINE#         105
+  C:0DE0H         LINE#         106
+  C:0DE4H         LINE#         107
+  C:0DE7H         LINE#         123
+  C:0DEAH         LINE#         124
+  C:0DEDH         LINE#         125
+  C:0DF0H         LINE#         126
+  C:0DF3H         LINE#         127
+  C:0DF6H         LINE#         129
   -------         ENDPROC       UART1_INIT
   -------         PROC          _SEND_DATA
   D:0007H         SYMBOL        d
-  C:1106H         LINE#         120
-  C:1106H         LINE#         121
-  C:1106H         LINE#         122
-  C:1108H         LINE#         123
-  C:110DH         LINE#         125
-  C:1110H         LINE#         126
+  C:10A9H         LINE#         131
+  C:10A9H         LINE#         132
+  C:10A9H         LINE#         133
+  C:10ABH         LINE#         134
+  C:10B0H         LINE#         136
+  C:10B3H         LINE#         137
   -------         ENDPROC       _SEND_DATA
   -------         PROC          MAIN
-  C:08D3H         LINE#         134
-  C:08D3H         LINE#         135
-  C:08D3H         LINE#         136
-  C:08D6H         LINE#         137
-  C:08D9H         LINE#         138
-  C:08DCH         LINE#         139
-  C:08DFH         LINE#         141
-  C:08E2H         LINE#         142
-  C:08E8H         LINE#         143
-  C:08EBH         LINE#         145
-  C:08EDH         LINE#         146
-  C:08F4H         LINE#         148
-  C:08F7H         LINE#         149
-  C:08FAH         LINE#         151
-  C:08FAH         LINE#         152
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 12
+  C:08F3H         LINE#         145
+  C:08F3H         LINE#         146
+  C:08F3H         LINE#         147
+  C:08F6H         LINE#         148
+  C:08F9H         LINE#         149
+  C:08FCH         LINE#         150
+  C:08FFH         LINE#         152
+  C:0902H         LINE#         153
+  C:0908H         LINE#         154
+  C:090BH         LINE#         156
+  C:090DH         LINE#         157
+  C:0914H         LINE#         159
+  C:0917H         LINE#         160
+  C:091AH         LINE#         162
+  C:092BH         LINE#         163
+  C:092BH         LINE#         164
+  C:092BH         LINE#         165
+  C:092EH         LINE#         166
+  C:0935H         LINE#         167
+  C:0938H         LINE#         169
+  C:093CH         LINE#         170
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 12
 
 
-  C:08FAH         LINE#         153
-  C:08FDH         LINE#         154
-  C:0904H         LINE#         155
-  C:0907H         LINE#         157
-  C:090BH         LINE#         158
-  C:090BH         LINE#         159
-  C:090EH         LINE#         160
-  C:0912H         LINE#         161
-  C:0912H         LINE#         162
-  C:092AH         LINE#         163
-  C:0937H         LINE#         164
-  C:0937H         LINE#         165
-  C:0937H         LINE#         166
+  C:093CH         LINE#         171
+  C:093FH         LINE#         172
+  C:0943H         LINE#         173
+  C:0943H         LINE#         174
+  C:095BH         LINE#         175
+  C:0968H         LINE#         176
+  C:0968H         LINE#         177
+  C:0968H         LINE#         178
   -------         ENDPROC       MAIN
   -------         PROC          TIMER1_RPT
-  C:07DEH         LINE#         175
-  C:07FBH         LINE#         177
-  C:080EH         LINE#         179
-  C:0823H         LINE#         180
-  C:0823H         LINE#         181
-  C:082FH         LINE#         182
-  C:0832H         LINE#         183
-  C:0834H         LINE#         185
-  C:0834H         LINE#         186
-  C:0847H         LINE#         187
-  C:0847H         LINE#         188
+  C:086FH         LINE#         187
+  C:088CH         LINE#         189
+  C:089FH         LINE#         191
+  C:08B4H         LINE#         192
+  C:08B4H         LINE#         193
+  C:08C0H         LINE#         194
+  C:08C3H         LINE#         195
+  C:08C5H         LINE#         197
+  C:08C5H         LINE#         198
+  C:08D8H         LINE#         199
+  C:08D8H         LINE#         200
   -------         ENDPROC       TIMER1_RPT
   -------         PROC          UART1_RPT
   -------         DO            
   D:0007H         SYMBOL        i
   -------         ENDDO         
-  C:0D0DH         LINE#         197
-  C:0D20H         LINE#         202
-  C:0D25H         LINE#         203
-  C:0D25H         LINE#         204
-  C:0D27H         LINE#         205
-  C:0D2AH         LINE#         206
-  C:0D2DH         LINE#         207
-  C:0D2FH         LINE#         208
-  C:0D2FH         LINE#         209
+  C:0CFCH         LINE#         209
+  C:0D0FH         LINE#         214
+  C:0D14H         LINE#         215
+  C:0D14H         LINE#         216
+  C:0D16H         LINE#         217
+  C:0D19H         LINE#         218
+  C:0D1CH         LINE#         219
+  C:0D1EH         LINE#         220
+  C:0D1EH         LINE#         221
   -------         ENDPROC       UART1_RPT
   -------         PROC          _FLASH_ERASEBLOCK
   D:0006H         SYMBOL        fui_Address
-  C:0E94H         LINE#         212
-  C:0E9BH         LINE#         213
-  C:0E9BH         LINE#         214
-  C:0E9BH         LINE#         215
-  C:0E9BH         LINE#         216
-  C:0E9EH         LINE#         217
-  C:0EA3H         LINE#         218
-  C:0EA3H         LINE#         220
-  C:0EA5H         LINE#         221
-  C:0EABH         LINE#         222
-  C:0EAFH         LINE#         223
-  C:0EB5H         LINE#         224
-  C:0EBBH         LINE#         226
+  C:0E83H         LINE#         224
+  C:0E8AH         LINE#         225
+  C:0E8AH         LINE#         226
+  C:0E8AH         LINE#         227
+  C:0E8AH         LINE#         228
+  C:0E8DH         LINE#         229
+  C:0E92H         LINE#         230
+  C:0E92H         LINE#         232
+  C:0E94H         LINE#         233
+  C:0E9AH         LINE#         234
+  C:0E9EH         LINE#         235
+  C:0EA4H         LINE#         236
+  C:0EAAH         LINE#         238
   -------         ENDPROC       _FLASH_ERASEBLOCK
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 13
-
-
   -------         PROC          _FLASH_WRITEDATA
   D:0007H         SYMBOL        fuc_SaveData
   D:0004H         SYMBOL        fui_Address
-  C:0E39H         LINE#         237
-  C:0E40H         LINE#         238
-  C:0E40H         LINE#         239
-  C:0E40H         LINE#         240
-  C:0E40H         LINE#         241
-  C:0E43H         LINE#         242
-  C:0E48H         LINE#         243
-  C:0E48H         LINE#         245
-  C:0E4AH         LINE#         246
-  C:0E4CH         LINE#         247
-  C:0E52H         LINE#         248
-  C:0E56H         LINE#         249
-  C:0E5CH         LINE#         250
-  C:0E62H         LINE#         252
+  C:0E28H         LINE#         249
+  C:0E2FH         LINE#         250
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 13
+
+
+  C:0E2FH         LINE#         251
+  C:0E2FH         LINE#         252
+  C:0E2FH         LINE#         253
+  C:0E32H         LINE#         254
+  C:0E37H         LINE#         255
+  C:0E37H         LINE#         257
+  C:0E39H         LINE#         258
+  C:0E3BH         LINE#         259
+  C:0E41H         LINE#         260
+  C:0E45H         LINE#         261
+  C:0E4BH         LINE#         262
+  C:0E51H         LINE#         264
   -------         ENDPROC       _FLASH_WRITEDATA
   -------         ENDMOD        HC_MCU_XBR
 
   -------         MODULE        MCU_API
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:09FCH         PUBLIC        _uart_receive_input
-  C:10B9H         PUBLIC        mcu_reset_zigbee
-  C:10A7H         PUBLIC        with_data_rxbuff
-  C:106BH         PUBLIC        mcu_network_start
-  C:05F0H         PUBLIC        _my_memcpy
-  C:0C6DH         PUBLIC        _my_memset
-  C:0DA5H         PUBLIC        Queue_Read_Byte
-  C:0BE7H         PUBLIC        _mcu_dp_string_update
-  C:052AH         PUBLIC        _mcu_dp_fault_update
-  C:0BA0H         PUBLIC        _my_strlen
-  C:0862H         PUBLIC        _mcu_dp_value_update
-  C:10F9H         PUBLIC        zigbee_protocol_init
+  C:0A3CH         PUBLIC        _uart_receive_input
+  C:104EH         PUBLIC        mcu_reset_zigbee
+  C:103CH         PUBLIC        with_data_rxbuff
+  C:0FEEH         PUBLIC        mcu_network_start
+  C:0681H         PUBLIC        _my_memcpy
+  C:0C5CH         PUBLIC        _my_memset
+  C:0D94H         PUBLIC        Queue_Read_Byte
+  C:0BD6H         PUBLIC        _mcu_dp_string_update
+  C:05BBH         PUBLIC        _mcu_dp_fault_update
+  C:0B8FH         PUBLIC        _my_strlen
+  C:096AH         PUBLIC        _mcu_dp_value_update
+  C:109CH         PUBLIC        zigbee_protocol_init
   C:0026H         PUBLIC        zigbee_uart_service
-  C:1126H         PUBLIC        _mcu_get_dp_download_enum
-  C:0D73H         PUBLIC        _mcu_dp_enum_update
-  C:0A56H         SYMBOL        Com0054
-  C:0A56H         SYMBOL        L?0085
-  C:0A64H         SYMBOL        L?0086
-  C:0A72H         SYMBOL        L?0089
-  C:0A7FH         SYMBOL        L?0092
-  C:0A8AH         SYMBOL        L?0093
-  C:0A94H         SYMBOL        L?0094
-  C:0A9EH         SYMBOL        L?0095
-  C:0A9EH         SYMBOL        L?0096
-  C:0AA5H         SYMBOL        L?0097
+  C:10C9H         PUBLIC        _mcu_get_dp_download_enum
+  C:0D62H         PUBLIC        _mcu_dp_enum_update
+  C:0A96H         SYMBOL        Com0054
+  C:0A96H         SYMBOL        L?0085
+  C:0AA4H         SYMBOL        L?0086
+  C:0AB2H         SYMBOL        L?0089
+  C:0ABFH         SYMBOL        L?0092
+  C:0ACAH         SYMBOL        L?0093
+  C:0AD4H         SYMBOL        L?0094
+  C:0ADEH         SYMBOL        L?0095
+  C:0ADEH         SYMBOL        L?0096
+  C:0AE5H         SYMBOL        L?0097
   -------         PROC          COM0054
   -------         ENDPROC       COM0054
   -------         PROC          _MY_STRLEN
@@ -776,39 +771,39 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:001FH         SYMBOL        len
   -------         ENDDO         
-  C:0BA0H         LINE#         23
-  C:0BA6H         LINE#         24
-  C:0BA6H         LINE#         25
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 14
+  C:0B8FH         LINE#         23
+  C:0B95H         LINE#         24
+  C:0B95H         LINE#         25
+  C:0B98H         LINE#         26
+  C:0B9DH         LINE#         27
+  C:0BA2H         LINE#         28
+  C:0BA2H         LINE#         30
+  C:0BB3H         LINE#         31
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 14
 
 
-  C:0BA9H         LINE#         26
-  C:0BAEH         LINE#         27
-  C:0BB3H         LINE#         28
-  C:0BB3H         LINE#         30
-  C:0BC4H         LINE#         31
-  C:0BDCH         LINE#         32
-  C:0BDEH         LINE#         34
-  C:0BE6H         LINE#         35
+  C:0BCBH         LINE#         32
+  C:0BCDH         LINE#         34
+  C:0BD5H         LINE#         35
   -------         ENDPROC       _MY_STRLEN
   -------         PROC          _MY_MEMSET
-  D:001AH         SYMBOL        src
+  D:001FH         SYMBOL        src
   D:0005H         SYMBOL        ch
-  D:001EH         SYMBOL        count
+  D:0023H         SYMBOL        count
   -------         DO            
-  D:0020H         SYMBOL        tmp
+  D:0025H         SYMBOL        tmp
   -------         ENDDO         
-  C:0C6DH         LINE#         44
-  C:0C73H         LINE#         45
-  C:0C73H         LINE#         46
-  C:0C79H         LINE#         47
-  C:0C7EH         LINE#         48
-  C:0C82H         LINE#         49
-  C:0C82H         LINE#         51
-  C:0C8FH         LINE#         52
-  C:0C9CH         LINE#         53
-  C:0C9EH         LINE#         54
-  C:0CA4H         LINE#         55
+  C:0C5CH         LINE#         44
+  C:0C62H         LINE#         45
+  C:0C62H         LINE#         46
+  C:0C68H         LINE#         47
+  C:0C6DH         LINE#         48
+  C:0C71H         LINE#         49
+  C:0C71H         LINE#         51
+  C:0C7EH         LINE#         52
+  C:0C8BH         LINE#         53
+  C:0C8DH         LINE#         54
+  C:0C93H         LINE#         55
   -------         ENDPROC       _MY_MEMSET
   -------         PROC          _MY_MEMCPY
   D:0032H         SYMBOL        dest
@@ -819,105 +814,105 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:003DH         SYMBOL        psrc
   D:0040H         SYMBOL        i
   -------         ENDDO         
-  C:05F0H         LINE#         64
-  C:05F6H         LINE#         65
-  C:05F6H         LINE#         66
-  C:05FCH         LINE#         67
-  C:0605H         LINE#         70
-  C:0612H         LINE#         71
-  C:0619H         LINE#         72
-  C:0619H         LINE#         74
-  C:0643H         LINE#         75
-  C:0653H         LINE#         76
-  C:066BH         LINE#         77
-  C:0675H         LINE#         78
-  C:0675H         LINE#         79
-  C:0675H         LINE#         80
-  C:0686H         LINE#         81
-  C:06A4H         LINE#         82
-  C:06AEH         LINE#         83
-  C:06AEH         LINE#         85
-  C:06B4H         LINE#         86
+  C:0681H         LINE#         64
+  C:0687H         LINE#         65
+  C:0687H         LINE#         66
+  C:068DH         LINE#         67
+  C:0696H         LINE#         70
+  C:06A3H         LINE#         71
+  C:06AAH         LINE#         72
+  C:06AAH         LINE#         74
+  C:06D4H         LINE#         75
+  C:06E4H         LINE#         76
+  C:06FCH         LINE#         77
+  C:0706H         LINE#         78
+  C:0706H         LINE#         79
+  C:0706H         LINE#         80
+  C:0717H         LINE#         81
+  C:0735H         LINE#         82
+  C:073FH         LINE#         83
+  C:073FH         LINE#         85
+  C:0745H         LINE#         86
   -------         ENDPROC       _MY_MEMCPY
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 15
-
-
-  C:0D9DH         SYMBOL        L?0090
+  C:0D8CH         SYMBOL        L?0090
   -------         PROC          _MCU_DP_ENUM_UPDATE
   D:0003H         SYMBOL        dpid
   D:0025H         SYMBOL        value
   -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 15
+
+
   D:0004H         SYMBOL        length
   -------         ENDDO         
-  C:0D73H         LINE#         189
-  C:0D77H         LINE#         190
-  C:0D77H         LINE#         191
-  C:0D79H         LINE#         193
-  C:0D80H         LINE#         194
-  C:0D85H         LINE#         196
-  C:0D8AH         LINE#         197
-  C:0D8FH         LINE#         199
-  C:0D94H         LINE#         201
-  C:0D9AH         LINE#         203
-  C:0D9CH         LINE#         204
+  C:0D62H         LINE#         189
+  C:0D66H         LINE#         190
+  C:0D66H         LINE#         191
+  C:0D68H         LINE#         193
+  C:0D6FH         LINE#         194
+  C:0D74H         LINE#         196
+  C:0D79H         LINE#         197
+  C:0D7EH         LINE#         199
+  C:0D83H         LINE#         201
+  C:0D89H         LINE#         203
+  C:0D8BH         LINE#         204
   -------         ENDPROC       _MCU_DP_ENUM_UPDATE
-  C:05CCH         SYMBOL        L?0083
-  C:05D8H         SYMBOL        L?0087
-  C:05E0H         SYMBOL        L?0088
-  C:05E8H         SYMBOL        L?0091
+  C:065DH         SYMBOL        L?0083
+  C:0669H         SYMBOL        L?0087
+  C:0671H         SYMBOL        L?0088
+  C:0679H         SYMBOL        L?0091
   -------         PROC          _MCU_DP_FAULT_UPDATE
   D:0003H         SYMBOL        dpid
   D:001CH         SYMBOL        value
   -------         DO            
   D:0082H         SYMBOL        length
   -------         ENDDO         
-  C:052AH         LINE#         251
-  C:052CH         LINE#         252
-  C:052CH         LINE#         253
-  C:052FH         LINE#         255
-  C:0534H         LINE#         256
-  C:0539H         LINE#         258
-  C:053EH         LINE#         260
-  C:054FH         LINE#         261
-  C:0554H         LINE#         262
-  C:0556H         LINE#         263
-  C:0559H         LINE#         264
-  C:056DH         LINE#         265
-  C:056FH         LINE#         266
-  C:056FH         LINE#         267
-  C:056FH         LINE#         268
-  C:0571H         LINE#         269
-  C:0571H         LINE#         270
-  C:0576H         LINE#         271
-  C:0586H         LINE#         272
-  C:0596H         LINE#         273
-  C:05B0H         LINE#         274
-  C:05C0H         LINE#         275
-  C:05C0H         LINE#         277
-  C:05C9H         LINE#         279
-  C:05CBH         LINE#         280
+  C:05BBH         LINE#         251
+  C:05BDH         LINE#         252
+  C:05BDH         LINE#         253
+  C:05C0H         LINE#         255
+  C:05C5H         LINE#         256
+  C:05CAH         LINE#         258
+  C:05CFH         LINE#         260
+  C:05E0H         LINE#         261
+  C:05E5H         LINE#         262
+  C:05E7H         LINE#         263
+  C:05EAH         LINE#         264
+  C:05FEH         LINE#         265
+  C:0600H         LINE#         266
+  C:0600H         LINE#         267
+  C:0600H         LINE#         268
+  C:0602H         LINE#         269
+  C:0602H         LINE#         270
+  C:0607H         LINE#         271
+  C:0617H         LINE#         272
+  C:0627H         LINE#         273
+  C:0641H         LINE#         274
+  C:0651H         LINE#         275
+  C:0651H         LINE#         277
+  C:065AH         LINE#         279
+  C:065CH         LINE#         280
   -------         ENDPROC       _MCU_DP_FAULT_UPDATE
   -------         PROC          _MCU_DP_STRING_UPDATE
   D:0025H         SYMBOL        dpid
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 16
-
-
   D:0026H         SYMBOL        value
   D:0029H         SYMBOL        len
   -------         DO            
   D:0004H         SYMBOL        length
   -------         ENDDO         
-  C:0BE7H         LINE#         313
-  C:0BEFH         LINE#         314
-  C:0BEFH         LINE#         315
-  C:0BF1H         LINE#         317
-  C:0BFAH         LINE#         318
-  C:0C01H         LINE#         320
-  C:0C09H         LINE#         321
-  C:0C12H         LINE#         323
-  C:0C21H         LINE#         325
-  C:0C27H         LINE#         327
-  C:0C29H         LINE#         328
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 16
+
+
+  C:0BD6H         LINE#         313
+  C:0BDEH         LINE#         314
+  C:0BDEH         LINE#         315
+  C:0BE0H         LINE#         317
+  C:0BE9H         LINE#         318
+  C:0BF0H         LINE#         320
+  C:0BF8H         LINE#         321
+  C:0C01H         LINE#         323
+  C:0C10H         LINE#         325
+  C:0C16H         LINE#         327
+  C:0C18H         LINE#         328
   -------         ENDPROC       _MCU_DP_STRING_UPDATE
   -------         PROC          _MCU_DP_VALUE_UPDATE
   D:0003H         SYMBOL        dpid
@@ -925,20 +920,20 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0004H         SYMBOL        length
   -------         ENDDO         
-  C:0862H         LINE#         336
-  C:0864H         LINE#         337
-  C:0864H         LINE#         338
-  C:0866H         LINE#         340
-  C:086FH         LINE#         341
-  C:0876H         LINE#         343
-  C:087DH         LINE#         344
-  C:0882H         LINE#         346
-  C:0892H         LINE#         347
-  C:08ACH         LINE#         348
-  C:08BEH         LINE#         349
-  C:08CAH         LINE#         351
-  C:08D0H         LINE#         353
-  C:08D2H         LINE#         354
+  C:096AH         LINE#         336
+  C:096CH         LINE#         337
+  C:096CH         LINE#         338
+  C:096EH         LINE#         340
+  C:0977H         LINE#         341
+  C:097EH         LINE#         343
+  C:0985H         LINE#         344
+  C:098AH         LINE#         346
+  C:099AH         LINE#         347
+  C:09B4H         LINE#         348
+  C:09C6H         LINE#         349
+  C:09D2H         LINE#         351
+  C:09D8H         LINE#         353
+  C:09DAH         LINE#         354
   -------         ENDPROC       _MCU_DP_VALUE_UPDATE
   -------         PROC          _MCU_GET_DP_DOWNLOAD_ENUM
   D:0001H         SYMBOL        value
@@ -946,87 +941,87 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0025H         SYMBOL        i
   -------         ENDDO         
-  C:1126H         LINE#         375
-  C:1126H         LINE#         376
-  C:1126H         LINE#         378
-  C:112AH         LINE#         379
-  C:112EH         LINE#         380
+  C:10C9H         LINE#         375
+  C:10C9H         LINE#         376
+  C:10C9H         LINE#         378
+  C:10CDH         LINE#         379
+  C:10D1H         LINE#         380
   -------         ENDPROC       _MCU_GET_DP_DOWNLOAD_ENUM
   -------         PROC          MCU_RESET_ZIGBEE
   -------         DO            
   D:0004H         SYMBOL        length
   -------         ENDDO         
-  C:10B9H         LINE#         401
-  C:10B9H         LINE#         402
-  C:10B9H         LINE#         403
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 17
-
-
-  C:10BCH         LINE#         405
-  C:10C5H         LINE#         406
+  C:104EH         LINE#         401
+  C:104EH         LINE#         402
+  C:104EH         LINE#         403
+  C:1051H         LINE#         405
+  C:105AH         LINE#         406
   -------         ENDPROC       MCU_RESET_ZIGBEE
   -------         PROC          MCU_NETWORK_START
   -------         DO            
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 17
+
+
   D:0004H         SYMBOL        length
   -------         ENDDO         
-  C:106BH         LINE#         414
-  C:106BH         LINE#         415
-  C:106BH         LINE#         416
-  C:106EH         LINE#         419
-  C:1071H         LINE#         420
-  C:107BH         LINE#         421
+  C:0FEEH         LINE#         414
+  C:0FEEH         LINE#         415
+  C:0FEEH         LINE#         416
+  C:0FF1H         LINE#         419
+  C:0FF4H         LINE#         420
+  C:0FFEH         LINE#         421
   -------         ENDPROC       MCU_NETWORK_START
   -------         PROC          _UART_RECEIVE_INPUT
   D:0042H         SYMBOL        value
-  C:09FCH         LINE#         429
-  C:09FEH         LINE#         430
-  C:09FEH         LINE#         433
-  C:0A11H         LINE#         435
-  C:0A2FH         LINE#         437
-  C:0A2FH         LINE#         439
-  C:0A3DH         LINE#         440
-  C:0A43H         LINE#         441
-  C:0A43H         LINE#         442
-  C:0A55H         LINE#         443
-  C:0A55H         LINE#         444
+  C:0A3CH         LINE#         429
+  C:0A3EH         LINE#         430
+  C:0A3EH         LINE#         433
+  C:0A51H         LINE#         435
+  C:0A6FH         LINE#         437
+  C:0A6FH         LINE#         439
+  C:0A7DH         LINE#         440
+  C:0A83H         LINE#         441
+  C:0A83H         LINE#         442
+  C:0A95H         LINE#         443
+  C:0A95H         LINE#         444
   -------         ENDPROC       _UART_RECEIVE_INPUT
   -------         PROC          ZIGBEE_PROTOCOL_INIT
-  C:10F9H         LINE#         452
-  C:10F9H         LINE#         453
-  C:10F9H         LINE#         456
-  C:10FFH         LINE#         457
-  C:1105H         LINE#         458
+  C:109CH         LINE#         452
+  C:109CH         LINE#         453
+  C:109CH         LINE#         456
+  C:10A2H         LINE#         457
+  C:10A8H         LINE#         458
   -------         ENDPROC       ZIGBEE_PROTOCOL_INIT
   -------         PROC          QUEUE_READ_BYTE
   -------         DO            
   D:0007H         SYMBOL        value
   -------         ENDDO         
-  C:0DA5H         LINE#         465
-  C:0DA5H         LINE#         466
-  C:0DA5H         LINE#         469
-  C:0DB1H         LINE#         471
-  C:0DBFH         LINE#         473
-  C:0DC5H         LINE#         474
-  C:0DC5H         LINE#         476
-  C:0DD6H         LINE#         477
-  C:0DD6H         LINE#         479
-  C:0DD6H         LINE#         480
+  C:0D94H         LINE#         465
+  C:0D94H         LINE#         466
+  C:0D94H         LINE#         469
+  C:0DA0H         LINE#         471
+  C:0DAEH         LINE#         473
+  C:0DB4H         LINE#         474
+  C:0DB4H         LINE#         476
+  C:0DC5H         LINE#         477
+  C:0DC5H         LINE#         479
+  C:0DC5H         LINE#         480
   -------         ENDPROC       QUEUE_READ_BYTE
   -------         PROC          WITH_DATA_RXBUFF
-  C:10A7H         LINE#         487
-  C:10A7H         LINE#         488
-  C:10A7H         LINE#         489
-  C:10B3H         LINE#         490
-  C:10B6H         LINE#         492
-  C:10B8H         LINE#         493
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 18
-
-
+  C:103CH         LINE#         487
+  C:103CH         LINE#         488
+  C:103CH         LINE#         489
+  C:1048H         LINE#         490
+  C:104BH         LINE#         492
+  C:104DH         LINE#         493
   -------         ENDPROC       WITH_DATA_RXBUFF
   -------         PROC          ZIGBEE_UART_SERVICE
   -------         DO            
   D:0078H         SYMBOL        rx_in
   D:0008H         SYMBOL        offset
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 18
+
+
   D:000AH         SYMBOL        rx_value_len
   D:000CH         SYMBOL        protocol_version
   D:000EH         SYMBOL        protocol_head_len
@@ -1079,110 +1074,109 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:019AH         LINE#         561
   C:019DH         LINE#         562
   C:019DH         LINE#         563
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 19
-
-
   C:01B6H         LINE#         564
   C:01B6H         LINE#         565
   -------         ENDPROC       ZIGBEE_UART_SERVICE
   -------         ENDMOD        MCU_API
 
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 19
+
+
   -------         MODULE        PROTOCOL
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
-  C:0AAFH         SYMBOL        _dp_download_factory_op_handle
+  C:0AEFH         SYMBOL        _dp_download_factory_op_handle
   D:00A0H         PUBLIC        P2
   B:00A8H.7       PUBLIC        EA
   C:0021H         PUBLIC        tuya_retry_ota
-  C:1094H         SYMBOL        _dp_download_ota_result_handle
+  C:1017H         SYMBOL        _dp_download_ota_result_handle
   D:00A8H         PUBLIC        IE
-  C:111CH         PUBLIC        clear_timer
+  C:10BFH         PUBLIC        clear_timer
   D:00FCH         PUBLIC        IAP_CMD
-  C:0F80H         PUBLIC        go_bootloader_ota
+  C:03F5H         PUBLIC        go_bootloader_ota
   D:00F8H         PUBLIC        RSTFR
   C:0022H         PUBLIC        reset_default_parameter
-  C:112FH         PUBLIC        get_download_cmd_total
-  C:0CA5H         PUBLIC        all_data_update
-  C:0D40H         PUBLIC        _zigbee_work_state_event
+  C:10D2H         PUBLIC        get_download_cmd_total
+  C:0C94H         PUBLIC        all_data_update
+  C:0D2FH         PUBLIC        _zigbee_work_state_event
   C:001EH         PUBLIC        _uart_transmit_output
   C:001AH         PUBLIC        _mcu_reset_zigbee_event
   D:0098H         PUBLIC        SCON
-  C:0FE3H         PUBLIC        response_mcu_ota_version_event
+  C:0F63H         PUBLIC        response_mcu_ota_version_event
   D:0088H         PUBLIC        TCON
-  C:1138H         PUBLIC        tuya_reset_module
+  C:10DBH         PUBLIC        tuya_reset_module
   D:00B8H         PUBLIC        IE1
-  C:1135H         PUBLIC        tuya_re_config_network
-  C:10DBH         PUBLIC        IAR_Soft_Rst_Option
-  C:0F5CH         PUBLIC        _dp_download_handle
-  C:1132H         PUBLIC        soft_reset_mcu
-  C:0B03H         PUBLIC        _report_mcu_ota_result
-  C:10CAH         PUBLIC        IAR_Soft_Rst_No_Option
+  C:10D8H         PUBLIC        tuya_re_config_network
+  C:1070H         PUBLIC        IAR_Soft_Rst_Option
+  C:0F00H         PUBLIC        _dp_download_handle
+  C:10D5H         PUBLIC        soft_reset_mcu
+  C:105FH         PUBLIC        IAR_Soft_Rst_No_Option
   D:006EH         PUBLIC        download_cmd
   D:00D0H         PUBLIC        PSW
-  C:1111H         SYMBOL        Com003A
-  C:1111H         SYMBOL        L?0059
-  -------         PROC          COM003A
-  -------         ENDPROC       COM003A
+  C:10B4H         SYMBOL        Com003F
+  C:10B4H         SYMBOL        L?0064
+  -------         PROC          COM003F
+  -------         ENDPROC       COM003F
   -------         PROC          _UART_TRANSMIT_OUTPUT
   D:0007H         SYMBOL        value
+  C:001EH         LINE#         65
   C:001EH         LINE#         66
-  C:001EH         LINE#         67
-  C:001EH         LINE#         69
+  C:001EH         LINE#         68
   -------         ENDPROC       _UART_TRANSMIT_OUTPUT
   -------         PROC          ALL_DATA_UPDATE
-  C:0CA5H         LINE#         100
-  C:0CA5H         LINE#         101
-  C:0CA5H         LINE#         106
-  C:0CACH         LINE#         107
-  C:0CBAH         LINE#         108
-  C:0CC8H         LINE#         109
+  C:0C94H         LINE#         99
+  C:0C94H         LINE#         100
+  C:0C94H         LINE#         105
+  C:0C9BH         LINE#         106
+  C:0CA9H         LINE#         107
+  C:0CB7H         LINE#         108
   -------         ENDPROC       ALL_DATA_UPDATE
   -------         PROC          _DP_DOWNLOAD_FACTORY_OP_HANDLE
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 20
-
-
   D:0001H         SYMBOL        value
   D:0004H         SYMBOL        length
   -------         DO            
   D:0007H         SYMBOL        ret
   D:0024H         SYMBOL        factory_op
   -------         ENDDO         
-  C:0AAFH         LINE#         131
-  C:0AAFH         LINE#         132
-  C:0AAFH         LINE#         137
-  C:0AB4H         LINE#         138
-  C:0AD2H         LINE#         139
-  C:0AD2H         LINE#         140
-  C:0AD5H         LINE#         141
-  C:0AD7H         LINE#         143
-  C:0AD7H         LINE#         144
-  C:0ADAH         LINE#         145
-  C:0ADCH         LINE#         147
-  C:0ADCH         LINE#         148
-  C:0ADFH         LINE#         149
-  C:0AE1H         LINE#         151
-  C:0AE1H         LINE#         152
-  C:0AE4H         LINE#         153
-  C:0AE6H         LINE#         155
-  C:0AE6H         LINE#         156
-  C:0AE9H         LINE#         157
-  C:0AEBH         LINE#         159
-  C:0AEBH         LINE#         160
-  C:0AEEH         LINE#         162
-  C:0AF0H         LINE#         163
-  C:0AF0H         LINE#         164
-  C:0AF3H         LINE#         165
-  C:0AF3H         LINE#         166
-  C:0AF3H         LINE#         168
-  C:0AF3H         LINE#         170
-  C:0AF3H         LINE#         172
-  C:0AF3H         LINE#         173
-  C:0AF3H         LINE#         176
-  C:0AFAH         LINE#         177
-  C:0AFDH         LINE#         178
-  C:0B00H         LINE#         180
-  C:0B02H         LINE#         181
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 20
+
+
+  C:0AEFH         LINE#         130
+  C:0AEFH         LINE#         131
+  C:0AEFH         LINE#         136
+  C:0AF4H         LINE#         137
+  C:0B12H         LINE#         138
+  C:0B12H         LINE#         139
+  C:0B15H         LINE#         140
+  C:0B17H         LINE#         142
+  C:0B17H         LINE#         143
+  C:0B1AH         LINE#         144
+  C:0B1CH         LINE#         146
+  C:0B1CH         LINE#         147
+  C:0B1FH         LINE#         148
+  C:0B21H         LINE#         150
+  C:0B21H         LINE#         151
+  C:0B24H         LINE#         152
+  C:0B26H         LINE#         154
+  C:0B26H         LINE#         155
+  C:0B29H         LINE#         156
+  C:0B2BH         LINE#         158
+  C:0B2BH         LINE#         159
+  C:0B2EH         LINE#         161
+  C:0B30H         LINE#         162
+  C:0B30H         LINE#         163
+  C:0B33H         LINE#         164
+  C:0B33H         LINE#         165
+  C:0B33H         LINE#         167
+  C:0B33H         LINE#         169
+  C:0B33H         LINE#         171
+  C:0B33H         LINE#         172
+  C:0B33H         LINE#         175
+  C:0B3AH         LINE#         176
+  C:0B3DH         LINE#         177
+  C:0B40H         LINE#         179
+  C:0B42H         LINE#         180
   -------         ENDPROC       _DP_DOWNLOAD_FACTORY_OP_HANDLE
   -------         PROC          _DP_DOWNLOAD_OTA_RESULT_HANDLE
   D:0001H         SYMBOL        value
@@ -1191,25 +1185,25 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0007H         SYMBOL        ret
   D:0005H         SYMBOL        ota_result
   -------         ENDDO         
-  C:1094H         LINE#         190
-  C:1094H         LINE#         191
-  C:1094H         LINE#         196
-  C:1099H         LINE#         197
-  C:1099H         LINE#         198
-  C:1099H         LINE#         199
-  C:1099H         LINE#         201
-  C:1099H         LINE#         202
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 21
+  C:1017H         LINE#         189
+  C:1017H         LINE#         190
+  C:1017H         LINE#         195
+  C:101CH         LINE#         196
+  C:101CH         LINE#         197
+  C:101CH         LINE#         198
+  C:101CH         LINE#         200
+  C:101CH         LINE#         201
+  C:101CH         LINE#         203
+  C:101CH         LINE#         205
+  C:101CH         LINE#         206
+  C:101CH         LINE#         209
+  C:1021H         LINE#         210
+  C:1024H         LINE#         211
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 21
 
 
-  C:1099H         LINE#         204
-  C:1099H         LINE#         206
-  C:1099H         LINE#         207
-  C:1099H         LINE#         210
-  C:109EH         LINE#         211
-  C:10A1H         LINE#         212
-  C:10A4H         LINE#         214
-  C:10A6H         LINE#         215
+  C:1027H         LINE#         213
+  C:1029H         LINE#         214
   -------         ENDPROC       _DP_DOWNLOAD_OTA_RESULT_HANDLE
   -------         PROC          _DP_DOWNLOAD_HANDLE
   D:0007H         SYMBOL        dpid
@@ -1218,219 +1212,236 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0023H         SYMBOL        ret
   -------         ENDDO         
-  C:0F5CH         LINE#         279
-  C:0F62H         LINE#         280
-  C:0F62H         LINE#         283
-  C:0F6BH         LINE#         284
-  C:0F6BH         LINE#         286
-  C:0F73H         LINE#         287
-  C:0F75H         LINE#         288
-  C:0F75H         LINE#         290
-  C:0F7DH         LINE#         291
-  C:0F7DH         LINE#         294
-  C:0F7DH         LINE#         295
-  C:0F7DH         LINE#         296
-  C:0F7DH         LINE#         297
-  C:0F7FH         LINE#         298
+  C:0F00H         LINE#         278
+  C:0F06H         LINE#         279
+  C:0F06H         LINE#         282
+  C:0F0FH         LINE#         283
+  C:0F0FH         LINE#         285
+  C:0F17H         LINE#         286
+  C:0F19H         LINE#         287
+  C:0F19H         LINE#         289
+  C:0F21H         LINE#         290
+  C:0F21H         LINE#         293
+  C:0F21H         LINE#         294
+  C:0F21H         LINE#         295
+  C:0F21H         LINE#         296
+  C:0F23H         LINE#         297
   -------         ENDPROC       _DP_DOWNLOAD_HANDLE
   -------         PROC          GET_DOWNLOAD_CMD_TOTAL
-  C:112FH         LINE#         305
-  C:112FH         LINE#         306
-  C:112FH         LINE#         307
-  C:1131H         LINE#         308
+  C:10D2H         LINE#         304
+  C:10D2H         LINE#         305
+  C:10D2H         LINE#         306
+  C:10D4H         LINE#         307
   -------         ENDPROC       GET_DOWNLOAD_CMD_TOTAL
   -------         PROC          _ZIGBEE_WORK_STATE_EVENT
   D:001AH         SYMBOL        zigbee_work_state
   -------         DO            
   D:0004H         SYMBOL        length
   -------         ENDDO         
-  C:0D40H         LINE#         316
-  C:0D42H         LINE#         317
-  C:0D42H         LINE#         318
-  C:0D44H         LINE#         320
-  C:0D4FH         LINE#         321
-  C:0D54H         LINE#         323
-  C:0D63H         LINE#         324
-  C:0D63H         LINE#         325
-  C:0D63H         LINE#         326
-  C:0D65H         LINE#         328
-  C:0D65H         LINE#         329
-  C:0D68H         LINE#         330
-  C:0D6BH         LINE#         331
-  C:0D6BH         LINE#         333
-  C:0D6BH         LINE#         337
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 22
+  C:0D2FH         LINE#         315
+  C:0D31H         LINE#         316
+  C:0D31H         LINE#         317
+  C:0D33H         LINE#         319
+  C:0D3EH         LINE#         320
+  C:0D43H         LINE#         322
+  C:0D52H         LINE#         323
+  C:0D52H         LINE#         324
+  C:0D52H         LINE#         325
+  C:0D54H         LINE#         327
+  C:0D54H         LINE#         328
+  C:0D57H         LINE#         329
+  C:0D5AH         LINE#         330
+  C:0D5AH         LINE#         332
+  C:0D5AH         LINE#         336
+  C:0D5AH         LINE#         337
+  C:0D5DH         LINE#         338
+  C:0D5EH         LINE#         340
+  C:0D5EH         LINE#         341
+  C:0D61H         LINE#         342
+  C:0D61H         LINE#         343
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 22
 
 
-  C:0D6BH         LINE#         338
-  C:0D6EH         LINE#         339
-  C:0D6FH         LINE#         341
-  C:0D6FH         LINE#         342
-  C:0D72H         LINE#         343
-  C:0D72H         LINE#         344
-  C:0D72H         LINE#         345
+  C:0D61H         LINE#         344
   -------         ENDPROC       _ZIGBEE_WORK_STATE_EVENT
   -------         PROC          _MCU_RESET_ZIGBEE_EVENT
   D:0007H         SYMBOL        state
+  C:001AH         LINE#         352
   C:001AH         LINE#         353
   C:001AH         LINE#         354
   C:001AH         LINE#         355
-  C:001AH         LINE#         356
-  C:001AH         LINE#         358
-  C:001AH         LINE#         360
-  C:001AH         LINE#         362
+  C:001AH         LINE#         357
+  C:001AH         LINE#         359
+  C:001AH         LINE#         361
+  C:001AH         LINE#         363
   C:001AH         LINE#         364
   C:001AH         LINE#         365
   C:001AH         LINE#         366
-  C:001AH         LINE#         367
   -------         ENDPROC       _MCU_RESET_ZIGBEE_EVENT
   -------         PROC          RESPONSE_MCU_OTA_VERSION_EVENT
   -------         DO            
   D:001AH         SYMBOL        length
   -------         ENDDO         
-  C:0FE3H         LINE#         375
-  C:0FE3H         LINE#         376
-  C:0FE3H         LINE#         377
-  C:0FE8H         LINE#         378
-  C:0FF8H         LINE#         379
+  C:0F63H         LINE#         374
+  C:0F63H         LINE#         375
+  C:0F63H         LINE#         376
+  C:0F68H         LINE#         377
+  C:0F78H         LINE#         378
   -------         ENDPROC       RESPONSE_MCU_OTA_VERSION_EVENT
   -------         PROC          SOFT_RESET_MCU
-  C:1132H         LINE#         382
-  C:1132H         LINE#         383
-  C:1132H         LINE#         384
+  C:10D5H         LINE#         381
+  C:10D5H         LINE#         382
+  C:10D5H         LINE#         383
   -------         ENDPROC       SOFT_RESET_MCU
+  C:04A7H         SYMBOL        L?0059
+  C:04B5H         SYMBOL        L?0060
+  C:04C3H         SYMBOL        L?0061
+  C:04CFH         SYMBOL        L?0062
+  C:04DCH         SYMBOL        L?0065
   -------         PROC          GO_BOOTLOADER_OTA
-  C:0F80H         LINE#         387
-  C:0F80H         LINE#         388
-  C:0F80H         LINE#         390
-  C:0F87H         LINE#         391
-  C:0F90H         LINE#         393
-  C:0FA1H         LINE#         395
+  -------         DO            
+  D:0003H         SYMBOL        i
+  -------         ENDDO         
+  C:03F5H         LINE#         386
+  C:03F5H         LINE#         387
+  C:03F5H         LINE#         388
+  C:03F7H         LINE#         391
+  C:03FEH         LINE#         392
+  C:0405H         LINE#         393
+  C:0409H         LINE#         394
+  C:040CH         LINE#         396
+  C:040CH         LINE#         397
+  C:040CH         LINE#         398
+  C:041DH         LINE#         399
+  C:0424H         LINE#         400
+  C:0425H         LINE#         401
+  C:0428H         LINE#         402
+  C:042CH         LINE#         403
+  C:042FH         LINE#         404
+  C:043EH         LINE#         405
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 23
+
+
+  C:0441H         LINE#         406
+  C:0450H         LINE#         407
+  C:0453H         LINE#         408
+  C:0457H         LINE#         409
+  C:045AH         LINE#         410
+  C:045EH         LINE#         411
+  C:0461H         LINE#         413
+  C:0470H         LINE#         414
+  C:0473H         LINE#         415
+  C:0482H         LINE#         416
+  C:0485H         LINE#         417
+  C:0489H         LINE#         418
+  C:048CH         LINE#         419
+  C:0490H         LINE#         420
+  C:0493H         LINE#         423
+  C:04A4H         LINE#         426
+  C:04A7H         LINE#         427
   -------         ENDPROC       GO_BOOTLOADER_OTA
   -------         PROC          TUYA_RE_CONFIG_NETWORK
-  C:1135H         LINE#         398
-  C:1135H         LINE#         399
-  C:1135H         LINE#         400
+  C:10D8H         LINE#         429
+  C:10D8H         LINE#         430
+  C:10D8H         LINE#         431
   -------         ENDPROC       TUYA_RE_CONFIG_NETWORK
   -------         PROC          TUYA_RESET_MODULE
-  C:1138H         LINE#         403
-  C:1138H         LINE#         404
-  C:1138H         LINE#         405
+  C:10DBH         LINE#         434
+  C:10DBH         LINE#         435
+  C:10DBH         LINE#         436
   -------         ENDPROC       TUYA_RESET_MODULE
   -------         PROC          TUYA_RETRY_OTA
-  C:0021H         LINE#         408
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 23
-
-
-  C:0021H         LINE#         409
-  C:0021H         LINE#         411
+  C:0021H         LINE#         439
+  C:0021H         LINE#         440
+  C:0021H         LINE#         442
   -------         ENDPROC       TUYA_RETRY_OTA
   -------         PROC          RESET_DEFAULT_PARAMETER
-  C:0022H         LINE#         413
-  C:0022H         LINE#         414
-  C:0022H         LINE#         416
+  C:0022H         LINE#         444
+  C:0022H         LINE#         445
+  C:0022H         LINE#         447
   -------         ENDPROC       RESET_DEFAULT_PARAMETER
   -------         PROC          IAR_SOFT_RST_NO_OPTION
-  C:10CAH         LINE#         418
-  C:10CAH         LINE#         419
-  C:10CAH         LINE#         420
-  C:10CCH         LINE#         421
-  C:10D2H         LINE#         422
-  C:10D8H         LINE#         423
-  C:10DAH         LINE#         424
+  C:105FH         LINE#         449
+  C:105FH         LINE#         450
+  C:105FH         LINE#         451
+  C:1061H         LINE#         452
+  C:1067H         LINE#         453
+  C:106DH         LINE#         454
+  C:106FH         LINE#         455
   -------         ENDPROC       IAR_SOFT_RST_NO_OPTION
   -------         PROC          IAR_SOFT_RST_OPTION
-  C:10DBH         LINE#         426
-  C:10DBH         LINE#         427
-  C:10DBH         LINE#         428
-  C:10DDH         LINE#         429
-  C:10E3H         LINE#         430
-  C:10E9H         LINE#         431
-  C:10EBH         LINE#         432
+  C:1070H         LINE#         457
+  C:1070H         LINE#         458
+  C:1070H         LINE#         459
+  C:1072H         LINE#         460
+  C:1078H         LINE#         461
+  C:107EH         LINE#         462
+  C:1080H         LINE#         463
   -------         ENDPROC       IAR_SOFT_RST_OPTION
   -------         PROC          CLEAR_TIMER
-  C:111CH         LINE#         434
-  C:111CH         LINE#         435
-  C:111CH         LINE#         436
-  C:1125H         LINE#         437
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 24
+
+
+  C:10BFH         LINE#         465
+  C:10BFH         LINE#         466
+  C:10BFH         LINE#         467
+  C:10C8H         LINE#         468
   -------         ENDPROC       CLEAR_TIMER
-  -------         PROC          _REPORT_MCU_OTA_RESULT
-  D:0020H         SYMBOL        res
-  -------         DO            
-  D:0004H         SYMBOL        length
-  D:0021H         SYMBOL        pid_len
-  D:0023H         SYMBOL        pid
-  -------         ENDDO         
-  C:0B03H         LINE#         441
-  C:0B05H         LINE#         442
-  C:0B05H         LINE#         443
-  C:0B0CH         LINE#         446
-  C:0B15H         LINE#         448
-  C:0B1BH         LINE#         449
-  C:0B28H         LINE#         450
-  C:0B28H         LINE#         451
-  C:0B40H         LINE#         452
-  C:0B42H         LINE#         454
-  C:0B4FH         LINE#         455
-  -------         ENDPROC       _REPORT_MCU_OTA_RESULT
   -------         ENDMOD        PROTOCOL
 
   -------         MODULE        SYSTEM
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:101FH         SYMBOL        _get_dowmload_dpid_index
+  C:0FBCH         SYMBOL        _get_dowmload_dpid_index
   D:0080H         PUBLIC        P0
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 24
-
-
   D:0090H         PUBLIC        P1
-  C:1055H         PUBLIC        _assic_to_hex
+  C:0FD8H         PUBLIC        _assic_to_hex
   D:00A0H         PUBLIC        P2
   X:0000H         PUBLIC        zigbee_uart_rx_buf
   X:0049H         PUBLIC        zigbee_uart_tx_buf
-  C:0F37H         PUBLIC        current_mcu_fw_pid
   X:0072H         PUBLIC        wakeup_flag
   D:00A8H         PUBLIC        IE
   X:0073H         PUBLIC        record_report_time_flag
   D:0043H         PUBLIC        ota_fw_info
   D:00F8H         PUBLIC        RSTFR
-  C:099BH         PUBLIC        _zigbee_uart_write_frame
-  C:1001H         SYMBOL        seq_num_get
-  C:0939H         PUBLIC        _strcmp_barry
+  C:09DBH         PUBLIC        _zigbee_uart_write_frame
+  C:0F81H         SYMBOL        seq_num_get
   X:0074H         PUBLIC        zigbee_queue_buf
   X:00BDH         PUBLIC        rx_in
-  C:0CD9H         PUBLIC        _zigbee_uart_write_data
+  C:0CC8H         PUBLIC        _zigbee_uart_write_data
   X:00BEH         PUBLIC        zigbee_work_state
-  C:0E08H         PUBLIC        _set_zigbee_uart_buffer
+  C:0DF7H         PUBLIC        _set_zigbee_uart_buffer
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
-  C:0C2AH         PUBLIC        get_current_mcu_fw_ver
+  C:0C19H         PUBLIC        get_current_mcu_fw_ver
   D:00B8H         PUBLIC        IE1
-  C:01B7H         PUBLIC        _response_mcu_ota_notify_event
+  C:02FAH         PUBLIC        _response_mcu_ota_notify_event
   D:0052H         PUBLIC        current_mcu_pid
   D:005AH         SYMBOL        global_seq_num
-  C:0B54H         SYMBOL        _zigbee_data_point_handle
-  C:0E67H         PUBLIC        _get_check_sum
+  C:0B43H         SYMBOL        _zigbee_data_point_handle
+  C:0E56H         PUBLIC        _get_check_sum
   X:00BFH         PUBLIC        timestamp
-  C:1080H         PUBLIC        _set_zigbee_uart_byte
+  C:1003H         PUBLIC        _set_zigbee_uart_byte
   D:005CH         PUBLIC        queue_in
   D:005EH         PUBLIC        queue_out
-  C:0313H         PUBLIC        _data_handle
+  C:01B7H         PUBLIC        _data_handle
   D:00D0H         PUBLIC        PSW
-  C:06B5H         SYMBOL        product_info_update
-  C:103BH         SYMBOL        Com004E
-  C:103BH         SYMBOL        L?0079
-  C:1049H         SYMBOL        L?0080
-  -------         PROC          COM004E
-  -------         ENDPROC       COM004E
+  C:0746H         SYMBOL        product_info_update
+  C:1081H         SYMBOL        Com0043
+  C:1081H         SYMBOL        L?0068
+  -------         PROC          COM0043
+  -------         ENDPROC       COM0043
   -------         PROC          SEQ_NUM_GET
-  C:1001H         LINE#         68
-  C:1001H         LINE#         69
-  C:1001H         LINE#         70
-  C:1009H         LINE#         71
-  C:1014H         LINE#         72
-  C:101AH         LINE#         73
-  C:101AH         LINE#         74
-  C:101EH         LINE#         75
+  C:0F81H         LINE#         68
+  C:0F81H         LINE#         69
+  C:0F81H         LINE#         70
+  C:0F89H         LINE#         71
+  C:0F94H         LINE#         72
+  C:0F9AH         LINE#         73
+  C:0F9AH         LINE#         74
+  C:0F9EH         LINE#         75
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 25
+
+
   -------         ENDPROC       SEQ_NUM_GET
   -------         PROC          _SET_ZIGBEE_UART_BYTE
   D:0006H         SYMBOL        dest
@@ -1438,16 +1449,13 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0001H         SYMBOL        obj
   -------         ENDDO         
-  C:1080H         LINE#         83
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 25
-
-
-  C:1080H         LINE#         84
-  C:1080H         LINE#         85
-  C:108AH         LINE#         87
-  C:108EH         LINE#         88
-  C:1093H         LINE#         90
-  C:1093H         LINE#         91
+  C:1003H         LINE#         83
+  C:1003H         LINE#         84
+  C:1003H         LINE#         85
+  C:100DH         LINE#         87
+  C:1011H         LINE#         88
+  C:1016H         LINE#         90
+  C:1016H         LINE#         91
   -------         ENDPROC       _SET_ZIGBEE_UART_BYTE
   -------         PROC          _SET_ZIGBEE_UART_BUFFER
   D:0004H         SYMBOL        dest
@@ -1456,26 +1464,26 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0001H         SYMBOL        obj
   -------         ENDDO         
-  C:0E08H         LINE#         100
-  C:0E12H         LINE#         101
-  C:0E12H         LINE#         102
-  C:0E1CH         LINE#         104
-  C:0E2EH         LINE#         106
-  C:0E35H         LINE#         107
-  C:0E38H         LINE#         108
+  C:0DF7H         LINE#         100
+  C:0E01H         LINE#         101
+  C:0E01H         LINE#         102
+  C:0E0BH         LINE#         104
+  C:0E1DH         LINE#         106
+  C:0E24H         LINE#         107
+  C:0E27H         LINE#         108
   -------         ENDPROC       _SET_ZIGBEE_UART_BUFFER
   -------         PROC          _ZIGBEE_UART_WRITE_DATA
   D:002DH         SYMBOL        in
   D:0004H         SYMBOL        len
-  C:0CD9H         LINE#         116
-  C:0CDFH         LINE#         117
-  C:0CDFH         LINE#         118
-  C:0CE8H         LINE#         120
-  C:0CE8H         LINE#         122
-  C:0CF2H         LINE#         123
-  C:0CFFH         LINE#         124
-  C:0D0AH         LINE#         125
-  C:0D0CH         LINE#         126
+  C:0CC8H         LINE#         116
+  C:0CCEH         LINE#         117
+  C:0CCEH         LINE#         118
+  C:0CD7H         LINE#         120
+  C:0CD7H         LINE#         122
+  C:0CE1H         LINE#         123
+  C:0CEEH         LINE#         124
+  C:0CF9H         LINE#         125
+  C:0CFBH         LINE#         126
   -------         ENDPROC       _ZIGBEE_UART_WRITE_DATA
   -------         PROC          _GET_CHECK_SUM
   D:002DH         SYMBOL        pack
@@ -1484,14 +1492,17 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0004H         SYMBOL        i
   D:0007H         SYMBOL        check_sum
   -------         ENDDO         
-  C:0E67H         LINE#         134
-  C:0E71H         LINE#         135
-  C:0E71H         LINE#         137
-  C:0E73H         LINE#         139
-  C:0E7EH         LINE#         140
-  C:0E8CH         LINE#         141
-  C:0E93H         LINE#         143
-  C:0E93H         LINE#         144
+  C:0E56H         LINE#         134
+  C:0E60H         LINE#         135
+  C:0E60H         LINE#         137
+  C:0E62H         LINE#         139
+  C:0E6DH         LINE#         140
+  C:0E7BH         LINE#         141
+  C:0E82H         LINE#         143
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 26
+
+
+  C:0E82H         LINE#         144
   -------         ENDPROC       _GET_CHECK_SUM
   -------         PROC          _ZIGBEE_UART_WRITE_FRAME
   D:0003H         SYMBOL        fr_cmd
@@ -1499,46 +1510,43 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0007H         SYMBOL        check_sum
   D:0004H         SYMBOL        seq
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 26
-
-
   -------         ENDDO         
-  C:099BH         LINE#         152
-  C:09A1H         LINE#         153
-  C:09A1H         LINE#         154
-  C:09A3H         LINE#         157
-  C:09A9H         LINE#         158
-  C:09ADH         LINE#         159
-  C:09B1H         LINE#         162
-  C:09B4H         LINE#         163
-  C:09B7H         LINE#         164
-  C:09BAH         LINE#         167
-  C:09BDH         LINE#         168
-  C:09C1H         LINE#         169
-  C:09C5H         LINE#         171
-  C:09CEH         LINE#         173
-  C:09E1H         LINE#         174
-  C:09EFH         LINE#         176
+  C:09DBH         LINE#         152
+  C:09E1H         LINE#         153
+  C:09E1H         LINE#         154
+  C:09E3H         LINE#         157
+  C:09E9H         LINE#         158
+  C:09EDH         LINE#         159
+  C:09F1H         LINE#         162
+  C:09F4H         LINE#         163
+  C:09F7H         LINE#         164
+  C:09FAH         LINE#         167
+  C:09FDH         LINE#         168
+  C:0A01H         LINE#         169
+  C:0A05H         LINE#         171
+  C:0A0EH         LINE#         173
+  C:0A21H         LINE#         174
+  C:0A2FH         LINE#         176
   -------         ENDPROC       _ZIGBEE_UART_WRITE_FRAME
-  C:0722H         SYMBOL        L?0073
-  C:0730H         SYMBOL        L?0074
-  C:073AH         SYMBOL        L?0075
-  C:0748H         SYMBOL        L?0076
+  C:07B3H         SYMBOL        L?0062
+  C:07C1H         SYMBOL        L?0063
+  C:07CBH         SYMBOL        L?0064
+  C:07D9H         SYMBOL        L?0065
   -------         PROC          PRODUCT_INFO_UPDATE
   -------         DO            
   D:001AH         SYMBOL        length
   -------         ENDDO         
-  C:06B5H         LINE#         184
-  C:06B5H         LINE#         185
-  C:06B5H         LINE#         186
-  C:06BAH         LINE#         187
-  C:06C8H         LINE#         188
-  C:06D6H         LINE#         189
-  C:06E4H         LINE#         190
-  C:06F2H         LINE#         191
-  C:0710H         LINE#         192
-  C:0719H         LINE#         193
-  C:0722H         LINE#         194
+  C:0746H         LINE#         184
+  C:0746H         LINE#         185
+  C:0746H         LINE#         186
+  C:074BH         LINE#         187
+  C:0759H         LINE#         188
+  C:0767H         LINE#         189
+  C:0775H         LINE#         190
+  C:0783H         LINE#         191
+  C:07A1H         LINE#         192
+  C:07AAH         LINE#         193
+  C:07B3H         LINE#         194
   -------         ENDPROC       PRODUCT_INFO_UPDATE
   -------         PROC          _GET_DOWMLOAD_DPID_INDEX
   D:0006H         SYMBOL        dpid
@@ -1546,22 +1554,22 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0005H         SYMBOL        index
   D:0007H         SYMBOL        total
   -------         ENDDO         
-  C:101FH         LINE#         201
-  C:1021H         LINE#         202
-  C:1021H         LINE#         204
-  C:1024H         LINE#         206
-  C:102BH         LINE#         207
-  C:1035H         LINE#         208
-  C:1035H         LINE#         209
-  C:1035H         LINE#         210
-  C:1038H         LINE#         211
-  C:103AH         LINE#         212
+  C:0FBCH         LINE#         201
+  C:0FBEH         LINE#         202
+  C:0FBEH         LINE#         204
+  C:0FC1H         LINE#         206
+  C:0FC8H         LINE#         207
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 27
+
+
+  C:0FD2H         LINE#         208
+  C:0FD2H         LINE#         209
+  C:0FD2H         LINE#         210
+  C:0FD5H         LINE#         211
+  C:0FD7H         LINE#         212
   -------         ENDPROC       _GET_DOWMLOAD_DPID_INDEX
   -------         PROC          _ZIGBEE_DATA_POINT_HANDLE
   D:0001H         SYMBOL        value
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 27
-
-
   -------         DO            
   D:0004H         SYMBOL        dp_id
   D:0007H         SYMBOL        index
@@ -1569,21 +1577,21 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0007H         SYMBOL        ret
   D:001BH         SYMBOL        dp_len
   -------         ENDDO         
-  C:0B54H         LINE#         219
-  C:0B54H         LINE#         220
-  C:0B54H         LINE#         226
-  C:0B58H         LINE#         227
-  C:0B60H         LINE#         228
-  C:0B6BH         LINE#         229
-  C:0B7AH         LINE#         232
-  C:0B7FH         LINE#         234
-  C:0B8AH         LINE#         235
-  C:0B8DH         LINE#         236
-  C:0B8DH         LINE#         237
-  C:0B8DH         LINE#         238
-  C:0B9FH         LINE#         239
-  C:0B9FH         LINE#         241
-  C:0B9FH         LINE#         242
+  C:0B43H         LINE#         219
+  C:0B43H         LINE#         220
+  C:0B43H         LINE#         226
+  C:0B47H         LINE#         227
+  C:0B4FH         LINE#         228
+  C:0B5AH         LINE#         229
+  C:0B69H         LINE#         232
+  C:0B6EH         LINE#         234
+  C:0B79H         LINE#         235
+  C:0B7CH         LINE#         236
+  C:0B7CH         LINE#         237
+  C:0B7CH         LINE#         238
+  C:0B8EH         LINE#         239
+  C:0B8EH         LINE#         241
+  C:0B8EH         LINE#         242
   -------         ENDPROC       _ZIGBEE_DATA_POINT_HANDLE
   -------         PROC          _DATA_HANDLE
   D:0010H         SYMBOL        offset
@@ -1598,231 +1606,179 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0019H         SYMBOL        current_state
   -------         ENDDO         
   -------         ENDDO         
-  C:0313H         LINE#         249
-  C:0317H         LINE#         250
-  C:0317H         LINE#         251
-  C:0318H         LINE#         252
-  C:031CH         LINE#         257
-  C:032AH         LINE#         259
-  C:033CH         LINE#         260
-  C:0352H         LINE#         262
-  C:0362H         LINE#         263
-  C:0374H         LINE#         265
-  C:03A9H         LINE#         266
-  C:03A9H         LINE#         267
-  C:03A9H         LINE#         268
-  C:03ACH         LINE#         269
-  C:03ACH         LINE#         270
-  C:03AFH         LINE#         272
-  C:03AFH         LINE#         273
-  C:03B4H         LINE#         274
-  C:03B8H         LINE#         275
-  C:03B8H         LINE#         276
-  C:03BBH         LINE#         278
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 28
+  C:01B7H         LINE#         249
+  C:01BBH         LINE#         250
+  C:01BBH         LINE#         251
+  C:01BCH         LINE#         252
+  C:01C0H         LINE#         257
+  C:01CEH         LINE#         259
+  C:01E0H         LINE#         260
+  C:01F6H         LINE#         262
+  C:0206H         LINE#         263
+  C:0218H         LINE#         265
+  C:024DH         LINE#         266
+  C:024DH         LINE#         267
+  C:024DH         LINE#         268
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 28
 
 
-  C:03BBH         LINE#         279
-  C:03C2H         LINE#         280
-  C:03C2H         LINE#         281
-  C:03C4H         LINE#         283
-  C:03C4H         LINE#         284
-  C:03D4H         LINE#         285
-  C:03EEH         LINE#         286
-  C:0402H         LINE#         287
-  C:041BH         LINE#         289
-  C:041BH         LINE#         291
-  C:041BH         LINE#         292
-  C:041BH         LINE#         294
-  C:041BH         LINE#         295
-  C:042EH         LINE#         296
-  C:0430H         LINE#         297
-  C:0430H         LINE#         298
-  C:0430H         LINE#         299
-  C:0430H         LINE#         301
-  C:0430H         LINE#         302
-  C:0430H         LINE#         304
-  C:0430H         LINE#         305
-  C:0430H         LINE#         307
-  C:0430H         LINE#         309
-  C:0430H         LINE#         310
-  C:0430H         LINE#         312
-  C:0430H         LINE#         314
-  C:0430H         LINE#         315
-  C:0430H         LINE#         317
-  C:0430H         LINE#         319
-  C:0430H         LINE#         320
-  C:0430H         LINE#         322
-  C:0430H         LINE#         323
-  C:0430H         LINE#         324
-  C:0433H         LINE#         325
-  C:0433H         LINE#         326
-  C:0435H         LINE#         328
-  C:0435H         LINE#         329
-  C:0435H         LINE#         330
-  C:043AH         LINE#         331
-  C:043AH         LINE#         332
-  C:043CH         LINE#         334
-  C:043CH         LINE#         335
-  C:043CH         LINE#         337
-  C:043CH         LINE#         338
-  C:043CH         LINE#         340
-  C:043CH         LINE#         341
-  C:043CH         LINE#         343
-  C:043CH         LINE#         344
-  C:043CH         LINE#         345
-  C:043CH         LINE#         346
-  C:043CH         LINE#         350
-  C:043CH         LINE#         351
-  C:043CH         LINE#         353
-  C:043CH         LINE#         354
-  C:043CH         LINE#         358
-  C:043CH         LINE#         359
-  C:043CH         LINE#         361
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 29
+  C:0250H         LINE#         269
+  C:0250H         LINE#         270
+  C:0253H         LINE#         272
+  C:0253H         LINE#         273
+  C:0258H         LINE#         274
+  C:025CH         LINE#         275
+  C:025CH         LINE#         276
+  C:025FH         LINE#         278
+  C:025FH         LINE#         279
+  C:0266H         LINE#         280
+  C:0266H         LINE#         281
+  C:0268H         LINE#         283
+  C:0268H         LINE#         284
+  C:0278H         LINE#         285
+  C:0292H         LINE#         286
+  C:02A6H         LINE#         287
+  C:02BFH         LINE#         289
+  C:02BFH         LINE#         291
+  C:02BFH         LINE#         292
+  C:02BFH         LINE#         294
+  C:02BFH         LINE#         295
+  C:02D2H         LINE#         296
+  C:02D4H         LINE#         297
+  C:02D4H         LINE#         298
+  C:02D4H         LINE#         299
+  C:02D4H         LINE#         301
+  C:02D4H         LINE#         302
+  C:02D4H         LINE#         304
+  C:02D4H         LINE#         305
+  C:02D4H         LINE#         307
+  C:02D4H         LINE#         309
+  C:02D4H         LINE#         310
+  C:02D4H         LINE#         312
+  C:02D4H         LINE#         314
+  C:02D4H         LINE#         315
+  C:02D4H         LINE#         317
+  C:02D4H         LINE#         319
+  C:02D4H         LINE#         320
+  C:02D4H         LINE#         322
+  C:02D4H         LINE#         323
+  C:02D4H         LINE#         324
+  C:02D7H         LINE#         325
+  C:02D7H         LINE#         326
+  C:02D9H         LINE#         328
+  C:02D9H         LINE#         329
+  C:02D9H         LINE#         330
+  C:02DEH         LINE#         331
+  C:02DEH         LINE#         332
+  C:02E0H         LINE#         334
+  C:02E0H         LINE#         335
+  C:02E0H         LINE#         337
+  C:02E0H         LINE#         338
+  C:02E0H         LINE#         340
+  C:02E0H         LINE#         341
+  C:02E0H         LINE#         343
+  C:02E0H         LINE#         344
+  C:02E0H         LINE#         345
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 29
 
 
-  C:043CH         LINE#         362
-  C:0440H         LINE#         363
-  C:0440H         LINE#         364
-  C:0451H         LINE#         365
-  C:0455H         LINE#         366
+  C:02E0H         LINE#         346
+  C:02E0H         LINE#         350
+  C:02E0H         LINE#         351
+  C:02E0H         LINE#         353
+  C:02E0H         LINE#         354
+  C:02E0H         LINE#         358
+  C:02E0H         LINE#         359
+  C:02E0H         LINE#         361
+  C:02E0H         LINE#         362
+  C:02E4H         LINE#         363
+  C:02E4H         LINE#         364
+  C:02F5H         LINE#         365
+  C:02F9H         LINE#         366
   -------         ENDPROC       _DATA_HANDLE
-  C:0C5EH         SYMBOL        L?0077
+  C:0C4DH         SYMBOL        L?0066
   -------         PROC          GET_CURRENT_MCU_FW_VER
   -------         DO            
-  D:0020H         SYMBOL        fw_ver
-  D:0023H         SYMBOL        current_mcu_fw_ver
+  D:001CH         SYMBOL        fw_ver
+  D:001FH         SYMBOL        current_mcu_fw_ver
   -------         ENDDO         
-  C:0C2AH         LINE#         554
-  C:0C2AH         LINE#         555
-  C:0C2AH         LINE#         556
-  C:0C36H         LINE#         557
-  C:0C39H         LINE#         558
-  C:0C48H         LINE#         559
-  C:0C53H         LINE#         560
-  C:0C5BH         LINE#         561
-  C:0C5DH         LINE#         562
+  C:0C19H         LINE#         554
+  C:0C19H         LINE#         555
+  C:0C19H         LINE#         556
+  C:0C25H         LINE#         557
+  C:0C28H         LINE#         558
+  C:0C37H         LINE#         559
+  C:0C42H         LINE#         560
+  C:0C4AH         LINE#         561
+  C:0C4CH         LINE#         562
   -------         ENDPROC       GET_CURRENT_MCU_FW_VER
   -------         PROC          _ASSIC_TO_HEX
   D:0007H         SYMBOL        assic_num
-  C:1055H         LINE#         605
-  C:1055H         LINE#         606
-  C:1055H         LINE#         607
-  C:1060H         LINE#         608
-  C:1063H         LINE#         610
-  C:106AH         LINE#         611
+  C:0FD8H         LINE#         605
+  C:0FD8H         LINE#         606
+  C:0FD8H         LINE#         607
+  C:0FE3H         LINE#         608
+  C:0FE6H         LINE#         610
+  C:0FEDH         LINE#         611
   -------         ENDPROC       _ASSIC_TO_HEX
   -------         PROC          _RESPONSE_MCU_OTA_NOTIFY_EVENT
   D:001AH         SYMBOL        offset
   -------         DO            
-  D:001BH         SYMBOL        i
-  D:001CH         SYMBOL        length
-  D:001EH         SYMBOL        result
-  -------         ENDDO         
-  C:01B7H         LINE#         613
-  C:01B9H         LINE#         614
-  C:01B9H         LINE#         615
-  C:01BCH         LINE#         616
-  C:01C0H         LINE#         617
-  C:01C4H         LINE#         619
-  C:01C7H         LINE#         621
-  C:01CEH         LINE#         622
-  C:01E4H         LINE#         623
-  C:01E6H         LINE#         624
-  C:01E8H         LINE#         625
-  C:01F6H         LINE#         626
-  C:0252H         LINE#         630
-  C:02AEH         LINE#         635
-  C:02D8H         LINE#         638
-  C:02D8H         LINE#         639
-  C:02DDH         LINE#         640
-  C:02E2H         LINE#         641
-  C:02E4H         LINE#         642
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 30
-
-
-  C:02E4H         LINE#         643
-  C:02E9H         LINE#         644
-  C:02EFH         LINE#         645
-  C:02EFH         LINE#         646
-  C:02F4H         LINE#         647
-  C:02FDH         LINE#         649
-  C:02FDH         LINE#         650
-  C:0304H         LINE#         651
-  C:0309H         LINE#         652
-  C:0310H         LINE#         653
-  -------         ENDPROC       _RESPONSE_MCU_OTA_NOTIFY_EVENT
-  -------         PROC          CURRENT_MCU_FW_PID
-  -------         DO            
   D:0007H         SYMBOL        i
-  D:0020H         SYMBOL        fw_pid
+  D:001BH         SYMBOL        length
+  D:001DH         SYMBOL        result
   -------         ENDDO         
-  C:0F37H         LINE#         657
-  C:0F37H         LINE#         658
-  C:0F37H         LINE#         659
-  C:0F39H         LINE#         660
-  C:0F42H         LINE#         662
-  C:0F42H         LINE#         663
-  C:0F57H         LINE#         664
-  C:0F58H         LINE#         665
-  C:0F5BH         LINE#         666
-  -------         ENDPROC       CURRENT_MCU_FW_PID
-  -------         PROC          _STRCMP_BARRY
-  D:0020H         SYMBOL        str1
-  D:0023H         SYMBOL        str2
-  -------         DO            
-  D:0006H         SYMBOL        ret
-  -------         ENDDO         
-  C:0939H         LINE#         668
-  C:093FH         LINE#         669
-  C:093FH         LINE#         670
-  C:093FH         LINE#         671
-  C:0962H         LINE#         672
-  C:096DH         LINE#         673
-  C:0978H         LINE#         674
-  C:097AH         LINE#         675
-  C:0982H         LINE#         676
-  C:0987H         LINE#         677
-  C:0992H         LINE#         678
-  C:0997H         LINE#         679
-  C:099AH         LINE#         680
-  -------         ENDPROC       _STRCMP_BARRY
+  C:02FAH         LINE#         613
+  C:02FCH         LINE#         614
+  C:02FCH         LINE#         615
+  C:02FEH         LINE#         616
+  C:0302H         LINE#         617
+  C:0306H         LINE#         619
+  C:0314H         LINE#         621
+  C:0314H         LINE#         622
+  C:0314H         LINE#         623
+  C:0328H         LINE#         624
+  C:0329H         LINE#         625
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 30
+
+
+  C:032CH         LINE#         626
+  C:033AH         LINE#         627
+  C:0396H         LINE#         631
+  C:03F2H         LINE#         636
+  -------         ENDPROC       _RESPONSE_MCU_OTA_NOTIFY_EVENT
   -------         ENDMOD        SYSTEM
 
   -------         MODULE        ?C?CLDPTR
-  C:0456H         PUBLIC        ?C?CLDPTR
+  C:04E7H         PUBLIC        ?C?CLDPTR
   -------         ENDMOD        ?C?CLDPTR
 
   -------         MODULE        ?C?CLDOPTR
-  C:046FH         PUBLIC        ?C?CLDOPTR
+  C:0500H         PUBLIC        ?C?CLDOPTR
   -------         ENDMOD        ?C?CLDOPTR
 
   -------         MODULE        ?C?CSTPTR
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 31
-
-
-  C:049CH         PUBLIC        ?C?CSTPTR
+  C:052DH         PUBLIC        ?C?CSTPTR
   -------         ENDMOD        ?C?CSTPTR
 
   -------         MODULE        ?C?CSTOPTR
-  C:04AEH         PUBLIC        ?C?CSTOPTR
+  C:053FH         PUBLIC        ?C?CSTOPTR
   -------         ENDMOD        ?C?CSTOPTR
 
   -------         MODULE        ?C?ULCMP
-  C:04D0H         PUBLIC        ?C?ULCMP
+  C:0561H         PUBLIC        ?C?ULCMP
   -------         ENDMOD        ?C?ULCMP
 
   -------         MODULE        ?C?ULSHR
-  C:04E1H         PUBLIC        ?C?ULSHR
+  C:0572H         PUBLIC        ?C?ULSHR
   -------         ENDMOD        ?C?ULSHR
 
   -------         MODULE        ?C?PLDIIDATA
-  C:04F4H         PUBLIC        ?C?PLDIIDATA
+  C:0585H         PUBLIC        ?C?PLDIIDATA
   -------         ENDMOD        ?C?PLDIIDATA
 
   -------         MODULE        ?C?CCASE
-  C:0504H         PUBLIC        ?C?CCASE
+  C:0595H         PUBLIC        ?C?CCASE
   -------         ENDMOD        ?C?CCASE
 
 
@@ -1834,7 +1790,6 @@ FUNCTION . . . . . . . . . . . . . REG MASK
 -------------------------------------------
 
 CLEAR_TIMER. . . . . . . . . . . . @0xe000
-CURRENT_MCU_FW_PID . . . . . . . . @0xf3f3
 GET_DOWNLOAD_CMD_TOTAL . . . . . . @0x8001
 IAR_SOFT_RST_NO_OPTION . . . . . . @0xc000
 IAR_SOFT_RST_OPTION. . . . . . . . @0xc000
@@ -1844,10 +1799,14 @@ RESET_DEFAULT_PARAMETER. . . . . . @0x8000
 TIMER_INIT . . . . . . . . . . . . @0xe300
 TUYA_RETRY_OTA . . . . . . . . . . @0x8000
 UART1_INIT . . . . . . . . . . . . @0xe300
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 31
+
+
 UART1_RPT. . . . . . . . . . . . . @0xf30f
 WITH_DATA_RXBUFF . . . . . . . . . @0xe001
 ZIGBEE_PROTOCOL_INIT . . . . . . . @0x8003
 _ASSIC_TO_HEX. . . . . . . . . . . @0xf401
+_DELAY_US. . . . . . . . . . . . . @0xf00c
 _FLASH_ERASEBLOCK. . . . . . . . . @0xf800
 _FLASH_WRITEDATA . . . . . . . . . @0xf800
 _GET_CHECK_SUM . . . . . . . . . . @0xfffd
@@ -1858,13 +1817,9 @@ _MY_MEMSET . . . . . . . . . . . . @0xfff2
 _SEND_DATA . . . . . . . . . . . . @0xe000
 _SET_ZIGBEE_UART_BUFFER. . . . . . @0xf3ff
 _SET_ZIGBEE_UART_BYTE. . . . . . . @0xf373
-_STRCMP_BARRY. . . . . . . . . . . @0xf377
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/27/2021  20:11:54  PAGE 32
-
-
 _UART_RECEIVE_INPUT. . . . . . . . @0xf30f
 _UART_TRANSMIT_OUTPUT. . . . . . . @0xe000
 _ZIGBEE_UART_WRITE_DATA. . . . . . @0xf37f
 
-Program Size: data=123.0 xdata=254 code=4411
+Program Size: data=123.0 xdata=254 code=4318
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

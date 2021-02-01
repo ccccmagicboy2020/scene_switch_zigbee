@@ -19,6 +19,7 @@ extern unsigned char upload_disable;
 void send_data(u8 d);
 void Flash_EraseBlock(unsigned int fui_Address);//
 void FLASH_WriteData(unsigned char fuc_SaveData, unsigned int fui_Address);//
+void Delay_us(unsigned int q1);
 /******************************************************************************
                                 移植须知:
 1:MCU必须在while中直接调用mcu_api.c内的zigbee_uart_service()函数
@@ -54,8 +55,6 @@ const DOWNLOAD_CMD_S download_cmd[] =
                            2:串口单字节发送函数
 请将MCU串口发送函数填入该函数内,并将接收到的数据作为参数传入串口发送函数
 ******************************************************************************/
-
-static void report_mcu_ota_result(unsigned char  res);
 
 
 /**
@@ -386,12 +385,44 @@ void soft_reset_mcu(void)
 	
 void go_bootloader_ota(void)
 {
+	unsigned char i = 0;
+	
 	//write flash flag
 	Flash_EraseBlock(MAGIC_SECTOR_ADDRESS0);
+	Delay_us(10000);
 	FLASH_WriteData(0x01, MAGIC_SECTOR_ADDRESS0);
+	Delay_us(100);
+	//save ota struct
+	i = 0;
+	while(i<8){
+		FLASH_WriteData(ota_fw_info.mcu_ota_pid[i], MAGIC_SECTOR_ADDRESS0 + 0x01 + i);	//ota fw PID
+		Delay_us(100);
+		i++;
+	}
+	FLASH_WriteData(ota_fw_info.mcu_ota_ver, MAGIC_SECTOR_ADDRESS0 + 9);
+	Delay_us(100);
+	FLASH_WriteData(ota_fw_info.mcu_ota_fw_size >> 24, MAGIC_SECTOR_ADDRESS0 + 10);
+	Delay_us(100);
+	FLASH_WriteData(ota_fw_info.mcu_ota_fw_size >> 16, MAGIC_SECTOR_ADDRESS0 + 11);
+	Delay_us(100);
+	FLASH_WriteData(ota_fw_info.mcu_ota_fw_size >> 8, MAGIC_SECTOR_ADDRESS0 + 12);
+	Delay_us(100);
+	FLASH_WriteData(ota_fw_info.mcu_ota_fw_size >> 0, MAGIC_SECTOR_ADDRESS0 + 13);
+	Delay_us(100);
+
+	FLASH_WriteData(ota_fw_info.mcu_ota_checksum >> 24, MAGIC_SECTOR_ADDRESS0 + 14);
+	Delay_us(100);
+	FLASH_WriteData(ota_fw_info.mcu_ota_checksum >> 16, MAGIC_SECTOR_ADDRESS0 + 15);
+	Delay_us(100);
+	FLASH_WriteData(ota_fw_info.mcu_ota_checksum >> 8, MAGIC_SECTOR_ADDRESS0 + 16);
+	Delay_us(100);
+	FLASH_WriteData(ota_fw_info.mcu_ota_checksum >> 0, MAGIC_SECTOR_ADDRESS0 + 17);
+	Delay_us(100);
+	
 	//string tips
-	mcu_dp_string_update(DPID_STRING_REPORT, "already in bootloader", sizeof("already in bootloader"));
-	//bootloader
+	mcu_dp_string_update(DPID_STRING_REPORT, "already in bootloader", sizeof("already in bootloader"));	
+	
+	//goto bootloader
 	IAR_Soft_Rst_Option();
 }
 		
@@ -435,24 +466,3 @@ void clear_timer(void)
 {
 	free_s_timer = 0;
 }
-
-#ifdef SUPPORT_MCU_OTA
-
-void report_mcu_ota_result(unsigned char  res)
-{
-  unsigned short length = 0, pid_len = 8;
-	unsigned char* pid;
-	
-	pid = (unsigned char *)PRODUCT_KEY;
-    
-  length = set_zigbee_uart_byte(length,res);
-  while(pid_len--)
-  {
-    length = set_zigbee_uart_byte(length,*pid++);
-  }
-  
-  length = set_zigbee_uart_byte(length, ota_fw_info.mcu_ota_ver);
-  zigbee_uart_write_frame(MCU_OTA_RESULT_CMD, length);
-}
-
-#endif

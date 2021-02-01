@@ -616,8 +616,9 @@ void response_mcu_ota_notify_event(unsigned char offset)
 	unsigned short length = 0;
 	unsigned short result = 0;
 	
-	current_mcu_fw_pid();	//current PID
+	my_memset(&ota_fw_info, 0, sizeof(ota_fw_info));
 	
+	i = 0;
 	while(i<8){
 		ota_fw_info.mcu_ota_pid[i] = zigbee_uart_rx_buf[offset + DATA_START + i];								//ota fw PID
 		i++;
@@ -632,50 +633,5 @@ void response_mcu_ota_notify_event(unsigned char offset)
 																 zigbee_uart_rx_buf[offset + DATA_START + 15] << 8 | \
 																 zigbee_uart_rx_buf[offset + DATA_START + 16];								//ota fw checksum
 	
-	if((!strcmp_barry(&ota_fw_info.mcu_ota_pid[0],&current_mcu_pid[0])) && \
-		 (ota_fw_info.mcu_ota_ver > get_current_mcu_fw_ver() &&\
-		  ota_fw_info.mcu_ota_fw_size > 0)	
-		){		//check fw pid and fw version and fw size
-		length = set_zigbee_uart_byte(length,0x00);	//OK
-		result = 0;
-	}
-	else{
-		length = set_zigbee_uart_byte(length,0x01);	//error
-		result = 1;
-	}
-  ota_fw_info.mcu_current_offset = 0;
-	zigbee_uart_write_frame(MCU_OTA_NOTIFY_CMD,length);
-	
-	{
-		Delay_ms(100);
-		report_mcu_ota_result(0x01);
-		Delay_ms(100);
-		go_bootloader_ota();			
-	}
+	go_bootloader_ota();
 }
-
-void current_mcu_fw_pid(void)
-{
-	unsigned char i = 0;
-	unsigned char *fw_pid = (unsigned char*) PRODUCT_KEY;
-	
-	while(i < 8){
-		current_mcu_pid[i] = fw_pid[i];
-		i++;
-	}
-}
-
-int strcmp_barry(unsigned char *str1,unsigned char *str2)
-{
-   int ret=0;
-   while( !(ret = *(unsigned char*)str1 - *(unsigned char*)str2 ) && *str1 ){
-		 str1++;
-		 str2++;
-	 }
-	 if(ret < 0)	//str1 < str2
-			return -1;
-	 else if(ret > 0)	//str1 > str2
-			return 1;
-	 return 0;	//str1 == str2
-}
-

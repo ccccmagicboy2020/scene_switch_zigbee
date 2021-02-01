@@ -270,8 +270,6 @@ unsigned char get_current_mcu_fw_ver(void);
 char assic_to_hex(unsigned char assic_num);
 
 void response_mcu_ota_notify_event(unsigned char offset);
-void current_mcu_fw_pid(void);
-int strcmp_barry(unsigned char *str1,unsigned char *str2);
 
 #ifdef __cplusplus
 }
