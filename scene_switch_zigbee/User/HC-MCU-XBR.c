@@ -188,7 +188,7 @@ void TIMER1_Rpt(void) interrupt TIMER1_VECTOR
 {
 	Timer_Counter++;
 	
-	if (free_timer > 1000)
+	if (free_timer > 2000)
 	{
 		free_timer = 0;
 		second_flag = 1;

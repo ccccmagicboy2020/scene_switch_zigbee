@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        02/01/2021  14:10:28  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/01/2021  17:15:25  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
             XDATA   FE94H     0001H     ABSOLUTE     
             XDATA   FE95H     0001H     ABSOLUTE     
                     FE96H     0002H                  *** GAP ***
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 2
 
 
             XDATA   FE98H     0001H     ABSOLUTE     
@@ -119,7 +119,7 @@ LINK MAP OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
             XDATA   FF94H     0001H     ABSOLUTE     
             XDATA   FF95H     0001H     ABSOLUTE     
                     FF96H     0002H                  *** GAP ***
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 3
 
 
             XDATA   FF98H     0001H     ABSOLUTE     
@@ -179,7 +179,7 @@ LINK MAP OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
             CODE    0E56H     002DH     UNIT         ?PR?_GET_CHECK_SUM?SYSTEM
             CODE    0E83H     002CH     UNIT         ?PR?_FLASH_ERASEBLOCK?HC_MCU_XBR
             CODE    0EAFH     0029H     UNIT         ?C_INITSEG
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 4
 
 
             CODE    0ED8H     0028H     UNIT         ?PR?_DELAY_MS?HC_MCU_XBR
@@ -239,7 +239,7 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM
 
 ?PR?_ZIGBEE_UART_WRITE_FRAME?SYSTEM              002BH    0002H
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 5
 
 
   +--> ?PR?SEQ_NUM_GET?SYSTEM
@@ -299,7 +299,7 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?_MCU_DP_ENUM_UPDATE?MCU_API
   +--> ?PR?_MCU_DP_VALUE_UPDATE?MCU_API
   +--> ?PR?_MCU_DP_FAULT_UPDATE?MCU_API
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 6
 
 
   +--> ?CO?PROTOCOL
@@ -359,7 +359,7 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?_DELAY_US?HC_MCU_XBR
   +--> ?PR?_FLASH_WRITEDATA?HC_MCU_XBR
   +--> ?CO?PROTOCOL
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 7
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 7
 
 
   +--> ?PR?_MCU_DP_STRING_UPDATE?MCU_API
@@ -419,7 +419,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 8
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 8
 
 
   N:0000H         SYMBOL        IBPSTACK
@@ -479,7 +479,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:08F3H         PUBLIC        main
   X:FEA4H         PUBLIC        BORC
   C:10A9H         PUBLIC        _send_data
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 9
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 9
 
 
   D:0060H         PUBLIC        free_timer
@@ -539,7 +539,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   X:FF8FH         PUBLIC        CLKO_MAP
   X:FEBCH         PUBLIC        INT01_PINS
   D:00CCH         PUBLIC        T4CON
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 10
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 10
 
 
   X:FE92H         PUBLIC        FREQ_CLK
@@ -599,7 +599,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0F45H         LINE#         66
   C:0F45H         LINE#         67
   C:0F45H         LINE#         69
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 11
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 11
 
 
   C:0F4AH         LINE#         70
@@ -659,7 +659,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0935H         LINE#         167
   C:0938H         LINE#         169
   C:093CH         LINE#         170
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 12
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 12
 
 
   C:093CH         LINE#         171
@@ -719,7 +719,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0004H         SYMBOL        fui_Address
   C:0E28H         LINE#         249
   C:0E2FH         LINE#         250
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 13
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 13
 
 
   C:0E2FH         LINE#         251
@@ -779,7 +779,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0BA2H         LINE#         28
   C:0BA2H         LINE#         30
   C:0BB3H         LINE#         31
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 14
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 14
 
 
   C:0BCBH         LINE#         32
@@ -839,7 +839,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0003H         SYMBOL        dpid
   D:0025H         SYMBOL        value
   -------         DO            
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 15
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 15
 
 
   D:0004H         SYMBOL        length
@@ -899,7 +899,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0004H         SYMBOL        length
   -------         ENDDO         
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 16
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 16
 
 
   C:0BD6H         LINE#         313
@@ -959,7 +959,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         ENDPROC       MCU_RESET_ZIGBEE
   -------         PROC          MCU_NETWORK_START
   -------         DO            
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 17
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 17
 
 
   D:0004H         SYMBOL        length
@@ -1019,7 +1019,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         DO            
   D:0078H         SYMBOL        rx_in
   D:0008H         SYMBOL        offset
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 18
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 18
 
 
   D:000AH         SYMBOL        rx_value_len
@@ -1079,7 +1079,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   -------         ENDPROC       ZIGBEE_UART_SERVICE
   -------         ENDMOD        MCU_API
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 19
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 19
 
 
   -------         MODULE        PROTOCOL
@@ -1139,7 +1139,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   D:0007H         SYMBOL        ret
   D:0024H         SYMBOL        factory_op
   -------         ENDDO         
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 20
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 20
 
 
   C:0AEFH         LINE#         130
@@ -1199,7 +1199,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:101CH         LINE#         209
   C:1021H         LINE#         210
   C:1024H         LINE#         211
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 21
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 21
 
 
   C:1027H         LINE#         213
@@ -1259,7 +1259,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0D5EH         LINE#         341
   C:0D61H         LINE#         342
   C:0D61H         LINE#         343
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 22
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 22
 
 
   C:0D61H         LINE#         344
@@ -1319,7 +1319,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:042CH         LINE#         403
   C:042FH         LINE#         404
   C:043EH         LINE#         405
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 23
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 23
 
 
   C:0441H         LINE#         406
@@ -1379,7 +1379,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:1080H         LINE#         463
   -------         ENDPROC       IAR_SOFT_RST_OPTION
   -------         PROC          CLEAR_TIMER
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 24
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 24
 
 
   C:10BFH         LINE#         465
@@ -1439,7 +1439,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0F9AH         LINE#         73
   C:0F9AH         LINE#         74
   C:0F9EH         LINE#         75
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 25
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 25
 
 
   -------         ENDPROC       SEQ_NUM_GET
@@ -1499,7 +1499,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0E6DH         LINE#         140
   C:0E7BH         LINE#         141
   C:0E82H         LINE#         143
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 26
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 26
 
 
   C:0E82H         LINE#         144
@@ -1559,7 +1559,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0FBEH         LINE#         204
   C:0FC1H         LINE#         206
   C:0FC8H         LINE#         207
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 27
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 27
 
 
   C:0FD2H         LINE#         208
@@ -1619,7 +1619,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:024DH         LINE#         266
   C:024DH         LINE#         267
   C:024DH         LINE#         268
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 28
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 28
 
 
   C:0250H         LINE#         269
@@ -1679,7 +1679,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:02E0H         LINE#         343
   C:02E0H         LINE#         344
   C:02E0H         LINE#         345
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 29
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 29
 
 
   C:02E0H         LINE#         346
@@ -1739,7 +1739,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\HC-MCU-XBR (?C_STARTUP)
   C:0314H         LINE#         623
   C:0328H         LINE#         624
   C:0329H         LINE#         625
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 30
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 30
 
 
   C:032CH         LINE#         626
@@ -1799,7 +1799,7 @@ RESET_DEFAULT_PARAMETER. . . . . . @0x8000
 TIMER_INIT . . . . . . . . . . . . @0xe300
 TUYA_RETRY_OTA . . . . . . . . . . @0x8000
 UART1_INIT . . . . . . . . . . . . @0xe300
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  14:10:28  PAGE 31
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/01/2021  17:15:25  PAGE 31
 
 
 UART1_RPT. . . . . . . . . . . . . @0xf30f
