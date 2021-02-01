@@ -61,6 +61,7 @@ void set_magic_flag(unsigned char temp);
 void send_ota_result_dp(unsigned char status);
 void read_ota_struct(void);
 void Delay_us(unsigned int q1);
+int strcmp_barry(unsigned char *str1,unsigned char *str2);
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRCÐ£Ñé
 bit           LVD_Check(unsigned long TimeOut);

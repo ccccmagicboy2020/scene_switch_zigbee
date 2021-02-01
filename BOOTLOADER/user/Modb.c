@@ -452,17 +452,37 @@ void response_mcu_ota_version_event(unsigned char ver)
 	zigbee_uart_write_frame(MCU_OTA_VERSION_CMD,length, tick_hi, tick_lo);
 }
 
+int strcmp_barry(unsigned char *str1,unsigned char *str2)
+{
+   int ret=0;
+   while( !(ret = *(unsigned char*)str1 - *(unsigned char*)str2 ) && *str1 ){
+		 str1++;
+		 str2++;
+	 }
+	 if(ret < 0)	//str1 < str2
+			return -1;
+	 else if(ret > 0)	//str1 > str2
+			return 1;
+	 return 0;	//str1 == str2
+}
+
 void response_mcu_ota_notify_event(void)
 {
 	unsigned char i = 0;
 	unsigned short result = 0;
 	unsigned short length = 0;
+	unsigned char key = 0;
+	unsigned char pid_ota_string[9] = "";
 	
 	i = 0;
 	while(i<8){
 		ota_fw_info.mcu_ota_pid[i] = Uart_Buf[DATA_START + i];								//ota fw PID
+		pid_ota_string[i] = Uart_Buf[DATA_START + i];
 		i++;
 	}
+	
+	pid_ota_string[8] = '\0';
+	
 	ota_fw_info.mcu_ota_ver = Uart_Buf[DATA_START + 8];											//ota fw version
 	ota_fw_info.mcu_ota_fw_size = Uart_Buf[DATA_START + 9] << 24 | \
 																Uart_Buf[DATA_START + 10] << 16 | \
@@ -473,8 +493,23 @@ void response_mcu_ota_notify_event(void)
 																 Uart_Buf[DATA_START + 15] << 8 | \
 																 Uart_Buf[DATA_START + 16];							//ota fw checksum
 	
-	if((ota_fw_info.mcu_ota_ver > 0x00 &&\
-		  ota_fw_info.mcu_ota_fw_size > 0)	
+	if (
+		!strcmp_barry(pid_ota_string, (unsigned char*)PRODUCT_KEY0) || 
+		!strcmp_barry(pid_ota_string, (unsigned char*)PRODUCT_KEY1) ||	
+		!strcmp_barry(pid_ota_string, (unsigned char*)PRODUCT_KEY2) || 
+		!strcmp_barry(pid_ota_string, (unsigned char*)PRODUCT_KEY3)
+	)
+	{
+		key = 1;
+	}
+	else
+	{
+		key = 0;
+	}
+	
+	if((key &&\
+		ota_fw_info.mcu_ota_ver > 0x00 &&\
+		ota_fw_info.mcu_ota_fw_size > 0)	
 		){		//check fw pid and fw version and fw size
 		result = 0x00;	//OK
 		ota_fw_info.mcu_current_offset = 0x00;
@@ -496,6 +531,11 @@ void response_mcu_ota_notify_event(void)
 	if (0x00 == result)
 	{
 		mcu_ota_fw_request();
+	}
+	else if (0x01 == result)
+	{
+		send_ota_result_dp(0x07);
+		mcu_ota_result_report(0x01);
 	}
 }
 

@@ -9,7 +9,11 @@
 #include <HC_DEFINE.H>
 
 #define XBR403_01
-//#define PRODUCT_KEY "bttqbchl"
+
+#define PRODUCT_KEY0 "bttqbchl"
+#define PRODUCT_KEY1 "rl7fwq32"
+#define PRODUCT_KEY2 "0bnf5qot"
+#define PRODUCT_KEY3 "wsqwjuth"
 
 #ifndef         NULL
 #define         NULL                ((void *) 0)
