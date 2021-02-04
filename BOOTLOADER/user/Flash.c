@@ -81,7 +81,7 @@ void IAR_Write_arrang(unsigned int add,unsigned char *datt,unsigned int len)
 	for(i=0;i<len;i++)
 	{	
 		if(add>=0x3000) return; 	
-		IAR_Write_Byte(add,datt[i]);
+		IAR_Write_Byte(add,datt[i] ^ MAGIC_KEY);
 		add++;
 	}
 }

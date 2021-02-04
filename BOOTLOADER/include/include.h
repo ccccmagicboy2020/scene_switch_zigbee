@@ -15,6 +15,8 @@
 #define PRODUCT_KEY2 "0bnf5qot"
 #define PRODUCT_KEY3 "wsqwjuth"
 
+#define MAGIC_KEY 0xCC
+
 #ifndef         NULL
 #define         NULL                ((void *) 0)
 #endif
