@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.25.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: AAA cd, AAA, LIC=8V012-90I3N-WNAAF-6GL2E-TM53L-SU9C6
+ 
+Tool Versions:
+Toolchain:       PK51 Prof. Develpers Kit  Version: 9.00
+Toolchain Path:  d:\Keil_v5\C51\BIN
+C Compiler:      C51.exe V9.00
+Assembler:       A51.exe V8.2.5.0
+Linker/Locator:  BL51.exe V6.22
+Library Manager: LIB51.exe V4.30.1.0
+Hex Converter:   OH51.exe V2.7.0.0
+CPU DLL:         S8051.DLL V3.106.0.0
+Dialog DLL:      DP51.DLL V2.63.0.0 
+<h2>Project:</h2>
+D:\工作文件\HC51RTOS\Demo\HC51_KEIL_project\HC51SRTOS.uvproj
+Project File Date:  08/07/2019
+
+<h2>Output:</h2>
+Rebuild target 'RaySRTOS'
+compiling main.c...
+main.c(2): warning C318: can't open file 'HC51SRTOS.h'
+MAIN.C(6): error C129: missing ';' before 'Task0Stack'
+compiling CPU.c...
+..\..\CPU\8051_KEIL\CPU.c(1): error C318: can't open file '..\..\CPU\8051_KEIL\CPU.c'
+assembling CPU_ASM.asm...
+A51 MACRO ASSEMBLER V8.2.5.0 - SN: K1MMC-G52ZEC
+COPYRIGHT ARM Germany GmbH 2016
+"d:\Keil_v5\C51\BIN\A51.EXE" "..\..\CPU\8051_KEIL\CPU_ASM.asm" SET (SMALL) DEBUG PRINT(.\CPU_ASM.lst) OBJECT(.\output\CPU_ASM.obj) EP
+A51 FATAL ERROR -
+  FILE:       ..\..\CPU\8051_KEIL\CPU_ASM.asm
+  ERROR:      FILE DOES NOT EXIST
+A51 TERMINATED.
+Target not created.
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>

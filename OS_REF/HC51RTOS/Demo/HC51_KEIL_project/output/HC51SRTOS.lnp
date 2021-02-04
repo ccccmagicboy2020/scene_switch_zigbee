@@ -1,0 +1,6 @@
+".\output\main.obj",
+".\output\CPU.obj",
+".\output\CPU_ASM.obj",
+".\output\HC51SRTOS.obj" 
+TO ".\output\HC51SRTOS" 
+PRINT(".\HC51SRTOS.m51") RAMSIZE(256) 

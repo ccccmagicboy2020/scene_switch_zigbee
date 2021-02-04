@@ -1,0 +1,73 @@
+C51 COMPILER V9.00   CPU                                                                   08/07/2019 16:15:43 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE CPU
+OBJECT MODULE PLACED IN .\output\CPU.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE ..\..\CPU\CPU.c ROM(COMPACT) OPTIMIZE(8,SPEED) BROWSE INCDIR(..\..\RTOS;
+                    -..\..\CPU;..\HC51_KEIL_project) DEBUG OBJECTEXTEND PRINT(.\CPU.lst) TABS(2) OBJECT(.\output\CPU.obj)
+
+line level    source
+
+   1          /*****************************************************************************************  
+   2           *  8051 CPU相关C文件
+   3           *
+   4           *  Copyright (C) 2019  OKWEI 黄少
+   5           *  QQ:1926929399
+   6           *  2019-08-08   HC51sRTOS 
+   7           *****************************************************************************************/
+   8          
+   9          #include "HC51SRTOS.h"
+  10          
+  11          /******************全局变量定义***************/
+  12            INT8U   StackIdle[StackSizeIdle];         // 建立空闲任务栈
+  13            INT8U   OSRdyTbl;                   // 就绪任务列表
+  14            INT8U   OSPrioCur;                      // 当前任务的优先级
+  15            INT8U   OSPrioHighRdy ;                     // 即将要运行任务的优先级 
+  16            INT8U  IdleCount;               // 空闲任务自加数
+  17            struct  TaskCtrBlock TCB[OS_TASKS + 1];     // 定义任务控制块TCB数组
+  18          
+  19          
+  20          void  CPU_TaskCreate(void (*p_Task)(void),INT8U *p_Stack,INT8U t_Prio)
+  21            {
+  22   1          *(  p_Stack) = (unsigned int)p_Task & 0xff; // 函数入口
+  23   1          *(++p_Stack) = (unsigned int)p_Task>>8;     // 函数入口
+  24   1          *(++p_Stack) = 0;//ACC    
+  25   1          *(++p_Stack) = 0;//B   
+  26   1          *(++p_Stack) = 0;//DPH   
+  27   1          *(++p_Stack) = 0;//DPL   
+  28   1          *(++p_Stack) = 0;//PSW    
+  29   1          *(++p_Stack) = 0;//R0       
+  30   1          *(++p_Stack) = 1;//R1    
+  31   1          *(++p_Stack) = 2;//R2   
+  32   1          *(++p_Stack) = 3;//R3   
+  33   1          *(++p_Stack) = 4;//R4   
+  34   1          *(++p_Stack) = 5;//R5    
+  35   1          *(++p_Stack) = 6;//R6 
+  36   1          *(++p_Stack) = 7;//R7             // 除pc外保存13个寄存器                         
+  37   1          TCB[t_Prio].OSTCBStkPtr = (INT8U)p_Stack; // 将人工堆栈的栈顶，保存到堆栈的数组中
+  38   1          TCB[t_Prio].OSTCBDly = 0;           // 初始化任务延时
+  39   1        }
+  40          void CPU_OSStart(void)
+  41             {
+  42   1         CPU_TaskCreate(Idle_Task,StackIdle,OS_TASKS);
+  43   1         SP=TCB[OSPrioHighRdy].OSTCBStkPtr-13;      // 将栈顶移到pc位置,准备弹出
+  44   1         TR0=1;
+  45   1         }
+  46             
+  47            
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    329    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+C51 COMPILER V9.00   CPU                                                                   08/07/2019 16:15:43 PAGE 2   
+
+   DATA SIZE        =     39       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

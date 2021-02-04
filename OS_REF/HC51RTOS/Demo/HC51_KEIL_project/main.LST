@@ -1,0 +1,124 @@
+C51 COMPILER V9.00   MAIN                                                                  08/07/2019 16:15:43 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\output\main.obj
+COMPILER INVOKED BY: d:\Keil_v5\C51\BIN\C51.EXE main.c ROM(COMPACT) OPTIMIZE(8,SPEED) BROWSE INCDIR(..\..\RTOS;..\..\CPU
+                    -;..\HC51_KEIL_project) DEBUG OBJECTEXTEND TABS(2) OBJECT(.\output\main.obj)
+
+line level    source
+
+   1          /*****************************************************************************************  
+   2           *  DOMEÎÄ¼þ
+   3           *
+   4           *  Copyright (C) 2019  OKWEI »ÆÉÙ
+   5           *  QQ:1926929399
+   6           *  2019-08-08   HC51sRTOS 
+   7           *****************************************************************************************/
+   8          
+   9          #include "HC51SRTOS.h"
+  10          #include "math.h"
+  11          //#define LED_RED   P0_0    // ½«P20ÉèÖÃÎªÂÌµÆ
+  12          sbit LED_RED     = P0^0;
+  13          sbit LED_GREEN     = P0^1;
+  14          /******************¶¨ÒåÈÎÎñµÄ¶ÑÕ»***************/
+  15          INT8U Task0Stack[20];
+  16          INT8U Task1Stack[20];
+  17          INT8U Task2Stack[20];
+  18          //INT8U Task3Stack[17];
+  19          /******************ÏµÍ³½ÚÅÄ³õÊ¼»¯***************/
+  20             void TimerInit(void)
+  21          {
+  22   1          TMOD=0x01;
+  23   1          TH0=0xf9;
+  24   1          TL0=0xfe;
+  25   1          EA=1;
+  26   1          ET0=1;
+  27   1      }
+  28          /******************ÈÎÎñTask0¶¨Òå***************/
+  29          void Task0(void)
+  30          {
+  31   1       INT8U asi=0;
+  32   1       TimerInit();
+  33   1       
+  34   1       while(1)
+  35   1       {
+  36   2         LED_RED =1;
+  37   2         RTOS_TimeDelay(1000);
+  38   2         LED_RED =0;
+  39   2         RTOS_TimeDelay(1000);
+  40   2       }
+  41   1      }
+  42          ///******************ÈÎÎñTask1¶¨Òå***************/
+  43          void Task1(void)
+  44          {
+  45   1      
+  46   1       while(1)
+  47   1       {
+  48   2         LED_GREEN=1;
+  49   2         RTOS_TimeDelay(400);
+  50   2         LED_GREEN=2;
+  51   2         RTOS_TimeDelay(400);
+  52   2      
+  53   2       }
+  54   1      }
+C51 COMPILER V9.00   MAIN                                                                  08/07/2019 16:15:43 PAGE 2   
+
+  55          
+  56          ///******************ÈÎÎñTask2¶¨Òå***************/
+  57          //void Task2(void)
+  58          //{
+  59          
+  60          // while(1)
+  61          // {
+  62          //   P2++;
+  63          //   RTOS_TimeDelay(400);
+  64          
+  65          // }
+  66          //}
+  67          
+  68          ///******************ÈÎÎñTask3¶¨Òå***************/
+  69          //void Task3(void)
+  70          //{
+  71          
+  72          // while(1)
+  73          // {
+  74          //   P3++;
+  75          //   RTOS_TimeDelay(200);
+  76          
+  77          // }
+  78          //}
+  79          
+  80          /****************Ö÷º¯Êý***************/
+  81          int main(void)
+  82          {
+  83   1         WDTCCR = 0x00;           //¹Ø±Õ¿´ÃÅ¹·
+  84   1                                          //±¾Àý³ÌÎª·½±ã²âÊÔ¹Ø±Õ¿´ÃÅ¹·£¬Êµ¼ÊÊ¹ÓÃÖÐ£¬½¨Òé¿Í»§´ò¿ª¿´ÃÅ¹·£¬Ïê¼ûWDT¸´Î
+             -»Àý³Ì
+  85   1         CLKSWR = 0x51;           //Ñ¡ÔñÄÚ²¿¸ßÆµRCÎªÏµÍ³Ê±ÖÓ£¬ÄÚ²¿¸ßÆµRC 2·ÖÆµ£¬Fosc=16MHz
+  86   1         CLKDIV = 0x01;           //Fosc 1·ÖÆµµÃµ½Fcpu£¬Fcpu=16MHz 
+  87   1         P0M0 =0x88;    //½«P00¡¢01ÉèÖÃÎªÍÆÍêÊä³ö   
+  88   1         LED_RED =1;
+  89   1         LED_GREEN =0;
+  90   1         RTOS_Init();
+  91   1         RTOS_TaskCreate(Task0,Task0Stack,0);
+  92   1      // RTOS_TaskCreate(Task1,Task1Stack,1);
+  93   1      //   RTOS_TaskCreate(Task2,Task2Stack,2);
+  94   1        // RTOS_TaskCreate(Task3,Task3Stack,3);
+  95   1         RTOS_Start();   //´Ëº¯ÊýÖ´ÐÐÍêÏµÍ³¼´·¢Éúµ÷¶È
+  96   1         while(1);
+  97   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    112    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     60       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
