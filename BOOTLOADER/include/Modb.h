@@ -35,7 +35,6 @@
 #define			MCU_OTA_RESULT_CMD					    0x0E							//MCU OTA result
 
 #define     DP_TYPE_ENUM                    0x04				//enum
-#define     DATA_REPORT_CMD                 6
 #define			DPID_OTA_RESULT									154
 
 void          HandShake(void);//Œ’ ÷
