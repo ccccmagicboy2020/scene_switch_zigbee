@@ -519,6 +519,7 @@ void response_mcu_ota_notify_event(void)
 		fw_file_sum = 0;
 		Earse_Flash();
 		set_magic_flag(1);
+		set_network_flag();
 		led_speed = 500;
 	}
 	else{
@@ -537,6 +538,15 @@ void response_mcu_ota_notify_event(void)
 		send_ota_result_dp(0x07);
 		mcu_ota_result_report(0x01);
 	}
+}
+
+void set_network_flag()
+{
+	IAR_Clear(USER_PARAMETER_START_SECTOR_ADDRESS1);
+	Delay_us(10000);
+	
+	IAR_Write_Byte(USER_PARAMETER_START_SECTOR_ADDRESS1 + 1, 0x01);
+	Delay_us(100);
 }
 
 void mcu_ota_result_event(void)

@@ -9,7 +9,9 @@
 #define    Write_Memory               0x21
 #define    Go_APP                     0x91
 
-#define		 MAGIC_SECTOR_ADDRESS0			0x2E80	//at app zone
+#define			MAGIC_SECTOR_ADDRESS0					0x2E80	//at parameter zone
+#define			USER_PARAMETER_START_SECTOR_ADDRESS0	0x2F00	//at parameter zone
+#define			USER_PARAMETER_START_SECTOR_ADDRESS1	0x2F80	//at parameter zone
 
 #define         HEAD_FIRST                      0
 #define         HEAD_SECOND                     1
@@ -61,6 +63,7 @@ void send_ota_result_dp(unsigned char status);
 void read_ota_struct(void);
 void Delay_us(unsigned int q1);
 int strcmp_barry(unsigned char *str1,unsigned char *str2);
+void set_network_flag();
 /////////////////////////////////////////////////////////////////////////////////////
 unsigned int  CRC_CalcCRC_Process(unsigned char *fucp_CheckArr,unsigned int fui_CheckLen,unsigned char *Data,bit CRC_Flag);//CRCÐ£Ñé
 bit           LVD_Check(unsigned long TimeOut);

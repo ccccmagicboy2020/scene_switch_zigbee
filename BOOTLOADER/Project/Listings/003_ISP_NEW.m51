@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        02/04/2021  16:21:27  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/18/2021  23:46:31  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -56,50 +56,51 @@ LINK MAP OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
             CODE    301BH     0003H     ABSOLUTE     
             CODE    301EH     0220H     UNIT         ?C?LIB_CODE
             CODE    323EH     01ADH     UNIT         ?PR?_RECEIVE_PACKET_TUYA?MODB
-            CODE    33EBH     018DH     UNIT         ?PR?RESPONSE_MCU_OTA_NOTIFY_EVENT?MODB
-            CODE    3578H     011DH     UNIT         ?PR?MCU_OTA_FW_REQUEST_EVENT?MODB
-            CODE    3695H     00A8H     UNIT         ?PR?MCU_OTA_FW_REQUEST?MODB
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 2
+            CODE    33EBH     0190H     UNIT         ?PR?RESPONSE_MCU_OTA_NOTIFY_EVENT?MODB
+            CODE    357BH     011DH     UNIT         ?PR?MCU_OTA_FW_REQUEST_EVENT?MODB
+            CODE    3698H     00A8H     UNIT         ?PR?MCU_OTA_FW_REQUEST?MODB
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 2
 
 
-            CODE    373DH     009FH     UNIT         ?PR?MODB
-            CODE    37DCH     009AH     UNIT         ?C_C51STARTUP
-            CODE    3876H     0079H     UNIT         ?PR?HANDSHAKE?MODB
-            CODE    38EFH     0079H     UNIT         ?CO?MODB
-            CODE    3968H     0071H     UNIT         ?PR?_MCU_OTA_RESULT_REPORT?MODB
-            CODE    39D9H     006EH     UNIT         ?PR?TIMER1_RPT?MODB
-            CODE    3A47H     0062H     UNIT         ?PR?MAIN?MAIN
-            CODE    3AA9H     0062H     UNIT         ?PR?_STRCMP_BARRY?MODB
-            CODE    3B0BH     0059H     UNIT         ?PR?_ZIGBEE_UART_WRITE_FRAME?MODB
-            CODE    3B64H     004DH     UNIT         ?PR?_IAR_CLEAR_ARRANG?FLASH
-            CODE    3BB1H     004DH     UNIT         ?PR?_IAR_WRITE_ARRANG?FLASH
-            CODE    3BFEH     004CH     UNIT         ?PR?MCU_OTA_FW_REQ_CV?MODB
-            CODE    3C4AH     003EH     UNIT         ?C_INITSEG
-            CODE    3C88H     003DH     UNIT         ?PR?SYSTEMINIT?PUBLIC
-            CODE    3CC5H     003BH     UNIT         ?PR?READ_OTA_STRUCT?MODB
-            CODE    3D00H     0032H     UNIT         ?PR?_IAR_READ?FLASH
-            CODE    3D32H     0031H     UNIT         ?PR?_UART_RECVBYTE?UART
-            CODE    3D63H     0031H     UNIT         ?PR?EARSE_FLASH?FLASH
-            CODE    3D94H     002FH     UNIT         ?PR?_SEND_OTA_RESULT_DP?MODB
-            CODE    3DC3H     002DH     UNIT         ?PR?_GET_CHECK_SUM?MODB
-            CODE    3DF0H     0028H     UNIT         ?PR?_XOR_FLASH_BLANK?FLASH
-            CODE    3E18H     0023H     UNIT         ?PR?_UART_SENDPACKET?UART
-            CODE    3E3BH     0022H     UNIT         ?PR?_IAR_WRITE_BYTE?FLASH
-            CODE    3E5DH     0021H     UNIT         ?PR?_UART1_INIT?MODB
-            CODE    3E7EH     0020H     UNIT         ?PR?_SET_MAGIC_FLAG?MODB
-            CODE    3E9EH     0020H     UNIT         ?PR?_MY_MEMSET?MODB
-            CODE    3EBEH     0020H     UNIT         ?PR?_IAR_CLEAR?FLASH
-            CODE    3EDEH     0019H     UNIT         ?PR?READ_MAGIC_FLAG?MODB
-            CODE    3EF7H     0014H     UNIT         ?PR?_SET_ZIGBEE_UART_BYTE?MODB
-            CODE    3F0BH     0012H     UNIT         ?PR?_DELAY_US?MODB
-            CODE    3F1DH     0011H     UNIT         ?PR?_UART_SENDBYTE?UART
-            CODE    3F2EH     0011H     UNIT         ?PR?_UART_GETBYTE?UART
-            CODE    3F3FH     000CH     UNIT         ?PR?GPIO_INIT?PUBLIC
-            CODE    3F4BH     000AH     UNIT         ?PR?IAR_SOFT_RST_NO_OPTION?FLASH
-            CODE    3F55H     0009H     UNIT         ?PR?_OTA_FW_DATA_HANDLE?MODB
-            CODE    3F5EH     0008H     UNIT         ?PR?_ENABLE_TIMER?MODB
-            CODE    3F66H     0007H     UNIT         ?PR?MCU_OTA_RESULT_EVENT?MODB
-            CODE    3F6DH     0007H     UNIT         ?PR?FLASH
+            CODE    3740H     009FH     UNIT         ?PR?MODB
+            CODE    37DFH     009AH     UNIT         ?C_C51STARTUP
+            CODE    3879H     0079H     UNIT         ?PR?HANDSHAKE?MODB
+            CODE    38F2H     0079H     UNIT         ?CO?MODB
+            CODE    396BH     0071H     UNIT         ?PR?_MCU_OTA_RESULT_REPORT?MODB
+            CODE    39DCH     006EH     UNIT         ?PR?TIMER1_RPT?MODB
+            CODE    3A4AH     0062H     UNIT         ?PR?MAIN?MAIN
+            CODE    3AACH     0062H     UNIT         ?PR?_STRCMP_BARRY?MODB
+            CODE    3B0EH     0059H     UNIT         ?PR?_ZIGBEE_UART_WRITE_FRAME?MODB
+            CODE    3B67H     004DH     UNIT         ?PR?_IAR_CLEAR_ARRANG?FLASH
+            CODE    3BB4H     004DH     UNIT         ?PR?_IAR_WRITE_ARRANG?FLASH
+            CODE    3C01H     004CH     UNIT         ?PR?MCU_OTA_FW_REQ_CV?MODB
+            CODE    3C4DH     003EH     UNIT         ?C_INITSEG
+            CODE    3C8BH     003DH     UNIT         ?PR?SYSTEMINIT?PUBLIC
+            CODE    3CC8H     003BH     UNIT         ?PR?READ_OTA_STRUCT?MODB
+            CODE    3D03H     0032H     UNIT         ?PR?_IAR_READ?FLASH
+            CODE    3D35H     0031H     UNIT         ?PR?_UART_RECVBYTE?UART
+            CODE    3D66H     0031H     UNIT         ?PR?EARSE_FLASH?FLASH
+            CODE    3D97H     002FH     UNIT         ?PR?_SEND_OTA_RESULT_DP?MODB
+            CODE    3DC6H     002DH     UNIT         ?PR?_GET_CHECK_SUM?MODB
+            CODE    3DF3H     0028H     UNIT         ?PR?_XOR_FLASH_BLANK?FLASH
+            CODE    3E1BH     0023H     UNIT         ?PR?_UART_SENDPACKET?UART
+            CODE    3E3EH     0022H     UNIT         ?PR?_IAR_WRITE_BYTE?FLASH
+            CODE    3E60H     0021H     UNIT         ?PR?_UART1_INIT?MODB
+            CODE    3E81H     0020H     UNIT         ?PR?_SET_MAGIC_FLAG?MODB
+            CODE    3EA1H     0020H     UNIT         ?PR?_MY_MEMSET?MODB
+            CODE    3EC1H     0020H     UNIT         ?PR?_IAR_CLEAR?FLASH
+            CODE    3EE1H     001EH     UNIT         ?PR?SET_NETWORK_FLAG?MODB
+            CODE    3EFFH     0019H     UNIT         ?PR?READ_MAGIC_FLAG?MODB
+            CODE    3F18H     0014H     UNIT         ?PR?_SET_ZIGBEE_UART_BYTE?MODB
+            CODE    3F2CH     0012H     UNIT         ?PR?_DELAY_US?MODB
+            CODE    3F3EH     0011H     UNIT         ?PR?_UART_SENDBYTE?UART
+            CODE    3F4FH     0011H     UNIT         ?PR?_UART_GETBYTE?UART
+            CODE    3F60H     000CH     UNIT         ?PR?GPIO_INIT?PUBLIC
+            CODE    3F6CH     000AH     UNIT         ?PR?IAR_SOFT_RST_NO_OPTION?FLASH
+            CODE    3F76H     0009H     UNIT         ?PR?_OTA_FW_DATA_HANDLE?MODB
+            CODE    3F7FH     0008H     UNIT         ?PR?_ENABLE_TIMER?MODB
+            CODE    3F87H     0007H     UNIT         ?PR?MCU_OTA_RESULT_EVENT?MODB
+            CODE    3F8EH     0007H     UNIT         ?PR?FLASH
 
 
 
@@ -118,10 +119,10 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?GPIO_INIT?PUBLIC
   +--> ?PR?READ_MAGIC_FLAG?MODB
   +--> ?PR?HANDSHAKE?MODB
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 3
+
+
   +--> ?PR?_ENABLE_TIMER?MODB
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 3
-
-
   +--> ?PR?_UART1_INIT?MODB
   +--> ?PR?READ_OTA_STRUCT?MODB
   +--> ?PR?_RECEIVE_PACKET_TUYA?MODB
@@ -157,6 +158,7 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?MODB
   +--> ?PR?EARSE_FLASH?FLASH
   +--> ?PR?_SET_MAGIC_FLAG?MODB
+  +--> ?PR?SET_NETWORK_FLAG?MODB
   +--> ?PR?_SET_ZIGBEE_UART_BYTE?MODB
   +--> ?PR?_ZIGBEE_UART_WRITE_FRAME?MODB
   +--> ?PR?MCU_OTA_FW_REQUEST?MODB
@@ -177,11 +179,11 @@ SEGMENT                                            DATA_GROUP
 ?PR?_IAR_CLEAR?FLASH                             -----    -----
   +--> ?PR?_ENABLE_TIMER?MODB
   +--> ?PR?FLASH
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 4
+
+
 
 ?PR?_SET_MAGIC_FLAG?MODB                         0020H    0001H
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 4
-
-
   +--> ?PR?_IAR_CLEAR?FLASH
   +--> ?PR?_DELAY_US?MODB
   +--> ?PR?_IAR_WRITE_BYTE?FLASH
@@ -189,6 +191,11 @@ SEGMENT                                            DATA_GROUP
 ?PR?_IAR_WRITE_BYTE?FLASH                        -----    -----
   +--> ?PR?_ENABLE_TIMER?MODB
   +--> ?PR?FLASH
+
+?PR?SET_NETWORK_FLAG?MODB                        -----    -----
+  +--> ?PR?_IAR_CLEAR?FLASH
+  +--> ?PR?_DELAY_US?MODB
+  +--> ?PR?_IAR_WRITE_BYTE?FLASH
 
 ?PR?_ZIGBEE_UART_WRITE_FRAME?MODB                0046H    0005H
   +--> ?PR?_GET_CHECK_SUM?MODB
@@ -232,6 +239,9 @@ SEGMENT                                            DATA_GROUP
   +--> ?PR?_GET_CHECK_SUM?MODB
   +--> ?PR?_RESPONSE_MCU_OTA_VERSION_EVENT?MODB
   +--> ?PR?RESPONSE_MCU_OTA_NOTIFY_EVENT?MODB
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 5
+
+
   +--> ?PR?MCU_OTA_FW_REQ_CV?MODB
   +--> ?PR?MCU_OTA_RESULT_EVENT?MODB
   +--> ?PR?_UART_RECVBYTE?UART
@@ -239,9 +249,6 @@ SEGMENT                                            DATA_GROUP
 ?PR?MCU_OTA_FW_REQ_CV?MODB                       -----    -----
   +--> ?PR?MCU_OTA_FW_REQUEST_EVENT?MODB
   +--> ?PR?_SEND_OTA_RESULT_DP?MODB
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 5
-
-
   +--> ?PR?_MCU_OTA_RESULT_REPORT?MODB
   +--> ?PR?MCU_OTA_FW_REQUEST?MODB
 
@@ -272,7 +279,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:37DCH         SEGMENT       ?C_C51STARTUP
+  C:37DFH         SEGMENT       ?C_C51STARTUP
   I:0075H         SEGMENT       ?STACK
   C:3000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
@@ -282,7 +289,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:37DFH         SYMBOL        IDATALOOP
+  C:37E2H         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -291,30 +298,30 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:37DCH         SYMBOL        STARTUP1
+  C:37DFH         SYMBOL        STARTUP1
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 6
+
+
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:00FFH         SYMBOL        XDATALEN
-  C:37EAH         SYMBOL        XDATALOOP
+  C:37EDH         SYMBOL        XDATALOOP
   N:0000H         SYMBOL        XDATASTART
   C:3000H         LINE#         132
-  C:37DCH         LINE#         139
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 6
-
-
-  C:37DEH         LINE#         140
-  C:37DFH         LINE#         141
-  C:37E0H         LINE#         142
-  C:37E2H         LINE#         146
-  C:37E5H         LINE#         147
-  C:37E7H         LINE#         149
-  C:37E9H         LINE#         153
-  C:37EAH         LINE#         154
-  C:37EBH         LINE#         155
-  C:37ECH         LINE#         156
-  C:37EEH         LINE#         157
-  C:37F0H         LINE#         191
-  C:37F3H         LINE#         202
+  C:37DFH         LINE#         139
+  C:37E1H         LINE#         140
+  C:37E2H         LINE#         141
+  C:37E3H         LINE#         142
+  C:37E5H         LINE#         146
+  C:37E8H         LINE#         147
+  C:37EAH         LINE#         149
+  C:37ECH         LINE#         153
+  C:37EDH         LINE#         154
+  C:37EEH         LINE#         155
+  C:37EFH         LINE#         156
+  C:37F1H         LINE#         157
+  C:37F3H         LINE#         191
+  C:37F6H         LINE#         202
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        MAIN
@@ -327,7 +334,7 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   D:0054H         PUBLIC        guc_Read_a1
   D:00F8H         PUBLIC        RSTFR
   X:0001H         PUBLIC        Uart_Buf
-  C:3A47H         PUBLIC        main
+  C:3A4AH         PUBLIC        main
   X:00C9H         PUBLIC        Uart_send_Buf
   D:00BDH         PUBLIC        WDTC
   D:0098H         PUBLIC        SCON
@@ -338,47 +345,47 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   X:00EAH         PUBLIC        tick_lo
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
-  C:3A47H         LINE#         17
-  C:3A47H         LINE#         18
-  C:3A47H         LINE#         19
-  C:3A4AH         LINE#         20
-  C:3A4DH         LINE#         22
-  C:3A55H         LINE#         23
-  C:3A5BH         LINE#         25
-  C:3A5DH         LINE#         26
-  C:3A5DH         LINE#         27
-  C:3A60H         LINE#         49
-  C:3A62H         LINE#         51
-  C:3A62H         LINE#         52
-  C:3A67H         LINE#         53
-  C:3A6EH         LINE#         55
-  C:3A73H         LINE#         56
-  C:3A79H         LINE#         58
-  C:3A7CH         LINE#         60
-  C:3A7CH         LINE#         61
-  C:3A7CH         LINE#         62
-  C:3A7FH         LINE#         63
-  C:3A8FH         LINE#         64
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 7
+  C:3A4AH         LINE#         17
+  C:3A4AH         LINE#         18
+  C:3A4AH         LINE#         19
+  C:3A4DH         LINE#         20
+  C:3A50H         LINE#         22
+  C:3A58H         LINE#         23
+  C:3A5EH         LINE#         25
+  C:3A60H         LINE#         26
+  C:3A60H         LINE#         27
+  C:3A63H         LINE#         49
+  C:3A65H         LINE#         51
+  C:3A65H         LINE#         52
+  C:3A6AH         LINE#         53
+  C:3A71H         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 7
 
 
-  C:3A8FH         LINE#         65
-  C:3A8FH         LINE#         66
-  C:3A8FH         LINE#         67
-  C:3A8FH         LINE#         68
-  C:3A8FH         LINE#         69
-  C:3A8FH         LINE#         70
-  C:3AA0H         LINE#         71
-  C:3AA0H         LINE#         72
-  C:3AA3H         LINE#         73
-  C:3AA3H         LINE#         74
-  C:3AA5H         LINE#         75
-  C:3AA5H         LINE#         76
-  C:3AA5H         LINE#         77
-  C:3AA5H         LINE#         78
-  C:3AA5H         LINE#         79
-  C:3AA5H         LINE#         80
-  C:3AA8H         LINE#         81
+  C:3A76H         LINE#         56
+  C:3A7CH         LINE#         58
+  C:3A7FH         LINE#         60
+  C:3A7FH         LINE#         61
+  C:3A7FH         LINE#         62
+  C:3A82H         LINE#         63
+  C:3A92H         LINE#         64
+  C:3A92H         LINE#         65
+  C:3A92H         LINE#         66
+  C:3A92H         LINE#         67
+  C:3A92H         LINE#         68
+  C:3A92H         LINE#         69
+  C:3A92H         LINE#         70
+  C:3AA3H         LINE#         71
+  C:3AA3H         LINE#         72
+  C:3AA6H         LINE#         73
+  C:3AA6H         LINE#         74
+  C:3AA8H         LINE#         75
+  C:3AA8H         LINE#         76
+  C:3AA8H         LINE#         77
+  C:3AA8H         LINE#         78
+  C:3AA8H         LINE#         79
+  C:3AA8H         LINE#         80
+  C:3AABH         LINE#         81
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -391,8 +398,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   B:0090H.0       PUBLIC        P1_0
   B:0090H.1       PUBLIC        P1_1
   D:00F8H         PUBLIC        RSTFR
-  C:3C88H         PUBLIC        SystemInit
-  C:3F3FH         PUBLIC        GPIO_Init
+  C:3C8BH         PUBLIC        SystemInit
+  C:3F60H         PUBLIC        GPIO_Init
   D:00BBH         PUBLIC        LVDC
   D:00BDH         PUBLIC        WDTC
   D:0098H         PUBLIC        SCON
@@ -406,35 +413,35 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   D:008EH         PUBLIC        CLKSWR
   D:00D0H         PUBLIC        PSW
   -------         PROC          SYSTEMINIT
-  C:3C88H         LINE#         9
-  C:3C88H         LINE#         10
-  C:3C88H         LINE#         12
-  C:3C8BH         LINE#         13
-  C:3C91H         LINE#         14
-  C:3C95H         LINE#         16
-  C:3C98H         LINE#         17
-  C:3C9EH         LINE#         20
-  C:3CA7H         LINE#         23
-  C:3CACH         LINE#         24
-  C:3CAEH         LINE#         25
-  C:3CB1H         LINE#         26
-  C:3CB4H         LINE#         27
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 8
+  C:3C8BH         LINE#         9
+  C:3C8BH         LINE#         10
+  C:3C8BH         LINE#         12
+  C:3C8EH         LINE#         13
+  C:3C94H         LINE#         14
+  C:3C98H         LINE#         16
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 8
 
 
-  C:3CB6H         LINE#         28
-  C:3CB8H         LINE#         30
-  C:3CBBH         LINE#         31
-  C:3CC1H         LINE#         32
-  C:3CC4H         LINE#         33
+  C:3C9BH         LINE#         17
+  C:3CA1H         LINE#         20
+  C:3CAAH         LINE#         23
+  C:3CAFH         LINE#         24
+  C:3CB1H         LINE#         25
+  C:3CB4H         LINE#         26
+  C:3CB7H         LINE#         27
+  C:3CB9H         LINE#         28
+  C:3CBBH         LINE#         30
+  C:3CBEH         LINE#         31
+  C:3CC4H         LINE#         32
+  C:3CC7H         LINE#         33
   -------         ENDPROC       SYSTEMINIT
   -------         PROC          GPIO_INIT
-  C:3F3FH         LINE#         35
-  C:3F3FH         LINE#         36
-  C:3F3FH         LINE#         60
-  C:3F46H         LINE#         64
-  C:3F48H         LINE#         65
-  C:3F4AH         LINE#         90
+  C:3F60H         LINE#         35
+  C:3F60H         LINE#         36
+  C:3F60H         LINE#         60
+  C:3F67H         LINE#         64
+  C:3F69H         LINE#         65
+  C:3F6BH         LINE#         90
   -------         ENDPROC       GPIO_INIT
   -------         ENDMOD        PUBLIC
 
@@ -445,26 +452,26 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   D:00A0H         PUBLIC        P2
   D:00A8H         PUBLIC        IE
   D:00F8H         PUBLIC        RSTFR
-  C:3F1DH         PUBLIC        _Uart_SendByte
-  C:3D32H         PUBLIC        _Uart_RecvByte
+  C:3F3EH         PUBLIC        _Uart_SendByte
+  C:3D35H         PUBLIC        _Uart_RecvByte
   D:0099H         PUBLIC        SBUF
   D:00BDH         PUBLIC        WDTC
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
-  C:3F2EH         PUBLIC        _Uart_GetByte
+  C:3F4FH         PUBLIC        _Uart_GetByte
   D:00B8H         PUBLIC        IE1
-  C:3E18H         PUBLIC        _Uart_SendPacket
+  C:3E1BH         PUBLIC        _Uart_SendPacket
   D:00D0H         PUBLIC        PSW
   -------         PROC          _UART_SENDBYTE
   D:0007H         SYMBOL        guc_Uartbuf
-  C:3F1DH         LINE#         9
-  C:3F1DH         LINE#         10
-  C:3F1DH         LINE#         11
-  C:3F20H         LINE#         12
-  C:3F22H         LINE#         13
-  C:3F27H         LINE#         14
-  C:3F2AH         LINE#         15
-  C:3F2DH         LINE#         16
+  C:3F3EH         LINE#         9
+  C:3F3EH         LINE#         10
+  C:3F3EH         LINE#         11
+  C:3F41H         LINE#         12
+  C:3F43H         LINE#         13
+  C:3F48H         LINE#         14
+  C:3F4BH         LINE#         15
+  C:3F4EH         LINE#         16
   -------         ENDPROC       _UART_SENDBYTE
   -------         PROC          _UART_SENDPACKET
   D:004BH         SYMBOL        guc_Uartbuf
@@ -472,221 +479,222 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         DO            
   D:0006H         SYMBOL        i
   -------         ENDDO         
-  C:3E18H         LINE#         24
-  C:3E1EH         LINE#         25
-  C:3E1EH         LINE#         27
-  C:3E20H         LINE#         28
-  C:3E25H         LINE#         29
-  C:3E25H         LINE#         30
-  C:3E37H         LINE#         31
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 9
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 9
 
 
-  C:3E38H         LINE#         32
-  C:3E3AH         LINE#         33
+  C:3E1BH         LINE#         24
+  C:3E21H         LINE#         25
+  C:3E21H         LINE#         27
+  C:3E23H         LINE#         28
+  C:3E28H         LINE#         29
+  C:3E28H         LINE#         30
+  C:3E3AH         LINE#         31
+  C:3E3BH         LINE#         32
+  C:3E3DH         LINE#         33
   -------         ENDPROC       _UART_SENDPACKET
   -------         PROC          _UART_GETBYTE
   D:0001H         SYMBOL        guc_Uartbuf
-  C:3F2EH         LINE#         40
-  C:3F2EH         LINE#         41
-  C:3F2EH         LINE#         42
-  C:3F33H         LINE#         43
-  C:3F33H         LINE#         44
-  C:3F36H         LINE#         45
-  C:3F3BH         LINE#         46
-  C:3F3DH         LINE#         47
-  C:3F3DH         LINE#         48
-  C:3F3EH         LINE#         49
+  C:3F4FH         LINE#         40
+  C:3F4FH         LINE#         41
+  C:3F4FH         LINE#         42
+  C:3F54H         LINE#         43
+  C:3F54H         LINE#         44
+  C:3F57H         LINE#         45
+  C:3F5CH         LINE#         46
+  C:3F5EH         LINE#         47
+  C:3F5EH         LINE#         48
+  C:3F5FH         LINE#         49
   -------         ENDPROC       _UART_GETBYTE
   -------         PROC          _UART_RECVBYTE
   D:0010H         SYMBOL        guc_Uartbuf
   D:0013H         SYMBOL        TimeOut
-  C:3D32H         LINE#         57
-  C:3D40H         LINE#         58
-  C:3D40H         LINE#         59
-  C:3D52H         LINE#         60
-  C:3D52H         LINE#         61
-  C:3D55H         LINE#         62
-  C:3D60H         LINE#         63
-  C:3D60H         LINE#         64
-  C:3D61H         LINE#         65
-  C:3D61H         LINE#         66
-  C:3D61H         LINE#         67
-  C:3D62H         LINE#         68
+  C:3D35H         LINE#         57
+  C:3D43H         LINE#         58
+  C:3D43H         LINE#         59
+  C:3D55H         LINE#         60
+  C:3D55H         LINE#         61
+  C:3D58H         LINE#         62
+  C:3D63H         LINE#         63
+  C:3D63H         LINE#         64
+  C:3D64H         LINE#         65
+  C:3D64H         LINE#         66
+  C:3D64H         LINE#         67
+  C:3D65H         LINE#         68
   -------         ENDPROC       _UART_RECVBYTE
   -------         ENDMOD        UART
 
   -------         MODULE        MODB
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:3EDEH         PUBLIC        read_magic_flag
+  C:3EFFH         PUBLIC        read_magic_flag
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   B:00A8H.7       PUBLIC        EA
-  C:3E5DH         PUBLIC        _uart1_init
-  C:3D94H         PUBLIC        _send_ota_result_dp
+  C:3E60H         PUBLIC        _uart1_init
+  C:3D97H         PUBLIC        _send_ota_result_dp
   D:00A8H         PUBLIC        IE
-  C:3BFEH         PUBLIC        mcu_ota_fw_req_cv
+  C:3C01H         PUBLIC        mcu_ota_fw_req_cv
   B:0090H.0       PUBLIC        P1_0
   X:00EBH         PUBLIC        ota_fw_info
   D:00F8H         PUBLIC        RSTFR
   B:0080H.4       PUBLIC        P0_4
-  C:3B0BH         PUBLIC        _zigbee_uart_write_frame
+  C:3B0EH         PUBLIC        _zigbee_uart_write_frame
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 10
+
+
   D:0068H         PUBLIC        fw_file_sum
-  C:3695H         PUBLIC        mcu_ota_fw_request
-  C:3578H         PUBLIC        mcu_ota_fw_request_event
-  C:3AA9H         PUBLIC        _strcmp_barry
+  C:3698H         PUBLIC        mcu_ota_fw_request
+  C:357BH         PUBLIC        mcu_ota_fw_request_event
+  C:3AACH         PUBLIC        _strcmp_barry
   C:323EH         PUBLIC        _Receive_Packet_tuya
   D:00BBH         PUBLIC        LVDC
   D:006AH         PUBLIC        led_speed
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 10
-
-
-  C:3E7EH         PUBLIC        _set_magic_flag
+  C:3E81H         PUBLIC        _set_magic_flag
   C:3003H         PUBLIC        _response_mcu_ota_version_event
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
-  C:391BH         PUBLIC        ISP_Version_OutSide_Order
-  C:3913H         PUBLIC        ISP_Version_Internal_Order
-  C:3F0BH         PUBLIC        _Delay_us
+  C:391EH         PUBLIC        ISP_Version_OutSide_Order
+  C:3EE1H         PUBLIC        set_network_flag
+  C:3916H         PUBLIC        ISP_Version_Internal_Order
+  C:3F2CH         PUBLIC        _Delay_us
   D:006CH         PUBLIC        ota_packet_current_num
   D:00B8H         PUBLIC        IE1
-  C:392DH         SYMBOL        _?ix1000
-  C:3936H         SYMBOL        _?ix1001
+  C:3930H         SYMBOL        _?ix1000
+  C:3939H         SYMBOL        _?ix1001
   C:33EBH         PUBLIC        response_mcu_ota_notify_event
-  C:39D9H         PUBLIC        TIMER1_Rpt
-  C:3CC5H         PUBLIC        read_ota_struct
+  C:39DCH         PUBLIC        TIMER1_Rpt
+  C:3CC8H         PUBLIC        read_ota_struct
   D:00CEH         PUBLIC        TH4
-  C:3F55H         PUBLIC        _ota_fw_data_handle
-  C:3922H         PUBLIC        MCU_ID
+  C:3F76H         PUBLIC        _ota_fw_data_handle
+  C:3925H         PUBLIC        MCU_ID
   D:00CDH         PUBLIC        TL4
-  C:3E9EH         PUBLIC        _my_memset
+  C:3EA1H         PUBLIC        _my_memset
   D:006EH         PUBLIC        ota_last_packet_size
   B:0088H.6       PUBLIC        TR1
   D:006FH         PUBLIC        HandShake_Count
-  C:3DC3H         PUBLIC        _get_check_sum
+  C:3DC6H         PUBLIC        _get_check_sum
   D:0073H         PUBLIC        ota_packet_total_num
-  C:3EF7H         PUBLIC        _set_zigbee_uart_byte
+  C:3F18H         PUBLIC        _set_zigbee_uart_byte
   D:009EH         PUBLIC        SCON2
   D:00CCH         PUBLIC        T4CON
-  C:3876H         PUBLIC        HandShake
-  C:3F5EH         PUBLIC        _enable_timer
-  C:3968H         PUBLIC        _mcu_ota_result_report
-  C:3F66H         PUBLIC        mcu_ota_result_event
+  C:3879H         PUBLIC        HandShake
+  C:3F7FH         PUBLIC        _enable_timer
+  C:396BH         PUBLIC        _mcu_ota_result_report
+  C:3F87H         PUBLIC        mcu_ota_result_event
   D:00D0H         PUBLIC        PSW
-  C:373DH         SYMBOL        Com009B
-  C:373DH         SYMBOL        L?0156
-  C:373DH         SYMBOL        L?0157
-  C:3746H         SYMBOL        L?0158
-  C:376CH         SYMBOL        L?0160
-  C:3775H         SYMBOL        L?0162
-  C:3788H         SYMBOL        L?0164
-  C:3788H         SYMBOL        L?0165
-  C:378FH         SYMBOL        L?0166
-  C:378FH         SYMBOL        L?0167
-  C:3797H         SYMBOL        L?0168
-  C:37A7H         SYMBOL        L?0169
+  C:3740H         SYMBOL        Com009C
+  C:3740H         SYMBOL        L?0157
+  C:3740H         SYMBOL        L?0158
+  C:3749H         SYMBOL        L?0159
+  C:376FH         SYMBOL        L?0161
+  C:3778H         SYMBOL        L?0163
+  C:378BH         SYMBOL        L?0165
+  C:378BH         SYMBOL        L?0166
+  C:3792H         SYMBOL        L?0167
+  C:3792H         SYMBOL        L?0168
+  C:379AH         SYMBOL        L?0169
   C:37AAH         SYMBOL        L?0170
-  C:37B2H         SYMBOL        L?0171
-  C:37B2H         SYMBOL        L?0172
-  C:37BBH         SYMBOL        L?0173
-  C:37C7H         SYMBOL        L?0174
-  C:37D3H         SYMBOL        L?0177
-  -------         PROC          COM009B
-  -------         ENDPROC       COM009B
-  C:38E3H         SYMBOL        L?0175
+  C:37ADH         SYMBOL        L?0171
+  C:37B5H         SYMBOL        L?0172
+  C:37B5H         SYMBOL        L?0173
+  C:37BEH         SYMBOL        L?0174
+  C:37CAH         SYMBOL        L?0175
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 11
+
+
+  C:37D6H         SYMBOL        L?0178
+  -------         PROC          COM009C
+  -------         ENDPROC       COM009C
+  C:38E6H         SYMBOL        L?0176
   -------         PROC          HANDSHAKE
   -------         DO            
   D:0008H         SYMBOL        Data
   -------         ENDDO         
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 11
-
-
-  C:3876H         LINE#         44
-  C:3876H         LINE#         45
-  C:3876H         LINE#         48
-  C:387BH         LINE#         49
-  C:387BH         LINE#         50
-  C:3886H         LINE#         51
-  C:3886H         LINE#         52
-  C:3889H         LINE#         53
-  C:3889H         LINE#         54
-  C:3889H         LINE#         56
-  C:388CH         LINE#         57
-  C:3893H         LINE#         59
-  C:3898H         LINE#         60
-  C:38A6H         LINE#         61
-  C:38AFH         LINE#         63
-  C:38B4H         LINE#         65
-  C:38B7H         LINE#         66
-  C:38C2H         LINE#         67
-  C:38CBH         LINE#         71
-  C:38D1H         LINE#         72
-  C:38D5H         LINE#         74
-  C:38D8H         LINE#         75
-  C:38DEH         LINE#         77
-  C:38E3H         LINE#         79
+  C:3879H         LINE#         44
+  C:3879H         LINE#         45
+  C:3879H         LINE#         48
+  C:387EH         LINE#         49
+  C:387EH         LINE#         50
+  C:3889H         LINE#         51
+  C:3889H         LINE#         52
+  C:388CH         LINE#         53
+  C:388CH         LINE#         54
+  C:388CH         LINE#         56
+  C:388FH         LINE#         57
+  C:3896H         LINE#         59
+  C:389BH         LINE#         60
+  C:38A9H         LINE#         61
+  C:38B2H         LINE#         63
+  C:38B7H         LINE#         65
+  C:38BAH         LINE#         66
+  C:38C5H         LINE#         67
+  C:38CEH         LINE#         71
+  C:38D4H         LINE#         72
+  C:38D8H         LINE#         74
+  C:38DBH         LINE#         75
+  C:38E1H         LINE#         77
+  C:38E6H         LINE#         79
   -------         ENDPROC       HANDSHAKE
   -------         PROC          TIMER1_RPT
-  C:39D9H         LINE#         236
-  C:39F6H         LINE#         238
-  C:3A12H         LINE#         240
-  C:3A1EH         LINE#         241
-  C:3A1EH         LINE#         242
-  C:3A2AH         LINE#         243
-  C:3A2CH         LINE#         244
-  C:3A2CH         LINE#         245
+  C:39DCH         LINE#         236
+  C:39F9H         LINE#         238
+  C:3A15H         LINE#         240
+  C:3A21H         LINE#         241
+  C:3A21H         LINE#         242
+  C:3A2DH         LINE#         243
+  C:3A2FH         LINE#         244
+  C:3A2FH         LINE#         245
   -------         ENDPROC       TIMER1_RPT
   -------         PROC          MCU_OTA_FW_REQ_CV
   -------         DO            
   D:0007H         SYMBOL        result
   -------         ENDDO         
-  C:3BFEH         LINE#         247
-  C:3BFEH         LINE#         248
-  C:3BFEH         LINE#         249
-  C:3C00H         LINE#         251
-  C:3C03H         LINE#         253
-  C:3C20H         LINE#         254
-  C:3C20H         LINE#         255
-  C:3C20H         LINE#         256
-  C:3C22H         LINE#         257
-  C:3C22H         LINE#         258
-  C:3C24H         LINE#         259
-  C:3C24H         LINE#         260
-  C:3C26H         LINE#         261
-  C:3C26H         LINE#         262
-  C:3C28H         LINE#         263
-  C:3C28H         LINE#         264
-  C:3C2AH         LINE#         265
-  C:3C2AH         LINE#         266
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 12
+  C:3C01H         LINE#         247
+  C:3C01H         LINE#         248
+  C:3C01H         LINE#         249
+  C:3C03H         LINE#         251
+  C:3C06H         LINE#         253
+  C:3C23H         LINE#         254
+  C:3C23H         LINE#         255
+  C:3C23H         LINE#         256
+  C:3C25H         LINE#         257
+  C:3C25H         LINE#         258
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 12
 
 
-  C:3C2CH         LINE#         267
-  C:3C2CH         LINE#         268
-  C:3C31H         LINE#         269
-  C:3C33H         LINE#         270
-  C:3C35H         LINE#         271
-  C:3C35H         LINE#         272
-  C:3C3AH         LINE#         273
-  C:3C3AH         LINE#         274
-  C:3C3CH         LINE#         275
-  C:3C3CH         LINE#         276
-  C:3C41H         LINE#         277
-  C:3C46H         LINE#         278
-  C:3C46H         LINE#         279
-  C:3C46H         LINE#         280
-  C:3C49H         LINE#         281
-  C:3C49H         LINE#         282
-  C:3C49H         LINE#         283
-  C:3C49H         LINE#         284
-  C:3C49H         LINE#         285
+  C:3C27H         LINE#         259
+  C:3C27H         LINE#         260
+  C:3C29H         LINE#         261
+  C:3C29H         LINE#         262
+  C:3C2BH         LINE#         263
+  C:3C2BH         LINE#         264
+  C:3C2DH         LINE#         265
+  C:3C2DH         LINE#         266
+  C:3C2FH         LINE#         267
+  C:3C2FH         LINE#         268
+  C:3C34H         LINE#         269
+  C:3C36H         LINE#         270
+  C:3C38H         LINE#         271
+  C:3C38H         LINE#         272
+  C:3C3DH         LINE#         273
+  C:3C3DH         LINE#         274
+  C:3C3FH         LINE#         275
+  C:3C3FH         LINE#         276
+  C:3C44H         LINE#         277
+  C:3C49H         LINE#         278
+  C:3C49H         LINE#         279
+  C:3C49H         LINE#         280
+  C:3C4CH         LINE#         281
+  C:3C4CH         LINE#         282
+  C:3C4CH         LINE#         283
+  C:3C4CH         LINE#         284
+  C:3C4CH         LINE#         285
   -------         ENDPROC       MCU_OTA_FW_REQ_CV
-  C:33A1H         SYMBOL        L?0152
-  C:33B1H         SYMBOL        L?0153
-  C:33C1H         SYMBOL        L?0154
-  C:33D1H         SYMBOL        L?0159
-  C:33E1H         SYMBOL        L?0178
+  C:33A1H         SYMBOL        L?0153
+  C:33B1H         SYMBOL        L?0154
+  C:33C1H         SYMBOL        L?0155
+  C:33D1H         SYMBOL        L?0160
+  C:33E1H         SYMBOL        L?0179
   -------         PROC          _RECEIVE_PACKET_TUYA
   D:0008H         SYMBOL        Data
   -------         DO            
@@ -711,6 +719,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   C:328DH         LINE#         304
   C:3298H         LINE#         305
   C:32A2H         LINE#         306
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 13
+
+
   C:32ADH         LINE#         307
   C:32B7H         LINE#         308
   C:32C2H         LINE#         309
@@ -719,9 +730,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   C:32E3H         LINE#         312
   C:32EEH         LINE#         313
   C:32F9H         LINE#         314
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 13
-
-
   C:3303H         LINE#         315
   C:3303H         LINE#         316
   C:3321H         LINE#         317
@@ -771,82 +779,82 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   C:339EH         LINE#         367
   C:33A0H         LINE#         368
   C:33A0H         LINE#         369
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 14
+
+
   -------         ENDPROC       _RECEIVE_PACKET_TUYA
   -------         PROC          READ_OTA_STRUCT
   -------         DO            
   D:0008H         SYMBOL        i
   -------         ENDDO         
-  C:3CC5H         LINE#         371
-  C:3CC5H         LINE#         372
-  C:3CC5H         LINE#         373
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 14
-
-
-  C:3CC8H         LINE#         375
-  C:3CD9H         LINE#         377
-  C:3CDDH         LINE#         378
-  C:3CDDH         LINE#         379
-  C:3CE0H         LINE#         380
-  C:3CE0H         LINE#         381
-  C:3CF0H         LINE#         382
-  C:3CF2H         LINE#         383
-  C:3CF7H         LINE#         384
-  C:3CFAH         LINE#         385
-  C:3CFAH         LINE#         387
-  C:3CFAH         LINE#         388
-  C:3CFFH         LINE#         389
-  C:3CFFH         LINE#         390
+  C:3CC8H         LINE#         371
+  C:3CC8H         LINE#         372
+  C:3CC8H         LINE#         373
+  C:3CCBH         LINE#         375
+  C:3CDCH         LINE#         377
+  C:3CE0H         LINE#         378
+  C:3CE0H         LINE#         379
+  C:3CE3H         LINE#         380
+  C:3CE3H         LINE#         381
+  C:3CF3H         LINE#         382
+  C:3CF5H         LINE#         383
+  C:3CFAH         LINE#         384
+  C:3CFDH         LINE#         385
+  C:3CFDH         LINE#         387
+  C:3CFDH         LINE#         388
+  C:3D02H         LINE#         389
+  C:3D02H         LINE#         390
   -------         ENDPROC       READ_OTA_STRUCT
   -------         PROC          READ_MAGIC_FLAG
   -------         DO            
   D:0007H         SYMBOL        magic_byte
   -------         ENDDO         
-  C:3EDEH         LINE#         392
-  C:3EDEH         LINE#         393
-  C:3EDEH         LINE#         395
-  C:3EDFH         LINE#         397
-  C:3EF1H         LINE#         398
-  C:3EF6H         LINE#         400
-  C:3EF6H         LINE#         403
+  C:3EFFH         LINE#         392
+  C:3EFFH         LINE#         393
+  C:3EFFH         LINE#         395
+  C:3F00H         LINE#         397
+  C:3F12H         LINE#         398
+  C:3F17H         LINE#         400
+  C:3F17H         LINE#         403
   -------         ENDPROC       READ_MAGIC_FLAG
   -------         PROC          _SET_MAGIC_FLAG
   D:0020H         SYMBOL        temp
-  C:3E7EH         LINE#         405
-  C:3E80H         LINE#         406
-  C:3E80H         LINE#         407
-  C:3E87H         LINE#         408
-  C:3E8EH         LINE#         409
-  C:3E97H         LINE#         410
+  C:3E81H         LINE#         405
+  C:3E83H         LINE#         406
+  C:3E83H         LINE#         407
+  C:3E8AH         LINE#         408
+  C:3E91H         LINE#         409
+  C:3E9AH         LINE#         410
   -------         ENDPROC       _SET_MAGIC_FLAG
   -------         PROC          _DELAY_US
   D:0006H         SYMBOL        q1
   -------         DO            
   D:0004H         SYMBOL        j
   -------         ENDDO         
-  C:3F0BH         LINE#         413
-  C:3F0BH         LINE#         414
-  C:3F0BH         LINE#         416
-  C:3F15H         LINE#         417
-  C:3F15H         LINE#         419
-  C:3F1CH         LINE#         420
+  C:3F2CH         LINE#         413
+  C:3F2CH         LINE#         414
+  C:3F2CH         LINE#         416
+  C:3F36H         LINE#         417
+  C:3F36H         LINE#         419
+  C:3F3DH         LINE#         420
   -------         ENDPROC       _DELAY_US
   -------         PROC          _UART1_INIT
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 15
+
+
   D:0007H         SYMBOL        th
   D:0005H         SYMBOL        tl
-  C:3E5DH         LINE#         422
-  C:3E5DH         LINE#         423
-  C:3E5DH         LINE#         424
-  C:3E66H         LINE#         425
-  C:3E6CH         LINE#         426
-  C:3E70H         LINE#         429
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 15
-
-
-  C:3E73H         LINE#         430
-  C:3E75H         LINE#         431
-  C:3E77H         LINE#         432
-  C:3E7AH         LINE#         433
-  C:3E7DH         LINE#         434
+  C:3E60H         LINE#         422
+  C:3E60H         LINE#         423
+  C:3E60H         LINE#         424
+  C:3E69H         LINE#         425
+  C:3E6FH         LINE#         426
+  C:3E73H         LINE#         429
+  C:3E76H         LINE#         430
+  C:3E78H         LINE#         431
+  C:3E7AH         LINE#         432
+  C:3E7DH         LINE#         433
+  C:3E80H         LINE#         434
   -------         ENDPROC       _UART1_INIT
   -------         PROC          _GET_CHECK_SUM
   D:004BH         SYMBOL        pack
@@ -855,14 +863,14 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   D:0004H         SYMBOL        i
   D:0007H         SYMBOL        check_sum
   -------         ENDDO         
-  C:3DC3H         LINE#         436
-  C:3DCDH         LINE#         437
-  C:3DCDH         LINE#         439
-  C:3DCFH         LINE#         441
-  C:3DDAH         LINE#         442
-  C:3DE8H         LINE#         443
-  C:3DEFH         LINE#         445
-  C:3DEFH         LINE#         446
+  C:3DC6H         LINE#         436
+  C:3DD0H         LINE#         437
+  C:3DD0H         LINE#         439
+  C:3DD2H         LINE#         441
+  C:3DDDH         LINE#         442
+  C:3DEBH         LINE#         443
+  C:3DF2H         LINE#         445
+  C:3DF2H         LINE#         446
   -------         ENDPROC       _GET_CHECK_SUM
   -------         PROC          _RESPONSE_MCU_OTA_VERSION_EVENT
   D:0003H         SYMBOL        ver
@@ -881,27 +889,27 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         DO            
   D:0006H         SYMBOL        ret
   -------         ENDDO         
-  C:3AA9H         LINE#         455
-  C:3AAFH         LINE#         456
-  C:3AAFH         LINE#         457
-  C:3AAFH         LINE#         458
-  C:3AD2H         LINE#         459
-  C:3ADDH         LINE#         460
-  C:3AE8H         LINE#         461
-  C:3AEAH         LINE#         462
-  C:3AF2H         LINE#         463
-  C:3AF7H         LINE#         464
-  C:3B02H         LINE#         465
-  C:3B07H         LINE#         466
-  C:3B0AH         LINE#         467
+  C:3AACH         LINE#         455
+  C:3AB2H         LINE#         456
+  C:3AB2H         LINE#         457
+  C:3AB2H         LINE#         458
+  C:3AD5H         LINE#         459
+  C:3AE0H         LINE#         460
+  C:3AEBH         LINE#         461
+  C:3AEDH         LINE#         462
+  C:3AF5H         LINE#         463
+  C:3AFAH         LINE#         464
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 16
+
+
+  C:3B05H         LINE#         465
+  C:3B0AH         LINE#         466
+  C:3B0DH         LINE#         467
   -------         ENDPROC       _STRCMP_BARRY
-  C:3560H         SYMBOL        L?0161
-  C:356CH         SYMBOL        L?0176
+  C:3563H         SYMBOL        L?0162
+  C:356FH         SYMBOL        L?0177
   -------         PROC          RESPONSE_MCU_OTA_NOTIFY_EVENT
   -------         DO            
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 16
-
-
   D:0007H         SYMBOL        i
   D:0010H         SYMBOL        result
   D:0012H         SYMBOL        length
@@ -943,40 +951,49 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   C:3515H         LINE#         520
   C:3518H         LINE#         521
   C:351DH         LINE#         522
-  C:3523H         LINE#         523
-  C:3525H         LINE#         524
-  C:3525H         LINE#         525
-  C:352BH         LINE#         526
-  C:352BH         LINE#         528
-  C:3538H         LINE#         529
-  C:3544H         LINE#         531
-  C:354AH         LINE#         532
-  C:354AH         LINE#         533
+  C:3520H         LINE#         523
+  C:3526H         LINE#         524
+  C:3528H         LINE#         525
+  C:3528H         LINE#         526
+  C:352EH         LINE#         527
+  C:352EH         LINE#         529
+  C:353BH         LINE#         530
+  C:3547H         LINE#         532
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 17
+
+
+  C:354DH         LINE#         533
   C:354DH         LINE#         534
-  C:354DH         LINE#         535
-  C:3555H         LINE#         536
-  C:3555H         LINE#         537
-  C:355AH         LINE#         538
-  C:355FH         LINE#         539
-  C:355FH         LINE#         540
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 17
-
-
+  C:3550H         LINE#         535
+  C:3550H         LINE#         536
+  C:3558H         LINE#         537
+  C:3558H         LINE#         538
+  C:355DH         LINE#         539
+  C:3562H         LINE#         540
+  C:3562H         LINE#         541
   -------         ENDPROC       RESPONSE_MCU_OTA_NOTIFY_EVENT
+  -------         PROC          SET_NETWORK_FLAG
+  C:3EE1H         LINE#         543
+  C:3EE1H         LINE#         544
+  C:3EE1H         LINE#         545
+  C:3EE8H         LINE#         546
+  C:3EEFH         LINE#         548
+  C:3EF8H         LINE#         549
+  -------         ENDPROC       SET_NETWORK_FLAG
   -------         PROC          MCU_OTA_RESULT_EVENT
   -------         DO            
   D:0010H         SYMBOL        status
   -------         ENDDO         
-  C:3F66H         LINE#         542
-  C:3F66H         LINE#         543
-  C:3F66H         LINE#         544
-  C:3F6CH         LINE#         546
-  C:3F6CH         LINE#         547
-  C:3F6CH         LINE#         549
-  C:3F6CH         LINE#         550
-  C:3F6CH         LINE#         551
-  C:3F6CH         LINE#         553
-  C:3F6CH         LINE#         554
+  C:3F87H         LINE#         552
+  C:3F87H         LINE#         553
+  C:3F87H         LINE#         554
+  C:3F8DH         LINE#         556
+  C:3F8DH         LINE#         557
+  C:3F8DH         LINE#         559
+  C:3F8DH         LINE#         560
+  C:3F8DH         LINE#         561
+  C:3F8DH         LINE#         563
+  C:3F8DH         LINE#         564
   -------         ENDPROC       MCU_OTA_RESULT_EVENT
   -------         PROC          MCU_OTA_FW_REQUEST_EVENT
   -------         DO            
@@ -984,134 +1001,134 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   D:0042H         SYMBOL        i
   D:0043H         SYMBOL        fw_offset
   -------         ENDDO         
-  C:3578H         LINE#         557
-  C:3578H         LINE#         558
-  C:3578H         LINE#         559
-  C:358BH         LINE#         560
-  C:358EH         LINE#         563
-  C:3595H         LINE#         564
-  C:3595H         LINE#         565
-  C:3598H         LINE#         566
-  C:3598H         LINE#         568
-  C:359BH         LINE#         569
-  C:359BH         LINE#         570
-  C:35B3H         LINE#         571
-  C:35B3H         LINE#         572
-  C:35B6H         LINE#         573
-  C:35B6H         LINE#         574
-  C:35B8H         LINE#         575
-  C:35BDH         LINE#         577
-  C:35C9H         LINE#         578
-  C:35C9H         LINE#         579
-  C:35CCH         LINE#         580
-  C:35CCH         LINE#         582
-  C:35CFH         LINE#         583
-  C:35D3H         LINE#         584
-  C:35D3H         LINE#         585
-  C:3600H         LINE#         586
-  C:3602H         LINE#         587
-  C:3607H         LINE#         590
-  C:360DH         LINE#         591
-  C:360DH         LINE#         592
-  C:3612H         LINE#         593
-  C:3612H         LINE#         595
-  C:3620H         LINE#         596
-  C:3620H         LINE#         597
-  C:3625H         LINE#         598
-  C:3625H         LINE#         599
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 18
+  C:357BH         LINE#         567
+  C:357BH         LINE#         568
+  C:357BH         LINE#         569
+  C:358EH         LINE#         570
+  C:3591H         LINE#         573
+  C:3598H         LINE#         574
+  C:3598H         LINE#         575
+  C:359BH         LINE#         576
+  C:359BH         LINE#         578
+  C:359EH         LINE#         579
+  C:359EH         LINE#         580
+  C:35B6H         LINE#         581
+  C:35B6H         LINE#         582
+  C:35B9H         LINE#         583
+  C:35B9H         LINE#         584
+  C:35BBH         LINE#         585
+  C:35C0H         LINE#         587
+  C:35CCH         LINE#         588
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 18
 
 
-  C:3628H         LINE#         600
-  C:3628H         LINE#         601
-  C:3628H         LINE#         602
-  C:3628H         LINE#         603
-  C:3628H         LINE#         604
-  C:362BH         LINE#         605
-  C:3630H         LINE#         606
-  C:363AH         LINE#         607
-  C:363CH         LINE#         609
-  C:363CH         LINE#         610
-  C:363FH         LINE#         611
-  C:3646H         LINE#         612
-  C:3646H         LINE#         613
-  C:3646H         LINE#         614
-  C:3646H         LINE#         615
-  C:3649H         LINE#         616
-  C:364BH         LINE#         618
-  C:3659H         LINE#         619
-  C:3659H         LINE#         620
-  C:365CH         LINE#         621
-  C:365CH         LINE#         623
-  C:365CH         LINE#         624
-  C:366CH         LINE#         625
-  C:3674H         LINE#         626
-  C:3677H         LINE#         627
-  C:3677H         LINE#         628
-  C:3677H         LINE#         629
-  C:367FH         LINE#         630
-  C:368FH         LINE#         631
-  C:3692H         LINE#         632
-  C:3692H         LINE#         634
-  C:3692H         LINE#         635
-  C:3694H         LINE#         636
-  C:3694H         LINE#         637
+  C:35CCH         LINE#         589
+  C:35CFH         LINE#         590
+  C:35CFH         LINE#         592
+  C:35D2H         LINE#         593
+  C:35D6H         LINE#         594
+  C:35D6H         LINE#         595
+  C:3603H         LINE#         596
+  C:3605H         LINE#         597
+  C:360AH         LINE#         600
+  C:3610H         LINE#         601
+  C:3610H         LINE#         602
+  C:3615H         LINE#         603
+  C:3615H         LINE#         605
+  C:3623H         LINE#         606
+  C:3623H         LINE#         607
+  C:3628H         LINE#         608
+  C:3628H         LINE#         609
+  C:362BH         LINE#         610
+  C:362BH         LINE#         611
+  C:362BH         LINE#         612
+  C:362BH         LINE#         613
+  C:362BH         LINE#         614
+  C:362EH         LINE#         615
+  C:3633H         LINE#         616
+  C:363DH         LINE#         617
+  C:363FH         LINE#         619
+  C:363FH         LINE#         620
+  C:3642H         LINE#         621
+  C:3649H         LINE#         622
+  C:3649H         LINE#         623
+  C:3649H         LINE#         624
+  C:3649H         LINE#         625
+  C:364CH         LINE#         626
+  C:364EH         LINE#         628
+  C:365CH         LINE#         629
+  C:365CH         LINE#         630
+  C:365FH         LINE#         631
+  C:365FH         LINE#         633
+  C:365FH         LINE#         634
+  C:366FH         LINE#         635
+  C:3677H         LINE#         636
+  C:367AH         LINE#         637
+  C:367AH         LINE#         638
+  C:367AH         LINE#         639
+  C:3682H         LINE#         640
+  C:3692H         LINE#         641
+  C:3695H         LINE#         642
+  C:3695H         LINE#         644
+  C:3695H         LINE#         645
+  C:3697H         LINE#         646
+  C:3697H         LINE#         647
   -------         ENDPROC       MCU_OTA_FW_REQUEST_EVENT
-  C:3733H         SYMBOL        L?0163
+  C:3736H         SYMBOL        L?0164
   -------         PROC          MCU_OTA_FW_REQUEST
   -------         DO            
   D:0004H         SYMBOL        length
   D:001EH         SYMBOL        i
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 19
+
+
   D:001FH         SYMBOL        pack_size
   -------         ENDDO         
-  C:3695H         LINE#         640
-  C:3695H         LINE#         641
-  C:3695H         LINE#         642
-  C:3698H         LINE#         643
-  C:369AH         LINE#         644
-  C:369CH         LINE#         646
-  C:36B1H         LINE#         647
-  C:36B2H         LINE#         649
-  C:36B2H         LINE#         651
-  C:36B2H         LINE#         653
-  C:36B7H         LINE#         654
-  C:36B7H         LINE#         655
-  C:36BAH         LINE#         656
-  C:36BCH         LINE#         658
-  C:36BCH         LINE#         659
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 19
-
-
-  C:36BFH         LINE#         660
-  C:36BFH         LINE#         661
-  C:36BFH         LINE#         663
-  C:36C6H         LINE#         664
-  C:36D4H         LINE#         665
-  C:36D6H         LINE#         666
-  C:36D8H         LINE#         667
-  C:36E2H         LINE#         668
-  C:36E5H         LINE#         669
-  C:36E5H         LINE#         670
-  C:3718H         LINE#         671
-  C:371AH         LINE#         672
-  C:3721H         LINE#         673
-  C:372AH         LINE#         675
-  C:3732H         LINE#         676
+  C:3698H         LINE#         650
+  C:3698H         LINE#         651
+  C:3698H         LINE#         652
+  C:369BH         LINE#         653
+  C:369DH         LINE#         654
+  C:369FH         LINE#         656
+  C:36B4H         LINE#         657
+  C:36B5H         LINE#         659
+  C:36B5H         LINE#         661
+  C:36B5H         LINE#         663
+  C:36BAH         LINE#         664
+  C:36BAH         LINE#         665
+  C:36BDH         LINE#         666
+  C:36BFH         LINE#         668
+  C:36BFH         LINE#         669
+  C:36C2H         LINE#         670
+  C:36C2H         LINE#         671
+  C:36C2H         LINE#         673
+  C:36C9H         LINE#         674
+  C:36D7H         LINE#         675
+  C:36D9H         LINE#         676
+  C:36DBH         LINE#         677
+  C:36E5H         LINE#         678
+  C:36E8H         LINE#         679
+  C:36E8H         LINE#         680
+  C:371BH         LINE#         681
+  C:371DH         LINE#         682
+  C:3724H         LINE#         683
+  C:372DH         LINE#         685
+  C:3735H         LINE#         686
   -------         ENDPROC       MCU_OTA_FW_REQUEST
   -------         PROC          _SEND_OTA_RESULT_DP
   D:0045H         SYMBOL        status
   -------         DO            
   D:0004H         SYMBOL        length
   -------         ENDDO         
-  C:3D94H         LINE#         678
-  C:3D96H         LINE#         679
-  C:3D96H         LINE#         680
-  C:3D98H         LINE#         682
-  C:3DA1H         LINE#         683
-  C:3DA8H         LINE#         684
-  C:3DAFH         LINE#         685
-  C:3DB6H         LINE#         686
-  C:3DBBH         LINE#         687
+  C:3D97H         LINE#         688
+  C:3D99H         LINE#         689
+  C:3D99H         LINE#         690
+  C:3D9BH         LINE#         692
+  C:3DA4H         LINE#         693
+  C:3DABH         LINE#         694
+  C:3DB2H         LINE#         695
+  C:3DB9H         LINE#         696
+  C:3DBEH         LINE#         697
   -------         ENDPROC       _SEND_OTA_RESULT_DP
   -------         PROC          _MCU_OTA_RESULT_REPORT
   D:001EH         SYMBOL        status
@@ -1119,40 +1136,40 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   D:0004H         SYMBOL        length
   D:001FH         SYMBOL        i
   -------         ENDDO         
-  C:3968H         LINE#         691
-  C:396AH         LINE#         692
-  C:396AH         LINE#         693
-  C:396CH         LINE#         694
-  C:396EH         LINE#         696
-  C:3979H         LINE#         697
-  C:3980H         LINE#         698
-  C:3994H         LINE#         699
-  C:3996H         LINE#         700
-  C:3998H         LINE#         701
-  C:39A4H         LINE#         703
-  C:39ACH         LINE#         705
-  C:39B1H         LINE#         706
-  C:39B1H         LINE#         708
-  C:39B9H         LINE#         710
-  C:39C6H         LINE#         712
-  C:39CCH         LINE#         713
-  C:39CDH         LINE#         714
-  C:39D1H         LINE#         715
-  C:39D1H         LINE#         717
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 20
+  C:396BH         LINE#         701
+  C:396DH         LINE#         702
+  C:396DH         LINE#         703
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 20
 
 
-  C:39D5H         LINE#         719
-  C:39D8H         LINE#         720
-  C:39D8H         LINE#         721
+  C:396FH         LINE#         704
+  C:3971H         LINE#         706
+  C:397CH         LINE#         707
+  C:3983H         LINE#         708
+  C:3997H         LINE#         709
+  C:3999H         LINE#         710
+  C:399BH         LINE#         711
+  C:39A7H         LINE#         713
+  C:39AFH         LINE#         715
+  C:39B4H         LINE#         716
+  C:39B4H         LINE#         718
+  C:39BCH         LINE#         720
+  C:39C9H         LINE#         722
+  C:39CFH         LINE#         723
+  C:39D0H         LINE#         724
+  C:39D4H         LINE#         725
+  C:39D4H         LINE#         727
+  C:39D8H         LINE#         729
+  C:39DBH         LINE#         730
+  C:39DBH         LINE#         731
   -------         ENDPROC       _MCU_OTA_RESULT_REPORT
   -------         PROC          _OTA_FW_DATA_HANDLE
   D:0006H         SYMBOL        fw_offset
   D:0001H         SYMBOL        data0
   D:004AH         SYMBOL        size0
-  C:3F55H         LINE#         723
-  C:3F55H         LINE#         724
-  C:3F55H         LINE#         726
+  C:3F76H         LINE#         733
+  C:3F76H         LINE#         734
+  C:3F76H         LINE#         736
   -------         ENDPROC       _OTA_FW_DATA_HANDLE
   -------         PROC          _MY_MEMSET
   D:0001H         SYMBOL        src
@@ -1160,13 +1177,13 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         DO            
   D:0020H         SYMBOL        tmp
   -------         ENDDO         
-  C:3E9EH         LINE#         729
-  C:3E9EH         LINE#         730
-  C:3E9EH         LINE#         731
-  C:3EA4H         LINE#         733
-  C:3EAEH         LINE#         734
-  C:3EBBH         LINE#         735
-  C:3EBDH         LINE#         736
+  C:3EA1H         LINE#         739
+  C:3EA1H         LINE#         740
+  C:3EA1H         LINE#         741
+  C:3EA7H         LINE#         743
+  C:3EB1H         LINE#         744
+  C:3EBEH         LINE#         745
+  C:3EC0H         LINE#         746
   -------         ENDPROC       _MY_MEMSET
   -------         PROC          _ZIGBEE_UART_WRITE_FRAME
   D:0007H         SYMBOL        fr_cmd
@@ -1176,21 +1193,24 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         DO            
   D:0006H         SYMBOL        check_sum
   -------         ENDDO         
-  C:3B0BH         LINE#         738
-  C:3B0FH         LINE#         739
-  C:3B0FH         LINE#         740
-  C:3B0FH         LINE#         742
-  C:3B15H         LINE#         743
-  C:3B19H         LINE#         744
-  C:3B1DH         LINE#         746
-  C:3B20H         LINE#         747
-  C:3B24H         LINE#         749
-  C:3B27H         LINE#         750
-  C:3B2BH         LINE#         751
-  C:3B2FH         LINE#         753
-  C:3B38H         LINE#         755
-  C:3B4BH         LINE#         756
-  C:3B59H         LINE#         758
+  C:3B0EH         LINE#         748
+  C:3B12H         LINE#         749
+  C:3B12H         LINE#         750
+  C:3B12H         LINE#         752
+  C:3B18H         LINE#         753
+  C:3B1CH         LINE#         754
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 21
+
+
+  C:3B20H         LINE#         756
+  C:3B23H         LINE#         757
+  C:3B27H         LINE#         759
+  C:3B2AH         LINE#         760
+  C:3B2EH         LINE#         761
+  C:3B32H         LINE#         763
+  C:3B3BH         LINE#         765
+  C:3B4EH         LINE#         766
+  C:3B5CH         LINE#         768
   -------         ENDPROC       _ZIGBEE_UART_WRITE_FRAME
   -------         PROC          _SET_ZIGBEE_UART_BYTE
   D:0006H         SYMBOL        dest
@@ -1198,24 +1218,21 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         DO            
   D:0001H         SYMBOL        obj
   -------         ENDDO         
-  C:3EF7H         LINE#         761
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 21
-
-
-  C:3EF7H         LINE#         762
-  C:3EF7H         LINE#         763
-  C:3F01H         LINE#         765
-  C:3F05H         LINE#         766
-  C:3F0AH         LINE#         768
-  C:3F0AH         LINE#         769
+  C:3F18H         LINE#         771
+  C:3F18H         LINE#         772
+  C:3F18H         LINE#         773
+  C:3F22H         LINE#         775
+  C:3F26H         LINE#         776
+  C:3F2BH         LINE#         778
+  C:3F2BH         LINE#         779
   -------         ENDPROC       _SET_ZIGBEE_UART_BYTE
   -------         PROC          _ENABLE_TIMER
   D:0007H         SYMBOL        en
-  C:3F5EH         LINE#         779
-  C:3F5EH         LINE#         780
-  C:3F5EH         LINE#         781
-  C:3F63H         LINE#         782
-  C:3F65H         LINE#         783
+  C:3F7FH         LINE#         789
+  C:3F7FH         LINE#         790
+  C:3F7FH         LINE#         791
+  C:3F84H         LINE#         792
+  C:3F86H         LINE#         793
   -------         ENDPROC       _ENABLE_TIMER
   -------         ENDMOD        MODB
 
@@ -1224,28 +1241,31 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
-  C:3B64H         PUBLIC        _IAR_Clear_arrang
+  C:3B67H         PUBLIC        _IAR_Clear_arrang
   D:00A8H         PUBLIC        IE
   D:00FCH         PUBLIC        IAP_CMD
   D:00F8H         PUBLIC        RSTFR
-  C:3DF0H         PUBLIC        _XOR_FLASH_BLANK
-  C:3EBEH         PUBLIC        _IAR_Clear
-  C:3BB1H         PUBLIC        _IAR_Write_arrang
+  C:3DF3H         PUBLIC        _XOR_FLASH_BLANK
+  C:3EC1H         PUBLIC        _IAR_Clear
+  C:3BB4H         PUBLIC        _IAR_Write_arrang
   D:00BDH         PUBLIC        WDTC
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
-  C:3D00H         PUBLIC        _IAR_Read
+  C:3D03H         PUBLIC        _IAR_Read
   D:00B8H         PUBLIC        IE1
-  C:3E3BH         PUBLIC        _IAR_Write_Byte
-  C:3D63H         PUBLIC        Earse_Flash
+  C:3E3EH         PUBLIC        _IAR_Write_Byte
+  C:3D66H         PUBLIC        Earse_Flash
   X:00FAH         PUBLIC        ID_DAT
   D:00FBH         PUBLIC        IAP_DATA
   D:00F9H         PUBLIC        IAP_ADDR
-  C:3F4BH         PUBLIC        IAR_Soft_Rst_No_Option
+  C:3F6CH         PUBLIC        IAR_Soft_Rst_No_Option
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 22
+
+
   D:00D0H         PUBLIC        PSW
-  C:3F6DH         SYMBOL        Com0020
-  C:3F6DH         SYMBOL        L?0033
-  C:3F6DH         SYMBOL        L?0034
+  C:3F8EH         SYMBOL        Com0020
+  C:3F8EH         SYMBOL        L?0033
+  C:3F8EH         SYMBOL        L?0034
   -------         PROC          COM0020
   -------         ENDPROC       COM0020
   -------         PROC          _XOR_FLASH_BLANK
@@ -1254,17 +1274,14 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         DO            
   D:0024H         SYMBOL        i
   -------         ENDDO         
-  C:3DF0H         LINE#         10
-  C:3DF0H         LINE#         11
-  C:3DF0H         LINE#         12
-  C:3DF5H         LINE#         13
-  C:3DF8H         LINE#         14
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 22
-
-
-  C:3E02H         LINE#         15
-  C:3E15H         LINE#         16
-  C:3E17H         LINE#         17
+  C:3DF3H         LINE#         10
+  C:3DF3H         LINE#         11
+  C:3DF3H         LINE#         12
+  C:3DF8H         LINE#         13
+  C:3DFBH         LINE#         14
+  C:3E05H         LINE#         15
+  C:3E18H         LINE#         16
+  C:3E1AH         LINE#         17
   -------         ENDPROC       _XOR_FLASH_BLANK
   -------         PROC          _IAR_CLEAR_ARRANG
   D:001EH         SYMBOL        clradd
@@ -1272,88 +1289,88 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         DO            
   D:0022H         SYMBOL        i
   -------         ENDDO         
-  C:3B64H         LINE#         22
-  C:3B6CH         LINE#         23
-  C:3B6CH         LINE#         25
-  C:3B6FH         LINE#         26
-  C:3B7FH         LINE#         27
-  C:3B7FH         LINE#         28
-  C:3B86H         LINE#         29
-  C:3B9BH         LINE#         30
-  C:3BA6H         LINE#         31
-  C:3BB0H         LINE#         32
+  C:3B67H         LINE#         22
+  C:3B6FH         LINE#         23
+  C:3B6FH         LINE#         25
+  C:3B72H         LINE#         26
+  C:3B82H         LINE#         27
+  C:3B82H         LINE#         28
+  C:3B89H         LINE#         29
+  C:3B9EH         LINE#         30
+  C:3BA9H         LINE#         31
+  C:3BB3H         LINE#         32
   -------         ENDPROC       _IAR_CLEAR_ARRANG
-  C:3D8AH         SYMBOL        L?0035
+  C:3D8DH         SYMBOL        L?0035
   -------         PROC          EARSE_FLASH
-  C:3D63H         LINE#         37
-  C:3D63H         LINE#         38
-  C:3D63H         LINE#         39
-  C:3D6AH         LINE#         40
-  C:3D6FH         LINE#         41
-  C:3D77H         LINE#         42
-  C:3D87H         LINE#         43
-  C:3D89H         LINE#         44
+  C:3D66H         LINE#         37
+  C:3D66H         LINE#         38
+  C:3D66H         LINE#         39
+  C:3D6DH         LINE#         40
+  C:3D72H         LINE#         41
+  C:3D7AH         LINE#         42
+  C:3D8AH         LINE#         43
+  C:3D8CH         LINE#         44
   -------         ENDPROC       EARSE_FLASH
   -------         PROC          _IAR_CLEAR
   D:0004H         SYMBOL        clradd
-  C:3EBEH         LINE#         50
-  C:3EC2H         LINE#         51
-  C:3EC2H         LINE#         52
-  C:3EC7H         LINE#         53
-  C:3ECAH         LINE#         54
-  C:3ECEH         LINE#         55
-  C:3ED4H         LINE#         56
-  C:3EDAH         LINE#         57
+  C:3EC1H         LINE#         50
+  C:3EC5H         LINE#         51
+  C:3EC5H         LINE#         52
+  C:3ECAH         LINE#         53
+  C:3ECDH         LINE#         54
+  C:3ED1H         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 23
+
+
+  C:3ED7H         LINE#         56
+  C:3EDDH         LINE#         57
   -------         ENDPROC       _IAR_CLEAR
   -------         PROC          _IAR_WRITE_BYTE
   D:0002H         SYMBOL        add
   D:0005H         SYMBOL        datt
-  C:3E3BH         LINE#         63
-  C:3E3FH         LINE#         64
-  C:3E3FH         LINE#         65
-  C:3E44H         LINE#         66
-  C:3E46H         LINE#         67
-  C:3E49H         LINE#         68
-  C:3E4DH         LINE#         69
-  C:3E53H         LINE#         70
-  C:3E59H         LINE#         71
+  C:3E3EH         LINE#         63
+  C:3E42H         LINE#         64
+  C:3E42H         LINE#         65
+  C:3E47H         LINE#         66
+  C:3E49H         LINE#         67
+  C:3E4CH         LINE#         68
+  C:3E50H         LINE#         69
+  C:3E56H         LINE#         70
+  C:3E5CH         LINE#         71
   -------         ENDPROC       _IAR_WRITE_BYTE
   -------         PROC          _IAR_WRITE_ARRANG
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 23
-
-
   D:004BH         SYMBOL        add
   D:004DH         SYMBOL        datt
   D:0050H         SYMBOL        len
   -------         DO            
   D:0052H         SYMBOL        i
   -------         ENDDO         
-  C:3BB1H         LINE#         78
-  C:3BBBH         LINE#         79
-  C:3BBBH         LINE#         81
-  C:3BCBH         LINE#         82
-  C:3BCBH         LINE#         83
-  C:3BD2H         LINE#         84
-  C:3BEBH         LINE#         85
-  C:3BF3H         LINE#         86
-  C:3BFDH         LINE#         87
+  C:3BB4H         LINE#         78
+  C:3BBEH         LINE#         79
+  C:3BBEH         LINE#         81
+  C:3BCEH         LINE#         82
+  C:3BCEH         LINE#         83
+  C:3BD5H         LINE#         84
+  C:3BEEH         LINE#         85
+  C:3BF6H         LINE#         86
+  C:3C00H         LINE#         87
   -------         ENDPROC       _IAR_WRITE_ARRANG
   -------         PROC          _IAR_READ
   D:0006H         SYMBOL        add
   D:000BH         SYMBOL        buf
   D:000EH         SYMBOL        len
-  C:3D00H         LINE#         93
-  C:3D06H         LINE#         94
-  C:3D06H         LINE#         95
-  C:3D13H         LINE#         96
-  C:3D31H         LINE#         97
+  C:3D03H         LINE#         93
+  C:3D09H         LINE#         94
+  C:3D09H         LINE#         95
+  C:3D16H         LINE#         96
+  C:3D34H         LINE#         97
   -------         ENDPROC       _IAR_READ
   -------         PROC          IAR_SOFT_RST_NO_OPTION
-  C:3F4BH         LINE#         103
-  C:3F4BH         LINE#         104
-  C:3F4BH         LINE#         105
-  C:3F4EH         LINE#         106
-  C:3F54H         LINE#         107
+  C:3F6CH         LINE#         103
+  C:3F6CH         LINE#         104
+  C:3F6CH         LINE#         105
+  C:3F6FH         LINE#         106
+  C:3F75H         LINE#         107
   -------         ENDPROC       IAR_SOFT_RST_NO_OPTION
   -------         ENDMOD        FLASH
 
@@ -1362,6 +1379,9 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
   -------         ENDMOD        ?C?COPY
 
   -------         MODULE        ?C?CLDPTR
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 24
+
+
   C:3114H         PUBLIC        ?C?CLDPTR
   -------         ENDMOD        ?C?CLDPTR
 
@@ -1379,9 +1399,6 @@ SYMBOL TABLE OF MODULE:  .\Objects\003_ISP_NEW (?C_STARTUP)
 
   -------         MODULE        ?C?IILDX
   C:31C1H         PUBLIC        ?C?IILDX
-BL51 BANKED LINKER/LOCATER V6.22                                                      02/04/2021  16:21:27  PAGE 24
-
-
   -------         ENDMOD        ?C?IILDX
 
   -------         MODULE        ?C?ULCMP
@@ -1413,6 +1430,7 @@ FUNCTION . . . . . . . . . . . . . REG MASK
 GPIO_INIT. . . . . . . . . . . . . @0xe300
 IAR_SOFT_RST_NO_OPTION . . . . . . @0x8000
 MCU_OTA_RESULT_EVENT . . . . . . . @0xa300
+SET_NETWORK_FLAG . . . . . . . . . @0xf03f
 SYSTEMINIT . . . . . . . . . . . . @0xe300
 _DELAY_US. . . . . . . . . . . . . @0xf00c
 _ENABLE_TIMER. . . . . . . . . . . @0xf000
@@ -1421,6 +1439,9 @@ _IAR_CLEAR . . . . . . . . . . . . @0xf00d
 _IAR_WRITE_ARRANG. . . . . . . . . @0xf3f7
 _IAR_WRITE_BYTE. . . . . . . . . . @0xf031
 _MY_MEMSET . . . . . . . . . . . . @0xfffe
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/18/2021  23:46:31  PAGE 25
+
+
 _OTA_FW_DATA_HANDLE. . . . . . . . @0xf3f7
 _SET_ZIGBEE_UART_BYTE. . . . . . . @0xf373
 _STRCMP_BARRY. . . . . . . . . . . @0xf377
@@ -1430,5 +1451,5 @@ _UART_SENDBYTE . . . . . . . . . . @0xe000
 _UART_SENDPACKET . . . . . . . . . @0xf3f3
 _XOR_FLASH_BLANK . . . . . . . . . @0xe32f
 
-Program Size: data=118.0 xdata=252 code=3955
+Program Size: data=118.0 xdata=252 code=3988
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
